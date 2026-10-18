@@ -1,50 +1,4 @@
-# Katalog Referensi Tugas Akhir
-
-**Topik:** Agentic Workflow Multi-Domain untuk Augmentasi Pendampingan Manajerial UMKM
-**Peta jalan:** Data Science and Information Systems
-**Terakhir diperbarui:** 19 Oktober 2026
-
-Katalog ini mendata semua referensi yang dipakai: judul, penulis, tahun, tempat terbit, indeks (Sinta/Scopus), ringkasan isi, dan kegunaannya untuk penelitian. File PDF disimpan di folder [`pdf/`](pdf/).
-
-**Keterangan:** 📄 = *preprint* atau kertas kerja (pendukung) · 📘 = teori dasar/klasik
-
-## Ringkasan katalog
-
-| No | Penulis (Tahun) | Judul singkat | Venue | Indeks | Kelompok |
-| --- | --- | --- | --- | --- | --- |
-| 01 | Rajaram & Tinguely (2024) | GenAI in SMEs | Business Horizons | Scopus Q1 | Sumber dosen |
-| 02 | Sagala & Őri (2024) | SMEs Digital Transformation Success | Information Systems and e-Business Management | Scopus, WoS (IF 2,3) | Sumber dosen |
-| 03 | Selem (2026) | GenAI-enabled Mobile Interfaces in Tourism | Information Systems Frontiers | Scopus (CiteScore 19,1) | Sumber dosen |
-| 04 | Otis dkk. | Uneven Impact of GenAI on Entrepreneurs | Management Science | Scopus Q1 | Pembanding |
-| 05 | Hardiyanti dkk. (2026) | Adaptive RAG for Smart MSME | JAIC | Sinta 3 | Pembanding |
-| 06 | Rosalina dkk. (2026) | RAG in SME Customer Communication | JIOS | Scopus | Pembanding |
-| 07 | Papageorgiou dkk. (2024) | E-Government Services over LLMs | Applied Sciences | Scopus, DOAJ | Pembanding |
-| 08 | Besrour dkk. (2025) | SQuAI: Multi-Agent RAG | ACM CIKM 2025 | Scopus | Pembanding |
-| 09 | Gupta (2024) | GenAI Adoption Model, Entrepreneurs | Systems | Scopus, DOAJ | Pembanding |
-| 10 | PAWNI (2026) | Multi-Agent Prompt Formulation | arXiv | 📄 | Pembanding |
-| 11 | Raisch & Krakowski (2021) | Automation–Augmentation Paradox | Academy of Management Review | Scopus Q1 | Teori |
-| 12 | Robertson dkk. (2024) | Game Changers: GenAI Prompt Protocol | Business Horizons | Scopus Q1 | Teori |
-| 13 | Zamfirescu-Pereira dkk. (2023) | Why Johnny Can't Prompt | ACM CHI '23 | ACM Digital Library | Teori |
-| 14 | Dahl dkk. (2024) | Large Legal Fictions | Journal of Legal Analysis | Scopus Q2 | Teori |
-| 15 | Es dkk. (2024) | RAGAS | EACL 2024 | ACL Anthology | Metode |
-| 16 | Wang dkk. (2024) | Survey on LLM-based Autonomous Agents | Frontiers of Computer Science | Scopus | Teori |
-| 17 | Guo dkk. (2024) | LLM-based Multi-Agents: A Survey | IJCAI 2024 | Scopus | Teori |
-| 18 | Lewis dkk. (2020) | Retrieval-Augmented Generation | NeurIPS 2020 | 📘 | Teori |
-| 19 | Cahyawijaya dkk. (2024) | Cendol: LLM Bahasa Indonesia | ACL 2024 | ACL Anthology | Teori |
-| 20 | Davis (1989) | Technology Acceptance Model | MIS Quarterly | 📘 | Metode |
-| 21 | Hart & Staveland (1988) | NASA-TLX | Advances in Psychology | 📘 | Metode |
-| 22 | Ghonisyah & Asyiah (2025) | GenAI in Content Marketing | IJBE (IPB) | Sinta 4 | Konteks |
-| 23 | Yafie dkk. (2026) | Academic Chatbot dengan RAG | Sinkron (Polgan Medan) | Sinta 3 | Konteks |
-| 24 | Asmaidin & Santoso (2026) | Evaluasi Metode Retrieval RAG | JSAI | Sinta 4 | Konteks |
-| 25 | Aziz & Priyanto (2025) | Service Standardization, Small Accommodation | Media Wisata | SINTA, Garuda | Konteks |
-| 26 | Utomo & Setiyono (2024) | Digital Technology in Micro SMEs | Jurnal Lemhannas RI | Jurnal nasional *open access* | Konteks |
-| 27 | Naibaho dkk. (2025) | Digital Marketing Tenun Ulos, Sigaol Timur | Cakrawala | Jurnal pengabdian | Konteks Toba |
-| 28 | DKUKMPP Toba (2026) | LKjIP Tahun 2025 | Dokumen pemerintah | — | Konteks Toba |
-| 29 | DKUKMPP Toba (2025) | Renstra 2025–2029 | Dokumen pemerintah | — | Konteks Toba |
-
----
-
-## A. Sumber dari dosen pembimbing
+Referensi Jurnal
 
 ### 01 · Generative Artificial Intelligence in Small and Medium Enterprises: Navigating its Promises and Challenges
 
@@ -368,6 +322,3 @@ Katalog ini mendata semua referensi yang dipakai: judul, penulis, tahun, tempat 
 
 ---
 
-## Catatan hak cipta
-
-PDF berlisensi terbuka (CC BY, CC BY-SA, arXiv, MDPI, ACL Anthology, jurnal nasional *open access*) boleh diunggah ke repositori publik. Untuk PDF berbayar (nomor 12, 20, dan 21), cukup cantumkan tautannya atau simpan di repositori privat.
