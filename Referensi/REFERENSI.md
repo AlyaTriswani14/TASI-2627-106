@@ -320,5 +320,51 @@ Referensi Jurnal
 - **Ringkasan:** Memuat permasalahan, isu strategis, tujuan, dan program dinas untuk lima tahun. Dinas memiliki 32 PNS (Desember 2024) untuk menangani lima urusan: koperasi, UMKM, perdagangan, perindustrian/ESDM, dan pasar rakyat.
 - **Kegunaan untuk TA:** Bukti keterbatasan kapasitas pendamping dan arah kebijakan dinas.
 
+### 30 · Fault of Our Stars: Behavioral Drivers of Rating–Sentiment Incongruence
+
+- **Penulis:** Ramanaish Abaiyan, Ruththiragayan Sutharsan, Kusal Amantha, Anusan Krishnathas, Asma Rauff, Kovindarajah Sriyathurshan, Patalee Narasinghe, Nirasha Munasinghe, Nisansa de Silva, Sandareka Wickramanayake
+- **Tahun:** 2026
+- **Venue:** arXiv 2606.25518 [cs.CL], v2 (1 Juli 2026); University of Moratuwa, Sri Lanka
+- **Indeks:** 📄 *preprint*
+- **PDF:** [`pdf/30-abaiyan-2026-fault-of-our-stars.pdf`](pdf/30-abaiyan-2026-fault-of-our-stars.pdf) · sumber: [arXiv](https://arxiv.org/abs/2606.25518)
+- **Ringkasan:** Menganalisis 16.156 ulasan atraksi wisata Sri Lanka (2010–2023, 11 tipe atraksi). Sentimen teks diturunkan secara terpisah dari rating memakai model transformer (cardiffnlp/twitter-roberta-base-sentiment), lalu dibandingkan dengan rating yang dikelompokkan menjadi negatif (1–2), netral (3), dan positif (4–5). Sebanyak 18,6% ulasan tidak sejalan, terbagi dalam enam pola arah; *Conservative Rater* (38,4%) dan *Obligatory 5-Star* (28,3%) paling dominan. Museum paling sering tidak sejalan (26,3%), taman nasional paling jarang (12,8%). Faktor penjelasnya adalah tipe tempat, keahlian reviewer, panjang ulasan, dan tahun kunjungan, dengan daya prediksi moderat (AUC ≈ 0,58–0,61). Kesimpulannya, rating tidak boleh langsung dipakai sebagai label sentimen tanpa validasi.
+- **Catatan kritis:** Model sentimen dilatih pada teks pendek ala Twitter dan dipakai tanpa *fine-tuning*. Validasi manual hanya pada 1.000 ulasan, dan subset yang tidak sejalan tidak diaudit manual, jadi sebagian "ketidaksesuaian" bisa berupa kesalahan model (diakui penulis di bagian Discussion).
+- **Kegunaan untuk TA:** *(draf, sesuaikan)* Rujukan metode dan definisi operasional ketidaksesuaian rating–teks (pemetaan rating ke 3 kelas dan tipologi 6 pola) pada konteks pariwisata.
+
+### 31 · Aspect-Based Multi-Label Sentiment Analysis and Star Rating Mismatch Identification in Google Maps Reviews of Office Buildings
+
+- **Penulis:** Muhammad J. Gorter, Zain Maulana Azmi, Ratih Nur Esti Anggraini
+- **Tahun:** 2025
+- **Venue:** *2025 International Conference on Advanced Technologies in Energy and Informatic (ICATEI)*, hlm. 13–18 (IEEE); Institut Teknologi Sepuluh Nopember, Surabaya
+- **Indeks:** IEEE Xplore
+- **DOI:** [10.1109/ICATEI67676.2025.11405010](https://doi.org/10.1109/ICATEI67676.2025.11405010)
+- **PDF:** [`pdf/31-gorter-2025-absa-google-maps-mismatch.pdf`](pdf/31-gorter-2025-absa-google-maps-mismatch.pdf) · akses lewat IEEE Xplore (unduh lewat perpustakaan kampus)
+- **Ringkasan:** ABSA multi-label pada ulasan Google Maps gedung perkantoran di Jakarta berbahasa Indonesia. Model IndoBERT (indobenchmark/indobert-base-p1) di-*fine-tune* pada data anotasi manual dengan lima aspek (kebersihan, aksesibilitas, layanan, keamanan, parkir) dan polaritas positif/netral/negatif. Dilaporkan F1 mikro 99% (605 sampel uji). Sistem juga menandai ulasan yang rating bintangnya tidak sejalan dengan sentimen teks (contoh: 3 bintang tetapi sentimen dominan negatif), yang dikaitkan penulis dengan bias kesopanan.
+- **Catatan kritis:** Data mentah 954 ulasan, tetapi penulis sendiri menyebut data bersih hanya sekitar 300 ulasan valid, sehingga angka 605 kemungkinan menghitung label, bukan ulasan. Skor 99% sebaiknya dikutip hati-hati. Deteksi ketidaksesuaian disajikan deskriptif, tanpa metrik khusus.
+- **Kegunaan untuk TA:** *(draf, sesuaikan)* Pembanding berkonteks Indonesia (IndoBERT, ulasan Google Maps) untuk ABSA multi-label dan identifikasi ketidaksesuaian rating.
+
+### 32 · Beyond Stars: Bridging the Gap Between Ratings and Review Sentiment with LLM
+
+- **Penulis:** Najla Zuhir, Amna Mohammad Salim, Parvathy Premkumar, Moshiur Farazi
+- **Tahun:** 2025
+- **Venue:** arXiv 2509.20953 [cs.AI], v1 (25 September 2025); University of Doha for Science and Technology, Qatar
+- **Indeks:** 📄 *preprint*
+- **PDF:** [`pdf/32-zuhir-2025-beyond-stars.pdf`](pdf/32-zuhir-2025-beyond-stars.pdf) · sumber: [arXiv](https://arxiv.org/abs/2509.20953)
+- **Ringkasan:** Kerangka modular berbasis LLM (GPT-4) untuk analisis ulasan aplikasi: (1) analisis selisih rating vs sentimen teks dengan baseline VADER, (2) ekstraksi aspek–sentimen–rekomendasi, (3) *topic modeling* BERTopic dengan label dari LLM, dan (4) RAG-QA berbasis FAISS. Diuji pada AWARE, Google Play, dan Spotify. Ekstraksi aspek mencapai F1 0,892 (DeBERTa-v3-large: 0,841); silhouette topik naik dari −0,0313 menjadi 0,0302.
+- **Catatan kritis:** Klasifikasi sentimen LLM hanya mencapai F1 tertimbang 0,594 (presisi kelas positif 0,061), dan analisis selisih rating memakai VADER, bukan LLM. Klaim "mengungguli baseline" tidak berlaku merata di semua tugas. Evaluasi RAG-QA memakai metrik proksi dan anotasi sendiri oleh penulis.
+- **Kegunaan untuk TA:** *(draf, sesuaikan)* Contoh arsitektur RAG-QA untuk menggali ulasan, sekaligus bukti bahwa rating tidak sama dengan sentimen teks.
+
+### 33 · Nek Minit: Harnessing Pragmatic Metacognitive Prompting for Explainable Sarcasm Detection of Australian and Indian English
+
+- **Penulis:** Ishmanbir Singh, Dipankar Srirag, Aditya Joshi
+- **Tahun:** 2025
+- **Venue:** *Proceedings of the 23rd Annual Workshop of the Australasian Language Technology Association (ALTA 2025)*, hlm. 13–27 (ACL)
+- **Indeks:** ACL Anthology
+- **Anthology ID:** [2025.alta-main.2](https://aclanthology.org/2025.alta-main.2/)
+- **PDF:** [`pdf/33-singh-2025-nek-minit.pdf`](pdf/33-singh-2025-nek-minit.pdf) · versi terbuka: [arXiv 2505.15095](https://arxiv.org/abs/2505.15095)
+- **Ringkasan:** Menerapkan *pragmatic metacognitive prompting* (PMP) untuk deteksi sarkasme yang disertai penjelasan pada bahasa Inggris Australia dan India, dibandingkan dengan FLUTE (Inggris Amerika standar). Penulis menganotasi 150 penjelasan sarkasme manual per subset BESSTIE. Pada Gemma-3-12B, PMP mengungguli empat strategi prompting lain (p ≤ 0,001); akurasi pada BESSTIE-IN 0,91 dibanding 0,59 (*zero-shot*). Prompting agentik dengan pencarian web juga mengurangi kegagalan akibat konteks lokal.
+- **Catatan kritis:** Semua sampel uji sudah berlabel sarkastik, jadi "akurasi" praktis mengukur seberapa sering sarkasme terdeteksi, bukan kemampuan membedakan sarkastik dari tidak. Penilaian kualitas penjelasan memakai GPT-4o sebagai *judge*.
+- **Kegunaan untuk TA:** *(draf, sesuaikan)* Bukti bahwa LLM keliru pada ulasan yang bergantung konteks budaya/dialek dan bahwa penalaran pragmatik berlapis memperbaikinya; relevan jika ulasan mengandung sarkasme.
+
 ---
 
