@@ -1,0 +1,61 @@
+% ─────────────────────────────────────────────────────────────────────────────
+% LAMPIRAN
+% Cantumkan berkas-berkas lampiran yang relevan terhadap proposal (misalnya:
+% surat izin penelitian, instrumen/kuesioner, contoh data, kode program).
+% Penomoran halaman mengikuti angka romawi bagian awal (diatur di file utama).
+% Format judul: kiri atas, nomor lampiran cetak tebal, dan dicantumkan di
+% Daftar Isi dengan pola:
+%   \addcontentsline{toc}{section}{Lampiran N Judul Lampiran}
+% Hapus contoh lampiran di bawah dan ganti dengan lampiran Anda.
+% ─────────────────────────────────────────────────────────────────────────────
+% ─────────────────────────────────────────────────────────────────────────────
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LAMPIRAN}
+\noindent\textbf{Lampiran 1} Hasil Pemeriksaan \textit{AI Detector}%
+\phantomsection
+\addcontentsline{toc}{section}{Lampiran 1 Hasil Pemeriksaan AI Detector}
+
+\vspace{1em}
+Sisipkan bukti hasil pemeriksaan naskah menggunakan perangkat deteksi AI (\textit{AI detector}) premium yang diinformasikan oleh Koordinator Tugas Akhir, misalnya tangkapan layar atau laporan PDF. Tingkat indikasi penggunaan AI tidak boleh melebihi 20\%; apabila melebihi, naskah wajib direvisi sebelum diajukan untuk proses penilaian.
+% Contoh: \includegraphics[width=\linewidth]{Gambar/hasil-ai-detector.png}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\newpage
+\noindent\textbf{Lampiran 2} Contoh Lampiran Kode Program%
+\phantomsection
+\addcontentsline{toc}{section}{Lampiran 2 Contoh Lampiran Kode Program}
+
+\vspace{1em}
+Kode program yang panjang sebaiknya diletakkan di lampiran. Gunakan perintah \verb|\lstinputlisting| untuk menyisipkan langsung dari file, misalnya:
+\par\noindent\verb|\lstinputlisting[language=Python]{Kode/nama_file.py}|
+
+\noindent Untuk potongan kode di dalam bab, gunakan lingkungan \texttt{lstlisting} dengan opsi \texttt{caption} agar tercantum dalam Daftar Source Code (lihat contoh pada Bab~III).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\newpage
+\noindent\textbf{Lampiran 3} Contoh Cara Menyusun Banyak Gambar%
+\phantomsection
+\addcontentsline{toc}{section}{Lampiran 3 Contoh Cara Menyusun Banyak Gambar}
+
+\vspace{1em}
+Gunakan lingkungan \texttt{subfigure} dari paket \texttt{subcaption} untuk menempatkan beberapa gambar berdampingan dalam satu \texttt{figure}. Pastikan total lebar subfigure tidak melebihi \verb|\linewidth|. Contoh struktur kode untuk dua gambar berdampingan:
+
+\begin{lstlisting}[language={[LaTeX]TeX}]
+\begin{figure}[H]
+  \centering
+  \begin{subfigure}{.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Gambar/gambar1.png}
+    \caption{Keterangan Gambar 1}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}{.45\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Gambar/gambar2.png}
+    \caption{Keterangan Gambar 2}
+  \end{subfigure}
+  \caption{Judul Keseluruhan Gambar}
+  \label{fig:multi}
+\end{figure}
+\end{lstlisting}

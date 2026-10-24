@@ -1,0 +1,63 @@
+\chapter{ANALISIS}
+\label{chap:analisis}
+% Bab ini bersifat KONTEKSTUAL: sesuaikan subbab dengan topik/tema penelitian.
+% Setiap analisis harus didukung landasan teori pada Bab II.
+
+Bab ini menjabarkan alur konstruksi berpikir dalam mendekomposisi persoalan penelitian, misalnya melalui pembedahan \textit{dataset}, pemahaman terhadap karakteristik lingkungan penelitian, analisis algoritma, dan lain sebagainya. Setiap analisis harus senantiasa didukung landasan teori pada Bab~II. Subbab berikut hanya contoh; sesuaikan dengan topik penelitian.
+
+\section{Dekomposisi Persoalan}
+Uraikan persoalan penelitian menjadi sub-persoalan yang lebih kecil dan dapat ditangani, serta tunjukkan keterkaitan setiap sub-persoalan dengan pertanyaan penelitian.
+
+\section{Analisis Dataset}
+Bedah \textit{dataset} yang akan digunakan: sumber, jumlah data, atribut/fitur, tipe data, distribusi kelas, nilai yang hilang (\textit{missing values}), \textit{outlier}, dan karakteristik lain yang memengaruhi rancangan penelitian. Ringkas karakteristik tersebut dalam tabel seperti Tabel~\ref{tab:dataset}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Karakteristik Dataset}
+  \label{tab:dataset}
+  \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{0.06\textwidth}|>{\RaggedRight\arraybackslash}X|>{\RaggedRight\arraybackslash}X|>{\RaggedRight\arraybackslash}X|}
+  \hline
+  \textbf{No.} & \textbf{Atribut} & \textbf{Tipe Data} & \textbf{Keterangan} \\ \hline
+  1 & [Nama atribut] & [Numerik / Kategorikal / Teks] & [Rentang nilai, jumlah nilai kosong, dll.] \\ \hline
+  2 & [Nama atribut] & [Numerik / Kategorikal / Teks] & [Rentang nilai, jumlah nilai kosong, dll.] \\ \hline
+  \end{tabularx}
+\end{table}
+
+Potongan kode yang digunakan dalam analisis dapat disajikan dengan lingkungan \texttt{lstlisting} beserta \texttt{caption} agar tercantum dalam Daftar Source Code, seperti Source Code~\ref{lst:eda}.
+
+\begin{lstlisting}[language=Python, caption={Contoh Eksplorasi Awal Dataset}, label={lst:eda}]
+import pandas as pd
+
+df = pd.read_csv("data/dataset.csv")
+print(df.shape)              # jumlah baris dan kolom
+print(df.dtypes)             # tipe data setiap atribut
+print(df.isna().sum())       # jumlah nilai kosong per atribut
+print(df["label"].value_counts(normalize=True))  # distribusi kelas
+\end{lstlisting}
+
+\section{Analisis Lingkungan Penelitian}
+Jelaskan karakteristik lingkungan tempat penelitian dilakukan atau tempat solusi akan diterapkan (misalnya: proses bisnis, pengguna, infrastruktur, batasan sumber daya) beserta implikasinya terhadap rancangan penelitian.
+
+\section{Analisis Metode / Algoritma}
+Analisis kesesuaian metode atau algoritma yang dipilih terhadap karakteristik persoalan dan data di atas, misalnya kompleksitas, asumsi yang harus dipenuhi, dan potensi kendala. Rujuk landasan teori yang relevan.
+
+\section{Kerangka Berpikir}
+Rangkum hasil analisis dalam kerangka berpikir yang menghubungkan persoalan, landasan teori, solusi yang diusulkan, dan luaran yang diharapkan, seperti Gambar~\ref{fig:kerangka}.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=2.2cm]
+  \node (masalah)  [process] {Persoalan \& \textit{Research Gap}};
+  \node (teori)    [process, below of=masalah] {Landasan Teori};
+  \node (analisis) [process, below of=teori]   {Analisis Dataset, Lingkungan, \& Metode};
+  \node (solusi)   [process, below of=analisis] {Rancangan Solusi \& Eksperimen};
+  \node (luaran)   [process, below of=solusi]  {Luaran \& Evaluasi};
+
+  \draw [arrow] (masalah)  -- (teori);
+  \draw [arrow] (teori)    -- (analisis);
+  \draw [arrow] (analisis) -- (solusi);
+  \draw [arrow] (solusi)   -- (luaran);
+  \end{tikzpicture}
+  \caption{Kerangka Berpikir Penelitian}
+  \label{fig:kerangka}
+\end{figure}

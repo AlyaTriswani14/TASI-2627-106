@@ -1,0 +1,1566 @@
+% Brough to you by Samuel Indra Gunawan Situmeang
+% -----------------------------------------------------------------------------
+% Proposal Tugas Akhir TASI-2627-106
+% Program Studi Sistem Informasi, Institut Teknologi Del
+% Seluruh isi proposal (sampul, abstrak, bab, lampiran) ditulis langsung pada
+% berkas ini. Daftar pustaka disimpan pada references.bib.
+% -----------------------------------------------------------------------------
+\documentclass[12pt,a4paper]{report}
+\renewcommand{\baselinestretch}{1.5}
+
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage[utf8]{inputenc}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{ragged2e}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage[tableposition=top]{caption}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{enumitem}
+\usepackage{overpic}
+\usepackage{tikz}
+
+\setlength{\parindent}{1cm}
+
+\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space}
+
+\usetikzlibrary{shapes.geometric, arrows, positioning, fit, calc}
+\definecolor{blu}{RGB}{135,206,250}
+\definecolor{ore}{RGB}{255,140,0}
+\tikzstyle{process} = [rectangle, rounded corners, minimum width=4cm, minimum height=1cm, text centered, text width=5cm, draw=black, fill=blu]
+\tikzstyle{process2} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, text width=3cm, draw=black, fill=blu]
+\tikzstyle{decision} = [diamond, minimum width=2.2cm, minimum height=0.3cm, text centered, text width=1.1cm, draw=black, fill=orange!40]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{box} = [rectangle, rounded corners, minimum height=0.9cm, text centered, text width=3.4cm, draw=black, fill=blu!40, font=\footnotesize]
+\tikzstyle{boxw} = [rectangle, rounded corners, minimum height=0.9cm, text centered, text width=11.5cm, draw=black, fill=blu!25, font=\footnotesize]
+\tikzstyle{boxo} = [rectangle, rounded corners, minimum height=0.9cm, text centered, text width=3.4cm, draw=black, fill=orange!25, font=\footnotesize]
+
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{fancyhdr}   % Custom headers and footers
+\usepackage{helvet}     % Helvetica (Arial-equivalent) for footer text
+\usepackage{adjustbox}  % \resizebox / \adjustbox for wide tables
+
+\title{Efektivitas Large Language Model Terpandu Retrieval dalam Standardisasi Data UMKM untuk Pendukung Keputusan Sektor Publik}
+\author{Tim TASI-2627-106}
+\date{\today}
+
+\renewcommand{\chaptername}{BAB }
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\listtablename}{DAFTAR TABEL}
+\renewcommand{\listfigurename}{DAFTAR GAMBAR}
+\renewcommand{\bibname}{DAFTAR PUSTAKA}
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}.}
+
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}.}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}.}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+\usepackage{graphicx}
+% Geometry: top=40mm total (header at ~1.5 cm from top with headsep=25mm+headheight=14pt)
+%           bottom=30mm total; footskip=5mm places footer baseline 25mm from page bottom
+\usepackage[a4paper,top=40mm,bottom=30mm,left=40mm,right=30mm,
+            headheight=15pt,headsep=25mm,footskip=15pt]{geometry}
+
+\usepackage{tocloft}
+\usepackage{notoccite}
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
+\renewcommand{\cftlottitlefont}{\hspace*{\fill}\Large\bfseries}
+\renewcommand{\cftafterlottitle}{\hspace*{\fill}}
+\renewcommand{\cftloftitlefont}{\hspace*{\fill}\Large\bfseries}
+\renewcommand{\cftafterloftitle}{\hspace*{\fill}}
+% Daftar Persamaan (List of Equations)
+% Pakai \persamaan{Keterangan} tepat setelah \end{equation} agar persamaan
+% tercantum di Daftar Persamaan.
+\newlistof{persamaan}{loe}{DAFTAR PERSAMAAN}
+\setlength{\cftpersamaanindent}{1.5em}
+\setlength{\cftpersamaannumwidth}{3em}
+\newcommand{\persamaan}[1]{%
+  \addcontentsline{loe}{persamaan}{\protect\numberline{(\theequation)}#1}\ignorespaces}
+% Counter to save roman page number before switching to Arabic
+\newcounter{savepage}
+
+% Penanda sel pada tabel jadwal (Gantt)
+\newcommand{\ga}{\cellcolor{green!25}}
+\newcommand{\ms}{\cellcolor{orange!50}}
+% Kolom tabel rata kiri dengan lebar tertentu
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+
+\pagenumbering{roman}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\titleformat{\chapter}[display]
+	{\normalfont\large\bfseries\centering}{\chaptertitlename \thechapter \centering}{-10pt}{\large}
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+\usepackage{listings}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+% Daftar Source Code: label "Source Code" dan penomoran mengikuti bab (1.1., 1.2., ...)
+\renewcommand{\lstlistingname}{Source Code}
+\renewcommand{\lstlistlistingname}{DAFTAR SOURCE CODE}
+\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{chapter}.\arabic{lstlisting}.}}
+\captionsetup[lstlisting]{labelsep=space}
+
+% Load hyperref after packages that customize contents lists and headings.
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    linkbordercolor=red
+}
+
+% Give TeX limited extra flexibility before reporting an overfull paragraph.
+\setlength{\emergencystretch}{2em}
+
+% ──────────────────────────────────────────────────────────────────────────────
+% Page style definitions
+% ──────────────────────────────────────────────────────────────────────────────
+
+% Footer macro: Arial (Helvetica), 10 pt, bold, right-aligned
+\newcommand{\itdelfooter}{%
+  {\fontfamily{phv}\fontsize{10pt}{12pt}\selectfont\textbf{Institut Teknologi Del}}%
+}
+
+% FRONT / BACK MATTER style
+\fancypagestyle{frontmatter}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \fancyfoot[R]{\itdelfooter}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% PLAIN style (auto-applied to first page of every \chapter{})
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\thepage}%
+  \fancyfoot[R]{\itdelfooter}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% MAIN BODY style (non-first chapter pages)
+\fancypagestyle{mainbody}{%
+  \fancyhf{}%
+  \fancyhead[R]{\thepage}%
+  \fancyfoot[R]{\itdelfooter}%
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+% Judul usulan (15 kata; dipakai pada sampul dan pernyataan AI)
+\newcommand{\judulusulan}{Efektivitas \textit{Large Language Model} Terpandu \textit{Retrieval} dalam Standardisasi Data UMKM untuk Pendukung Keputusan Sektor Publik}
+
+
+\begin{document}
+
+% ── FRONT MATTER (Roman numerals) ────────────────────────────────────────────
+\pagenumbering{roman}
+\pagestyle{frontmatter}
+
+% =============================================================================
+% SAMPUL
+% =============================================================================
+\begin{titlepage}
+\setstretch{1.5}
+\thispagestyle{empty}
+    \begin{center}
+        \begin{large}\begin{spacing}{1.15}
+        \textbf{\MakeUppercase{Efektivitas \textit{Large Language Model} Terpandu \textit{Retrieval} dalam Standardisasi Data UMKM untuk Pendukung Keputusan Sektor Publik}}
+        \end{spacing}\end{large}
+
+        \vspace{3cm}
+        \textbf{\textsc{Proposal Tugas Akhir}}
+
+        \vspace{1cm}
+        \textbf{[NIM 1]\quad [Nama Mahasiswa 1]}\\
+        \textbf{[NIM 2]\quad [Nama Mahasiswa 2]}\\
+        \textbf{[NIM 3]\quad [Nama Mahasiswa 3]}
+
+        \vspace{2cm}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=3cm]{Gambar/logo-itdel.png}
+        \end{figure}
+
+        \vspace{2cm}
+        \textbf{\textsc{Program Studi Sistem Informasi\\
+        Fakultas Informatika dan Teknik Elektro\\
+        Institut Teknologi Del\\}}
+
+        \vspace{\baselineskip}
+        \textbf{\large 2026}
+    \end{center}
+\end{titlepage}
+\setcounter{page}{2}
+
+% =============================================================================
+% ABSTRAK
+% =============================================================================
+\chapter*{\centering ABSTRAK}
+\addcontentsline{toc}{chapter}{ABSTRAK}
+
+\begin{spacing}{1.25}
+\noindent Nilai sistem informasi berbasis komputer bagi pengambilan keputusan sektor publik bergantung pada kualitas data yang diolahnya. Pada pembinaan usaha mikro, kecil, dan menengah (UMKM) di Kabupaten Toba, realisasi persentase koperasi dan UMKM yang dibina pada tahun 2025 hanya mencapai 0,65\% dari target 4,99\%, sedangkan data UMKM dinas berasal dari tahun 2020, dihimpun melalui lembar kerja berjenjang, dan memuat jenis usaha berupa teks bebas yang tidak terstandardisasi. \textit{Large language model} berpotensi menstandardisasi data semacam itu, tetapi bukti keandalannya masih terbatas pada teks berbahasa Inggris yang dikurasi, sedangkan klasifikasi otomatis Klasifikasi Baku Lapangan Usaha Indonesia pada data riil masih menunjukkan akurasi rendah. Efektivitas komponen tersebut dalam sistem informasi sektor publik juga belum diuji secara empiris. Penelitian ini bertujuan menguji efektivitas \textit{large language model} terpandu \textit{retrieval} atas taksonomi resmi dalam menstandardisasi data administratif UMKM, serta dampaknya terhadap kualitas data dan kinerja tugas pengambil keputusan. Penelitian menggunakan paradigma \textit{design science research}: prinsip desain dirumuskan dari teori kualitas informasi dan bukti lapangan, diinstansiasikan dalam purwarupa sebagai instrumen penelitian, lalu diuji melalui enam hipotesis. Pengujian mencakup eksperimen terkontrol empat kondisi pada dua model terhadap 500 rekaman berlabel manusia, studi kualitas data sebelum dan sesudah pada desa percontohan, serta evaluasi \textit{within-subject} terhadap staf dinas dan operator desa. Kontribusi yang diharapkan berupa bukti empiris keandalan \textit{large language model} pada data administratif berbahasa Indonesia dan prinsip desain sistem pendukung keputusan sektor publik berbasis komponen generatif.\par\medskip
+
+\noindent\textbf{Kata kunci:} sistem pendukung keputusan, kualitas data, \textit{large language model}, \textit{retrieval-augmented generation}, \textit{design science research}
+\end{spacing}
+
+% =============================================================================
+% ABSTRACT
+% =============================================================================
+\chapter*{\centering \textit{ABSTRACT}}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+
+\begin{spacing}{1.25}
+\noindent\textit{The value of computer-based information systems for public-sector decision making depends on the quality of the data they process. In the coaching of micro, small, and medium enterprises (MSMEs) in Toba Regency, Indonesia, the share of cooperatives and MSMEs receiving coaching in 2025 reached only 0.65 percent against a target of 4.99 percent, while the agency's MSME register dates from 2020, is compiled through cascaded spreadsheets, and records business types as non-standardized free text. Large language models could standardize such data, yet evidence of their reliability is limited to curated English texts, and automated coding of the Indonesian Standard Industrial Classification on real-world records still yields low accuracy. Their effectiveness within public-sector information systems remains untested. This study aims to test the effectiveness of retrieval-grounded large language models constrained to an official taxonomy in standardizing administrative MSME data, and their effects on data quality and decision-maker task performance. Following the design science research paradigm, design principles derived from information quality theory and field evidence are instantiated in a prototype that serves as a research instrument and are tested through six hypotheses. The evaluation comprises a controlled experiment with four conditions and two models on 500 human-labelled records, a pre--post data quality study in pilot villages, and a within-subject evaluation with agency staff and village operators. The expected contributions are empirical evidence on the reliability of large language models for Indonesian administrative data and design principles for public-sector decision support systems with generative components.}\par\medskip
+
+\noindent\textit{\textbf{Keywords:} decision support systems, data quality, large language models, retrieval-augmented generation, design science research}
+\end{spacing}
+
+% =============================================================================
+% PERNYATAAN PENGGUNAAN AI-GENERATED CONTENT
+% =============================================================================
+\chapter*{\centering PERNYATAAN PENGGUNAAN \textit{AI-GENERATED CONTENT}}
+\addcontentsline{toc}{chapter}{PERNYATAAN PENGGUNAAN \textit{AI-GENERATED CONTENT}}
+\begin{spacing}{1.15}
+
+\noindent Kami yang bertanda tangan di bawah ini, pengusul proposal Tugas Akhir yang berjudul:
+\begin{center}
+  \textbf{\judulusulan}
+\end{center}
+dengan ini menyatakan bahwa:
+\begin{enumerate}
+  \item Kami bertanggung jawab penuh atas seluruh isi, keakuratan, dan orisinalitas tulisan dalam proposal ini.
+  \item Pemanfaatan teknologi \textit{Artificial Intelligence} (AI) sebagai alat bantu penulisan tidak menggantikan proses berpikir kritis, analisis, interpretasi, dan penyusunan argumen ilmiah yang kami lakukan.
+  \item Penggunaan AI dalam penyusunan naskah ini kami ungkapkan secara jujur dan bertanggung jawab sebagaimana tercantum pada tabel berikut.
+  \item Naskah ini telah diperiksa menggunakan perangkat deteksi AI (\textit{AI detector}) premium yang diinformasikan oleh Koordinator Tugas Akhir dengan hasil indikasi penggunaan AI sebesar \textbf{[xx]\%}, yaitu tidak melebihi batas 20\%. Bukti hasil pemeriksaan dilampirkan pada Lampiran~1.
+\end{enumerate}
+
+% Lengkapi atau sesuaikan tabel berikut dengan seluruh penggunaan AI yang
+% sebenarnya oleh tim sebelum proposal diajukan.
+\begin{center}
+  \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{0.06\textwidth}|*{3}{>{\RaggedRight\arraybackslash}X|}}
+  \hline
+  \textbf{No.} & \textbf{Alat AI (Versi)} & \textbf{Bagian Naskah} & \textbf{Bentuk Penggunaan} \\ \hline
+  1 & ... & ... & ... \\ \hline
+  2 & [Nama alat, versi] & [Bab/subbab] & [Bentuk penggunaan] \\ \hline
+  \end{tabularx}
+\end{center}
+
+\noindent Apabila di kemudian hari ditemukan bukti bahwa pernyataan ini tidak benar, kami bersedia menerima sanksi sesuai dengan peraturan yang berlaku di Institut Teknologi Del.
+
+\vspace{0.3cm}
+\begin{flushright}
+  Sitoluama, [tanggal] November 2026
+\end{flushright}
+
+\noindent
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}X>{\centering\arraybackslash}X>{\centering\arraybackslash}X}
+  Pengusul 1, & Pengusul 2, & Pengusul 3, \\[2cm]
+  \underline{[Nama Mahasiswa 1]} & \underline{[Nama Mahasiswa 2]} & \underline{[Nama Mahasiswa 3]} \\
+  {[NIM 1]} & {[NIM 2]} & {[NIM 3]} \\
+\end{tabularx}
+\end{spacing}
+
+% =============================================================================
+% DAFTAR ISI, TABEL, GAMBAR, SOURCE CODE, PERSAMAAN
+% =============================================================================
+\chapter*{\centerline{DAFTAR ISI}}
+\addcontentsline{toc}{chapter}{DAFTAR ISI}
+\makeatletter
+\@starttoc{toc}
+\makeatother
+\newpage
+
+\chapter*{\centerline{DAFTAR TABEL}}
+\addcontentsline{toc}{chapter}{DAFTAR TABEL}
+\makeatletter
+\@starttoc{lot}
+\makeatother
+\newpage
+
+\chapter*{\centerline{DAFTAR GAMBAR}}
+\addcontentsline{toc}{chapter}{DAFTAR GAMBAR}
+\makeatletter
+\@starttoc{lof}
+\makeatother
+\newpage
+
+\chapter*{\centerline{DAFTAR SOURCE CODE}}
+\addcontentsline{toc}{chapter}{DAFTAR SOURCE CODE}
+\makeatletter
+\@starttoc{lol}
+\makeatother
+\newpage
+
+\chapter*{\centerline{DAFTAR PERSAMAAN}}
+\addcontentsline{toc}{chapter}{DAFTAR PERSAMAAN}
+\makeatletter
+\@starttoc{loe}
+\makeatother
+\newpage
+
+% Save the final roman page counter so back matter can continue from here
+\setcounter{savepage}{\value{page}}
+
+% ── BODY (Arabic page numbers) ───────────────────────────────────────────────
+\pagenumbering{arabic}
+\pagestyle{mainbody}
+
+% =============================================================================
+% BAB I PENDAHULUAN
+% =============================================================================
+\chapter{PENDAHULUAN}
+\label{chap:pendahuluan}
+
+\section{Latar Belakang}
+\label{sec:latar}
+
+Usaha mikro, kecil, dan menengah (UMKM) merupakan sasaran utama program pemberdayaan ekonomi pemerintah daerah. Peraturan Pemerintah Nomor 7 Tahun 2021 menempatkan pemerintah kabupaten sebagai pihak yang berwenang membina usaha mikro, sedangkan usaha kecil dan menengah berada pada kewenangan pemerintah provinsi dan pusat \cite{pp7tahun2021}. Pembagian kewenangan ini menuntut pemerintah kabupaten untuk mengetahui secara akurat jumlah, sebaran, skala, dan karakteristik UMKM di wilayahnya. Tanpa data yang memadai, pemerintah daerah tidak dapat menentukan sasaran pembinaan, mengukur capaian program, maupun memenuhi permintaan data dari instansi vertikal. Kebijakan Satu Data Indonesia menegaskan kebutuhan tersebut dengan mewajibkan data pemerintah memenuhi standar data, metadata, interoperabilitas, dan penggunaan kode referensi \cite{perpres39tahun2019}.
+
+Kabupaten Toba memberikan gambaran konkret mengenai kesenjangan antara kebutuhan dan ketersediaan data tersebut. Laporan Kinerja Instansi Pemerintah (LKjIP) Dinas Koperasi, Usaha Kecil dan Menengah, Perdagangan dan Perindustrian (DKUKMPP) Kabupaten Toba tahun 2025 mencatat bahwa persentase koperasi dan UMKM yang dibina dan difasilitasi hanya mencapai 0,65\%, yaitu 65 UMKM dari 10.032 UMKM terdata, terhadap target 4,99\% \cite[hlm.~50]{lkjip2025toba}. Laporan yang sama menyatakan bahwa indikator persentase usaha mikro dan kecil hanya terealisasi 0,49\% dari target 1,80\%, antara lain karena keterbatasan anggaran pendataan dan personel lapangan sehingga data yang diterima dinas hanya berasal dari pelaku usaha yang datang ke kantor \cite[hlm.~107]{lkjip2025toba}. Rencana Strategis (Renstra) 2025--2029 mengidentifikasi keterbatasan jumlah dan kapasitas tenaga pendamping \cite[hlm.~45]{renstra2025toba} serta menetapkan arah kebijakan pembangunan basis data terpadu koperasi dan UMKM untuk memudahkan pemetaan, pembinaan, dan pemantauan \cite[hlm.~79]{renstra2025toba}. Subkegiatan penyusunan basis data usaha mikro juga telah dianggarkan pada tahun 2025 \cite[hlm.~33]{lkjip2025toba}.
+
+Wawancara dengan Kepala Dinas dan staf Bidang Koperasi dan UMKM DKUKMPP Kabupaten Toba pada 23 Oktober 2026 mengonfirmasi dan memperinci persoalan tersebut \cite{wawancarakadis2026,wawancarastaf2026}. Pertama, data UMKM yang digunakan dinas berjumlah sekitar 12.000 unit dan berasal dari pendataan tahun 2020, sehingga status operasional sebagian besar unit tidak diketahui. Angka ini berbeda dengan 10.032 UMKM terdata pada LKjIP 2025, yang menunjukkan belum adanya satu sumber data acuan. Kedua, pendataan dilakukan melalui surat permintaan data dari dinas kepada kecamatan, yang diteruskan kepada kepala desa, kemudian dikembalikan secara kolektif dalam bentuk berkas lembar kerja \textit{Microsoft Excel} dengan atribut nama usaha, alamat, jenis usaha, modal, Nomor Induk Berusaha (NIB), dan jumlah karyawan. Hasil pendataan tidak lengkap; sebagai contoh, permintaan data untuk Pasar Laguboti hanya menghasilkan enam entri. Ketiga, pemutakhiran data yang seharusnya dilakukan setiap tiga bulan tidak terlaksana, dan baris data dari kecamatan yang berbeda tercampur dalam satu berkas sehingga rekapitulasi per kecamatan, per klaster, dan per jenis usaha harus disusun secara manual. Keempat, bidang yang menangani koperasi dan UMKM hanya didukung oleh lima personel teknis yang pada saat yang sama menangani verifikasi dan validasi Koperasi Desa Merah Putih. Kelima, sumber daya pembinaan sangat terbatas, misalnya hanya 20 unit mesin jahit untuk seluruh kabupaten dan 30 peserta pelatihan digitalisasi per angkatan, sehingga dinas melakukan kurasi peserta berdasarkan kriteria tertentu dan mempertimbangkan pemerataan antarwilayah. Staf dinas secara eksplisit menyampaikan kebutuhan akan tautan pendataan yang dapat diisi langsung oleh desa, mekanisme pelaporan usaha yang tidak lagi beroperasi, serta kemampuan mengelompokkan UMKM untuk mengidentifikasi unit yang berpotensi dibina \cite{wawancarastaf2026}.
+
+Temuan tersebut menunjukkan bahwa hambatan pembinaan UMKM di Kabupaten Toba tidak semata-mata terletak pada kapasitas pelaku usaha, tetapi juga pada infrastruktur informasi pemerintah daerah. Literatur transformasi digital UMKM menekankan bahwa strategi digital perlu disesuaikan dengan kondisi awal dan keterbatasan organisasi serta dilaksanakan secara bertahap \cite{sagala2024sme,utomo2024digital}. Sejumlah upaya digitalisasi yang berfokus pada pelaku UMKM, seperti pelatihan pemasaran digital \cite{naibaho2025ulos,handayani2023digitalisasi} dan asisten berbasis \textit{retrieval-augmented generation} (RAG) untuk konsultasi pelaku usaha \cite{hardiyanti2026adaptive}, belum menyentuh persoalan data pada sisi pemerintah daerah. Staf dinas juga menyatakan bahwa pelaku UMKM lebih membutuhkan pendampingan langsung daripada alat bantu digital mandiri \cite{wawancarastaf2026}. Dengan demikian, intervensi sistem informasi yang paling relevan pada tahap ini adalah intervensi yang memperkuat kapasitas aparatur dalam menghimpun, menstandardisasi, dan memanfaatkan data untuk pengambilan keputusan pembinaan. Posisi ini sejalan dengan pandangan bahwa kecerdasan buatan dalam organisasi sebaiknya dirancang untuk augmentasi kemampuan manusia, bukan substitusi \cite{raisch2021automation,rajaram2024genai}.
+
+Salah satu sumber kesulitan utama dalam pengolahan data UMKM adalah atribut jenis usaha yang dicatat sebagai teks bebas, misalnya ``jualan mi gomak'', ``tenun ulos'', atau ``kedai tuak''. Agar dapat direkapitulasi, dibandingkan, dan dipertukarkan dengan sistem lain, teks tersebut perlu dipetakan ke Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) 2020 yang juga digunakan dalam penerbitan NIB \cite{bps2020kbli}. Pemetaan manual terhadap ribuan entri tidak dapat dilakukan oleh lima personel dinas secara berkala. Penelitian otomatisasi pengodean KBLI menggunakan \textit{Support Vector Machine}, \textit{Random Forest}, dan IndoBERT melaporkan \textit{F1-score} 92,99\% pada data sintetis, tetapi akurasi \textit{top-1} hanya 32,93\% pada data riil \cite{amnur2025kbli}. Kesenjangan ini menunjukkan bahwa deskripsi usaha di lapangan yang pendek, informal, dan bermuatan istilah lokal belum dapat ditangani secara andal oleh pendekatan pembelajaran mesin konvensional.
+
+\textit{Large language model} (LLM) membuka alternatif bagi persoalan tersebut. LLM telah terbukti mampu melakukan anotasi teks secara \textit{zero-shot} dengan akurasi yang melampaui pekerja \textit{crowdsourcing} \cite{gilardi2023chatgpt}, mencapai tingkat kesepakatan yang memadai dengan anotator manusia pada tugas klasifikasi \cite{ziems2024css}, serta menyelesaikan tugas pembersihan dan integrasi data tanpa pelatihan khusus \cite{narayan2022wrangle}. Dalam bidang sistem informasi, Lotfipoor dkk. \cite{lotfipoor2026llm} menggunakan GPT-4 untuk mengekstraksi pendorong adopsi, strategi implementasi, dan tantangan dari 2.865 narasi pengguna \textit{business intelligence} serta mengklasifikasikan organisasi ke dalam kode industri \textit{UK Standard Industrial Classification} (UK SIC). Namun, penelitian tersebut memiliki keterbatasan yang diakui oleh penulisnya, yaitu penggunaan narasi berbahasa Inggris yang dikurasi vendor sehingga bias terhadap kasus berhasil, keterbatasan LLM dalam menangkap nuansa kontekstual dan sektoral, keterbatasan skema UK SIC dalam merepresentasikan sektor hibrida, serta validasi klasifikasi industri yang hanya didasarkan pada inspeksi manual. Di sisi lain, LLM memiliki risiko halusinasi, yaitu menghasilkan keluaran yang tidak sesuai dengan fakta atau sumber acuan \cite{ji2023hallucination,dahl2024legal}. Pendekatan RAG mengurangi risiko tersebut dengan mendasarkan keluaran model pada dokumen acuan yang diambil secara eksplisit \cite{gao2023ragsurvey,oche2025rag}, dan kerangka bertahap \textit{retrieval}--pemeringkatan ulang telah diterapkan untuk klasifikasi pada taksonomi berjenjang \cite{achananuparp2025occupation}.
+
+Dari sudut pandang keilmuan sistem informasi berbasis komputer (\textit{computer-based information systems}, CBIS), persoalan tersebut bukan sekadar kebutuhan akan aplikasi baru, melainkan pertanyaan ilmiah mengenai bagaimana komponen komputasi generatif dapat mengubah data administratif berkualitas rendah menjadi informasi yang layak untuk pengambilan keputusan. Model kesuksesan sistem informasi DeLone dan McLean menempatkan kualitas informasi sebagai determinan penggunaan sistem, kepuasan pengguna, dan manfaat bersih bagi organisasi \cite{delone2003success}. Kecerdasan buatan generatif kini dipandang sebagai entitas dalam sistem sosioteknis yang kapabilitas, keterbatasan, dan dampaknya terhadap organisasi masih memerlukan kajian empiris \cite{feuerriegel2024genai,dwivedi2023chatgpt}. Bukti lapangan juga menunjukkan bahwa manfaat kecerdasan buatan generatif tidak seragam: uji lapangan acak terhadap sekitar 640 wirausaha di Kenya tidak menemukan dampak rata-rata asisten berbasis GPT-4 terhadap kinerja usaha, karena kinerja wirausaha berkinerja tinggi meningkat sedangkan kinerja wirausaha berkinerja rendah menurun \cite{otis2026uneven}. Dengan demikian, efektivitas komponen LLM dalam sistem informasi sektor publik tidak dapat disimpulkan dari kinerja model pada tolok ukur umum, tetapi harus diuji secara empiris dalam konteks data, tugas, dan organisasi tempat komponen tersebut digunakan.
+
+Berdasarkan uraian tersebut, terdapat tiga celah pengetahuan. Pertama, belum terdapat bukti empiris mengenai keandalan LLM terpandu \textit{retrieval} dalam menstandardisasi data administratif UMKM berbahasa Indonesia yang bermuatan istilah lokal ke dalam taksonomi resmi KBLI, yang dievaluasi terhadap data acuan hasil pengodean manusia dan dibandingkan dengan kondisi pembanding. Kedua, penelitian sistem pendukung keputusan untuk UMKM umumnya mengasumsikan data yang telah bersih dan tersedia \cite{khotimah2024hybrid}, sedangkan penelitian LLM pada layanan pemerintahan masih bersifat arsitektural dan belum divalidasi secara empiris \cite{papageorgiou2024egov}; prinsip desain yang menghubungkan penghimpunan data, standardisasi berbasis LLM, dan pengambilan keputusan dalam organisasi sektor publik belum dirumuskan dan diuji. Ketiga, hubungan antara peningkatan kualitas data yang dihasilkan komponen LLM dan kinerja tugas pengambil keputusan di organisasi sektor publik dengan sumber daya terbatas belum diukur secara sistematis.
+
+Celah tersebut tidak dapat diisi melalui pengembangan sistem semata. Dalam kerangka kontribusi pengetahuan \textit{design science research} (DSR) dari Gregor dan Hevner \cite{gregor2013positioning}, penerapan solusi yang telah dikenal pada persoalan yang telah dikenal tergolong desain rutin (\textit{routine design}) dan umumnya tidak menghasilkan kontribusi penelitian. Penelitian ini berada pada kuadran peningkatan (\textit{improvement}): persoalan standardisasi data administratif telah dikenal, tetapi solusi berupa LLM yang keluarannya dibatasi pada taksonomi resmi melalui \textit{retrieval} belum teruji efektivitasnya pada konteks tersebut. Oleh karena itu, penelitian ini merumuskan prinsip desain dan hipotesis yang dapat diuji, menginstansiasikan prinsip desain tersebut ke dalam purwarupa yang berfungsi sebagai instrumen penelitian, kemudian mengujinya melalui eksperimen terkontrol, studi kualitas data sebelum--sesudah, dan evaluasi lapangan \textit{within-subject}. Kasus yang digunakan adalah pengelolaan data pembinaan UMKM pada DKUKMPP Kabupaten Toba, yang dipilih karena memiliki karakteristik yang dibutuhkan untuk menguji hipotesis tersebut, yaitu data administratif nonstandar, istilah lokal, dan keterbatasan sumber daya aparatur.
+
+\section{Pertanyaan Penelitian}
+\label{sec:rq}
+
+Berdasarkan celah penelitian pada Subbab~\ref{sec:latar}, pertanyaan penelitian dirumuskan sebagai berikut.
+\begin{enumerate}[label=\textbf{RQ\arabic*}:, leftmargin=*]
+  \item Prinsip desain apa yang diperlukan agar sistem informasi berbasis komputer yang memuat komponen LLM dapat menghimpun, menstandardisasi, dan memanfaatkan data UMKM secara andal dalam organisasi sektor publik dengan sumber daya terbatas?
+  \item Sejauh mana LLM yang keluarannya dibatasi pada kandidat hasil \textit{retrieval} atas kamus KBLI 2020 mampu menstandardisasi deskripsi jenis usaha UMKM secara andal dibandingkan dengan LLM tanpa \textit{retrieval} dan \textit{baseline} leksikal, diukur terhadap data acuan hasil pengodean manusia?
+  \item Sejauh mana instansiasi prinsip desain tersebut meningkatkan kualitas data UMKM, yang meliputi kelengkapan, validitas, konsistensi, keunikan, dan kemutakhiran, dibandingkan dengan proses pendataan berbasis lembar kerja?
+  \item Bagaimana pengaruh instansiasi prinsip desain tersebut terhadap kinerja tugas, beban kerja, kebergunaan, dan penerimaan teknologi oleh pengambil keputusan dan operator data, serta sejauh mana pemeringkatan prioritas pembinaan yang dihasilkan selaras dengan penilaian ahli?
+\end{enumerate}
+
+\section{Prinsip Desain dan Hipotesis Penelitian}
+\label{sec:hipotesis}
+
+Jawaban sementara atas RQ1 dirumuskan sebagai prinsip desain (\textit{design principle}, DP) yang diturunkan dari teori kualitas informasi \cite{delone2003success,iso25012}, literatur LLM dan RAG \cite{gao2023ragsurvey,ji2023hallucination}, prinsip augmentasi \cite{raisch2021automation}, serta temuan lapangan \cite{wawancarastaf2026}. Prinsip desain ini bersifat umum terhadap kelas persoalan, yaitu standardisasi data administratif sektor publik, sehingga dapat diuji dan digunakan ulang di luar kasus penelitian.
+\begin{enumerate}[label=\textbf{DP\arabic*}:, leftmargin=*]
+  \item Keluaran LLM untuk standardisasi data dibatasi pada kandidat yang diambil dari kode referensi resmi, sehingga model berperan sebagai pemilih kandidat, bukan pembangkit kode bebas.
+  \item Konteks bahasa lokal berupa glosarium istilah dan contoh terkurasi disertakan dalam masukan model untuk menjembatani bahasa pelaku usaha dan bahasa taksonomi resmi.
+  \item Keluaran berkeyakinan rendah diteruskan kepada verifikator manusia dan atribut data pribadi dipisahkan sebelum pemrosesan oleh model, sehingga keputusan akhir dan tanggung jawab data tetap berada pada aparatur.
+  \item Data dihimpun pada unit administratif terendah yang paling dekat dengan subjek data, dengan validasi aturan domain pada saat pengisian dan pencatatan waktu verifikasi.
+  \item Pemeringkatan sasaran keputusan menggunakan bobot kriteria yang dielisitasi dari pengambil keputusan dan dapat ditelusuri, disertai batasan kebijakan seperti pemerataan wilayah.
+\end{enumerate}
+
+Prinsip desain tersebut diuji melalui hipotesis berikut, yang masing-masing berkorespondensi dengan RQ2--RQ4.
+\begin{enumerate}[label=\textbf{H\arabic*}:, leftmargin=*]
+  \item (DP1; RQ2) LLM terpandu \textit{retrieval} menghasilkan kesepakatan dengan data acuan (kappa Cohen) yang lebih tinggi dan tingkat halusinasi kode yang lebih rendah dibandingkan LLM tanpa \textit{retrieval}.
+  \item (DP2; RQ2) Penambahan konteks bahasa lokal meningkatkan akurasi standardisasi pada rekaman yang memuat istilah lokal dibandingkan LLM terpandu \textit{retrieval} tanpa konteks lokal.
+  \item (DP1--DP2; RQ2) LLM terpandu \textit{retrieval}, dengan maupun tanpa konteks lokal, menghasilkan akurasi yang lebih tinggi dibandingkan \textit{baseline} leksikal.
+  \item (DP3--DP4; RQ3) Rekaman yang dihimpun dan distandardisasi melalui instansiasi prinsip desain memiliki kelengkapan, validitas, keunikan, dan kemutakhiran yang lebih tinggi dibandingkan rekaman hasil proses lembar kerja.
+  \item (DP3--DP5; RQ4) Penggunaan instansiasi prinsip desain menurunkan waktu penyelesaian tugas dan beban kerja subjektif pengguna dibandingkan proses lembar kerja.
+  \item (DP5; RQ4) Peringkat prioritas pembinaan yang dihasilkan sistem berkorelasi positif secara signifikan dengan peringkat konsensus ahli dinas.
+\end{enumerate}
+Perbandingan antara model \textit{proprietary} dan model \textit{open-weight} diperlakukan sebagai analisis eksploratif tanpa hipotesis berarah. Penolakan suatu hipotesis tetap merupakan temuan yang sah, karena menunjukkan batas keberlakuan prinsip desain yang bersangkutan.
+
+\section{Tujuan Penelitian}
+\label{sec:tujuan}
+
+Tujuan penelitian berkorespondensi satu-satu dengan pertanyaan penelitian sebagai berikut.
+\begin{enumerate}[label=\textbf{T\arabic*}:, leftmargin=*]
+  \item Merumuskan prinsip desain sistem informasi berbasis komputer dengan komponen LLM untuk standardisasi dan pemanfaatan data administratif sektor publik, serta menginstansiasikannya dalam purwarupa yang berfungsi sebagai instrumen penelitian (menjawab RQ1).
+  \item Menguji H1--H3 melalui eksperimen terkontrol yang mengukur akurasi, kesepakatan dengan pengode manusia, tingkat halusinasi, dan konsistensi LLM terpandu \textit{retrieval} dibandingkan dengan kondisi pembanding (menjawab RQ2).
+  \item Menguji H4 dengan mengukur perubahan kualitas data UMKM berdasarkan dimensi model kualitas data ISO/IEC 25012 sebelum dan sesudah penerapan instansiasi pada desa percontohan (menjawab RQ3).
+  \item Menguji H5--H6 dengan mengukur waktu penyelesaian tugas, tingkat kesalahan, beban kerja (NASA-TLX), kebergunaan (\textit{System Usability Scale}), dan penerimaan teknologi (\textit{Technology Acceptance Model}), serta kesesuaian pemeringkatan prioritas pembinaan dengan penilaian ahli (menjawab RQ4).
+\end{enumerate}
+
+\section{Ruang Lingkup}
+\label{sec:lingkup}
+
+Ruang lingkup penelitian ditetapkan berdasarkan fenomena yang dikaji, unit analisis, variabel, dan batas generalisasi, sebagai berikut.
+\begin{enumerate}
+  \item \textbf{Fenomena yang dikaji.} Penelitian mengkaji efektivitas komponen LLM terpandu \textit{retrieval} dalam sistem informasi berbasis komputer untuk standardisasi data administratif dan dampaknya terhadap kualitas data serta kinerja tugas pengambil keputusan sektor publik. Penelitian tidak bertujuan menghasilkan sistem informasi operasional yang lengkap bagi instansi.
+  \item \textbf{Unit analisis.} Unit analisis RQ2 dan RQ3 adalah rekaman data UMKM; unit analisis RQ4 adalah pengguna, yaitu staf teknis Bidang Koperasi dan UMKM DKUKMPP Kabupaten Toba dan operator desa pada desa percontohan. Pelaku UMKM merupakan subjek data, bukan pengguna sistem.
+  \item \textbf{Variabel.} Variabel bebas meliputi kondisi standardisasi (\textit{baseline} leksikal, LLM tanpa \textit{retrieval}, LLM terpandu \textit{retrieval}, dan LLM terpandu \textit{retrieval} dengan konteks lokal), jenis model, serta proses pendataan (lembar kerja dan instansiasi prinsip desain). Variabel terikat meliputi akurasi, kappa Cohen, tingkat halusinasi, konsistensi, dimensi kualitas data, waktu tugas, tingkat kesalahan, beban kerja, kebergunaan, penerimaan teknologi, dan kesesuaian peringkat dengan ahli.
+  \item \textbf{Data dan taksonomi.} Data yang digunakan adalah data UMKM dinas hasil pendataan tahun 2020, kiriman desa tahun 2026, dan data yang dihimpun selama uji coba lapangan. Taksonomi acuan adalah KBLI 2020; klasifikasi skala usaha mengikuti PP Nomor 7 Tahun 2021. Data koperasi berada di luar cakupan.
+  \item \textbf{Status artefak.} Purwarupa dibangun sebatas fungsi yang diperlukan untuk menginstansiasikan DP1--DP5 dan mengukur variabel penelitian. Penerapan produksi, integrasi dengan sistem instansi lain seperti OSS atau aplikasi pendataan provinsi, manajemen pengguna yang lengkap, serta pemeliharaan sistem setelah penelitian berada di luar cakupan.
+  \item \textbf{Model dan metode.} LLM digunakan tanpa pelatihan ulang (\textit{fine-tuning}). Eksperimen membandingkan satu model \textit{proprietary} yang diakses melalui antarmuka pemrograman aplikasi dan satu model \textit{open-weight} yang dapat dijalankan secara lokal. Bahasa pemrosesan adalah Bahasa Indonesia dengan glosarium istilah lokal Batak Toba.
+  \item \textbf{Batas generalisasi.} Hasil eksperimen RQ2 berlaku untuk data administratif UMKM berbahasa Indonesia dengan taksonomi KBLI 2020. Hasil RQ3 dan RQ4 diperoleh dari studi kasus dengan jumlah partisipan terbatas sehingga digeneralisasi secara analitis melalui prinsip desain, bukan secara statistik ke seluruh pemerintah daerah.
+\end{enumerate}
+
+\section{Posisi Penelitian dalam Keilmuan Sistem Informasi Berbasis Komputer}
+\label{sec:posisi}
+
+Penelitian ini membangun purwarupa, tetapi purwarupa tersebut bukan tujuan akhir. Perbedaan antara penelitian ini dan proyek pengembangan sistem informasi (\textit{capstone project}) dirangkum pada Tabel~\ref{tab:posisi}, dengan mengacu pada pedoman DSR \cite{hevner2004design,gregor2013positioning}.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.17\textwidth}|L{0.33\textwidth}|L{0.41\textwidth}|}
+\caption{Perbedaan Proyek Pengembangan Sistem dan Penelitian Ini}
+\label{tab:posisi}\\
+\hline
+\textbf{Aspek} & \textbf{Proyek Pengembangan Sistem (\textit{Capstone})} & \textbf{Penelitian Ini} \\ \hline
+\endfirsthead
+\hline
+\textbf{Aspek} & \textbf{Proyek Pengembangan Sistem (\textit{Capstone})} & \textbf{Penelitian Ini} \\ \hline
+\endhead
+Titik berangkat & Kebutuhan fungsional klien & Celah pengetahuan dalam literatur LLM, klasifikasi taksonomi, dan SPK sektor publik (Subbab~\ref{sec:latar}) \\ \hline
+Tujuan & Sistem yang berfungsi sesuai spesifikasi & Bukti empiris dan prinsip desain mengenai efektivitas komponen LLM dalam CBIS sektor publik \\ \hline
+Landasan teori & Tidak dipersyaratkan; berfokus pada teknik rekayasa & Model kesuksesan sistem informasi, model kualitas data, RAG, augmentasi, dan TAM sebagai teori kernel \\ \hline
+Pertanyaan utama & Apakah sistem memenuhi kebutuhan pengguna? & Apakah prinsip desain DP1--DP5 menghasilkan efek yang dihipotesiskan (H1--H6)? \\ \hline
+Peran purwarupa & Produk akhir yang diserahkan & Instrumen penelitian dan perlakuan eksperimen \\ \hline
+Evaluasi & Pengujian fungsional dan uji penerimaan pengguna & Eksperimen terkontrol dengan kondisi pembanding, data acuan berlabel manusia, uji statistik, studi sebelum--sesudah, dan evaluasi \textit{within-subject} \\ \hline
+Kriteria keberhasilan & Sistem diterima klien & Hipotesis diuji secara sahih; hipotesis yang ditolak tetap merupakan temuan \\ \hline
+Generalisasi & Terbatas pada organisasi klien & Prinsip desain berlaku untuk kelas persoalan standardisasi data administratif sektor publik \\ \hline
+Kontribusi pengetahuan \cite{gregor2013positioning} & Desain rutin & Peningkatan (\textit{improvement}) \\ \hline
+Luaran & Aplikasi dan dokumentasi & Prinsip desain, bukti empiris, data acuan berlabel, dan manuskrip jurnal \\ \hline
+\end{longtable}
+}
+
+\section{Kontribusi Penelitian}
+\label{sec:kontribusi}
+
+Penelitian ini diharapkan memberikan kontribusi sebagai berikut.
+\begin{enumerate}
+  \item \textbf{Kontribusi empiris.} Penelitian ini memperluas kajian Lotfipoor dkk. \cite{lotfipoor2026llm} dengan menguji keandalan LLM sebagai alat klasifikasi teks bisnis pada data administratif nonkurasi berbahasa Indonesia, menggunakan taksonomi resmi nasional, data acuan hasil pengodean manusia, kondisi pembanding, dan pengukuran halusinasi yang eksplisit (H1--H3).
+  \item \textbf{Kontribusi pengetahuan desain.} Penelitian ini menghasilkan lima prinsip desain yang telah diuji untuk sistem pendukung keputusan sektor publik dengan komponen generatif, beserta bukti mengenai batas keberlakuannya (H4--H6). Prinsip desain ini merupakan teori desain tahap awal (\textit{nascent design theory}) yang dapat digunakan ulang oleh peneliti dan perancang sistem lain.
+  \item \textbf{Kontribusi teoretis.} Penelitian ini menguji keterkaitan antara kualitas informasi dan kinerja tugas pengguna sebagaimana diproposisikan dalam model kesuksesan sistem informasi \cite{delone2003success}, pada konteks komponen LLM dalam organisasi sektor publik dengan sumber daya terbatas.
+  \item \textbf{Kontribusi praktis.} Penelitian ini menghasilkan data acuan pengodean KBLI beranotasi, pedoman anotasi, dan purwarupa yang dapat menjadi dasar pengembangan lebih lanjut oleh DKUKMPP Kabupaten Toba.
+  \item \textbf{Kesesuaian dengan jurnal sasaran.} Hasil penelitian ditujukan untuk \textit{Journal of Computer Information Systems} (JCIS) terbitan Taylor \& Francis. Penelitian ini berada pada topik \textit{analytics, business intelligence, and decision support systems}; \textit{data management}; \textit{systems analysis, design, and implementation}; serta \textit{ethical and legal issues of IT} sebagaimana tercantum dalam cakupan jurnal, dan secara langsung melanjutkan agenda penelitian yang dikemukakan oleh artikel JCIS rujukan \cite{lotfipoor2026llm}. Pemetaan rinci disajikan pada Subbab~\ref{sec:luaran}
+\end{enumerate}
+
+% =============================================================================
+% BAB II LANDASAN TEORI
+% =============================================================================
+\chapter{LANDASAN TEORI}
+\label{chap:teori}
+
+Bab ini menguraikan literatur yang digunakan untuk menganalisis celah penelitian dan mengonstruksi rancangan penelitian, mulai dari teori kesuksesan sistem informasi, konsep UMKM dan tata kelola data sektor publik, metode standardisasi data berbasis LLM dan \textit{retrieval}, metode pendukung keputusan, hingga metode evaluasi artefak. Setiap persamaan disertai contoh perhitungan dalam domain penelitian. Angka pada contoh perhitungan merupakan data ilustratif untuk menjelaskan cara kerja persamaan, bukan hasil penelitian.
+
+\section{Penelitian Terkait}
+\label{sec:terkait}
+
+Penelusuran pustaka difokuskan pada empat kelompok penelitian, yaitu (1) LLM untuk analisis dan klasifikasi teks bisnis, (2) klasifikasi otomatis terhadap taksonomi lapangan usaha atau pekerjaan, (3) sistem pendukung keputusan dan sistem berbasis LLM untuk UMKM dan layanan pemerintahan, serta (4) LLM untuk pengelolaan data. Ringkasan perbandingan disajikan pada Tabel~\ref{tab:related_work}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.04\textwidth}|L{0.16\textwidth}|L{0.21\textwidth}|L{0.24\textwidth}|L{0.23\textwidth}|}
+\caption{Perbandingan Penelitian Terkait}
+\label{tab:related_work}\\
+\hline
+\textbf{No.} & \textbf{Peneliti (Tahun)} & \textbf{Metode / Pendekatan} & \textbf{Hasil / Temuan Utama} & \textbf{Keterbatasan} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Peneliti (Tahun)} & \textbf{Metode / Pendekatan} & \textbf{Hasil / Temuan Utama} & \textbf{Keterbatasan} \\ \hline
+\endhead
+1 & Lotfipoor dkk. (2026) \cite{lotfipoor2026llm} & GPT-4 untuk ekstraksi variabel dan klasifikasi 2.865 narasi pengguna \textit{business intelligence}; klasifikasi industri ke UK SIC & Kesepakatan GPT-4 dengan konsensus manusia $\kappa$ = 0,63--0,74; instruksi eksplisit menurunkan halusinasi dari 12\% menjadi 4\% pada uji awal & Narasi berbahasa Inggris yang dikurasi vendor; validasi klasifikasi industri melalui inspeksi manual; relasi bersifat indikatif \\ \hline
+2 & Amnur dkk. (2025) \cite{amnur2025kbli} & SVM, \textit{Random Forest}, dan IndoBERT untuk klasifikasi deskripsi usaha ke KBLI lima digit & \textit{F1-score} 92,99\% pada data sintetis; akurasi \textit{top-1} 32,93\% dan \textit{top-10} 63,24\% pada data riil & Kesenjangan besar antara data sintetis dan riil; belum memanfaatkan LLM generatif dengan \textit{retrieval} \\ \hline
+3 & Achananuparp dan Lim (2025) \cite{achananuparp2025occupation} & Kerangka bertahap inferensi, \textit{retrieval}, dan pemeringkatan ulang LLM pada taksonomi O*NET-SOC & Penalaran berpanduan taksonomi menyelaraskan keluaran LLM dengan taksonomi berjenjang & Domain pekerjaan berbahasa Inggris; belum diuji pada data administratif pemerintah daerah \\ \hline
+4 & Gilardi dkk. (2023) \cite{gilardi2023chatgpt}; Ziems dkk. (2024) \cite{ziems2024css} & LLM \textit{zero-shot} sebagai anotator teks & Akurasi melampaui pekerja \textit{crowdsourcing}; kesepakatan memadai dengan manusia, tetapi belum melampaui model terlatih khusus & Teks berbahasa Inggris; tidak menggunakan taksonomi resmi bertingkat \\ \hline
+5 & Narayan dkk. (2022) \cite{narayan2022wrangle}; Peeters dkk. (2025) \cite{peeters2025entity} & LLM untuk pembersihan, integrasi, dan pencocokan entitas & LLM mencapai kinerja kompetitif tanpa pelatihan khusus; \textit{prompt} perlu disesuaikan per model dan per data & Data tolok ukur publik; tantangan pada data privat dan domain khusus \\ \hline
+6 & Khotimah dkk. (2024) \cite{khotimah2024hybrid} & Klasterisasi dan AHP-TOPSIS untuk stratifikasi UMKM & Kerangka pendukung keputusan untuk penetapan prioritas UMKM & Mengasumsikan data UMKM telah tersedia dan bersih \\ \hline
+7 & Hardiyanti dkk. (2026) \cite{hardiyanti2026adaptive} & \textit{Adaptive} RAG dan IndoBERT melalui WhatsApp untuk pelaku UMKM & Akurasi jawaban 86,8\%; SUS 84,6 pada validasi lapangan & Berorientasi swalayan pelaku UMKM; tidak menangani data pada sisi pemerintah \\ \hline
+8 & Papageorgiou dkk. (2024) \cite{papageorgiou2024egov} & Arsitektur modular berbasis RAG untuk layanan pemerintahan elektronik & Arsitektur dapat direproduksi untuk asisten layanan publik & Penulis menyatakan perlunya validasi empiris \\ \hline
+9 & Asmaidin dan Santoso (2026) \cite{asmaidin2026retrieval} & Perbandingan \textit{retrieval} leksikal, semantik, dan hibrida pada RAG & Leksikal unggul pada peringkat teratas; hibrida meningkatkan cakupan pada peringkat menengah & Domain dokumen teknis; tidak terkait klasifikasi taksonomi \\ \hline
+10 & Penelitian ini & LLM terpandu \textit{retrieval} atas KBLI 2020, pendataan partisipatif desa, segmentasi K-\textit{Prototypes}, dan AHP dalam satu artefak DSR & Diharapkan: bukti keandalan standardisasi, perubahan kualitas data, dan dampak pada kinerja tugas aparatur & Studi kasus satu kabupaten dengan partisipan terbatas \\ \hline
+\end{longtable}
+}
+
+Tabel~\ref{tab:related_work} menunjukkan bahwa penelitian LLM untuk klasifikasi teks bisnis belum diuji pada data administratif pemerintah daerah berbahasa Indonesia dengan taksonomi resmi, penelitian klasifikasi KBLI belum memanfaatkan LLM generatif terpandu \textit{retrieval}, dan penelitian pendukung keputusan UMKM belum menangani tahap penghimpunan serta standardisasi data yang menjadi prasyarat keputusan. Penelitian ini memosisikan diri pada persilangan ketiga kelompok tersebut dengan menempatkan LLM sebagai komponen standardisasi data dalam sistem pendukung keputusan sektor publik yang dievaluasi secara empiris.
+
+\section{Model Kesuksesan Sistem Informasi dan Kualitas Informasi}
+\label{sec:delone}
+
+Model kesuksesan sistem informasi DeLone dan McLean menyatakan bahwa kualitas sistem, kualitas informasi, dan kualitas layanan memengaruhi penggunaan sistem dan kepuasan pengguna, yang selanjutnya menghasilkan manfaat bersih (\textit{net benefits}) bagi individu dan organisasi \cite{delone2003success}. Model ini berfungsi sebagai teori kernel penelitian. Komponen LLM terpandu \textit{retrieval} dan validasi pada saat pengisian diposisikan sebagai mekanisme untuk meningkatkan kualitas informasi (diuji melalui H1--H4), sedangkan kinerja tugas dan beban kerja pengguna diposisikan sebagai indikator manfaat bersih pada tingkat individu (diuji melalui H5--H6). Feuerriegel dkk. \cite{feuerriegel2024genai} memandang kecerdasan buatan generatif sebagai entitas dalam sistem sosioteknis, sehingga kualitas keluarannya perlu dievaluasi bersama interaksinya dengan pengguna dan proses organisasi. Pandangan ini sejalan dengan kajian multidisiplin yang menekankan perlunya bukti empiris mengenai peluang dan risiko kecerdasan buatan generatif bagi praktik dan kebijakan \cite{dwivedi2023chatgpt}.
+
+\section{UMKM, Kewenangan Pembinaan, dan Tata Kelola Data}
+\label{sec:umkm}
+
+PP Nomor 7 Tahun 2021 mengelompokkan usaha berdasarkan modal usaha di luar tanah dan bangunan tempat usaha atau berdasarkan hasil penjualan tahunan. Usaha mikro memiliki modal usaha paling banyak Rp1 miliar atau hasil penjualan tahunan paling banyak Rp2 miliar; usaha kecil memiliki modal lebih dari Rp1 miliar sampai dengan Rp5 miliar atau hasil penjualan lebih dari Rp2 miliar sampai dengan Rp15 miliar; dan usaha menengah memiliki modal lebih dari Rp5 miliar sampai dengan Rp10 miliar atau hasil penjualan lebih dari Rp15 miliar sampai dengan Rp50 miliar \cite{pp7tahun2021}. Klasifikasi skala ini menentukan kewenangan pembinaan, sehingga kesalahan klasifikasi berimplikasi langsung pada perencanaan program daerah. Dalam praktik di Kabupaten Toba, dinas juga menggunakan kategori ultra mikro untuk membedakan usaha dengan modal sangat kecil \cite{wawancarastaf2026}.
+
+Laudon dan Laudon \cite{laudon2022mis} menjelaskan bahwa nilai sistem informasi bagi pengambilan keputusan bergantung pada kualitas data yang tersimpan di dalamnya, dan bahwa data yang tidak akurat, tidak tepat waktu, atau tidak konsisten antarsumber menyebabkan keputusan yang keliru. Kebijakan Satu Data Indonesia menetapkan empat prinsip data pemerintah, yaitu standar data, metadata baku, interoperabilitas, dan penggunaan kode referensi atau data induk \cite{perpres39tahun2019}. Dalam konteks penelitian ini, KBLI 2020 berfungsi sebagai kode referensi untuk atribut lapangan usaha, sedangkan kode wilayah administratif berfungsi sebagai kode referensi untuk atribut lokasi.
+
+\section{Model Kualitas Data}
+\label{sec:kualitas}
+
+ISO/IEC 25012 mendefinisikan model kualitas data yang terdiri atas karakteristik inheren dan karakteristik yang bergantung pada sistem \cite{iso25012}. Penelitian ini menggunakan lima karakteristik inheren yang relevan dengan kebutuhan dinas, yaitu kelengkapan (\textit{completeness}), validitas atau kesesuaian terhadap domain nilai (\textit{accuracy} sintaksis), konsistensi (\textit{consistency}), keunikan yang diturunkan dari ketiadaan duplikasi, dan kemutakhiran (\textit{currentness}). Kelengkapan diukur sebagai proporsi nilai atribut wajib yang terisi, sebagaimana Persamaan~\eqref{eq:completeness}, dengan $N$ adalah jumlah rekaman, $m$ adalah jumlah atribut wajib, dan $M$ adalah jumlah nilai atribut wajib yang kosong.
+
+\begin{equation}
+  Q_{\text{lengkap}} = 1 - \frac{M}{N \times m}
+  \label{eq:completeness}
+\end{equation}
+\persamaan{Kelengkapan data}
+
+\noindent\textbf{Contoh perhitungan.} Misalkan satu desa mengirim $N = 40$ rekaman UMKM dengan $m = 5$ atribut wajib, yaitu nama usaha, desa, jenis usaha, modal, dan jumlah tenaga kerja, sehingga terdapat $40 \times 5 = 200$ nilai wajib. Apabila atribut modal kosong pada 22 rekaman dan jumlah tenaga kerja kosong pada 12 rekaman, maka $M = 34$ dan
+\[
+  Q_{\text{lengkap}} = 1 - \frac{34}{200} = 1 - 0{,}17 = 0{,}83.
+\]
+Artinya, 83\% nilai atribut wajib pada kiriman desa tersebut terisi.
+
+Validitas diukur sebagai proporsi nilai terisi yang memenuhi aturan domain, misalnya kode KBLI yang terdapat dalam kamus resmi, NIB dengan format 13 digit, modal berupa bilangan nonnegatif, dan nama desa yang terdapat dalam daftar wilayah administratif, sebagaimana Persamaan~\eqref{eq:validity}, dengan $T$ adalah jumlah nilai terisi yang diperiksa dan $V$ adalah jumlah nilai yang memenuhi aturan domain.
+
+\begin{equation}
+  Q_{\text{valid}} = \frac{V}{T}
+  \label{eq:validity}
+\end{equation}
+\persamaan{Validitas data}
+
+\noindent\textbf{Contoh perhitungan.} Pada contoh sebelumnya terdapat $T = 200 - 34 = 166$ nilai terisi. Apabila 9 nilai modal ditulis sebagai teks yang tidak dapat diurai (misalnya ``kurang lebih 5 jt''), 5 nama desa tidak ditemukan dalam daftar referensi karena salah ketik, dan 3 nilai jumlah tenaga kerja bukan bilangan bulat nonnegatif, maka $V = 166 - 17 = 149$ dan
+\[
+  Q_{\text{valid}} = \frac{149}{166} \approx 0{,}90.
+\]
+
+Keunikan diukur dengan Persamaan~\eqref{eq:uniqueness}, dengan $D$ adalah jumlah rekaman yang teridentifikasi sebagai duplikat dari rekaman lain yang merujuk pada unit usaha yang sama.
+
+\begin{equation}
+  Q_{\text{unik}} = 1 - \frac{D}{N}
+  \label{eq:uniqueness}
+\end{equation}
+\persamaan{Keunikan data}
+
+\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman ditemukan tiga rekaman duplikat, misalnya ``UD Tenun Sinar'' dan ``Usaha Tenun Sinar'' pada alamat yang sama dicatat dua kali oleh dua petugas yang berbeda, maka $D = 3$ dan
+\[
+  Q_{\text{unik}} = 1 - \frac{3}{40} = 0{,}925.
+\]
+
+Kemutakhiran diukur sebagai proporsi rekaman yang diverifikasi dalam 90 hari terakhir, sesuai dengan siklus pemutakhiran tiga bulanan yang diharapkan dinas \cite{wawancarastaf2026}, sebagaimana Persamaan~\eqref{eq:currentness}, dengan $R_{90}$ adalah jumlah rekaman yang tanggal verifikasi terakhirnya tidak lebih dari 90 hari sebelum tanggal pengukuran.
+
+\begin{equation}
+  Q_{\text{kini}} = \frac{R_{90}}{N}
+  \label{eq:currentness}
+\end{equation}
+\persamaan{Kemutakhiran data}
+
+\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman hanya 12 rekaman yang diverifikasi ulang oleh operator desa dalam 90 hari terakhir, maka $Q_{\text{kini}} = 12/40 = 0{,}30$. Data hasil pendataan tahun 2020 yang belum pernah diverifikasi ulang memiliki $R_{90} = 0$ sehingga $Q_{\text{kini}} = 0$. Perbandingan nilai-nilai tersebut sebelum dan sesudah penerapan artefak merupakan dasar pengujian H4.
+
+\section{Klasifikasi Baku Lapangan Usaha Indonesia}
+\label{sec:kbli}
+
+KBLI 2020 ditetapkan melalui Peraturan Badan Pusat Statistik Nomor 2 Tahun 2020 dan menjadi acuan klasifikasi lapangan usaha dalam statistik resmi serta perizinan berusaha \cite{bps2020kbli}. KBLI memiliki struktur berjenjang lima tingkat, yaitu kategori (kode huruf A sampai dengan U), golongan pokok (dua digit), golongan (tiga digit), subgolongan (empat digit), dan kelompok (lima digit). Setiap kelompok dilengkapi judul dan uraian kegiatan. Struktur berjenjang ini memungkinkan evaluasi klasifikasi pada beberapa tingkat granularitas, sebagaimana diterapkan pada penelitian ini. Kesulitan utama klasifikasi KBLI terletak pada jumlah kelas yang besar, kemiripan uraian antarkelas, serta perbedaan antara bahasa uraian resmi dan bahasa yang digunakan pelaku usaha \cite{amnur2025kbli}. Lotfipoor dkk. \cite{lotfipoor2026llm} juga mencatat bahwa skema klasifikasi industri yang baku tidak selalu menangkap nuansa sektor yang bersifat hibrida, misalnya usaha tenun yang sekaligus menjual produk turunan.
+
+\section{\textit{Large Language Model} sebagai Alat Klasifikasi Teks}
+\label{sec:llm}
+
+LLM adalah model bahasa berbasis arsitektur \textit{transformer} yang dilatih pada korpus teks berskala besar dan dapat menjalankan tugas baru melalui instruksi dalam bentuk \textit{prompt}, baik tanpa contoh (\textit{zero-shot}) maupun dengan beberapa contoh (\textit{few-shot}). Gilardi dkk. \cite{gilardi2023chatgpt} menunjukkan bahwa akurasi anotasi \textit{zero-shot} ChatGPT melampaui pekerja \textit{crowdsourcing} rata-rata sekitar 25 poin persentase dengan biaya yang jauh lebih rendah. Ziems dkk. \cite{ziems2024css} menguji 13 model pada 25 tolok ukur dan menyimpulkan bahwa LLM belum melampaui model terlatih khusus pada tugas klasifikasi, tetapi mencapai kesepakatan yang memadai dengan manusia sehingga layak digunakan bersama tim anotator manusia. Survei penggunaan LLM untuk anotasi data menegaskan bahwa kualitas anotasi LLM bergantung pada rancangan \textit{prompt}, ketersediaan contoh, dan mekanisme verifikasi manusia \cite{tan2024annotation}. Permintaan penjelasan singkat atas keputusan model dapat meningkatkan kualitas penalaran pada tugas yang memerlukan beberapa langkah inferensi \cite{wei2022cot}, sekaligus menyediakan jejak alasan yang dapat diperiksa oleh verifikator manusia.
+
+Kinerja LLM pada bahasa Indonesia dan bahasa daerah masih lebih rendah dibandingkan dengan bahasa Inggris, sehingga pengembangan model dan evaluasi khusus untuk bahasa Indonesia tetap diperlukan \cite{cahyawijaya2024cendol}. Risiko utama penggunaan LLM adalah halusinasi \cite{ji2023hallucination}. Dahl dkk. \cite{dahl2024legal} menunjukkan bahwa halusinasi terjadi secara sistematis pada domain yang menuntut rujukan pada sumber resmi, yaitu kondisi yang serupa dengan pengodean KBLI. Selain itu, pengguna nonahli cenderung menyusun \textit{prompt} secara coba-coba dan tidak sistematis \cite{zamfirescu2023johnny}, sehingga interaksi LLM dalam sistem bagi aparatur desa dan dinas sebaiknya dibungkus dalam alur kerja terstruktur, bukan antarmuka percakapan bebas.
+
+Tingkat halusinasi dalam penelitian ini didefinisikan sebagai proporsi keluaran yang memuat kode yang tidak terdapat dalam kamus KBLI 2020, sebagaimana Persamaan~\eqref{eq:halusinasi}, dengan $\hat{y}_i$ adalah kode keluaran model untuk rekaman ke-$i$ dan $\mathcal{K}$ adalah himpunan kode KBLI yang sah.
+
+\begin{equation}
+  HR = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[\hat{y}_i \notin \mathcal{K}\right]
+  \label{eq:halusinasi}
+\end{equation}
+\persamaan{Tingkat halusinasi kode}
+
+\noindent\textbf{Contoh perhitungan.} Fungsi indikator $\mathbb{1}[\cdot]$ bernilai 1 apabila kondisi di dalamnya benar dan 0 apabila salah. Misalkan LLM tanpa \textit{retrieval} memproses $N = 500$ deskripsi usaha pada data uji, dan validator menemukan 23 keluaran berupa kode lima digit yang tidak terdapat dalam kamus KBLI 2020. Maka
+\[
+  HR = \frac{23}{500} = 0{,}046 = 4{,}6\%.
+\]
+Apabila pada kondisi LLM terpandu \textit{retrieval} hanya 2 dari 500 keluaran yang berada di luar kamus, maka $HR = 2/500 = 0{,}4\%$. Penurunan tingkat halusinasi semacam ini merupakan salah satu indikator yang diuji dalam H1.
+
+\section{\textit{Retrieval-Augmented Generation} dan Klasifikasi Berpanduan Taksonomi}
+\label{sec:rag}
+
+RAG menggabungkan komponen \textit{retriever} yang mengambil potongan pengetahuan relevan dari basis pengetahuan eksternal dengan komponen generator berupa LLM yang menyusun keluaran berdasarkan potongan tersebut \cite{gao2023ragsurvey}. Tinjauan sistematis menunjukkan bahwa kualitas \textit{retrieval} merupakan penentu utama kualitas keluaran akhir sistem RAG \cite{oche2025rag}. Asmaidin dan Santoso \cite{asmaidin2026retrieval} menemukan bahwa \textit{retrieval} leksikal unggul pada peringkat teratas, sedangkan pendekatan hibrida meningkatkan cakupan dokumen relevan pada peringkat menengah. Temuan ini relevan karena uraian KBLI memuat istilah baku, sedangkan deskripsi usaha di lapangan memuat sinonim dan istilah lokal.
+
+Dalam penelitian ini, RAG diterapkan dalam bentuk klasifikasi berpanduan taksonomi: \textit{retriever} hibrida mengambil $k$ kandidat kode KBLI yang paling mirip dengan deskripsi usaha, kemudian LLM memilih satu kode dari kandidat tersebut atau menyatakan bahwa informasi tidak mencukupi. Pola \textit{retrieval} dan pemeringkatan ulang ini telah diterapkan pada klasifikasi pekerjaan dengan taksonomi berjenjang \cite{achananuparp2025occupation}. Kualitas tahap \textit{retrieval} diukur menggunakan \textit{Recall@k}, yaitu proporsi rekaman yang kode acuannya $y_i$ terdapat dalam himpunan kandidat $C_i^{(k)}$, sebagaimana Persamaan~\eqref{eq:recallk}. Ukuran ini sejalan dengan metrik \textit{context recall} pada kerangka evaluasi RAGAS \cite{es2024ragas}. Pengembangan berikutnya berupa arsitektur RAG agentik \cite{singh2025agentic} dipertimbangkan sebagai pekerjaan lanjutan dan tidak termasuk dalam cakupan penelitian ini.
+
+\begin{equation}
+  \text{Recall@}k = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[y_i \in C_i^{(k)}\right]
+  \label{eq:recallk}
+\end{equation}
+\persamaan{\textit{Recall@k} tahap \textit{retrieval}}
+
+\noindent\textbf{Contoh perhitungan.} Misalkan untuk deskripsi ``tenun ulos sadum'' \textit{retriever} mengembalikan $k = 10$ kandidat kelompok KBLI dan kode acuan hasil pengodean manusia termasuk di antara sepuluh kandidat tersebut, sehingga indikatornya bernilai 1. Apabila hal yang sama terjadi pada 455 dari 500 rekaman uji, maka
+\[
+  \text{Recall@}10 = \frac{455}{500} = 0{,}91.
+\]
+Nilai ini merupakan batas atas akurasi LLM terpandu \textit{retrieval}, karena LLM hanya dapat memilih kode dari kandidat yang tersedia; 45 rekaman yang kode acuannya tidak terambil pasti salah diklasifikasikan pada kondisi tersebut. Oleh karena itu, nilai $k$ dipilih dengan mempertimbangkan kenaikan \textit{Recall@k} dan bertambahnya panjang masukan bagi LLM.
+
+\section{LLM untuk Pembersihan dan Integrasi Data}
+\label{sec:wrangling}
+
+Narayan dkk. \cite{narayan2022wrangle} membingkai tugas pembersihan dan integrasi data, termasuk pencocokan entitas dan koreksi kesalahan, sebagai tugas \textit{prompting} dan memperoleh kinerja yang kompetitif tanpa pelatihan khusus, dengan catatan adanya tantangan pada data privat dan domain khusus. Peeters dkk. \cite{peeters2025entity} menunjukkan bahwa LLM dapat digunakan untuk pencocokan entitas, tetapi tidak terdapat satu \textit{prompt} terbaik untuk seluruh model dan data. Temuan tersebut mendasari keputusan penelitian ini untuk (1) mengevaluasi \textit{prompt} secara terpisah untuk setiap model, (2) menggunakan aturan deterministik untuk tugas yang dapat diformalkan, seperti klasifikasi skala usaha dan validasi format NIB, serta (3) membatasi penggunaan LLM pada tugas yang memerlukan pemahaman bahasa, yaitu pemetaan deskripsi usaha ke KBLI.
+
+\section{Sistem Pendukung Keputusan, Segmentasi, dan \textit{Analytic Hierarchy Process}}
+\label{sec:spk}
+
+Sistem pendukung keputusan (SPK) adalah sistem informasi yang menggabungkan data, model analitis, dan antarmuka untuk membantu pengambil keputusan menghadapi persoalan semi-terstruktur \cite{laudon2022mis}. Persoalan seleksi UMKM sasaran pembinaan di Kabupaten Toba bersifat semi-terstruktur karena melibatkan kriteria yang dapat diukur, misalnya status legalitas dan lama usaha, serta pertimbangan kebijakan, misalnya pemerataan antarkecamatan \cite{wawancarakadis2026}. Khotimah dkk. \cite{khotimah2024hybrid} menggabungkan klasterisasi dengan AHP-TOPSIS untuk stratifikasi UMKM.
+
+Data UMKM bersifat campuran, yaitu memuat atribut numerik (modal, jumlah tenaga kerja, lama usaha) dan kategorikal (sektor KBLI, kecamatan, status legalitas). Algoritma K-\textit{Prototypes} menangani data campuran dengan mengombinasikan jarak Euclidean kuadrat untuk atribut numerik dan ketidakcocokan sederhana untuk atribut kategorikal \cite{huang1998kprototypes}, sebagaimana Persamaan~\eqref{eq:kproto}, dengan $p$ atribut numerik, $m-p$ atribut kategorikal, $\delta(a,b)=0$ jika $a=b$ dan $1$ jika sebaliknya, serta $\gamma$ sebagai bobot penyeimbang atribut kategorikal.
+
+\begin{equation}
+  d(X_i, Q_l) = \sum_{j=1}^{p} \left(x_{ij} - q_{lj}\right)^2 + \gamma \sum_{j=p+1}^{m} \delta\left(x_{ij}, q_{lj}\right)
+  \label{eq:kproto}
+\end{equation}
+\persamaan{Ukuran ketidakmiripan K-\textit{Prototypes}}
+
+\noindent\textbf{Contoh perhitungan.} Misalkan suatu UMKM $X$ memiliki tiga atribut numerik yang telah dinormalisasi \textit{min--max} ke rentang 0--1, yaitu modal 0,20, jumlah tenaga kerja 0,10, dan lama usaha 0,30, serta tiga atribut kategorikal, yaitu klaster sektor ``tenun dan kriya'', kecamatan ``Uluan'', dan status NIB ``tidak ada''. Terdapat dua prototipe klaster beserta nilai atributnya sebagaimana Tabel~\ref{tab:contoh_kproto}, dengan $\gamma = 0{,}5$ yang ditetapkan sebagai ilustrasi.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.13\textwidth}|>{\centering\arraybackslash}p{0.08\textwidth}|>{\centering\arraybackslash}p{0.08\textwidth}|>{\centering\arraybackslash}p{0.08\textwidth}|L{0.13\textwidth}|L{0.13\textwidth}|L{0.10\textwidth}|}
+\caption{Contoh Atribut UMKM dan Prototipe Klaster}
+\label{tab:contoh_kproto}\\
+\hline
+\textbf{Objek} & \textbf{Modal} & \textbf{Tenaga kerja} & \textbf{Lama usaha} & \textbf{Klaster sektor} & \textbf{Kecamatan} & \textbf{NIB} \\ \hline
+\endfirsthead
+\hline
+\textbf{Objek} & \textbf{Modal} & \textbf{Tenaga kerja} & \textbf{Lama usaha} & \textbf{Klaster sektor} & \textbf{Kecamatan} & \textbf{NIB} \\ \hline
+\endhead
+UMKM $X$ & 0,20 & 0,10 & 0,30 & Tenun dan kriya & Uluan & Tidak ada \\ \hline
+Prototipe $Q_1$ & 0,25 & 0,15 & 0,50 & Tenun dan kriya & Balige & Tidak ada \\ \hline
+Prototipe $Q_2$ & 0,60 & 0,50 & 0,40 & Olahan pangan & Uluan & Ada \\ \hline
+\end{longtable}
+}
+
+\noindent Ketidakmiripan terhadap $Q_1$ terdiri atas komponen numerik $(0{,}20-0{,}25)^2 + (0{,}10-0{,}15)^2 + (0{,}30-0{,}50)^2 = 0{,}0025 + 0{,}0025 + 0{,}04 = 0{,}045$ dan satu ketidakcocokan kategorikal (kecamatan), sehingga
+\[
+  d(X, Q_1) = 0{,}045 + 0{,}5 \times 1 = 0{,}545.
+\]
+Ketidakmiripan terhadap $Q_2$ terdiri atas komponen numerik $(-0{,}40)^2 + (-0{,}40)^2 + (-0{,}10)^2 = 0{,}33$ dan dua ketidakcocokan kategorikal (klaster sektor dan NIB), sehingga
+\[
+  d(X, Q_2) = 0{,}33 + 0{,}5 \times 2 = 1{,}33.
+\]
+Karena $d(X, Q_1) < d(X, Q_2)$, UMKM $X$ dialokasikan ke klaster $Q_1$. Contoh ini menunjukkan bahwa nilai $\gamma$ menentukan seberapa besar atribut kategorikal seperti sektor dan status legalitas memengaruhi pembentukan segmen.
+
+\textit{Analytic Hierarchy Process} (AHP) menurunkan bobot kriteria dari matriks perbandingan berpasangan yang diisi oleh pengambil keputusan \cite{saaty2008ahp}. Konsistensi penilaian diperiksa melalui rasio konsistensi pada Persamaan~\eqref{eq:cr}, dengan $\lambda_{\max}$ adalah nilai eigen terbesar matriks perbandingan, $n$ adalah jumlah kriteria, dan $RI$ adalah indeks acak; penilaian dinyatakan konsisten apabila $CR \leq 0{,}10$.
+
+\begin{equation}
+  CI = \frac{\lambda_{\max} - n}{n - 1}, \qquad CR = \frac{CI}{RI}
+  \label{eq:cr}
+\end{equation}
+\persamaan{Indeks dan rasio konsistensi AHP}
+
+\noindent\textbf{Contoh perhitungan.} Misalkan seorang pejabat dinas membandingkan tiga kriteria seleksi, yaitu kesiapan produk ($K_1$), status wirausaha pemula ($K_2$), dan kesiapan legalitas ($K_3$), menggunakan skala 1--9. $K_1$ dinilai tiga kali lebih penting daripada $K_2$ dan lima kali lebih penting daripada $K_3$, sedangkan $K_2$ dinilai dua kali lebih penting daripada $K_3$, sehingga diperoleh matriks
+\[
+  A = \begin{bmatrix} 1 & 3 & 5 \\ 1/3 & 1 & 2 \\ 1/5 & 1/2 & 1 \end{bmatrix}.
+\]
+Jumlah setiap kolom adalah 1,533; 4,500; dan 8,000. Setiap elemen dibagi dengan jumlah kolomnya, lalu dirata-ratakan per baris, sehingga diperoleh bobot $w = (0{,}648;\ 0{,}230;\ 0{,}122)$. Perkalian $Aw$ menghasilkan $(1{,}949;\ 0{,}690;\ 0{,}367)$, dan rasio setiap elemen $Aw$ terhadap $w$ adalah 3,007; 3,003; dan 3,001, sehingga $\lambda_{\max} \approx 3{,}004$. Dengan $n = 3$ dan $RI = 0{,}58$,
+\[
+  CI = \frac{3{,}004 - 3}{3 - 1} = 0{,}002, \qquad CR = \frac{0{,}002}{0{,}58} \approx 0{,}003 \leq 0{,}10.
+\]
+Penilaian tersebut konsisten sehingga bobotnya dapat digunakan. Apabila $CR > 0{,}10$, penilai diminta meninjau kembali perbandingan berpasangannya.
+
+Bobot hasil AHP digunakan untuk menghitung skor prioritas setiap kandidat dengan penjumlahan terbobot sebagaimana Persamaan~\eqref{eq:saw}, dengan $w_j$ adalah bobot kriteria ke-$j$ dan $r_{ij}$ adalah nilai ternormalisasi kandidat ke-$i$ pada kriteria ke-$j$.
+
+\begin{equation}
+  V_i = \sum_{j=1}^{n} w_j \, r_{ij}
+  \label{eq:saw}
+\end{equation}
+\persamaan{Skor prioritas penjumlahan terbobot}
+
+\noindent\textbf{Contoh perhitungan.} Dengan bobot dari contoh AHP, dua kandidat penerima bantuan dibandingkan. Kandidat $A$ memiliki skor kesiapan produk 4 dari 5, berstatus wirausaha pemula, dan memiliki satu dari dua dokumen legalitas (NIB tanpa sertifikat halal). Kandidat $B$ memiliki skor kesiapan produk 5, bukan wirausaha pemula, dan memiliki kedua dokumen legalitas. Normalisasi kriteria manfaat dilakukan dengan $r_{ij} = x_{ij}/\max_i x_{ij}$, sehingga $r_A = (0{,}8;\ 1;\ 0{,}5)$ dan $r_B = (1;\ 0;\ 1)$. Maka
+\[
+  V_A = 0{,}648(0{,}8) + 0{,}230(1) + 0{,}122(0{,}5) = 0{,}809,
+\]
+\[
+  V_B = 0{,}648(1) + 0{,}230(0) + 0{,}122(1) = 0{,}770.
+\]
+Kandidat $A$ menempati peringkat lebih tinggi walaupun kesiapan produknya lebih rendah, karena bobot status wirausaha pemula yang ditetapkan pengambil keputusan. Jejak perhitungan ini dapat ditampilkan kepada pimpinan untuk menjelaskan dasar pemeringkatan, sesuai DP5.
+
+\section{\textit{Design Science Research}}
+\label{sec:dsr}
+
+\textit{Design science research} (DSR) adalah paradigma penelitian sistem informasi yang menghasilkan dan mengevaluasi artefak untuk memecahkan persoalan organisasi yang relevan, dengan kontribusi berupa artefak dan pengetahuan desain yang diperoleh secara ketat (\textit{rigor}) \cite{hevner2004design}. Peffers dkk. \cite{peffers2007dsrm} merumuskan metodologi DSR (DSRM) dalam enam aktivitas, yaitu identifikasi masalah dan motivasi, penetapan tujuan solusi, perancangan dan pengembangan, demonstrasi, evaluasi, serta komunikasi. DSR dipilih karena persoalan penelitian berasal dari kebutuhan organisasi yang nyata, solusi yang diusulkan berupa artefak sistem informasi, dan kontribusi yang diharapkan mencakup pengetahuan mengenai efektivitas artefak tersebut.
+
+Gregor dan Hevner \cite{gregor2013positioning} mengklasifikasikan kontribusi pengetahuan DSR berdasarkan kematangan domain persoalan dan domain solusi ke dalam empat kuadran, yaitu penemuan (\textit{invention}) untuk solusi baru pada persoalan baru, peningkatan (\textit{improvement}) untuk solusi baru pada persoalan yang telah dikenal, eksaptasi (\textit{exaptation}) untuk solusi yang telah dikenal pada persoalan baru, dan desain rutin (\textit{routine design}) untuk solusi yang telah dikenal pada persoalan yang telah dikenal. Desain rutin merupakan praktik profesional dan umumnya tidak menghasilkan kontribusi penelitian. Kontribusi DSR dapat berupa artefak terinstansiasi, prinsip desain, hingga teori desain yang lebih matang. Dalam penelitian ini, purwarupa merupakan instansiasi dari prinsip desain DP1--DP5 (Subbab~\ref{sec:hipotesis}), dan klaim pengetahuan diajukan pada tingkat prinsip desain yang telah diuji secara empiris, bukan pada tingkat purwarupa.
+
+\section{Metode Evaluasi}
+\label{sec:evaluasi}
+
+\subsection{Evaluasi Klasifikasi dan Reliabilitas}
+
+Akurasi \textit{top-k} mengukur proporsi rekaman yang kode acuannya termasuk dalam $k$ keluaran teratas model, sebagaimana Persamaan~\eqref{eq:topk}, dengan $\hat{Y}_i^{(k)}$ adalah himpunan $k$ kode teratas untuk rekaman ke-$i$. Pada $k=1$, ukuran ini setara dengan akurasi.
+
+\begin{equation}
+  \text{Acc@}k = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[y_i \in \hat{Y}_i^{(k)}\right]
+  \label{eq:topk}
+\end{equation}
+\persamaan{Akurasi \textit{top-k}}
+
+\noindent\textbf{Contoh perhitungan.} Tabel~\ref{tab:contoh_topk} memuat lima deskripsi usaha beserta golongan pokok KBLI acuan dan tiga prediksi teratas model. Golongan pokok yang digunakan adalah 01 (pertanian tanaman), 10 (industri makanan), 11 (industri minuman), 13 (industri tekstil), 14 (industri pakaian jadi), 16 (industri kayu dan barang anyaman), 20 (industri bahan kimia), 32 (industri pengolahan lainnya), 46 (perdagangan besar), 47 (perdagangan eceran), dan 56 (penyediaan makanan dan minuman).
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.04\textwidth}|L{0.28\textwidth}|>{\centering\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.16\textwidth}|>{\centering\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.10\textwidth}|}
+\caption{Contoh Perhitungan Akurasi \textit{Top-k} pada Tingkat Golongan Pokok}
+\label{tab:contoh_topk}\\
+\hline
+\textbf{No.} & \textbf{Deskripsi Usaha} & \textbf{Acuan} & \textbf{Prediksi Teratas (urut)} & \textbf{Benar @1} & \textbf{Benar @3} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Deskripsi Usaha} & \textbf{Acuan} & \textbf{Prediksi Teratas (urut)} & \textbf{Benar @1} & \textbf{Benar @3} \\ \hline
+\endhead
+1 & tenun ulos & 13 & 13, 14, 47 & 1 & 1 \\ \hline
+2 & jualan mi gomak & 56 & 10, 56, 47 & 0 & 1 \\ \hline
+3 & kedai tuak & 56 & 56, 11, 47 & 1 & 1 \\ \hline
+4 & anyaman eceng gondok & 16 & 13, 32, 16 & 0 & 1 \\ \hline
+5 & penyulingan minyak nilam & 20 & 01, 10, 46 & 0 & 0 \\ \hline
+\end{longtable}
+}
+
+\noindent Dengan demikian, $\text{Acc@}1 = 2/5 = 0{,}40$ dan $\text{Acc@}3 = 4/5 = 0{,}80$. Selisih kedua nilai tersebut menunjukkan bahwa kode yang benar sering terdapat di antara kandidat teratas walaupun tidak berada pada peringkat pertama, sehingga verifikator manusia dapat memilih dari daftar kandidat pendek (DP3). Contoh nomor 5 juga menunjukkan kesalahan yang khas, yaitu kegiatan pengolahan hasil pertanian yang diklasifikasikan sebagai kegiatan pertanian.
+
+Karena distribusi kelas KBLI tidak seimbang, kinerja juga diukur menggunakan \textit{macro-F1} pada tingkat kategori, sebagaimana Persamaan~\eqref{eq:f1}, dengan $\mathcal{C}$ adalah himpunan kelas, serta $P_c$ dan $R_c$ adalah presisi dan \textit{recall} kelas $c$.
+
+\begin{equation}
+  F_1^{\text{macro}} = \frac{1}{|\mathcal{C}|}\sum_{c \in \mathcal{C}} \frac{2 \, P_c \, R_c}{P_c + R_c},
+  \quad P_c = \frac{TP_c}{TP_c + FP_c}, \quad R_c = \frac{TP_c}{TP_c + FN_c}
+  \label{eq:f1}
+\end{equation}
+\persamaan{\textit{Macro-F1}}
+
+\noindent\textbf{Contoh perhitungan.} Misalkan 20 rekaman diklasifikasikan ke tiga kategori KBLI, yaitu C (industri pengolahan), G (perdagangan besar dan eceran), dan I (penyediaan akomodasi dan penyediaan makan minum). Matriks kebingungan (\textit{confusion matrix}) antara kategori acuan dan prediksi LLM disajikan pada Tabel~\ref{tab:contoh_cm}.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.22\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|}
+\caption{Contoh Matriks Kebingungan pada Tingkat Kategori KBLI}
+\label{tab:contoh_cm}\\
+\hline
+\textbf{Acuan $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
+\endfirsthead
+\hline
+\textbf{Acuan $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
+\endhead
+C & 8 & 1 & 1 & 10 \\ \hline
+G & 1 & 4 & 0 & 5 \\ \hline
+I & 2 & 0 & 3 & 5 \\ \hline
+\textbf{Jumlah} & 11 & 5 & 4 & 20 \\ \hline
+\end{longtable}
+}
+
+\noindent Untuk kategori C, $TP = 8$, $FP = 1 + 2 = 3$, dan $FN = 1 + 1 = 2$, sehingga $P_C = 8/11 = 0{,}727$, $R_C = 8/10 = 0{,}800$, dan $F_{1,C} = 2(0{,}727)(0{,}800)/(0{,}727 + 0{,}800) = 0{,}762$. Dengan cara yang sama, $P_G = 4/5 = 0{,}800$ dan $R_G = 4/5 = 0{,}800$ sehingga $F_{1,G} = 0{,}800$, serta $P_I = 3/4 = 0{,}750$ dan $R_I = 3/5 = 0{,}600$ sehingga $F_{1,I} = 0{,}667$. Maka
+\[
+  F_1^{\text{macro}} = \frac{0{,}762 + 0{,}800 + 0{,}667}{3} = 0{,}743.
+\]
+Akurasi pada contoh yang sama adalah $(8 + 4 + 3)/20 = 0{,}75$. \textit{Macro-F1} yang lebih rendah daripada akurasi mencerminkan kinerja yang lebih lemah pada kategori I yang jumlah rekamannya lebih sedikit, misalnya warung makan yang tertukar dengan industri makanan.
+
+Kesepakatan antara dua pengode, baik antara dua anotator manusia maupun antara LLM dan data acuan, diukur menggunakan koefisien kappa Cohen \cite{cohen1960kappa} pada Persamaan~\eqref{eq:kappa}, dengan $p_o$ adalah proporsi kesepakatan teramati dan $p_e$ adalah proporsi kesepakatan yang diharapkan secara kebetulan. Interpretasi nilai kappa mengikuti Landis dan Koch \cite{landis1977kappa}, yaitu 0,41--0,60 sedang, 0,61--0,80 substansial, dan 0,81--1,00 hampir sempurna.
+
+\begin{equation}
+  \kappa = \frac{p_o - p_e}{1 - p_e}
+  \label{eq:kappa}
+\end{equation}
+\persamaan{Koefisien kappa Cohen}
+
+\noindent\textbf{Contoh perhitungan.} Menggunakan Tabel~\ref{tab:contoh_cm}, proporsi kesepakatan teramati adalah $p_o = (8 + 4 + 3)/20 = 0{,}75$. Proporsi kesepakatan kebetulan dihitung dari perkalian jumlah baris dan jumlah kolom setiap kategori:
+\[
+  p_e = \frac{(10 \times 11) + (5 \times 5) + (5 \times 4)}{20^2} = \frac{155}{400} = 0{,}3875.
+\]
+Maka
+\[
+  \kappa = \frac{0{,}75 - 0{,}3875}{1 - 0{,}3875} = \frac{0{,}3625}{0{,}6125} \approx 0{,}59.
+\]
+Nilai tersebut termasuk kesepakatan sedang dan belum mencapai kriteria penerimaan $\kappa \geq 0{,}61$ yang ditetapkan pada Subbab~\ref{sec:eksperimen}, walaupun akurasinya 75\%. Contoh ini menunjukkan alasan penggunaan kappa: akurasi tidak memperhitungkan kesepakatan yang dapat terjadi secara kebetulan akibat dominasi kategori C.
+
+\subsection{Evaluasi Pengguna}
+
+Kebergunaan sistem diukur menggunakan \textit{System Usability Scale} (SUS) yang terdiri atas sepuluh butir skala Likert lima poin \cite{brooke1996sus}. Skor SUS dihitung dengan Persamaan~\eqref{eq:sus}, dengan $s_i$ adalah jawaban butir ke-$i$, sehingga menghasilkan rentang 0--100.
+
+\begin{equation}
+  SUS = 2{,}5 \left[ \sum_{i \in \{1,3,5,7,9\}} (s_i - 1) + \sum_{i \in \{2,4,6,8,10\}} (5 - s_i) \right]
+  \label{eq:sus}
+\end{equation}
+\persamaan{Skor \textit{System Usability Scale}}
+
+\noindent\textbf{Contoh perhitungan.} Butir bernomor ganjil pada SUS merupakan pernyataan positif dan butir bernomor genap merupakan pernyataan negatif. Misalkan seorang operator desa setelah memasukkan data UMKM memberikan jawaban $(4, 2, 4, 2, 5, 1, 4, 2, 4, 3)$ untuk butir 1--10. Kontribusi butir ganjil adalah $(4-1) + (4-1) + (5-1) + (4-1) + (4-1) = 16$ dan kontribusi butir genap adalah $(5-2) + (5-2) + (5-1) + (5-2) + (5-3) = 15$, sehingga
+\[
+  SUS = 2{,}5 \times (16 + 15) = 77{,}5.
+\]
+Skor SUS seluruh partisipan kemudian dirata-ratakan untuk memperoleh skor kebergunaan purwarupa.
+
+Beban kerja subjektif diukur menggunakan NASA-\textit{Task Load Index} (NASA-TLX) yang terdiri atas enam dimensi, yaitu tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi. Penelitian ini menggunakan varian \textit{raw} TLX tanpa pembobotan berpasangan, yang telah divalidasi untuk pengukuran berulang \cite{hernandez2022nasatlx}, sebagaimana Persamaan~\eqref{eq:rtlx}, dengan $s_d$ adalah skor dimensi ke-$d$ pada skala 0--100.
+
+\begin{equation}
+  RTLX = \frac{1}{6}\sum_{d=1}^{6} s_d
+  \label{eq:rtlx}
+\end{equation}
+\persamaan{Skor \textit{raw} NASA-TLX}
+
+\noindent\textbf{Contoh perhitungan.} Misalkan seorang staf dinas menyusun rekapitulasi UMKM per kecamatan dan jenis usaha dalam dua kondisi. Pada kondisi lembar kerja, skor tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi berturut-turut adalah 70, 20, 65, 40, 75, dan 60. Pada kondisi purwarupa, skornya adalah 40, 10, 30, 25, 35, dan 20. Pada dimensi performa, skor yang lebih tinggi menunjukkan persepsi performa yang lebih buruk. Maka
+\[
+  RTLX_{\text{lembar kerja}} = \frac{70+20+65+40+75+60}{6} = \frac{330}{6} = 55{,}0,
+\]
+\[
+  RTLX_{\text{purwarupa}} = \frac{40+10+30+25+35+20}{6} = \frac{160}{6} \approx 26{,}7.
+\]
+Selisih skor setiap partisipan antara kedua kondisi menjadi data berpasangan untuk pengujian H5 menggunakan uji peringkat bertanda Wilcoxon.
+
+Penerimaan teknologi diukur menggunakan konstruk persepsi kegunaan (\textit{perceived usefulness}) dan persepsi kemudahan penggunaan (\textit{perceived ease of use}) dari \textit{Technology Acceptance Model} (TAM) \cite{davis1989tam}. TAM telah digunakan untuk menilai penerimaan teknologi berbasis kecerdasan buatan generatif di kalangan pelaku usaha \cite{gupta2024genai}. Dalam penelitian ini, butir instrumen diadaptasi ke dalam Bahasa Indonesia dan ke dalam konteks tugas pendataan serta seleksi pembinaan.
+
+% =============================================================================
+% BAB III ANALISIS
+% =============================================================================
+\chapter{ANALISIS}
+\label{chap:analisis}
+
+Bab ini menguraikan konstruksi berpikir dalam mendekomposisi persoalan penelitian, yang meliputi analisis lingkungan penelitian, analisis data, dekomposisi persoalan, analisis kebutuhan artefak, analisis pemilihan metode, dan kerangka berpikir penelitian.
+
+\section{Analisis Lingkungan Penelitian}
+\label{sec:lingkungan}
+
+\subsection{Pemangku Kepentingan dan Proses Bisnis Saat Ini}
+
+Pemangku kepentingan utama penelitian ini adalah Kepala DKUKMPP sebagai pengambil keputusan kebijakan pembinaan, staf teknis Bidang Koperasi dan UMKM sebagai pengelola data dan pelaksana seleksi pembinaan, camat dan perangkat kecamatan sebagai perantara pendataan, serta kepala desa atau operator desa sebagai pihak yang paling dekat dengan pelaku usaha. Pelaku UMKM merupakan subjek data. Proses pendataan saat ini dan proses yang diusulkan digambarkan pada Gambar~\ref{fig:asis-tobe}
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=0.55cm and 0.6cm]
+  % As-is
+  \node[font=\small\bfseries] (t1) {(a) Proses saat ini};
+  \node (a1) [box, below=0.3cm of t1] {Dinas menyusun surat permintaan data (ditandatangani Sekda)};
+  \node (a2) [box, below=of a1] {Kecamatan meneruskan surat kepada kepala desa};
+  \node (a3) [box, below=of a2] {Desa mengisi format lembar kerja atau mengirim data mentah};
+  \node (a4) [box, below=of a3] {Kecamatan mengompilasi lalu mengirim berkas ke dinas};
+  \node (a5) [boxo, below=of a4] {Dinas menyalin, merapikan, dan merekap secara manual};
+  \draw[arrow] (a1) -- (a2); \draw[arrow] (a2) -- (a3); \draw[arrow] (a3) -- (a4); \draw[arrow] (a4) -- (a5);
+  % To-be
+  \node[font=\small\bfseries, right=3.2cm of t1] (t2) {(b) Proses yang diusulkan};
+  \node (b1) [box, below=0.3cm of t2] {Operator desa mengisi atau memutakhirkan data melalui formulir terpandu};
+  \node (b2) [box, below=of b1] {Validasi otomatis (format, wilayah, duplikasi)};
+  \node (b3) [box, below=of b2] {Standardisasi KBLI dengan LLM terpandu \textit{retrieval}};
+  \node (b4) [box, below=of b3] {Verifikasi staf dinas untuk keluaran berkeyakinan rendah};
+  \node (b5) [boxo, below=of b4] {Dasbor, segmentasi, dan pemeringkatan prioritas pembinaan};
+  \draw[arrow] (b1) -- (b2); \draw[arrow] (b2) -- (b3); \draw[arrow] (b3) -- (b4); \draw[arrow] (b4) -- (b5);
+  \end{tikzpicture}
+  \caption{Perbandingan Proses Pendataan UMKM Saat Ini dan Proses yang Diusulkan}
+  \label{fig:asis-tobe}
+\end{figure}
+
+Proses saat ini memiliki empat titik kelemahan. Pertama, rantai penyampaian data melewati tiga tingkat pemerintahan sehingga tingkat respons rendah dan tidak dapat dipantau; dinas tidak memiliki daftar desa yang telah dan belum mengirim data. Kedua, format isian tidak divalidasi pada saat pengisian sehingga kesalahan baru diketahui ketika data dikompilasi. Ketiga, atribut jenis usaha diisi sebagai teks bebas sehingga rekapitulasi per jenis usaha memerlukan pengodean manual. Keempat, tidak tersedia mekanisme untuk melaporkan usaha yang berhenti beroperasi, sehingga data terus menumpuk tanpa pemutakhiran.
+
+\subsection{Temuan Wawancara dan Implikasi Desain}
+
+Temuan wawancara dengan Kepala Dinas dan staf Bidang Koperasi dan UMKM \cite{wawancarakadis2026,wawancarastaf2026} dipetakan ke implikasi desain artefak pada Tabel~\ref{tab:temuan}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.04\textwidth}|L{0.40\textwidth}|L{0.48\textwidth}|}
+\caption{Temuan Wawancara Pemangku Kepentingan dan Implikasi Desain}
+\label{tab:temuan}\\
+\hline
+\textbf{No.} & \textbf{Temuan} & \textbf{Implikasi Desain} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Temuan} & \textbf{Implikasi Desain} \\ \hline
+\endhead
+1 & Data UMKM sekitar 12.000 unit berasal dari tahun 2020 dan tidak pernah dimutakhirkan setiap tiga bulan sebagaimana seharusnya & Modul pemutakhiran berkala dengan status aktif, berhenti, atau pindah, beserta pencatatan tanggal verifikasi untuk mengukur kemutakhiran \\ \hline
+2 & Pendataan berjenjang melalui surat Sekda, kecamatan, dan desa dalam bentuk lembar kerja; tingkat respons rendah & Formulir daring per desa dengan akun operator desa dan pemantauan status pengiriman per desa \\ \hline
+3 & Data per kecamatan tercampur dan rekapitulasi disusun manual; dinas sering diminta data per kecamatan, klaster, dan jenis usaha & Normalisasi kode wilayah dan KBLI serta rekapitulasi otomatis yang dapat diekspor \\ \hline
+4 & Hanya lima personel teknis yang juga menangani Koperasi Desa Merah Putih & Otomatisasi standardisasi dengan antrean verifikasi hanya untuk keluaran berkeyakinan rendah \\ \hline
+5 & Bantuan dan pelatihan terbatas (misalnya 20 mesin jahit, 30 peserta pelatihan) sehingga dilakukan kurasi dengan kriteria; pemerataan antarwilayah menjadi pertimbangan & Modul pemeringkatan prioritas berbasis kriteria dinas dengan pembobotan AHP dan batasan pemerataan per kecamatan \\ \hline
+6 & Dinas ingin desa dapat melihat dan memutakhirkan data, tetapi data tidak dibuka untuk umum & Kontrol akses berbasis peran: operator desa hanya mengakses data desanya \\ \hline
+7 & Lokasi sebagian desa memerlukan perjalanan sekitar empat jam dari ibu kota kabupaten; Renstra mencatat konektivitas internet yang tidak merata \cite[hlm.~44]{renstra2025toba} & Antarmuka ringan yang dapat digunakan pada jaringan berkecepatan rendah dengan penyimpanan isian sementara \\ \hline
+8 & Pelaku UMKM lebih membutuhkan pendampingan langsung daripada alat digital mandiri; platform pemasaran daerah yang pernah dibangun tidak digunakan & Pengguna sistem adalah aparatur dinas dan desa, bukan pelaku UMKM; sistem berfungsi sebagai augmentasi pendampingan \\ \hline
+9 & Instansi provinsi meminta data UMKM untuk dimasukkan ke aplikasi provinsi & Ekspor data dengan struktur atribut baku dan kode referensi \\ \hline
+10 & Prioritas pembinaan diberikan kepada wirausaha pemula; sektor yang berkembang adalah tenun ulos dan kriya & Atribut lama usaha dan klaster sektor pembinaan dalam formulir serta kriteria AHP \\ \hline
+\end{longtable}
+}
+
+\section{Analisis Data}
+\label{sec:data}
+
+Data yang akan digunakan terdiri atas tiga kelompok. Kelompok pertama adalah data UMKM hasil pendataan tahun 2020 yang menurut keterangan staf berjumlah sekitar 12.000 rekaman \cite{wawancarastaf2026}. Kelompok kedua adalah data kiriman desa pada periode Agustus--September 2026 yang belum dikompilasi. Kelompok ketiga adalah data yang dihimpun melalui artefak selama uji coba lapangan. Akses terhadap dua kelompok pertama diajukan melalui surat resmi kepada dinas, sebagaimana prosedur yang disepakati dalam wawancara. Karakteristik atribut yang diketahui disajikan pada Tabel~\ref{tab:dataset}; karakteristik statistik, seperti proporsi nilai kosong dan distribusi jenis usaha, akan diukur pada tahap profil data.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.04\textwidth}|L{0.17\textwidth}|L{0.17\textwidth}|L{0.53\textwidth}|}
+\caption{Karakteristik Atribut Data UMKM Dinas}
+\label{tab:dataset}\\
+\hline
+\textbf{No.} & \textbf{Atribut} & \textbf{Tipe Data} & \textbf{Keterangan dan Persoalan yang Diantisipasi} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Atribut} & \textbf{Tipe Data} & \textbf{Keterangan dan Persoalan yang Diantisipasi} \\ \hline
+\endhead
+1 & Nama usaha & Teks & Variasi penulisan untuk usaha yang sama; dasar deteksi duplikasi; data pribadi bila memuat nama pemilik \\ \hline
+2 & Alamat & Teks & Format tidak baku; perlu dinormalisasi ke kode kecamatan dan desa \\ \hline
+3 & Jenis usaha & Teks bebas & Deskripsi pendek, informal, dan memuat istilah lokal; target standardisasi ke KBLI 2020 \\ \hline
+4 & Modal & Numerik atau teks & Satuan dan format penulisan tidak seragam; dasar klasifikasi skala usaha \\ \hline
+5 & NIB & Teks & Banyak nilai kosong karena NIB tidak diwajibkan untuk pendataan; validasi format 13 digit \\ \hline
+6 & Jumlah karyawan & Numerik & Kemungkinan nilai kosong atau tidak realistis \\ \hline
+\end{longtable}
+}
+
+Ketidaksesuaian antara jumlah UMKM terdata pada LKjIP 2025 (10.032 unit) dan keterangan staf (sekitar 12.000 unit) merupakan indikasi awal persoalan konsistensi dan keunikan data \cite{lkjip2025toba,wawancarastaf2026}. Formulir pendataan baru akan menambahkan atribut yang diperlukan untuk segmentasi dan seleksi pembinaan, yaitu deskripsi produk utama, lama usaha, kisaran hasil penjualan, status legalitas (NIB, P-IRT, sertifikat halal), saluran pemasaran, riwayat pembinaan, dan status operasional. Rancangan kamus data disajikan pada Lampiran~3.
+
+Untuk evaluasi RQ2, sampel rekaman dipilih secara acak berstrata berdasarkan kecamatan dan panjang teks jenis usaha. Ukuran sampel uji ditentukan agar akurasi dapat diestimasi dengan batas kesalahan $e = 0{,}04$ pada tingkat kepercayaan 95\% dengan asumsi proporsi paling konservatif $p = 0{,}5$, sebagaimana Persamaan~\eqref{eq:sampel}. Dengan demikian, data acuan disusun sebanyak 600 rekaman, yang terbagi atas 100 rekaman pengembangan untuk perancangan \textit{prompt} dan 500 rekaman uji yang tidak digunakan selama pengembangan.
+
+\begin{equation}
+  n = \frac{z^2 \, p \, (1-p)}{e^2} = \frac{1{,}96^2 \times 0{,}5 \times 0{,}5}{0{,}04^2} \approx 600
+  \label{eq:sampel}
+\end{equation}
+\persamaan{Ukuran sampel data acuan}
+
+\section{Dekomposisi Persoalan}
+\label{sec:dekomposisi}
+
+Persoalan utama, yaitu tidak tersedianya data UMKM yang andal untuk mendukung keputusan pembinaan, didekomposisi menjadi empat sub-persoalan yang masing-masing berkorespondensi dengan satu pertanyaan penelitian, sebagaimana Tabel~\ref{tab:dekomposisi}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.06\textwidth}|L{0.30\textwidth}|L{0.30\textwidth}|L{0.24\textwidth}|}
+\caption{Dekomposisi Persoalan Penelitian}
+\label{tab:dekomposisi}\\
+\hline
+\textbf{Kode} & \textbf{Sub-persoalan} & \textbf{Pendekatan Solusi} & \textbf{Keterkaitan} \\ \hline
+\endfirsthead
+\hline
+\textbf{Kode} & \textbf{Sub-persoalan} & \textbf{Pendekatan Solusi} & \textbf{Keterkaitan} \\ \hline
+\endhead
+SP1 & Proses penghimpunan data tidak memungkinkan pemutakhiran berkala dan pemantauan respons desa & Pendataan partisipatif melalui formulir terpandu dan kontrol akses per desa & RQ1, RQ3 \\ \hline
+SP2 & Deskripsi jenis usaha tidak terstandardisasi sehingga tidak dapat direkapitulasi & Standardisasi KBLI menggunakan LLM terpandu \textit{retrieval} dengan verifikasi manusia & RQ2, RQ3 \\ \hline
+SP3 & Data tidak memenuhi dimensi kualitas yang diperlukan untuk keputusan & Validasi aturan domain, deteksi duplikasi, dan pencatatan verifikasi & RQ3 \\ \hline
+SP4 & Seleksi sasaran pembinaan dilakukan tanpa dukungan data terstruktur & Dasbor, segmentasi K-\textit{Prototypes}, dan pemeringkatan berbasis AHP & RQ1, RQ4 \\ \hline
+\end{longtable}
+}
+
+\section{Analisis Kebutuhan Artefak}
+\label{sec:kebutuhan}
+
+Berdasarkan Tabel~\ref{tab:temuan} dan Tabel~\ref{tab:dekomposisi}, kebutuhan fungsional (KF) dan nonfungsional (KNF) awal artefak dirumuskan pada Tabel~\ref{tab:kebutuhan} Kebutuhan ini akan divalidasi kembali bersama dinas pada tahap analisis kebutuhan.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.07\textwidth}|L{0.62\textwidth}|L{0.20\textwidth}|}
+\caption{Kebutuhan Fungsional dan Nonfungsional Awal}
+\label{tab:kebutuhan}\\
+\hline
+\textbf{Kode} & \textbf{Kebutuhan} & \textbf{Pengguna} \\ \hline
+\endfirsthead
+\hline
+\textbf{Kode} & \textbf{Kebutuhan} & \textbf{Pengguna} \\ \hline
+\endhead
+KF-01 & Sistem menyediakan formulir terpandu untuk menambah, memperbarui, dan menandai status operasional UMKM per desa & Operator desa \\ \hline
+KF-02 & Sistem memvalidasi format isian (NIB, modal, wilayah) dan memberikan peringatan entri ganda pada saat pengisian & Operator desa \\ \hline
+KF-03 & Sistem mengimpor data lembar kerja lama ke dalam basis data dengan pemetaan atribut & Staf dinas \\ \hline
+KF-04 & Sistem menstandardisasi deskripsi jenis usaha ke kode KBLI 2020 beserta tingkat keyakinan dan alasan singkat & Sistem \\ \hline
+KF-05 & Sistem menyediakan antrean verifikasi untuk keluaran standardisasi berkeyakinan rendah atau yang ditandai perlu verifikasi & Staf dinas \\ \hline
+KF-06 & Sistem mengklasifikasikan skala usaha berdasarkan kriteria PP Nomor 7 Tahun 2021 & Sistem \\ \hline
+KF-07 & Sistem menampilkan rekapitulasi per kecamatan, desa, klaster sektor, KBLI, dan skala usaha serta status pengiriman data per desa & Staf dinas, pimpinan \\ \hline
+KF-08 & Sistem menyediakan segmentasi UMKM dan pemeringkatan kandidat penerima pembinaan berdasarkan bobot kriteria dan kuota per kecamatan & Staf dinas, pimpinan \\ \hline
+KF-09 & Sistem mengekspor data dan rekapitulasi dalam format baku untuk keperluan pelaporan dan permintaan instansi lain & Staf dinas \\ \hline
+KNF-01 & Kontrol akses berbasis peran; operator desa hanya mengakses data desanya & Seluruh pengguna \\ \hline
+KNF-02 & Data pribadi tidak dikirim ke layanan LLM eksternal; pemrosesan mematuhi UU Pelindungan Data Pribadi \cite{uupdp2022} & Sistem \\ \hline
+KNF-03 & Antarmuka dapat digunakan pada perangkat seluler dan jaringan berkecepatan rendah & Operator desa \\ \hline
+KNF-04 & Seluruh perubahan data dan keputusan verifikasi tercatat dalam jejak audit & Staf dinas \\ \hline
+KNF-05 & Versi model, \textit{prompt}, dan kamus KBLI terdokumentasi untuk keterulangan eksperimen & Peneliti \\ \hline
+\end{longtable}
+}
+
+\section{Analisis Pemilihan Metode}
+\label{sec:analisis-metode}
+
+\textbf{Pemilihan LLM terpandu \textit{retrieval} untuk standardisasi.} Pendekatan pembelajaran mesin terawasi memerlukan data latih berlabel dalam jumlah besar untuk ribuan kelas KBLI dan menunjukkan penurunan kinerja yang tajam pada data riil \cite{amnur2025kbli}. LLM tidak memerlukan data latih berlabel dalam jumlah besar dan mampu memahami parafrasa \cite{gilardi2023chatgpt,ziems2024css}, tetapi berisiko menghasilkan kode yang tidak sah apabila diminta menghasilkan kode dari ingatan parametriknya \cite{ji2023hallucination,dahl2024legal}. Pembatasan pilihan LLM pada kandidat hasil \textit{retrieval} dari kamus KBLI resmi dirancang untuk menekan risiko tersebut \cite{gao2023ragsurvey,achananuparp2025occupation}. Karena efektivitas rancangan ini belum diketahui untuk data UMKM berbahasa Indonesia, penelitian ini mengujinya secara eksperimental terhadap kondisi pembanding.
+
+\textbf{Pemilihan dua jenis model.} Model \textit{proprietary} umumnya memiliki kemampuan bahasa yang lebih baik, sedangkan model \textit{open-weight} dapat dijalankan pada infrastruktur lokal sehingga sesuai dengan keterbatasan anggaran dan persyaratan pelindungan data pemerintah daerah. Perbandingan keduanya memberikan informasi mengenai pertukaran (\textit{trade-off}) antara kinerja, biaya, dan kedaulatan data.
+
+\textbf{Pemilihan K-\textit{Prototypes} dan AHP.} Data UMKM bersifat campuran sehingga algoritma berbasis jarak Euclidean murni tidak sesuai tanpa transformasi yang menghilangkan makna atribut kategorikal \cite{huang1998kprototypes}. AHP dipilih karena jumlah pengambil keputusan sedikit, kriteria berasal dari kebijakan dinas, dan konsistensi penilaian dapat diuji secara formal \cite{saaty2008ahp}. Penjumlahan terbobot dipilih karena transparan dan mudah dijelaskan kepada pimpinan dinas.
+
+\textbf{Pemilihan pengguna aparatur, bukan pelaku UMKM.} Hasil wawancara menunjukkan bahwa alat digital mandiri bagi pelaku UMKM cenderung tidak digunakan \cite{wawancarastaf2026}, sedangkan keberhasilan penerapan kecerdasan buatan generatif pada UMKM bergantung pada kompetensi dan kesiapan organisasi penggunanya \cite{rajaram2024genai}. Oleh karena itu, artefak ditujukan untuk memperkuat kapasitas aparatur sebagai pendamping, sesuai prinsip augmentasi \cite{raisch2021automation}.
+
+\section{Kerangka Berpikir}
+\label{sec:kerangka}
+
+Hasil analisis dirangkum dalam kerangka berpikir pada Gambar~\ref{fig:kerangka}, yang menghubungkan persoalan, landasan teori, artefak yang diusulkan, evaluasi, dan luaran penelitian.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=0.5cm]
+  \node (p) [boxw] {\textbf{Persoalan:} capaian pembinaan 0,65\%; data UMKM 2020 tidak mutakhir; jenis usaha berupa teks bebas; lima personel teknis; sumber daya pembinaan terbatas};
+  \node (g) [boxw, below=of p] {\textbf{Celah penelitian:} keandalan LLM terpandu \textit{retrieval} pada data administratif berbahasa Indonesia belum teruji; SPK UMKM mengasumsikan data bersih; dampak pada aparatur daerah belum diukur};
+  \node (t2) [box, minimum height=1.5cm, below=0.6cm of g] {LLM dan RAG \cite{lotfipoor2026llm,gao2023ragsurvey}; KBLI \cite{bps2020kbli}};
+  \node (t1) [box, minimum height=1.5cm, left=0.4cm of t2] {DSR \cite{hevner2004design,peffers2007dsrm}; kualitas data \cite{iso25012}};
+  \node (t3) [box, minimum height=1.5cm, right=0.4cm of t2] {K-\textit{Prototypes} \cite{huang1998kprototypes}; AHP \cite{saaty2008ahp}; SUS, TLX, TAM};
+  \node (a) [boxw, below=2.2cm of g] {\textbf{Artefak:} pendataan partisipatif desa + standardisasi KBLI berbasis LLM terpandu \textit{retrieval} + validasi kualitas data + dasbor, segmentasi, dan pemeringkatan prioritas};
+  \node (e) [boxw, below=of a] {\textbf{Evaluasi:} eksperimen klasifikasi (RQ2); kualitas data sebelum--sesudah (RQ3); evaluasi pengguna \textit{within-subject} dan kesesuaian dengan ahli (RQ4)};
+  \node (l) [boxw, below=of e] {\textbf{Luaran:} purwarupa sistem, data acuan KBLI beranotasi, pengetahuan desain, laporan Tugas Akhir, dan manuskrip JCIS};
+  \draw[arrow] (p) -- (g);
+  \draw[arrow] (g) -- (t1); \draw[arrow] (g) -- (t2); \draw[arrow] (g) -- (t3);
+  \draw[arrow] (t1) -- (a); \draw[arrow] (t2) -- (a); \draw[arrow] (t3) -- (a);
+  \draw[arrow] (a) -- (e); \draw[arrow] (e) -- (l);
+  \end{tikzpicture}
+  \caption{Kerangka Berpikir Penelitian}
+  \label{fig:kerangka}
+\end{figure}
+
+% =============================================================================
+% BAB IV RANCANGAN PENELITIAN
+% =============================================================================
+\chapter{RANCANGAN PENELITIAN}
+\label{chap:rancangan}
+
+Bab ini menjabarkan rancangan kegiatan untuk menjawab pertanyaan penelitian dan mencapai tujuan penelitian, yang meliputi metode penelitian, tahapan penelitian, rancangan artefak, rancangan eksperimen dan evaluasi, pembagian peran, etika penelitian, alat dan bahan, jadwal pelaksanaan, pengelolaan risiko, serta rencana luaran dan publikasi.
+
+\section{Metode Penelitian}
+\label{sec:metode}
+
+Penelitian ini menggunakan paradigma \textit{design science research} dengan mengikuti DSRM Peffers dkk. \cite{peffers2007dsrm} dan pedoman Hevner dkk. \cite{hevner2004design}. Relevansi penelitian dijamin melalui keterlibatan dinas dan desa sejak identifikasi masalah hingga evaluasi, sedangkan ketelitian (\textit{rigor}) dijamin melalui penggunaan landasan teori yang mapan dan evaluasi campuran (\textit{mixed methods}). Evaluasi terdiri atas tiga komponen yang saling melengkapi: (1) eksperimen terkontrol untuk menguji komponen standardisasi (RQ2), (2) studi kuantitatif sebelum--sesudah untuk mengukur kualitas data (RQ3), dan (3) evaluasi lapangan \textit{within-subject} dengan pengukuran kuantitatif dan wawancara pascatugas untuk menilai dampak pada pengguna (RQ4). Prinsip desain (RQ1) dievaluasi secara tidak langsung melalui pengujian H1--H6: setiap prinsip desain dinyatakan didukung apabila hipotesis yang diturunkan darinya diterima. Purwarupa diperlakukan sebagai instrumen penelitian; pengujian fungsional hanya dilakukan untuk memastikan bahwa instrumen tersebut sahih untuk digunakan dalam pengumpulan data, bukan sebagai kriteria keberhasilan penelitian.
+
+\section{Tahapan Penelitian}
+\label{sec:tahapan}
+
+Tahapan penelitian mengikuti enam aktivitas DSRM yang dipetakan ke kegiatan penelitian sebagaimana Gambar~\ref{fig:tahapan} Aktivitas perancangan dan evaluasi dilaksanakan secara iteratif; apabila hasil evaluasi tidak memenuhi kriteria penerimaan, tim kembali ke aktivitas perancangan.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=0.45cm]
+  \node (s1) [boxw] {\textbf{1. Identifikasi masalah dan motivasi}\\Studi dokumen LKjIP dan Renstra; wawancara Kadis dan staf (23 Oktober 2026); studi literatur};
+  \node (s2) [boxw, below=of s1] {\textbf{2. Penetapan tujuan solusi}\\Kebutuhan fungsional dan nonfungsional; kriteria penerimaan; izin dan akses data};
+  \node (s3) [boxw, below=of s2] {\textbf{3. Perancangan dan pengembangan}\\Profil data; data acuan KBLI; \textit{pipeline} standardisasi; modul pendataan; dasbor, segmentasi, dan AHP};
+  \node (s4) [boxw, below=of s3] {\textbf{4. Demonstrasi}\\Uji coba lapangan pada desa percontohan bersama staf dinas dan operator desa};
+  \node (s5) [boxw, below=of s4] {\textbf{5. Evaluasi}\\Eksperimen klasifikasi (RQ2); kualitas data (RQ3); evaluasi pengguna dan kesesuaian dengan ahli (RQ4)};
+  \node (d) [decision, below=0.6cm of s5, text width=2.2cm, aspect=2.2, inner sep=1pt, font=\footnotesize, align=center] {Kriteria\\terpenuhi?};
+  \node (s6) [boxw, below=0.6cm of d] {\textbf{6. Komunikasi}\\Laporan Tugas Akhir; Seminar Hasil; Sidang; manuskrip JCIS};
+  \draw[arrow] (s1) -- (s2); \draw[arrow] (s2) -- (s3); \draw[arrow] (s3) -- (s4); \draw[arrow] (s4) -- (s5); \draw[arrow] (s5) -- (d);
+  \draw[arrow] (d) -- node[right, font=\footnotesize] {Ya} (s6);
+  \draw[arrow] (d.east) -- node[below, font=\footnotesize] {Tidak} ++(5.4,0) |- (s3.east);
+  \end{tikzpicture}
+  \caption{Tahapan Penelitian Berdasarkan DSRM}
+  \label{fig:tahapan}
+\end{figure}
+
+\begin{enumerate}
+  \item \textbf{Identifikasi masalah dan motivasi.} Masukan berupa LKjIP 2025, Renstra 2025--2029, transkrip wawancara, dan literatur. Proses berupa analisis dokumen dan analisis tematik wawancara. Luaran berupa rumusan masalah dan celah penelitian pada Bab~I dan Bab~III. Tahap ini telah dilaksanakan hingga 23 Oktober 2026.
+  \item \textbf{Penetapan tujuan solusi.} Masukan berupa luaran tahap pertama. Proses berupa lokakarya validasi kebutuhan bersama staf dinas dan penetapan kriteria penerimaan. Luaran berupa spesifikasi kebutuhan yang tervalidasi, model proses \textit{as-is} dan \textit{to-be} dalam notasi BPMN, serta surat izin penelitian dan persetujuan akses data.
+  \item \textbf{Perancangan dan pengembangan.} Masukan berupa spesifikasi kebutuhan dan data dinas. Proses berupa profil data, penyusunan data acuan, perancangan basis data dan antarmuka, implementasi \textit{pipeline} standardisasi, serta implementasi modul pendukung keputusan. Luaran berupa purwarupa sistem yang telah lulus pengujian fungsional.
+  \item \textbf{Demonstrasi.} Masukan berupa purwarupa. Proses berupa pelatihan singkat dan uji coba lapangan selama empat minggu pada desa percontohan. Luaran berupa data hasil pendataan melalui sistem dan catatan penggunaan.
+  \item \textbf{Evaluasi.} Masukan berupa data acuan, data uji coba, dan partisipan. Proses berupa eksperimen dan evaluasi sebagaimana Subbab~\ref{sec:eksperimen} sampai dengan Subbab~\ref{sec:evalpengguna} Luaran berupa hasil pengukuran untuk RQ2--RQ4.
+  \item \textbf{Komunikasi.} Masukan berupa seluruh hasil penelitian. Proses berupa penulisan laporan dan manuskrip. Luaran berupa laporan Tugas Akhir dan manuskrip yang siap diajukan ke JCIS.
+\end{enumerate}
+
+\section{Rancangan Artefak}
+\label{sec:artefak}
+
+\subsection{Arsitektur Sistem}
+
+Artefak dirancang sebagai aplikasi web dengan empat lapisan, sebagaimana Gambar~\ref{fig:arsitektur} Lapisan antarmuka menyediakan formulir pendataan bagi operator desa serta dasbor dan modul keputusan bagi staf dinas. Lapisan aplikasi menangani autentikasi, kontrol akses, validasi, dan alur verifikasi. Lapisan layanan analitis terdiri atas layanan standardisasi berbasis LLM dan layanan segmentasi serta pemeringkatan. Lapisan data menyimpan data UMKM, kamus KBLI beserta indeks vektornya, referensi wilayah, dan jejak audit.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=0.45cm and 0.35cm]
+  \node (u1) [box, text width=4.8cm, minimum height=1.3cm] {Formulir pendataan terpandu (operator desa)};
+  \node (u2) [box, text width=4.8cm, minimum height=1.3cm, right=0.8cm of u1] {Dasbor, antrean verifikasi, dan modul prioritas (staf dinas)};
+  \path (u1.south) -- (u2.south) coordinate[midway] (mu);
+  \node (ap) [boxw, below=1.0cm of mu] {\textbf{Lapisan aplikasi:} autentikasi, kontrol akses berbasis peran, validasi aturan domain, deteksi duplikasi, alur verifikasi, jejak audit, ekspor};
+  \node (l1) [box, text width=4.8cm, minimum height=1.3cm, below=1.0cm of ap.south, xshift=-2.8cm] {Layanan standardisasi KBLI (\textit{retriever} hibrida + LLM)};
+  \node (l2) [box, text width=4.8cm, minimum height=1.3cm, below=1.0cm of ap.south, xshift=2.8cm] {Layanan analitis (klasifikasi skala, K-\textit{Prototypes}, AHP)};
+  \path (l1.south) -- (l2.south) coordinate[midway] (ml);
+  \node (db) [boxw, below=1.0cm of ml] {\textbf{Lapisan data:} basis data UMKM; kamus KBLI 2020 dan indeks vektor; referensi wilayah; bobot kriteria; jejak audit};
+  \draw[arrow, <->] (u1) -- (ap); \draw[arrow, <->] (u2) -- (ap);
+  \draw[arrow, <->] (ap) -- (l1); \draw[arrow, <->] (ap) -- (l2);
+  \draw[arrow, <->] (l1) -- (db); \draw[arrow, <->] (l2) -- (db);
+  \end{tikzpicture}
+  \caption{Arsitektur Artefak}
+  \label{fig:arsitektur}
+\end{figure}
+
+\subsection{\textit{Pipeline} Standardisasi KBLI}
+
+\textit{Pipeline} standardisasi terdiri atas lima langkah. Pertama, prapemrosesan menormalkan ejaan, singkatan, dan istilah lokal menggunakan glosarium yang disusun dari data pengembangan, serta memisahkan atribut data pribadi sehingga hanya teks jenis usaha, deskripsi produk, dan nama kecamatan yang diteruskan ke LLM. Kedua, \textit{retriever} hibrida yang menggabungkan skor leksikal BM25 dan kemiripan vektor \textit{embedding} multibahasa mengambil $k$ kandidat kelompok KBLI beserta judul dan uraiannya; nilai $k \in \{5, 10, 20\}$ ditentukan berdasarkan \textit{Recall@k} pada data pengembangan. Ketiga, LLM menerima deskripsi usaha dan daftar kandidat, kemudian mengembalikan keluaran terstruktur sebagaimana Source Code~\ref{lst:prompt} Keempat, validator memeriksa bahwa kode keluaran terdapat dalam kandidat dan kamus KBLI. Kelima, rekaman dengan tingkat keyakinan di bawah ambang batas atau berstatus \texttt{PERLU\_VERIFIKASI} diteruskan ke antrean verifikasi staf dinas. Pemetaan dari kode KBLI ke klaster sektor pembinaan dinas, misalnya tenun dan kriya, olahan pangan, perdagangan, dan jasa, dilakukan menggunakan tabel pemetaan deterministik yang disepakati bersama dinas.
+
+\begin{lstlisting}[language={}, caption={Rancangan Struktur \textit{Prompt} dan Keluaran Standardisasi KBLI}, label={lst:prompt}]
+[SISTEM]
+Anda adalah pengode Klasifikasi Baku Lapangan Usaha Indonesia (KBLI) 2020.
+Pilih SATU kode dari DAFTAR KANDIDAT yang paling sesuai dengan kegiatan
+usaha utama. Jangan membuat kode di luar daftar. Jika deskripsi tidak
+cukup untuk menentukan kode, kembalikan status "PERLU_VERIFIKASI".
+
+[GLOSARIUM LOKAL]
+mi gomak = mi khas Batak; ulos = kain tenun tradisional Batak; ...
+
+[DESKRIPSI USAHA]
+jenis_usaha: "<teks dari formulir>"
+produk_utama: "<teks dari formulir>"
+kecamatan: "<nama kecamatan>"
+
+[DAFTAR KANDIDAT]
+1. <kode> | <judul> | <uraian singkat>
+...
+k. <kode> | <judul> | <uraian singkat>
+
+[FORMAT KELUARAN JSON]
+{
+  "kode_kbli": "<kode dari daftar atau null>",
+  "status": "TERKODE | PERLU_VERIFIKASI",
+  "keyakinan": "<bilangan 0.0 - 1.0>",
+  "alasan": "<maksimal dua kalimat>"
+}
+\end{lstlisting}
+
+\subsection{Modul Pendataan dan Kualitas Data}
+
+Modul pendataan menyediakan formulir terpandu dengan daftar pilihan untuk atribut berdomain tertutup, isian bebas hanya untuk deskripsi usaha dan produk, validasi pada saat pengisian, serta peringatan kemungkinan duplikasi berdasarkan kemiripan nama usaha dan alamat dalam satu desa. Setiap pembaruan mencatat waktu verifikasi dan identitas operator sehingga kemutakhiran dapat diukur. Data lama diimpor melalui fungsi pemetaan atribut dan diproses oleh \textit{pipeline} standardisasi yang sama.
+
+\subsection{Modul Pendukung Keputusan}
+
+Modul pendukung keputusan terdiri atas tiga fungsi. Fungsi rekapitulasi menyajikan jumlah dan sebaran UMKM per kecamatan, desa, klaster sektor, KBLI, dan skala usaha. Fungsi segmentasi menerapkan K-\textit{Prototypes} pada atribut campuran dengan jumlah klaster ditentukan melalui kurva biaya dan nilai \textit{silhouette}, kemudian profil setiap segmen diinterpretasikan bersama staf dinas. Fungsi pemeringkatan menerapkan bobot AHP pada kriteria seleksi yang dielisitasi dari Kepala Dinas, Kepala Bidang, dan staf teknis, dengan agregasi penilaian individu menggunakan rerata geometrik. Kandidat kriteria awal meliputi kesesuaian dengan sektor prioritas, status wirausaha pemula, kesiapan legalitas, kesiapan produk, kesediaan mengikuti pembinaan, dan riwayat penerimaan bantuan. Pemerataan antarwilayah diterapkan sebagai batasan kuota per kecamatan yang dapat diatur oleh pengguna.
+
+\section{Rancangan Eksperimen Standardisasi (RQ2)}
+\label{sec:eksperimen}
+
+\textbf{Penyusunan data acuan.} Sebanyak 600 rekaman sampel dikodekan secara independen oleh dua anotator menggunakan pedoman anotasi KBLI 2020 yang disusun tim. Pedoman diujicobakan pada 50 rekaman untuk kalibrasi sebelum pengodean penuh. Ketidaksepakatan diselesaikan oleh anotator ketiga, dan kasus yang tetap ambigu dikonsultasikan dengan staf dinas. Kesepakatan antaranotator dilaporkan menggunakan kappa Cohen pada tingkat kategori dan golongan pokok sebagai batas atas kinerja yang wajar.
+
+\textbf{Kondisi eksperimen.} Eksperimen menggunakan desain faktorial pada data uji yang sama sebagaimana Tabel~\ref{tab:kondisi} Setiap kondisi LLM dijalankan dengan dua model, yaitu satu model \textit{proprietary} dan satu model \textit{open-weight}, pada temperatur nol. Setiap kondisi diulang tiga kali untuk mengukur konsistensi keluaran.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.07\textwidth}|L{0.25\textwidth}|L{0.58\textwidth}|}
+\caption{Kondisi Eksperimen Standardisasi KBLI}
+\label{tab:kondisi}\\
+\hline
+\textbf{Kode} & \textbf{Kondisi} & \textbf{Deskripsi} \\ \hline
+\endfirsthead
+\hline
+\textbf{Kode} & \textbf{Kondisi} & \textbf{Deskripsi} \\ \hline
+\endhead
+B0 & \textit{Baseline} leksikal & Kode KBLI dengan skor BM25 tertinggi terhadap uraian KBLI tanpa LLM \\ \hline
+B1 & LLM tanpa \textit{retrieval} & LLM diminta menghasilkan kode KBLI langsung dari deskripsi usaha (\textit{zero-shot}) \\ \hline
+P1 & LLM terpandu \textit{retrieval} & LLM memilih kode dari $k$ kandidat hasil \textit{retriever} hibrida \\ \hline
+P2 & P1 dengan konteks lokal & P1 ditambah glosarium istilah lokal dan contoh \textit{few-shot} dari data pengembangan \\ \hline
+\end{longtable}
+}
+
+\textbf{Metrik dan analisis.} Kinerja diukur pada tiga tingkat granularitas KBLI, yaitu kategori, golongan pokok, dan kelompok lima digit, menggunakan akurasi \textit{top-1} dan \textit{top-3} (Persamaan~\ref{eq:topk}), \textit{macro-F1} pada tingkat kategori (Persamaan~\ref{eq:f1}), kappa Cohen terhadap data acuan (Persamaan~\ref{eq:kappa}), tingkat halusinasi (Persamaan~\ref{eq:halusinasi}), serta \textit{Recall@k} untuk tahap \textit{retrieval} (Persamaan~\ref{eq:recallk}). Konsistensi diukur sebagai proporsi rekaman yang memperoleh kode identik pada tiga ulangan. Untuk kondisi dengan opsi \texttt{PERLU\_VERIFIKASI}, dilaporkan kurva cakupan--akurasi yang menunjukkan pertukaran antara proporsi rekaman yang dikodekan otomatis dan akurasinya. Pengujian H1 membandingkan P1 dengan B1, pengujian H2 membandingkan P2 dengan P1 pada subhimpunan rekaman yang memuat istilah lokal, dan pengujian H3 membandingkan P1 serta P2 dengan B0. Perbedaan akurasi antarkondisi diuji menggunakan uji McNemar pada pasangan prediksi benar--salah, perbedaan kappa dan tingkat halusinasi dinilai menggunakan interval kepercayaan 95\% hasil \textit{bootstrap}, dan tingkat signifikansi ditetapkan sebesar 0,05 dengan koreksi Holm untuk perbandingan ganda. Analisis galat kualitatif dilakukan pada rekaman yang salah klasifikasi untuk mengidentifikasi pola, seperti istilah lokal, usaha hibrida, dan deskripsi yang terlalu umum.
+
+\textbf{Kriteria penerimaan.} Komponen standardisasi dinyatakan layak digunakan dalam artefak apabila kondisi terbaik mencapai kappa minimal 0,61 (kesepakatan substansial \cite{landis1977kappa}) pada tingkat kategori, tingkat halusinasi tidak lebih dari 1\%, dan kinerjanya lebih tinggi secara signifikan dibandingkan B0. Kinerja pada tingkat kelompok lima digit dilaporkan sebagai hasil eksploratif dan dibandingkan dengan temuan Amnur dkk. \cite{amnur2025kbli}.
+
+\section{Rancangan Evaluasi Kualitas Data (RQ3)}
+\label{sec:evalkualitas}
+
+Evaluasi kualitas data menggunakan desain sebelum--sesudah pada desa percontohan. Kondisi sebelum diukur pada data lama dan data kiriman desa tahun 2026 untuk desa yang sama, sedangkan kondisi sesudah diukur pada data yang dihimpun dan diverifikasi melalui artefak pada akhir uji coba lapangan. Ukuran yang digunakan adalah kelengkapan (Persamaan~\ref{eq:completeness}), validitas terhadap aturan domain, konsistensi antaratribut (misalnya kesesuaian skala usaha dengan modal), keunikan, dan kemutakhiran (Persamaan~\eqref{eq:validity}, \eqref{eq:uniqueness}, dan \eqref{eq:currentness}). H4 diuji menggunakan uji dua proporsi untuk setiap dimensi kualitas data pada tingkat signifikansi 0,05. Ketepatan isi data diperiksa melalui verifikasi silang terhadap sampel acak sekurang-kurangnya 50 rekaman melalui konfirmasi dengan perangkat desa. Selain itu, diukur dua indikator proses, yaitu proporsi desa percontohan yang mengirim data dalam periode uji coba dan waktu yang diperlukan sejak data dikirim hingga tersedia dalam rekapitulasi dinas.
+
+\section{Rancangan Evaluasi Pengguna dan Modul Keputusan (RQ4)}
+\label{sec:evalpengguna}
+
+\textbf{Partisipan dan lokasi.} Desa percontohan dipilih secara purposif bersama dinas sebanyak 6--10 desa pada 2--3 kecamatan yang berbeda karakteristik, yaitu kecamatan dengan konsentrasi usaha tenun dan kriya serta kecamatan yang relatif jauh dari ibu kota kabupaten. Partisipan terdiri atas seluruh staf teknis dinas yang terlibat dalam pengolahan data UMKM (sekitar lima orang) dan 10--20 operator desa.
+
+\textbf{Desain dan tugas.} Evaluasi menggunakan desain \textit{within-subject} dengan dua kondisi, yaitu proses berbasis lembar kerja yang berjalan saat ini dan proses menggunakan artefak. Urutan kondisi diseimbangkan (\textit{counterbalanced}) dan materi tugas pada kedua kondisi dibuat setara tetapi tidak identik untuk mengurangi efek pembelajaran. Operator desa mengerjakan tugas memasukkan dan memutakhirkan sepuluh data UMKM. Staf dinas mengerjakan tugas menyusun rekapitulasi per kecamatan dan jenis usaha serta menyusun daftar kandidat penerima pembinaan berdasarkan kriteria yang diberikan.
+
+\textbf{Ukuran.} Ukuran yang digunakan adalah waktu penyelesaian tugas, jumlah kesalahan terhadap kunci jawaban, skor \textit{raw} NASA-TLX setelah setiap kondisi (Persamaan~\ref{eq:rtlx}), skor SUS (Persamaan~\ref{eq:sus}), serta skor persepsi kegunaan dan persepsi kemudahan penggunaan TAM setelah kondisi artefak. Wawancara pascatugas dilakukan untuk menggali alasan di balik skor dan hambatan penggunaan.
+
+\textbf{Analisis.} Karena jumlah partisipan kecil, H5 diuji menggunakan uji peringkat bertanda Wilcoxon satu arah terhadap selisih waktu tugas dan skor RTLX berpasangan, dengan ukuran efek $r$ dan dilaporkan bersama statistik deskriptif. Data wawancara dianalisis secara tematik. Hasil ditafsirkan sebagai bukti efektivitas dalam konteks studi kasus, bukan generalisasi statistik.
+
+\textbf{Kesesuaian pemeringkatan dengan ahli.} Untuk menilai modul pemeringkatan, sebanyak 30 profil UMKM dari data uji coba diperingkat secara independen oleh sekurang-kurangnya tiga ahli dinas tanpa melihat keluaran sistem. H6 diuji menggunakan korelasi peringkat Spearman antara peringkat sistem dan peringkat konsensus ahli, dengan hipotesis alternatif \(\rho > 0\), dan dilengkapi proporsi irisan sepuluh kandidat teratas. Rasio konsistensi AHP setiap penilai diperiksa terhadap batas $CR \leq 0{,}10$ (Persamaan~\ref{eq:cr}).
+
+\section{Pemetaan Pertanyaan Penelitian}
+\label{sec:pemetaan}
+
+Pemetaan setiap pertanyaan penelitian terhadap kegiatan, luaran, dan cara evaluasi disajikan pada Tabel~\ref{tab:pemetaan_rq}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.06\textwidth}|L{0.30\textwidth}|L{0.25\textwidth}|L{0.29\textwidth}|}
+\caption{Pemetaan Pertanyaan Penelitian terhadap Kegiatan Penelitian}
+\label{tab:pemetaan_rq}\\
+\hline
+\textbf{RQ} & \textbf{Kegiatan} & \textbf{Luaran} & \textbf{Cara Evaluasi} \\ \hline
+\endfirsthead
+\hline
+\textbf{RQ} & \textbf{Kegiatan} & \textbf{Luaran} & \textbf{Cara Evaluasi} \\ \hline
+\endhead
+RQ1 & Perumusan prinsip desain dari teori kernel dan temuan lapangan; instansiasi dalam purwarupa & Prinsip desain DP1--DP5; purwarupa sebagai instrumen penelitian & Keterlacakan DP1--DP5 terhadap hipotesis; dukungan prinsip desain berdasarkan hasil H1--H6 \\ \hline
+RQ2 & Penyusunan data acuan; perancangan \textit{retriever} dan \textit{prompt}; eksperimen B0--P2 pada dua model & Data acuan beranotasi, \textit{pipeline} standardisasi, laporan eksperimen & Pengujian H1--H3: akurasi \textit{top-k}, \textit{macro-F1}, kappa Cohen, tingkat halusinasi, konsistensi, \textit{Recall@k}; uji McNemar dan \textit{bootstrap} \\ \hline
+RQ3 & Profil data lama; uji coba lapangan; pengukuran kualitas sebelum--sesudah & Laporan kualitas data & Pengujian H4: kelengkapan, validitas, konsistensi, keunikan, kemutakhiran; uji dua proporsi; verifikasi silang sampel \\ \hline
+RQ4 & Elisitasi kriteria AHP; evaluasi \textit{within-subject}; pemeringkatan oleh ahli & Bobot kriteria, laporan evaluasi pengguna & Pengujian H5--H6: waktu tugas, kesalahan, NASA-TLX, SUS, TAM; uji Wilcoxon; korelasi Spearman dan irisan sepuluh teratas \\ \hline
+\end{longtable}
+}
+
+\section{Pembagian Peran Tim}
+\label{sec:peran}
+
+Penelitian dilaksanakan oleh tiga mahasiswa dengan beban 4 SKS pada semester ganjil dan 4 SKS pada semester genap per mahasiswa. Pembagian peran dirancang agar setiap mahasiswa memiliki tanggung jawab utama atas satu pertanyaan penelitian dan satu komponen artefak, sekaligus berkontribusi pada integrasi sistem dan penulisan bersama, sebagaimana Tabel~\ref{tab:peran}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.15\textwidth}|L{0.37\textwidth}|L{0.37\textwidth}|}
+\caption{Pembagian Peran dan Beban Kerja Tim}
+\label{tab:peran}\\
+\hline
+\textbf{Mahasiswa} & \textbf{Semester Ganjil (4 SKS)} & \textbf{Semester Genap (4 SKS)} \\ \hline
+\endfirsthead
+\hline
+\textbf{Mahasiswa} & \textbf{Semester Ganjil (4 SKS)} & \textbf{Semester Genap (4 SKS)} \\ \hline
+\endhead
+M1: Analis proses bisnis dan kualitas data (penanggung jawab RQ3) & Pengurusan izin dan akses data; pemodelan proses \textit{as-is} dan \textit{to-be}; validasi kebutuhan; profil dan pengukuran kualitas data lama; rancangan formulir pendataan & Implementasi modul pendataan dan validasi; koordinasi uji coba lapangan dan pelatihan operator desa; evaluasi kualitas data sebelum--sesudah; verifikasi silang sampel \\ \hline
+M2: Perekayasa \textit{pipeline} LLM (penanggung jawab RQ2) & Pedoman anotasi KBLI; kalibrasi dan data acuan pengembangan; indeks KBLI dan \textit{retriever}; eksperimen awal pada data pengembangan & Penyelesaian data acuan uji; eksperimen B0--P2 pada dua model; analisis statistik dan galat; integrasi layanan standardisasi dan antrean verifikasi \\ \hline
+M3: Perekayasa analitik dan SPK (penanggung jawab RQ4) & Perancangan arsitektur, basis data, dan antarmuka; elisitasi kriteria dan AHP; rancangan instrumen evaluasi pengguna & Implementasi dasbor, segmentasi, dan pemeringkatan; evaluasi \textit{within-subject}; evaluasi kesesuaian dengan ahli \\ \hline
+Bersama & Studi literatur; wawancara; proposal; laporan TA-1 & Pengujian fungsional; laporan Tugas Akhir; manuskrip JCIS \\ \hline
+\end{longtable}
+}
+
+\section{Etika Penelitian dan Pelindungan Data}
+\label{sec:etika}
+
+Penelitian ini memproses data yang memuat informasi pribadi pelaku usaha, sehingga pelaksanaannya mengikuti prinsip UU Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi \cite{uupdp2022}. Langkah yang ditempuh meliputi: (1) penggunaan data berdasarkan surat izin dan persetujuan tertulis dinas; (2) pemisahan atribut identitas dari atribut yang diproses LLM, sehingga layanan LLM eksternal hanya menerima teks jenis usaha, deskripsi produk, dan nama kecamatan; (3) penggunaan model \textit{open-weight} pada infrastruktur lokal untuk pemrosesan yang tidak dapat dipisahkan dari data pribadi; (4) penyimpanan data pada server dengan kontrol akses dan enkripsi; (5) persetujuan setelah penjelasan (\textit{informed consent}) dari partisipan evaluasi pengguna; serta (6) publikasi data acuan hanya dalam bentuk teranonimkan setelah memperoleh persetujuan dinas. Penggunaan kecerdasan buatan generatif dalam penelitian dan penulisan akan diungkapkan sesuai ketentuan jurnal sasaran.
+
+\section{Alat dan Bahan Penelitian}
+\label{sec:alat}
+
+Alat dan bahan penelitian disajikan pada Tabel~\ref{tab:tools} Versi spesifik model dan pustaka akan dikunci pada awal semester genap dan dicatat untuk keterulangan.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.04\textwidth}|L{0.24\textwidth}|L{0.30\textwidth}|L{0.32\textwidth}|}
+\caption{Alat dan Bahan Penelitian}
+\label{tab:tools}\\
+\hline
+\textbf{No.} & \textbf{Alat / Bahan} & \textbf{Spesifikasi / Keterangan} & \textbf{Fungsi dalam Penelitian} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Alat / Bahan} & \textbf{Spesifikasi / Keterangan} & \textbf{Fungsi dalam Penelitian} \\ \hline
+\endhead
+1 & Bahasa pemrograman & Python 3.11 atau lebih baru & \textit{Pipeline} standardisasi, analitik, dan analisis statistik \\ \hline
+2 & Kerangka kerja \textit{backend} & FastAPI & Antarmuka pemrograman aplikasi dan logika bisnis \\ \hline
+3 & Kerangka kerja \textit{frontend} & Aplikasi web responsif (React) & Formulir pendataan dan dasbor \\ \hline
+4 & Basis data & PostgreSQL dengan ekstensi pgvector & Penyimpanan data UMKM dan indeks vektor KBLI \\ \hline
+5 & LLM & Satu model \textit{proprietary} melalui API dan satu model \textit{open-weight} lokal & Standardisasi deskripsi usaha \\ \hline
+6 & Model \textit{embedding} & Model \textit{embedding} multibahasa yang mendukung Bahasa Indonesia & \textit{Retrieval} semantik kandidat KBLI \\ \hline
+7 & Pustaka analitik & pandas, scikit-learn, kmodes, scipy, statsmodels & Profil data, K-\textit{Prototypes}, dan uji statistik \\ \hline
+8 & Alat anotasi & Label Studio & Penyusunan data acuan KBLI \\ \hline
+9 & Pemodelan proses & Notasi BPMN 2.0 (misalnya bizagi Modeler atau Camunda Modeler) & Model proses \textit{as-is} dan \textit{to-be} \\ \hline
+10 & Perangkat keras & Komputer dengan GPU untuk model \textit{open-weight}; server aplikasi & Inferensi lokal dan penyebaran purwarupa \\ \hline
+11 & Kamus KBLI 2020 & Peraturan BPS Nomor 2 Tahun 2020 \cite{bps2020kbli} & Basis pengetahuan \textit{retrieval} \\ \hline
+12 & Data UMKM dinas & Data 2020 dan kiriman desa 2026 & Data acuan, profil data, dan kondisi sebelum \\ \hline
+13 & Instrumen evaluasi & SUS, \textit{raw} NASA-TLX, butir TAM terjemahan & Evaluasi pengguna \\ \hline
+14 & Pengelolaan versi & Git dan repositori daring & Pengelolaan kode, \textit{prompt}, dan dokumentasi \\ \hline
+\end{longtable}
+}
+
+\section{Jadwal Pelaksanaan Penelitian}
+\label{sec:jadwal}
+
+Penelitian dilaksanakan dalam dua semester. Semester ganjil berlangsung pada 7 September--18 Desember 2026 dengan Seminar Proposal pada 9--13 November 2026 (minggu ke-10) dan Seminar Tugas Akhir 1 pada 14--18 Desember 2026 (minggu ke-15). Semester genap berlangsung pada 15 Februari--4 Juni 2027 dengan Seminar Hasil pada 19--23 April 2027 (minggu ke-10) dan Sidang Tugas Akhir pada 24--28 Mei 2027 (minggu ke-15). Jadwal mingguan disajikan pada Tabel~\ref{tab:jadwal1} dan Tabel~\ref{tab:jadwal2}, dengan kode penanggung jawab mengikuti Tabel~\ref{tab:peran}
+
+\begin{table}[H]
+  \caption{Jadwal Pelaksanaan Semester Ganjil (7 September--18 Desember 2026)}
+  \label{tab:jadwal1}
+  \centering
+  \adjustbox{max width=\textwidth}{%
+  \footnotesize
+  \setlength{\tabcolsep}{2.5pt}
+    \begin{tabular}{|c|>{\RaggedRight\arraybackslash}p{5.2cm}|c|*{15}{c|}}
+    \hline
+    \textbf{No.} & \textbf{Kegiatan} & \textbf{PJ} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{13} & \textbf{14} & \textbf{15} \\ \hline
+    1 & Studi literatur dan analisis LKjIP serta Renstra & Semua & \ga & \ga & \ga & \ga & \ga & \ga & \ga & \ga & & & & & & & \\ \hline
+    2 & Wawancara pemangku kepentingan dan validasi masalah & Semua & & & & & & \ga & \ga & \ga & & & & & & & \\ \hline
+    3 & Penyusunan proposal & Semua & & & & & & & \ga & \ga & \ga & & & & & & \\ \hline
+    4 & \textbf{Seminar Proposal (9--13 Nov 2026)} & Semua & & & & & & & & & & \ms & & & & & \\ \hline
+    5 & Pengurusan izin penelitian dan akses data & M1 & & & & & & & & \ga & \ga & \ga & & & & & \\ \hline
+    6 & Pemodelan proses dan validasi kebutuhan & M1 & & & & & & & & & \ga & \ga & \ga & \ga & & & \\ \hline
+    7 & Profil dan pengukuran kualitas data lama & M1 & & & & & & & & & & & \ga & \ga & \ga & & \\ \hline
+    8 & Pedoman anotasi, kalibrasi, dan data acuan pengembangan & M2 & & & & & & & & & & \ga & \ga & \ga & \ga & & \\ \hline
+    9 & Indeks KBLI, \textit{retriever}, dan eksperimen awal & M2 & & & & & & & & & & & \ga & \ga & \ga & \ga & \\ \hline
+    10 & Perancangan arsitektur, basis data, dan antarmuka & M3 & & & & & & & & & & \ga & \ga & \ga & \ga & \ga & \\ \hline
+    11 & Elisitasi kriteria dan AHP; rancangan instrumen evaluasi & M3 & & & & & & & & & & & & \ga & \ga & \ga & \\ \hline
+    12 & Penyusunan laporan Tugas Akhir 1 & Semua & & & & & & & & & & & & & \ga & \ga & \\ \hline
+    13 & \textbf{Seminar Tugas Akhir 1 (14--18 Des 2026)} & Semua & & & & & & & & & & & & & & & \ms \\ \hline
+    \end{tabular}%
+  }
+  \begin{flushleft}
+    \small \textit{Keterangan:} angka menunjukkan minggu perkuliahan; minggu ke-1 dimulai 7 September 2026. \colorbox{green!25}{\phantom{X}} Kegiatan penelitian \quad \colorbox{orange!50}{\phantom{X}} Seminar/\textit{milestone}
+  \end{flushleft}
+\end{table}
+
+\begin{table}[H]
+  \caption{Jadwal Pelaksanaan Semester Genap (15 Februari--4 Juni 2027)}
+  \label{tab:jadwal2}
+  \centering
+  \adjustbox{max width=\textwidth}{%
+  \footnotesize
+  \setlength{\tabcolsep}{2.5pt}
+    \begin{tabular}{|c|>{\RaggedRight\arraybackslash}p{5.2cm}|c|*{16}{c|}}
+    \hline
+    \textbf{No.} & \textbf{Kegiatan} & \textbf{PJ} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} & \textbf{11} & \textbf{12} & \textbf{13} & \textbf{14} & \textbf{15} & \textbf{16} \\ \hline
+    1 & Penyelesaian data acuan uji (500 rekaman) & M2 & \ga & \ga & \ga & & & & & & & & & & & & & \\ \hline
+    2 & Eksperimen standardisasi B0--P2 dan analisis & M2 & & \ga & \ga & \ga & \ga & \ga & & & & & & & & & & \\ \hline
+    3 & Implementasi modul pendataan dan validasi & M1 & \ga & \ga & \ga & \ga & \ga & & & & & & & & & & & \\ \hline
+    4 & Implementasi dasbor, segmentasi, dan pemeringkatan & M3 & & \ga & \ga & \ga & \ga & \ga & & & & & & & & & & \\ \hline
+    5 & Integrasi layanan standardisasi dan antrean verifikasi & M2, M3 & & & & \ga & \ga & \ga & & & & & & & & & & \\ \hline
+    6 & Pengujian fungsional dan pembekuan fitur & Semua & & & & & & \ga & \ga & & & & & & & & & \\ \hline
+    7 & Uji coba lapangan pada desa percontohan & M1 & & & & & & & \ga & \ga & \ga & \ga & & & & & & \\ \hline
+    8 & Evaluasi \textit{within-subject} dan pemeringkatan oleh ahli & M3 & & & & & & & & \ga & \ga & & & & & & & \\ \hline
+    9 & Pengukuran kualitas data sesudah dan analisis & M1 & & & & & & & & & \ga & \ga & \ga & & & & & \\ \hline
+    10 & \textbf{Seminar Hasil (19--23 Apr 2027)} & Semua & & & & & & & & & & \ms & & & & & & \\ \hline
+    11 & Analisis lanjutan, sintesis pengetahuan desain & Semua & & & & & & & & & & & \ga & \ga & & & & \\ \hline
+    12 & Penyusunan laporan Tugas Akhir & Semua & & & & & & & & & \ga & \ga & \ga & \ga & \ga & \ga & & \\ \hline
+    13 & Penyusunan manuskrip JCIS & Semua & & & & & & & & & & & \ga & \ga & \ga & \ga & & \ga \\ \hline
+    14 & \textbf{Sidang Tugas Akhir (24--28 Mei 2027)} & Semua & & & & & & & & & & & & & & & \ms & \\ \hline
+    15 & Revisi laporan dan pengajuan manuskrip & Semua & & & & & & & & & & & & & & & & \ga \\ \hline
+    \end{tabular}%
+  }
+  \begin{flushleft}
+    \small \textit{Keterangan:} angka menunjukkan minggu perkuliahan; minggu ke-1 dimulai 15 Februari 2027 dan minggu ke-16 berakhir 4 Juni 2027. \colorbox{green!25}{\phantom{X}} Kegiatan penelitian \quad \colorbox{orange!50}{\phantom{X}} Seminar/\textit{milestone}
+  \end{flushleft}
+\end{table}
+
+Pelaksanaan penelitian dikendalikan melalui empat titik keputusan (\textit{decision gate}) sebagaimana Tabel~\ref{tab:gate} Setiap titik keputusan memiliki kriteria yang terukur dan rencana alternatif apabila kriteria tidak terpenuhi.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.06\textwidth}|L{0.16\textwidth}|L{0.33\textwidth}|L{0.34\textwidth}|}
+\caption{Titik Keputusan Penelitian}
+\label{tab:gate}\\
+\hline
+\textbf{Kode} & \textbf{Waktu} & \textbf{Kriteria} & \textbf{Rencana Alternatif} \\ \hline
+\endfirsthead
+\hline
+\textbf{Kode} & \textbf{Waktu} & \textbf{Kriteria} & \textbf{Rencana Alternatif} \\ \hline
+\endhead
+G1 & Minggu ke-12 semester ganjil (23--27 Nov 2026) & Data dinas diterima dan izin penelitian terbit & Penyusunan data acuan dimulai dari kiriman desa 2026 yang telah tersedia; pengajuan ulang melalui pimpinan program studi \\ \hline
+G2 & Seminar TA-1 (14--18 Des 2026) & Kappa kondisi P1 pada data pengembangan minimal 0,61 pada tingkat kategori & Fokus standardisasi dibatasi pada tingkat kategori dan klaster sektor dinas; tingkat lima digit menjadi analisis eksploratif \\ \hline
+G3 & Minggu ke-6 semester genap (22--26 Mar 2027) & Purwarupa lulus pengujian fungsional; sekurang-kurangnya enam desa percontohan bersedia berpartisipasi & Uji coba menggunakan skenario terkontrol dengan staf dinas memasukkan data kiriman desa \\ \hline
+G4 & Minggu ke-9 semester genap (12--16 Apr 2027) & Data evaluasi RQ3 dan RQ4 lengkap & Seminar Hasil menyajikan hasil RQ2 secara lengkap dan hasil awal RQ3--RQ4; pengumpulan data dilanjutkan hingga minggu ke-11 \\ \hline
+\end{longtable}
+}
+
+\section{Risiko dan Mitigasi}
+\label{sec:risiko}
+
+Risiko utama pelaksanaan penelitian beserta mitigasinya disajikan pada Tabel~\ref{tab:risiko}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.04\textwidth}|L{0.30\textwidth}|L{0.13\textwidth}|L{0.42\textwidth}|}
+\caption{Risiko Penelitian dan Mitigasi}
+\label{tab:risiko}\\
+\hline
+\textbf{No.} & \textbf{Risiko} & \textbf{Tingkat} & \textbf{Mitigasi} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Risiko} & \textbf{Tingkat} & \textbf{Mitigasi} \\ \hline
+\endhead
+1 & Keterlambatan akses data karena beban kerja staf dinas & Tinggi & Surat resmi segera setelah Seminar Proposal; permintaan data bertahap; titik keputusan G1 \\ \hline
+2 & Partisipasi desa percontohan rendah & Sedang & Pemilihan desa bersama dinas; pelatihan singkat di lokasi; surat pengantar dari dinas; titik keputusan G3 \\ \hline
+3 & Kinerja standardisasi tidak memenuhi kriteria & Sedang & Antrean verifikasi manusia; pembatasan tingkat granularitas; titik keputusan G2 \\ \hline
+4 & Biaya API LLM melebihi anggaran atau kebijakan data membatasi penggunaan layanan eksternal & Sedang & Penggunaan model \textit{open-weight} lokal sebagai alternatif utama; pembatasan jumlah panggilan pada eksperimen \\ \hline
+5 & Konektivitas internet di desa tidak stabil & Sedang & Antarmuka ringan dengan penyimpanan isian sementara; uji coba juga dilakukan di kantor desa atau kecamatan \\ \hline
+6 & Jumlah partisipan evaluasi kecil & Tinggi & Desain \textit{within-subject}; pelaporan ukuran efek; triangulasi dengan data kualitatif; pembatasan klaim generalisasi \\ \hline
+7 & Perubahan versi atau ketersediaan model LLM selama penelitian & Rendah & Penguncian versi model dan dokumentasi tanggal akses; pelaporan hasil per versi \\ \hline
+\end{longtable}
+}
+
+\section{Rencana Luaran dan Publikasi}
+\label{sec:luaran}
+
+Luaran penelitian meliputi: (1) purwarupa sistem informasi pendataan dan pendukung keputusan pembinaan UMKM beserta dokumentasi; (2) data acuan pengodean KBLI beranotasi dan pedoman anotasi; (3) \textit{pipeline} standardisasi yang terdokumentasi, termasuk \textit{prompt}, konfigurasi model, dan skrip analisis; (4) laporan evaluasi kualitas data dan evaluasi pengguna; (5) laporan Tugas Akhir; serta (6) manuskrip artikel ilmiah untuk \textit{Journal of Computer Information Systems}.
+
+Kesesuaian penelitian dengan cakupan JCIS disajikan pada Tabel~\ref{tab:jcis} Manuskrip akan disusun sesuai ketentuan jurnal, yaitu judul tidak melebihi sepuluh kata, abstrak tidak terstruktur sekitar 150 kata, tiga sampai lima kata kunci, panjang naskah tidak melebihi 8.000 kata, serta pernyataan penggunaan kecerdasan buatan generatif dan pernyataan ketersediaan data. Judul kerja manuskrip adalah \textit{``Retrieval-Grounded LLMs for Public-Sector MSME Data and Decision Support''}. Kerangka manuskrip disajikan pada Lampiran~4.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.30\textwidth}|L{0.62\textwidth}|}
+\caption{Kesesuaian Penelitian dengan Cakupan \textit{Journal of Computer Information Systems}}
+\label{tab:jcis}\\
+\hline
+\textbf{Topik Cakupan JCIS} & \textbf{Komponen Penelitian} \\ \hline
+\endfirsthead
+\hline
+\textbf{Topik Cakupan JCIS} & \textbf{Komponen Penelitian} \\ \hline
+\endhead
+\textit{Analytics, Business Intelligence, Decision Support Systems} & Dasbor rekapitulasi, segmentasi K-\textit{Prototypes}, pemeringkatan AHP, dan evaluasi kesesuaian dengan ahli; kelanjutan agenda penelitian LLM untuk analisis teks \textit{business intelligence} \cite{lotfipoor2026llm} \\ \hline
+\textit{Data Management, Data Mining, Database Design and Development} & Standardisasi data berbasis LLM terpandu \textit{retrieval}, model kualitas data ISO/IEC 25012, dan perancangan basis data \\ \hline
+\textit{Systems Analysis, Design, and/or Implementation} & Analisis proses \textit{as-is}/\textit{to-be}, rekayasa kebutuhan, dan pengembangan artefak dengan DSR \\ \hline
+\textit{Human-Computer Interaction} & Evaluasi kebergunaan, beban kerja, dan penerimaan teknologi oleh aparatur \\ \hline
+\textit{Ethical and Legal Issues of IT} & Pelindungan data pribadi dan rancangan pemrosesan LLM yang membatasi pengiriman data pribadi \\ \hline
+\end{longtable}
+}
+
+% ── BACK MATTER (Roman numerals, continuing from front matter) ───────────────
+\clearpage
+\pagenumbering{roman}
+\setcounter{page}{\value{savepage}}
+\pagestyle{frontmatter}
+
+% Daftar Pustaka ditulis dengan aturan IEEE.
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+
+% =============================================================================
+% LAMPIRAN
+% =============================================================================
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LAMPIRAN}
+\noindent\textbf{Lampiran 1} Hasil Pemeriksaan \textit{AI Detector}%
+\phantomsection
+\addcontentsline{toc}{section}{Lampiran 1 Hasil Pemeriksaan AI Detector}
+
+\vspace{1em}
+\noindent[Bukti hasil pemeriksaan naskah menggunakan perangkat deteksi AI premium yang diinformasikan oleh Koordinator Tugas Akhir disisipkan pada bagian ini sebelum proposal diajukan.]
+% Contoh: \includegraphics[width=\linewidth]{Gambar/hasil-ai-detector.png}
+
+% -----------------------------------------------------------------------------
+\newpage
+\noindent\textbf{Lampiran 2} Matriks Keterlacakan Dokumen Kebijakan dan Penelitian%
+\phantomsection
+\addcontentsline{toc}{section}{Lampiran 2 Matriks Keterlacakan Dokumen Kebijakan dan Penelitian}
+
+\vspace{1em}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.18\textwidth}|L{0.37\textwidth}|L{0.37\textwidth}|}
+\hline
+\textbf{Sumber dan Lokasi} & \textbf{Prioritas atau Persoalan Terdokumentasi} & \textbf{Respons Penelitian} \\ \hline
+\endfirsthead
+\hline
+\textbf{Sumber dan Lokasi} & \textbf{Prioritas atau Persoalan Terdokumentasi} & \textbf{Respons Penelitian} \\ \hline
+\endhead
+LKjIP 2025, hlm.~50 \cite{lkjip2025toba} & Persentase koperasi/UMKM yang dibina dan difasilitasi 0,65\% (65 dari 10.032 UMKM) terhadap target 4,99\% & Modul pemeringkatan untuk seleksi sasaran pembinaan yang transparan dan berbasis data \\ \hline
+LKjIP 2025, hlm.~107 \cite{lkjip2025toba} & Realisasi persentase usaha mikro dan kecil 0,49\% dari target 1,80\%; data hanya dari pelaku usaha yang datang ke kantor & Pendataan partisipatif melalui operator desa \\ \hline
+LKjIP 2025, hlm.~33 \cite{lkjip2025toba} & Subkegiatan penyusunan basis data usaha mikro dianggarkan & Purwarupa basis data UMKM terstandardisasi \\ \hline
+Renstra 2025--2029, hlm.~44 \cite{renstra2025toba} & Digitalisasi UMKM belum optimal; konektivitas internet tidak merata & Antarmuka ringan; pengguna adalah aparatur sebagai pendamping \\ \hline
+Renstra 2025--2029, hlm.~45 \cite{renstra2025toba} & Keterbatasan jumlah dan kapasitas tenaga pendamping & Otomatisasi standardisasi dan rekapitulasi untuk augmentasi aparatur \\ \hline
+Renstra 2025--2029, hlm.~79 \cite{renstra2025toba} & Pembangunan basis data terpadu koperasi dan UMKM untuk pemetaan, pembinaan, dan pemantauan & Basis data dengan kode referensi KBLI dan wilayah serta fungsi ekspor \\ \hline
+Wawancara staf, 23 Okt 2026 \cite{wawancarastaf2026} & Data 2020, pemutakhiran tidak berjalan, lembar kerja tercampur, kebutuhan tautan desa dan klasterisasi & Seluruh komponen artefak (Tabel~\ref{tab:temuan}) \\ \hline
+Wawancara Kadis, 23 Okt 2026 \cite{wawancarakadis2026} & Penyampaian informasi berjenjang melalui desa; kurasi penerima bantuan; pemerataan antarwilayah & Peran desa dalam pendataan; kriteria AHP dan kuota per kecamatan \\ \hline
+\end{longtable}
+}
+
+% -----------------------------------------------------------------------------
+\newpage
+\noindent\textbf{Lampiran 3} Rancangan Awal Kamus Data Formulir Pendataan%
+\phantomsection
+\addcontentsline{toc}{section}{Lampiran 3 Rancangan Awal Kamus Data Formulir Pendataan}
+
+\vspace{1em}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.04\textwidth}|L{0.20\textwidth}|L{0.15\textwidth}|L{0.10\textwidth}|L{0.38\textwidth}|}
+\hline
+\textbf{No.} & \textbf{Atribut} & \textbf{Tipe} & \textbf{Wajib} & \textbf{Aturan atau Domain Nilai} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Atribut} & \textbf{Tipe} & \textbf{Wajib} & \textbf{Aturan atau Domain Nilai} \\ \hline
+\endhead
+1 & Nama usaha & Teks & Ya & Deteksi kemiripan dalam satu desa \\ \hline
+2 & Nama pemilik & Teks & Ya & Data pribadi; tidak dikirim ke layanan LLM eksternal \\ \hline
+3 & Kontak & Teks & Tidak & Data pribadi; format nomor telepon \\ \hline
+4 & Kecamatan dan desa & Kode & Ya & Daftar referensi wilayah administratif Kabupaten Toba \\ \hline
+5 & Alamat rinci & Teks & Tidak & Data pribadi \\ \hline
+6 & Jenis usaha & Teks bebas & Ya & Masukan standardisasi KBLI \\ \hline
+7 & Produk utama & Teks bebas & Ya & Masukan standardisasi KBLI \\ \hline
+8 & Kode KBLI & Kode & Sistem & Keluaran standardisasi; terverifikasi atau belum \\ \hline
+9 & Klaster sektor dinas & Kategori & Sistem & Turunan dari KBLI melalui tabel pemetaan \\ \hline
+10 & Modal usaha & Numerik (Rp) & Ya & Bilangan nonnegatif; dasar klasifikasi skala \\ \hline
+11 & Kisaran hasil penjualan tahunan & Kategori & Tidak & Rentang sesuai kriteria PP Nomor 7 Tahun 2021 \\ \hline
+12 & Skala usaha & Kategori & Sistem & Ultra mikro, mikro, kecil, atau menengah \\ \hline
+13 & Jumlah tenaga kerja & Numerik & Ya & Bilangan bulat nonnegatif \\ \hline
+14 & Tahun mulai usaha & Numerik & Ya & Tidak melebihi tahun berjalan \\ \hline
+15 & NIB & Teks & Tidak & 13 digit angka \\ \hline
+16 & Status P-IRT dan sertifikat halal & Kategori & Tidak & Ada, dalam proses, atau tidak ada \\ \hline
+17 & Saluran pemasaran & Kategori jamak & Tidak & Langsung, media sosial, lokapasar, toko atau mitra \\ \hline
+18 & Riwayat pembinaan atau bantuan & Kategori jamak & Tidak & Jenis dan tahun pembinaan atau bantuan \\ \hline
+19 & Status operasional & Kategori & Ya & Aktif, berhenti, atau pindah \\ \hline
+20 & Tanggal verifikasi & Tanggal & Sistem & Dasar pengukuran kemutakhiran \\ \hline
+\end{longtable}
+}
+
+% -----------------------------------------------------------------------------
+\newpage
+\noindent\textbf{Lampiran 4} Kerangka Manuskrip \textit{Journal of Computer Information Systems}%
+\phantomsection
+\addcontentsline{toc}{section}{Lampiran 4 Kerangka Manuskrip Journal of Computer Information Systems}
+
+\vspace{1em}
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.30\textwidth}|L{0.45\textwidth}|L{0.15\textwidth}|}
+\hline
+\textbf{Bagian} & \textbf{Isi Pokok} & \textbf{Alokasi Kata} \\ \hline
+\endfirsthead
+\hline
+\textbf{Bagian} & \textbf{Isi Pokok} & \textbf{Alokasi Kata} \\ \hline
+\endhead
+\textit{Title, Abstract, Keywords} & Judul maksimal sepuluh kata; abstrak sekitar 150 kata; 3--5 kata kunci & 200 \\ \hline
+\textit{Introduction} & Persoalan data UMKM pemerintah daerah; celah penelitian LLM dan SPK; pertanyaan penelitian & 900 \\ \hline
+\textit{Literature Review} & LLM untuk analisis teks bisnis; klasifikasi taksonomi; kualitas data sektor publik; SPK UMKM & 1.300 \\ \hline
+\textit{Research Method} & DSRM; konteks kasus; rancangan artefak; desain eksperimen dan evaluasi & 1.500 \\ \hline
+\textit{Results} & Hasil RQ2, RQ3, dan RQ4 & 1.800 \\ \hline
+\textit{Discussion} & Implikasi teoretis dan praktis; prinsip desain; keterbatasan; penelitian lanjutan & 1.500 \\ \hline
+\textit{Conclusion} & Ringkasan kontribusi & 300 \\ \hline
+\textit{Declarations} & Pernyataan penggunaan AI generatif, ketersediaan data, dan konflik kepentingan & 200 \\ \hline
+\textbf{Total} & & \textbf{7.700} \\ \hline
+\end{longtable}
+}
+
+\end{document}

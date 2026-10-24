@@ -1,0 +1,47 @@
+\chapter{LANDASAN TEORI}
+% Literatur yang digunakan sebagai landasan dalam (1) menganalisis research gap
+% dan (2) mengkonstruksi rancangan penelitian: metode, eksperimen, dan evaluasi.
+
+Bab ini memuat literatur yang digunakan sebagai landasan dalam menganalisis \textit{research gap} dan mengkonstruksi rancangan penelitian, mulai dari metode yang akan digunakan, eksperimen yang perlu dilakukan, hingga evaluasi hasil. Pilih teori yang \textit{langsung relevan} dengan persoalan penelitian dan hindari teori yang terlalu umum.
+
+\section{Penelitian Terkait}
+Penelitian terkait (\textit{state of the art}) memaparkan hasil penelusuran kepustakaan yang relevan untuk menunjukkan posisi dan kebaruan (\textit{novelty}) penelitian yang diusulkan. Sajikan secara sistematis, misalnya dengan tabel perbandingan seperti Tabel~\ref{tab:related_work}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Perbandingan Penelitian Terkait}
+  \label{tab:related_work}
+  \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{0.06\textwidth}|*{4}{>{\RaggedRight\arraybackslash}X|}}
+  \hline
+  \textbf{No.} & \textbf{Peneliti (Tahun)} & \textbf{Metode / Pendekatan} & \textbf{Hasil / Temuan Utama} & \textbf{Keterbatasan} \\ \hline
+  1 & Nama Peneliti (2023) & Metode yang digunakan & Temuan atau hasil utama & Keterbatasan penelitian tersebut \\ \hline
+  2 & Nama Peneliti (2024) & Metode yang digunakan & Temuan atau hasil utama & Keterbatasan penelitian tersebut \\ \hline
+  3 & Nama Peneliti (2025) & Metode yang digunakan & Temuan atau hasil utama & Keterbatasan penelitian tersebut \\ \hline
+  \end{tabularx}
+\end{table}
+
+Akhiri bagian ini dengan paragraf yang merumuskan \textit{research gap} berdasarkan keterbatasan penelitian-penelitian di atas, serta posisi penelitian yang diusulkan.
+
+\section{[Teori / Konsep Dasar]}
+Jelaskan teori atau konsep yang menjadi dasar dari domain persoalan. Cantumkan definisi dari sumber yang kredibel \cite{moore1998cramming}, serta kaitannya dengan persoalan penelitian. Untuk beberapa sumber sekaligus: \cite{wang2020frank,zhang2020molecular}.
+
+\section{[Metode / Algoritma yang Digunakan]}
+Uraikan metode, algoritma, model, atau kerangka kerja (\textit{framework}) yang akan digunakan dalam penelitian, termasuk prinsip kerja, kelebihan, kekurangan, dan alasan pemilihannya dibandingkan alternatif lain.
+
+\section{Rancangan Eksperimen dan Metrik Evaluasi}
+Uraikan teori yang mendasari cara eksperimen dilakukan (misalnya: pembagian data latih/uji, \textit{k-fold cross validation}, uji statistik) dan metrik yang digunakan untuk mengevaluasi hasil. Gunakan lingkungan \texttt{equation} untuk persamaan bernomor dan tambahkan perintah \verb|\persamaan{Keterangan}| tepat setelahnya agar persamaan tercantum dalam Daftar Persamaan. Contoh metrik evaluasi model klasifikasi pada Persamaan~\eqref{eq:akurasi} dan \eqref{eq:f1}:
+
+\begin{equation}
+  \text{Akurasi} = \frac{TP + TN}{TP + TN + FP + FN} \times 100\%
+  \label{eq:akurasi}
+\end{equation}
+\persamaan{Akurasi}
+
+\begin{equation}
+  F_1 = 2 \cdot \frac{\text{Presisi} \times \text{Recall}}{\text{Presisi} + \text{Recall}},
+  \quad\text{di mana}\quad
+  \text{Presisi} = \frac{TP}{TP+FP},\quad
+  \text{Recall} = \frac{TP}{TP+FN}
+  \label{eq:f1}
+\end{equation}
+\persamaan{\textit{F1-score}}

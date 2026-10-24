@@ -1,0 +1,138 @@
+\chapter{RANCANGAN PENELITIAN}
+\label{chap:rancangan}
+% Rancangan kegiatan untuk menjawab pertanyaan penelitian dan mencapai tujuan
+% penelitian, termasuk metode penelitian dan jadwal pelaksanaan yang rasional.
+
+Bab ini menjabarkan rancangan kegiatan yang akan dilakukan untuk memperoleh jawaban terhadap pertanyaan penelitian dan mencapai tujuan penelitian, termasuk metode penelitian serta jadwal pelaksanaan penelitian.
+
+\section{Metode Penelitian}
+Jelaskan metode atau paradigma penelitian yang digunakan (misalnya: penelitian eksperimen, \textit{design science research}, studi kasus, kuantitatif, kualitatif, atau campuran), alasan pemilihannya, serta kaitannya dengan pertanyaan dan tujuan penelitian.
+
+\section{Tahapan Penelitian}
+\label{sec:tahapan}
+Uraikan tahapan penelitian secara berurutan dan sistematis. Setiap tahapan harus memiliki masukan, proses, dan luaran yang jelas. Gambarkan alur tahapan dalam diagram seperti Gambar~\ref{fig:tahapan}, lalu jelaskan setiap tahapannya.
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[node distance=2.2cm]
+  \node (studi)    [process]                          {Studi Literatur};
+  \node (data)     [process, below of=studi]          {Pengumpulan \& Persiapan Data};
+  \node (rancang)  [process, below of=data]           {Perancangan Solusi};
+  \node (impl)     [process, below of=rancang]        {Implementasi \& Eksperimen};
+  \node (valid)    [decision, below of=impl, yshift=-0.5cm] {Target tercapai?};
+  \node (revisi)   [process2, right of=valid, xshift=2.5cm] {Perbaikan};
+  \node (evaluasi) [process, below of=valid, yshift=-0.5cm] {Evaluasi \& Penarikan Kesimpulan};
+
+  \draw [arrow] (studi)   -- (data);
+  \draw [arrow] (data)    -- (rancang);
+  \draw [arrow] (rancang) -- (impl);
+  \draw [arrow] (impl)    -- (valid);
+  \draw [arrow] (valid)   -- node[anchor=south] {Tidak} (revisi);
+  \draw [arrow] (revisi)  |- (impl);
+  \draw [arrow] (valid)   -- node[right] {Ya} (evaluasi);
+  \end{tikzpicture}
+  \caption{Tahapan Penelitian}
+  \label{fig:tahapan}
+\end{figure}
+
+\section{Pemetaan Pertanyaan Penelitian}
+Tunjukkan bagaimana setiap pertanyaan penelitian akan dijawab: kegiatan yang dilakukan, luaran yang dihasilkan, dan cara mengevaluasinya, seperti pada Tabel~\ref{tab:pemetaan_rq}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Pemetaan Pertanyaan Penelitian terhadap Kegiatan Penelitian}
+  \label{tab:pemetaan_rq}
+  \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{0.08\textwidth}|*{3}{>{\RaggedRight\arraybackslash}X|}}
+  \hline
+  \textbf{RQ} & \textbf{Kegiatan} & \textbf{Luaran} & \textbf{Cara Evaluasi} \\ \hline
+  RQ1 & [Kegiatan untuk menjawab RQ1] & [Artefak / model / temuan] & [Metrik / teknik evaluasi] \\ \hline
+  RQ2 & [Kegiatan untuk menjawab RQ2] & [Artefak / model / temuan] & [Metrik / teknik evaluasi] \\ \hline
+  \end{tabularx}
+\end{table}
+
+\section{Rancangan Eksperimen dan Evaluasi}
+Jelaskan skenario eksperimen yang akan dilakukan (misalnya: variasi parameter, pembanding/\textit{baseline}, pembagian data, jumlah pengulangan) serta prosedur evaluasi hasil menggunakan metrik yang telah diuraikan pada Bab~II.
+
+\section{Alat dan Bahan Penelitian}
+Cantumkan perangkat keras (\textit{hardware}), perangkat lunak (\textit{software}), bahasa pemrograman, \textit{framework}, atau dataset yang akan digunakan, beserta versi dan alasan pemilihannya.
+
+\begin{table}[htbp]
+  \begin{center}
+    \caption{Alat dan Bahan Penelitian}
+    \label{tab:tools}
+    \begin{tabularx}{\textwidth}{|>{\centering\arraybackslash}p{0.06\textwidth}|>{\RaggedRight\arraybackslash}X|>{\RaggedRight\arraybackslash}X|>{\RaggedRight\arraybackslash}X|}
+    \hline
+    \textbf{No.} & \textbf{Alat / Bahan} & \textbf{Spesifikasi / Keterangan} & \textbf{Fungsi dalam Penelitian} \\ \hline
+    1 & [Perangkat Lunak / Framework] & [Nama, Versi] & [Fungsi] \\ \hline
+    2 & [Bahasa Pemrograman] & [Nama, Versi] & [Fungsi] \\ \hline
+    3 & [Basis Data] & [Nama, Versi] & [Fungsi] \\ \hline
+    4 & [Dataset / Sumber Data] & [Deskripsi singkat] & [Fungsi] \\ \hline
+    \end{tabularx}
+  \end{center}
+\end{table}
+
+\section{Jadwal Pelaksanaan Penelitian}
+Jadwal pelaksanaan penelitian disajikan pada Tabel~\ref{tab:jadwal}. Susun jadwal secara rasional dan sesuaikan aktivitas serta periode waktunya dengan tahapan penelitian pada Subbab~\ref{sec:tahapan}. Jadwal ini mencakup keseluruhan siklus penelitian, mulai dari perumusan masalah hingga Sidang Tugas Akhir.
+
+\begin{table}[htbp]
+  \caption{Jadwal Pelaksanaan Penelitian}
+  \label{tab:jadwal}
+  \centering
+  \adjustbox{max width=\textwidth}{%
+    \begin{tabular}{|c|>{\RaggedRight\arraybackslash}p{0.22\linewidth}|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    \textbf{No.} & \textbf{Kegiatan}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Agt\\2026\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Sep\\2026\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Okt\\2026\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Nov\\2026\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Des\\2026\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Jan\\2027\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Feb\\2027\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Mar\\2027\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Apr\\2027\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Mei\\2027\end{tabular}}
+      & \textbf{\begin{tabular}[c]{@{}c@{}}Jun\\2027\end{tabular}} \\
+    \hline
+    1 & Identifikasi \& Perumusan Masalah
+      & \cellcolor{green!25} & \cellcolor{green!25} & & & & & & & & & \\
+    \hline
+    2 & Studi Literatur
+      & & \cellcolor{green!25} & \cellcolor{green!25} & \cellcolor{green!25} & & & & & & & \\
+    \hline
+    3 & Pengumpulan Data
+      & & & \cellcolor{green!25} & \cellcolor{green!25} & & & & & & & \\
+    \hline
+    4 & Analisis Kebutuhan
+      & & & \cellcolor{green!25} & \cellcolor{green!25} & & & & & & & \\
+    \hline
+    5 & Perancangan (\textit{Design})
+      & & & & \cellcolor{green!25} & \cellcolor{green!25} & & & & & & \\
+    \hline
+    6 & \textbf{Seminar Proposal}
+      & & & & \cellcolor{orange!50} & & & & & & & \\
+    \hline
+    7 & Implementasi
+      & & & & & \cellcolor{green!25} & \cellcolor{green!25} & \cellcolor{green!25} & & & & \\
+    \hline
+    8 & \textbf{Seminar TA-1}
+      & & & & & \cellcolor{orange!50} & & & & & & \\
+    \hline
+    9 & Pengujian \& Evaluasi
+      & & & & & & \cellcolor{green!25} & \cellcolor{green!25} & \cellcolor{green!25} & & & \\
+    \hline
+    10 & Penarikan Kesimpulan \& Saran
+      & & & & & & & & \cellcolor{green!25} & \cellcolor{green!25} & & \\
+    \hline
+    11 & \textbf{Seminar Hasil}
+      & & & & & & & & & & \cellcolor{orange!50} & \\
+    \hline
+    12 & \textbf{Sidang Tugas Akhir}
+      & & & & & & & & & & & \cellcolor{orange!50} \\
+    \hline
+    \end{tabular}%
+  }
+  \begin{flushleft}
+    \small \textit{Keterangan:} \colorbox{green!25}{\phantom{X}} Kegiatan penelitian \quad \colorbox{orange!50}{\phantom{X}} Milestone / Seminar
+  \end{flushleft}
+\end{table}
