@@ -234,27 +234,5 @@ Istilah di bagian ini dirumuskan oleh proposal sehingga **tidak ada jurnal yang 
 
 ---
 
-## K. Istilah Lokal Toba pada Data Contoh
-
-Istilah-istilah ini muncul sebagai contoh deskripsi usaha di proposal dan menjadi alasan DP2. Referensi daring umum (Wikipedia) bukan jurnal; untuk dimasukkan ke prompt, **konfirmasikan artinya dengan staf DKUKMPP atau tokoh budaya setempat**. Kolom "Kode contoh" mengikuti Tabel 2.3 dan Subbab 2.7 proposal.
-
-| Istilah | Arti umum | Kode contoh di proposal | Sumber rujukan | Tahun | Link |
-| --- | --- | --- | --- | --- | --- |
-| **Ulos / Tenun Ulos** | Kain tenun tradisional Batak yang dipakai dalam upacara adat dan sebagai busana. "Tenun ulos" menunjuk usaha menenunnya. | Golongan pokok 13 (industri tekstil) | Wikipedia, "Ulos" | — | [Wikipedia](https://en.wikipedia.org/wiki/Ulos) |
-| **Ulos Sadum** | Salah satu jenis ulos; muncul pada contoh "tenun ulos sadum". | Contoh retrieval pada Subbab 2.7 | Wikipedia, "Ulos" | — | [Wikipedia](https://en.wikipedia.org/wiki/Ulos) |
-| **Mi Gomak** | Hidangan mi khas Batak. | "jualan mi gomak" → 56 (penyediaan makan minum), padahal bisa terbaca industri makanan (10) | Wikipedia, "Mie gomak" | — | [Wikipedia](https://en.wikipedia.org/wiki/Mie_gomak) |
-| **Tuak** | Minuman tradisional beralkohol hasil fermentasi nira. | "kedai tuak" → 56 | Wikipedia, "Tuak" | — | [Wikipedia](https://en.wikipedia.org/wiki/Tuak) |
-| **Anyaman Eceng Gondok** | Kerajinan anyaman dari tanaman eceng gondok (*water hyacinth*). | Golongan pokok 16 | Wikipedia, "Water hyacinth" | — | [Wikipedia](https://en.wikipedia.org/wiki/Water_hyacinth) |
-| **Penyulingan Minyak Nilam** | Pengolahan daun nilam (*patchouli*) menjadi minyak atsiri. Contoh kesalahan khas: terbaca sebagai pertanian (01) padahal acuannya industri kimia (20). | Golongan pokok 20 | Wikipedia, "Patchouli" | — | [Wikipedia](https://en.wikipedia.org/wiki/Patchouli) |
-| **Kolang-kaling** | Olahan buah aren; disebut sebagai contoh IKM di Toba. | — | Pemkab Toba, LKjIP DKUKMPP 2025 | 2026 | [dkukmpp.tobakab.go.id (PDF)](https://dkukmpp.tobakab.go.id/wp-content/uploads/sites/94/2026/06/Lakip-2025-ISI-Renstra-Koperin-REV-IKSFin.pdf) |
-
----
-
-## Catatan Integritas Sumber
-
-- **Sudah saya buka dan cocokkan:** halaman atau abstrak Hevner dkk. (2004), Gregor & Hevner (2013), Peffers dkk. (2007), DeLone & McLean (2003), Saaty (1977), McHugh (2012), halaman resmi ISO/IEC 25012, Perpres 39/2019, UU 27/2022, Peraturan BPS 2/2020, serta berita resmi BPS dan Hukumonline tentang KBLI 2025. Seluruh istilah di Bagian J saya cocokkan langsung dengan teks proposal.
-- **Belum saya buka:** sumber lainnya. Penulis, jurnal, tahun, dan DOI/arXiv-nya berasal dari pengetahuan saya. Karya-karya itu umumnya sangat dikenal, tetapi nomor halaman atau DOI tetap mungkin keliru. Klik link, cocokkan judul dan penulis, lalu baru kutip.
-- **Jika sebuah link gagal dibuka,** cari judul artikelnya di Google Scholar atau gunakan DOI lewat `https://doi.org/` diikuti nomor DOI-nya.
-- **Wikipedia, MDN, dan dokumentasi resmi** saya pakai hanya untuk istilah umum yang tidak punya satu jurnal rujukan. Untuk proposal ilmiah, sebaiknya Anda ganti dengan jurnal atau buku teks yang Anda akses sendiri.
 
 *Terakhir diperbarui: 27 Oktober 2026.*
