@@ -1,0 +1,23 @@
+*.md
+!README.md
+!GLOSARIUM.md
+
+# LaTeX build & auxiliary files (Dokumen/proposal dan laporan TA lain)
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.loe
+*.lof
+*.log
+*.lol
+*.lot
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.zip
