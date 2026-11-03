@@ -4,7 +4,7 @@
 \chapter{LANDASAN TEORI}
 \label{chap:teori}
 
-Bab ini menguraikan literatur yang digunakan untuk menganalisis celah penelitian dan mengonstruksi rancangan penelitian, mulai dari teori kesuksesan sistem informasi, konsep UMKM dan tata kelola data sektor publik, metode standardisasi data berbasis LLM dan \textit{retrieval}, pemeringkatan berbobot sebagai fitur pendukung keputusan, hingga metode evaluasi artefak. Setiap persamaan disertai contoh perhitungan dalam domain penelitian. Angka pada contoh perhitungan merupakan data ilustratif untuk menjelaskan cara kerja persamaan, bukan hasil penelitian.
+Bab ini menguraikan literatur yang digunakan untuk menganalisis celah penelitian dan mengonstruksi rancangan penelitian, mulai dari teori kesuksesan sistem informasi, konsep UMKM dan tata kelola data sektor publik, model kualitas data, KBLI 2025, metode standardisasi data berbasis LLM dan \textit{retrieval}, pemeringkatan berbobot sebagai fitur pendukung keputusan, \textit{design science research}, metode evaluasi artefak, hingga penelitian terdahulu. Setiap persamaan disertai contoh perhitungan dalam domain penelitian. Angka pada contoh perhitungan merupakan data ilustratif untuk menjelaskan cara kerja persamaan, bukan hasil penelitian.
 
 % -----------------------------------------------------------------------------
 \section{Model Kesuksesan Sistem Informasi dan Kualitas Informasi}
@@ -33,7 +33,7 @@ ISO/IEC 25012 mendefinisikan model kualitas data yang terdiri atas karakteristik
 \end{equation}
 \persamaan{Kelengkapan data}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan satu desa mengirim $N = 40$ rekaman UMKM dengan $m = 5$ atribut wajib, yaitu nama usaha, desa, jenis usaha, modal, dan jumlah tenaga kerja, sehingga terdapat $40 \times 5 = 200$ nilai wajib. Apabila atribut modal kosong pada 22 rekaman dan jumlah tenaga kerja kosong pada 12 rekaman, maka $M = 34$ dan
+\noindent\textbf{Contoh perhitungan.} Misalkan satu desa mengirim $N = 40$ rekaman UMKM dengan $m = 5$ atribut wajib, yaitu nama pengusaha, desa, kecamatan, jenis usaha, dan jumlah modal usaha, sehingga terdapat $40 \times 5 = 200$ nilai wajib. Apabila atribut jumlah modal usaha kosong pada 22 rekaman dan jenis usaha kosong pada 12 rekaman, maka $M = 34$ dan
 \[
   Q_{\text{lengkap}} = 1 - \frac{34}{200} = 1 - 0{,}17 = 0{,}83.
 \]
@@ -47,7 +47,7 @@ Validitas diukur sebagai proporsi nilai terisi yang memenuhi aturan domain, misa
 \end{equation}
 \persamaan{Validitas data}
 
-\noindent\textbf{Contoh perhitungan.} Pada contoh sebelumnya terdapat $T = 200 - 34 = 166$ nilai terisi. Apabila 9 nilai modal ditulis sebagai teks yang tidak dapat diurai (misalnya ``kurang lebih 5 jt''), 5 nama desa tidak ditemukan dalam daftar referensi karena salah ketik, dan 3 nilai jumlah tenaga kerja bukan bilangan bulat nonnegatif, maka $V = 166 - 17 = 149$ dan
+\noindent\textbf{Contoh perhitungan.} Pada contoh sebelumnya terdapat $T = 200 - 34 = 166$ nilai terisi. Apabila 9 nilai modal ditulis sebagai teks yang tidak dapat diurai (misalnya ``kurang lebih 5 jt''), 5 nama desa tidak ditemukan dalam daftar referensi karena salah ketik, dan 3 nama kecamatan tidak terdapat dalam daftar kecamatan Kabupaten Toba, maka $V = 166 - 17 = 149$ dan
 \[
   Q_{\text{valid}} = \frac{149}{166} \approx 0{,}90.
 \]
@@ -60,7 +60,7 @@ Keunikan diukur dengan Persamaan~\eqref{eq:uniqueness}, dengan $D$ adalah jumlah
 \end{equation}
 \persamaan{Keunikan data}
 
-\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman ditemukan tiga rekaman duplikat, misalnya ``UD Tenun Sinar'' dan ``Usaha Tenun Sinar'' pada alamat yang sama dicatat dua kali oleh dua petugas yang berbeda, maka $D = 3$ dan
+\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman ditemukan tiga rekaman duplikat, misalnya pelaku usaha yang sama pada desa yang sama dicatat dua kali oleh dua petugas dengan ejaan nama yang berbeda, maka $D = 3$ dan
 \[
   Q_{\text{unik}} = 1 - \frac{3}{40} = 0{,}925.
 \]
@@ -73,7 +73,7 @@ Kemutakhiran diukur sebagai proporsi rekaman yang diverifikasi dalam 90 hari ter
 \end{equation}
 \persamaan{Kemutakhiran data}
 
-\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman hanya 12 rekaman yang diverifikasi ulang oleh operator desa dalam 90 hari terakhir, maka $Q_{\text{kini}} = 12/40 = 0{,}30$. Data hasil pendataan tahun 2020 yang belum pernah diverifikasi ulang memiliki $R_{90} = 0$ sehingga $Q_{\text{kini}} = 0$. Perbandingan nilai-nilai tersebut sebelum dan sesudah penerapan artefak merupakan dasar pengujian H4.
+\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman hanya 12 rekaman yang diverifikasi ulang oleh operator desa dalam 90 hari terakhir, maka $Q_{\text{kini}} = 12/40 = 0{,}30$. Data hasil pendataan tahun 2020 yang belum pernah diverifikasi ulang memiliki $R_{90} = 0$ sehingga $Q_{\text{kini}} = 0$. Perbandingan nilai-nilai tersebut sebelum dan sesudah penerapan artefak dilaporkan secara deskriptif dan tidak diuji dengan H4, karena data lama tidak memiliki catatan verifikasi ulang sehingga nilai kemutakhiran sebelum penerapan bernilai nol menurut definisi pengukurannya.
 
 Akurasi diukur pada sampel rekaman yang diverifikasi silang kepada perangkat desa atau pelaku usaha, yaitu proporsi nilai terisi yang sesuai dengan keadaan sebenarnya, sebagaimana Persamaan~\eqref{eq:akurasi}, dengan $S$ adalah jumlah nilai terisi yang diverifikasi dan $B$ adalah jumlah nilai yang sesuai dengan hasil verifikasi. Berbeda dengan validitas yang hanya memeriksa kesesuaian terhadap aturan, akurasi memerlukan pembanding dari luar data.
 
@@ -100,12 +100,13 @@ Konsistensi diukur sebagai proporsi rekaman yang tidak melanggar aturan konsiste
 \[
   Q_{\text{konsisten}} = 1 - \frac{4}{40} = 0{,}90.
 \]
-Perbandingan keenam dimensi sebelum dan sesudah penerapan artefak merupakan dasar pengujian H4 (Subbab~\ref{sec:evalkualitas}).
+Keenam dimensi dibandingkan sebelum dan sesudah penerapan artefak; H4 menguji akurasi dan keunikan, sedangkan empat dimensi lainnya dilaporkan secara deskriptif (Subbab~\ref{sec:evalkualitas}).
 
 % -----------------------------------------------------------------------------
 \section{Klasifikasi Baku Lapangan Usaha Indonesia}
 \label{sec:kbli}
 
+% [CEK] cocokkan 1.560 kelompok dengan hitungan pada buku KBLI 2025 (bps2025kbli); angka yang sama dipakai di Pendahuluan.
 % [CEK] contoh kode golongan pokok pada Tabel~\ref{tab:contoh_topk} (01, 10, 11, 13, 14, 16, 20, 32, 46, 47, 56) belum dicocokkan dengan lampiran KBLI 2025.
 KBLI 2025 ditetapkan melalui Peraturan Badan Pusat Statistik Nomor 7 Tahun 2025 yang berlaku sejak 18 Desember 2025 dan mencabut Peraturan Badan Pusat Statistik Nomor 2 Tahun 2020 yang menjadi dasar KBLI 2020 \cite{bps2025perban7}. Klasifikasi ini mengacu pada \textit{International Standard Industrial Classification} (ISIC) Revisi 5 \cite{bps2025kblisiaran} dan menjadi acuan klasifikasi lapangan usaha dalam statistik resmi serta perizinan berusaha \cite{bps2025perban7}. KBLI memiliki struktur berjenjang lima tingkat, yaitu kategori (kode huruf A sampai dengan V), golongan pokok (dua digit), golongan (tiga digit), subgolongan (empat digit), dan kelompok (lima digit). KBLI 2025 memuat 22 kategori, 87 golongan pokok, 257 golongan, 519 subgolongan, dan 1.560 kelompok usaha \cite{bps2025kblisiaran}. Setiap kelompok dilengkapi judul dan uraian kegiatan. Struktur berjenjang ini memungkinkan evaluasi klasifikasi pada beberapa tingkat granularitas, sebagaimana diterapkan pada penelitian ini. Kesulitan utama klasifikasi KBLI terletak pada jumlah kelas yang besar, kemiripan uraian antarkelas, serta perbedaan antara bahasa uraian resmi dan bahasa yang digunakan pelaku usaha \cite{amnur2025kbli}. Lotfipoor dkk. \cite{lotfipoor2026llm} juga mencatat bahwa skema klasifikasi industri yang baku tidak selalu menangkap nuansa sektor yang bersifat hibrida, misalnya usaha tenun yang sekaligus menjual produk turunan. Pada Sensus Ekonomi Amerika Serikat, alat swa-klasifikasi BEACON memetakan uraian usaha singkat ke kode \textit{North American Industry Classification System} (NAICS) enam digit melalui pencarian informasi bertingkat dari sektor hingga kode \cite{dumbacher2025beacon}, sehingga pemetaan uraian usaha ke klasifikasi baku berjenjang dapat dibantu alat otomatis pada skala besar.
 
@@ -117,7 +118,7 @@ LLM adalah model bahasa berbasis arsitektur \textit{transformer} yang dilatih pa
 
 Kinerja LLM pada bahasa Indonesia dan bahasa daerah masih lebih rendah dibandingkan dengan bahasa Inggris, sehingga pengembangan model dan evaluasi khusus untuk bahasa Indonesia tetap diperlukan \cite{cahyawijaya2024cendol}. Risiko utama penggunaan LLM adalah halusinasi \cite{ji2023hallucination}. Dahl dkk. \cite{dahl2024legal} menunjukkan bahwa halusinasi terjadi secara sistematis pada domain yang menuntut rujukan pada sumber resmi, yaitu kondisi yang serupa dengan pengodean KBLI. Selain itu, pengguna nonahli cenderung menyusun \textit{prompt} secara coba-coba dan tidak sistematis \cite{zamfirescu2023johnny}, sehingga interaksi LLM dalam sistem bagi aparatur desa dan dinas sebaiknya dibungkus dalam alur kerja terstruktur, bukan antarmuka percakapan bebas.
 
-Tingkat halusinasi dalam penelitian ini didefinisikan sebagai proporsi keluaran yang memuat kode yang tidak terdapat dalam kamus KBLI 2025, sebagaimana Persamaan~\eqref{eq:halusinasi}, dengan $\hat{y}_i$ adalah kode keluaran model untuk rekaman ke-$i$ dan $\mathcal{K}$ adalah himpunan kode KBLI yang sah.
+Tingkat halusinasi dalam penelitian ini didefinisikan sebagai proporsi keluaran mentah model, yaitu keluaran sebelum diperiksa validator, yang memuat kode yang tidak terdapat dalam kamus KBLI 2025, sebagaimana Persamaan~\eqref{eq:halusinasi}, dengan $\hat{y}_i$ adalah kode pada keluaran mentah model untuk rekaman ke-$i$ dan $\mathcal{K}$ adalah himpunan kode KBLI yang sah. Pada keluaran yang dikembalikan sistem kepada pengguna sesudah validator, nilai ini dijamin nol oleh rancangan sehingga tidak dipakai sebagai hasil pengujian.
 
 \begin{equation}
   HR = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[\hat{y}_i \notin \mathcal{K}\right]
@@ -178,7 +179,7 @@ Penelitian ini tidak menguji segmentasi maupun metode penurunan bobot kriteria s
 \[
   V_B = 0{,}5(1) + 0{,}3(0) + 0{,}2(1) = 0{,}70.
 \]
-Kandidat $A$ menempati peringkat lebih tinggi walaupun kesiapan produknya lebih rendah, karena bobot yang diberikan pada status wirausaha pemula. Jejak perhitungan ini dapat ditampilkan kepada pimpinan untuk menjelaskan dasar pemeringkatan. Kesesuaian peringkat dengan pertimbangan ahli tidak diuji dalam penelitian ini.
+Kandidat $A$ menempati peringkat lebih tinggi walaupun kesiapan produknya lebih rendah, karena bobot yang diberikan pada status wirausaha pemula. Jejak perhitungan ini dapat ditampilkan kepada pimpinan untuk menjelaskan dasar pemeringkatan. Kesesuaian peringkat dengan pertimbangan ahli tidak dinilai dalam penelitian ini.
 
 % -----------------------------------------------------------------------------
 \section{\textit{Design Science Research}}
