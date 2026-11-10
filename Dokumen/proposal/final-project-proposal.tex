@@ -9,6 +9,7 @@
 \renewcommand{\baselinestretch}{1.5}
 
 \usepackage[T1]{fontenc}
+\usepackage[table,xcdraw]{xcolor}
 \usepackage{newtxtext,newtxmath}
 \usepackage[utf8]{inputenc}
 \usepackage{subcaption}
@@ -20,7 +21,6 @@
 \usepackage{tabularx}
 \usepackage{longtable}
 \usepackage[tableposition=top]{caption}
-\usepackage[table,xcdraw]{xcolor}
 \usepackage{titlesec}
 \usepackage{indentfirst}
 \usepackage{enumitem}
@@ -52,7 +52,7 @@
 \usepackage{helvet}     % Helvetica (Arial-equivalent) for footer text
 \usepackage{adjustbox}  % \resizebox / \adjustbox for wide tables
 
-\title{Evaluating Retrieval-Grounded Large Language Models for Standardizing Micro, Small, and Medium Enterprise Data in Public-Sector Decision Support}
+\title{Retrieval-Grounded Large Language Models for Standardizing Micro, Small, and Medium Enterprise Data in Local Government}
 \author{Tim TASI-2627-106}
 \date{\today}
 
@@ -70,8 +70,8 @@
 \renewcommand{\thesubsubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
 
 % Template menulis "Gambar 2. 1" / "Tabel 2. 1" (titik + spasi); hapus spasi jika ingin "2.1".
-\renewcommand{\thefigure}{\arabic{chapter}. \arabic{figure}}
-\renewcommand{\thetable}{\arabic{chapter}. \arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 
 \usepackage{graphicx}
@@ -162,7 +162,20 @@
 
 \lstset{style=mystyle}
 % Daftar Source Code: label "Source Code" dan penomoran mengikuti bab (1.1., 1.2., ...)
-\renewcommand{\lstlistingname}{Source Code}
+% Makro untuk istilah berbahasa Inggris (butir C review): \eng{...}
+\newcommand{\eng}[1]{\textit{#1}}
+
+% Lampiran bernomor otomatis: gunakan \lampiranjudul{label}{Judul} pada Isi/Lampiran.tex
+% dan rujuk di teks dengan \lampkadis, \lampstaf, atau Lampiran~\ref{label}.
+\newcounter{lampiran}
+\newcommand{\lampiranjudul}[2]{%
+  \refstepcounter{lampiran}\label{#1}%
+  \addcontentsline{toc}{section}{Lampiran \thelampiran\ #2}%
+  \noindent\textbf{Lampiran \thelampiran}\quad #2\par\vspace{1em}}
+\newcommand{\lampkadis}{Lampiran~\ref{lamp:kadis}}
+\newcommand{\lampstaf}{Lampiran~\ref{lamp:staf}}
+
+\renewcommand{\lstlistingname}{\textit{Source Code}}
 \renewcommand{\lstlistlistingname}{DAFTAR SOURCE CODE}
 \AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{chapter}. \arabic{lstlisting}}}
 \captionsetup[lstlisting]{labelsep=space}
@@ -190,10 +203,9 @@
   {\fontfamily{phv}\fontsize{10pt}{12pt}\selectfont\textbf{Institut Teknologi Del}}%
 }
 
-% COVER style (hanya footer instansi, tanpa nomor halaman)
+% COVER style (tanpa footer instansi dan tanpa nomor halaman)
 \fancypagestyle{cover}{%
   \fancyhf{}%
-  \fancyfoot[R]{\itdelfooter}%
   \renewcommand{\headrulewidth}{0pt}%
   \renewcommand{\footrulewidth}{0pt}%
 }
@@ -225,8 +237,8 @@
   \renewcommand{\footrulewidth}{0pt}%
 }
 
-% Judul usulan (17 kata; dipakai pada sampul, abstrak, dan pernyataan AI). Judul berbahasa Inggris dicetak miring.
-\newcommand{\judulusulan}{Evaluating Retrieval-Grounded Large Language Models for Standardizing Micro, Small, and Medium Enterprise Data in Public-Sector Decision Support}
+% Judul usulan; dipakai pada sampul dan abstrak. Judul berbahasa Inggris dicetak miring.
+\newcommand{\judulusulan}{Retrieval-Grounded Large Language Models for Standardizing Micro, Small, and Medium Enterprise Data in Local Government}
 
 
 \begin{document}
@@ -235,18 +247,21 @@
 \pagenumbering{roman}
 \pagestyle{frontmatter}
 
+\hypersetup{pageanchor=false}
 \input{Header/sampul}
+\hypersetup{pageanchor=true}
 % Setelah titlepage nomor halaman kembali ke 1, sehingga ABSTRAK berhalaman i (seperti template).
 \input{Header/abstrak}
 \input{Header/abstract}
-\input{Header/pernyataan_ai}
+% DINONAKTIFKAN untuk Seminar Proposal: \input{Header/pernyataan_ai}
 
 % Daftar isi dan daftar-daftar (beri % pada daftar yang kosong, bila tidak ada)
 \input{Header/d_isi}
 \input{Header/d_gambar}
 \input{Header/d_tabel}
-\input{Header/d_kode}
+% DINONAKTIFKAN untuk Seminar Proposal: \input{Header/d_kode}
 \input{Header/d_persamaan}
+% DINONAKTIFKAN untuk Seminar Proposal: \input{Header/d_istilah}
 
 % Simpan nomor halaman Romawi terakhir agar back matter melanjutkan dari sini
 \setcounter{savepage}{\value{page}}
@@ -267,8 +282,9 @@
 
 % Daftar Pustaka ditulis dengan aturan IEEE.
 \bibliographystyle{IEEEtran}
-\bibliography{references}
+\phantomsection
 \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+\bibliography{references}
 
 \input{Isi/Lampiran}
 

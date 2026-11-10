@@ -1,7 +1,7 @@
 *.md
 !README.md
 !GLOSARIUM.md
-Referensi/Referensi-Proposal
+# Referensi/Referensi-Proposal
 
 # LaTeX build & auxiliary files (Dokumen/proposal dan laporan TA lain)
 *.aux

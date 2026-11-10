@@ -1,0 +1,93 @@
+\chapter*{\centerline{DAFTAR ISTILAH DAN SINGKATAN}}
+\addcontentsline{toc}{chapter}{DAFTAR ISTILAH DAN SINGKATAN}
+
+\noindent\textbf{Singkatan}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{|L{0.17\textwidth}|L{0.72\textwidth}|}
+\hline
+\textbf{Singkatan} & \textbf{Kepanjangan atau arti} \\ \hline
+\endfirsthead
+\hline
+\textbf{Singkatan} & \textbf{Kepanjangan atau arti} \\ \hline
+\endhead
+Acc@$k$ & Akurasi \textit{top-k}, yaitu proporsi \textit{record} yang kode pada \textit{gold standard} termasuk dalam $k$ keluaran teratas \\ \hline
+ADR & \textit{Action Design Research} \\ \hline
+API & \textit{Application Programming Interface} (antarmuka pemrograman aplikasi) \\ \hline
+B0, B1, B1$'$ & Kondisi pembanding eksperimen standardisasi: \textit{baseline} leksikal, LLM tanpa \textit{retrieval}, dan LLM dengan daftar golongan pokok di konteks \\ \hline
+BPMN & \textit{Business Process Model and Notation} \\ \hline
+DKUKMPP & Dinas Koperasi, Usaha Kecil dan Menengah, Perdagangan dan Perindustrian \\ \hline
+DSR & \textit{Design Science Research} \\ \hline
+DSRM & \textit{Design Science Research Methodology} \\ \hline
+FEDS & \textit{Framework for Evaluation in Design Science} \\ \hline
+GLMM & \textit{Generalized Linear Mixed Model} \\ \hline
+GPU & \textit{Graphics Processing Unit} \\ \hline
+HR & \textit{Hallucination rate}, tingkat halusinasi kode \\ \hline
+JCIS & \textit{Journal of Computer Information Systems} \\ \hline
+KBLI & Klasifikasi Baku Lapangan Usaha Indonesia \\ \hline
+KF, KNF & Kebutuhan fungsional, kebutuhan nonfungsional \\ \hline
+LKjIP & Laporan Kinerja Instansi Pemerintah \\ \hline
+LLM & \textit{Large Language Model} \\ \hline
+NIB & Nomor Induk Berusaha \\ \hline
+NIK & Nomor Induk Kependudukan \\ \hline
+P1, P2a, P2b & Kondisi uji eksperimen standardisasi: \textit{retrieval-grounded} LLM, ditambah glosarium istilah lokal, dan ditambah contoh \textit{few-shot} \\ \hline
+PerBPS & Peraturan Badan Pusat Statistik \\ \hline
+PP & Peraturan Pemerintah \\ \hline
+RAG & \textit{Retrieval-Augmented Generation} \\ \hline
+Renstra & Rencana Strategis \\ \hline
+RQ & Pertanyaan penelitian (\textit{research question}) \\ \hline
+RTLX & \textit{Raw NASA Task Load Index}, skor beban kerja tanpa pembobotan berpasangan \\ \hline
+SAW & \textit{Simple Additive Weighting} \\ \hline
+SPK & Sistem pendukung keputusan \\ \hline
+SUS & \textit{System Usability Scale} \\ \hline
+UMKM & Usaha mikro, kecil, dan menengah \\ \hline
+UU PDP & Undang-Undang Pelindungan Data Pribadi \\ \hline
+\end{longtable}
+}
+
+\vspace{1em}
+\noindent\textbf{Istilah}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{|L{0.27\textwidth}|L{0.62\textwidth}|}
+\hline
+\textbf{Istilah} & \textbf{Penjelasan} \\ \hline
+\endfirsthead
+\hline
+\textbf{Istilah} & \textbf{Penjelasan} \\ \hline
+\endhead
+\textit{Audit trail} & Catatan jejak seluruh perubahan data dan keputusan verifikasi beserta pelakunya \\ \hline
+\textit{Baseline} & Kondisi pembanding paling sederhana yang dipakai sebagai acuan kinerja \\ \hline
+\textit{Benchmark} & Himpunan data atau tugas baku untuk membandingkan kinerja model \\ \hline
+\textit{Cluster bootstrap} & Pengambilan sampel ulang pada tingkat kelompok (di sini desa) untuk memperhitungkan ketergantungan antar-\textit{record} \\ \hline
+\textit{Confusion matrix} & Tabel yang membandingkan kelas pada \textit{gold standard} dengan kelas prediksi \\ \hline
+\textit{Coverage--accuracy curve} & Kurva yang memperlihatkan akurasi selektif pada berbagai tingkat cakupan keluaran yang diterima otomatis \\ \hline
+\textit{Data profiling} & Pemeriksaan statistik awal terhadap isi data, misalnya jumlah \textit{record}, nilai kosong, dan sebaran nilai \\ \hline
+\textit{Design effect} & Faktor pengali ukuran sampel akibat ketergantungan antar-observasi dalam satu kelompok \\ \hline
+\textit{Embedding} & Representasi vektor teks yang dipakai untuk mengukur kemiripan makna \\ \hline
+\textit{Few-shot} & Pemberian beberapa contoh pada \textit{prompt} agar model memahami tugas \\ \hline
+\textit{Gold standard} & Label acuan hasil pengodean manusia yang dipakai untuk menilai keluaran model \\ \hline
+\textit{Inter-annotator agreement} & Tingkat kesepakatan antaranotator yang mengodekan data yang sama \\ \hline
+\textit{Open-weight} & Model yang bobotnya tersedia sehingga dapat dijalankan pada infrastruktur sendiri \\ \hline
+\textit{Output reproducibility} & Keterulangan keluaran, yaitu proporsi \textit{record} yang memperoleh keluaran identik pada beberapa kali pengulangan \\ \hline
+\textit{Pipeline} & Rangkaian langkah pemrosesan data dari masukan hingga keluaran \\ \hline
+\textit{Prompt} & Instruksi dan konteks yang diberikan kepada LLM \\ \hline
+\textit{Proprietary} & Model yang hanya dapat diakses melalui layanan penyedia, biasanya melalui API \\ \hline
+\textit{Prototype} & Versi awal sistem yang dibangun sebagai intervensi sekaligus instrumen penelitian \\ \hline
+\textit{Record} & Satu baris data, yaitu satu entri usaha \\ \hline
+\textit{Re-ranking} & Pengurutan ulang kandidat hasil \textit{retrieval} \\ \hline
+\textit{Retrieval-grounded} & Keluaran model dibatasi dan dipandu oleh kandidat yang diambil dari sumber acuan \\ \hline
+\textit{Retriever} & Komponen yang mengambil kandidat relevan dari basis pengetahuan \\ \hline
+\textit{Threshold} & Nilai ambang yang memisahkan keluaran yang diterima otomatis dari yang diverifikasi manusia \\ \hline
+\textit{Usability} & Tingkat kemudahan, efisiensi, dan kepuasan pengguna dalam memakai sistem \\ \hline
+\textit{Within-subject} & Rancangan ketika setiap partisipan mengalami semua kondisi \\ \hline
+\textit{Wilcoxon signed-rank test} & Uji nonparametrik untuk selisih berpasangan \\ \hline
+\textit{Zero-shot} & Penggunaan model tanpa contoh pada \textit{prompt} \\ \hline
+\end{longtable}
+}
+
+\clearpage

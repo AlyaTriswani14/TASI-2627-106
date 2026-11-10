@@ -1,31 +1,31 @@
-% =============================================================================
-% BAB II LANDASAN TEORI  --  
-% =============================================================================
 \chapter{LANDASAN TEORI}
 \label{chap:teori}
 
-Bab ini menguraikan literatur yang digunakan untuk menganalisis celah penelitian dan mengonstruksi rancangan penelitian, mulai dari teori kesuksesan sistem informasi, konsep UMKM dan tata kelola data sektor publik, model kualitas data, KBLI 2025, metode standardisasi data berbasis LLM dan \textit{retrieval}, pemeringkatan berbobot sebagai fitur pendukung keputusan, \textit{design science research}, metode evaluasi artefak, hingga penelitian terdahulu. Setiap persamaan disertai contoh perhitungan dalam domain penelitian. Angka pada contoh perhitungan merupakan data ilustratif untuk menjelaskan cara kerja persamaan, bukan hasil penelitian.
+Bab ini menguraikan literatur yang digunakan untuk menganalisis celah penelitian dan mengonstruksi rancangan penelitian, mulai dari teori kesuksesan sistem informasi, konsep UMKM dan tata kelola data sektor publik, model kualitas data, KBLI 2025, metode standardisasi data berbasis LLM dan \textit{retrieval}, pemeringkatan berbobot sebagai fitur pendukung keputusan, \textit{design science research}, metode evaluasi artefak dan evaluasi operasional model, hingga penelitian terdahulu. Setiap persamaan disertai contoh perhitungan dalam domain penelitian. Angka pada contoh perhitungan merupakan data ilustratif untuk menjelaskan cara kerja persamaan, bukan hasil penelitian.
 
 % -----------------------------------------------------------------------------
 \section{Model Kesuksesan Sistem Informasi dan Kualitas Informasi}
 \label{sec:delone}
 
-Model kesuksesan sistem informasi DeLone dan McLean menyatakan bahwa kualitas sistem, kualitas informasi, dan kualitas layanan memengaruhi penggunaan sistem dan kepuasan pengguna, yang selanjutnya menghasilkan manfaat bersih (\textit{net benefits}) bagi individu dan organisasi \cite{delone2003success}. Model ini berfungsi sebagai teori kernel penelitian. Komponen LLM terpandu \textit{retrieval} dan validasi pada saat pengisian diposisikan sebagai mekanisme untuk meningkatkan kualitas informasi (diuji melalui H1--H4), sedangkan kinerja tugas dan beban kerja pengguna diposisikan sebagai indikator manfaat bersih pada tingkat individu (diuji melalui H5). Feuerriegel dkk. \cite{feuerriegel2024genai} memandang kecerdasan buatan generatif sebagai entitas dalam sistem sosioteknis, sehingga kualitas keluarannya perlu dievaluasi bersama interaksinya dengan pengguna dan proses organisasi. Pandangan ini sejalan dengan kajian multidisiplin yang menekankan perlunya bukti empiris mengenai peluang dan risiko kecerdasan buatan generatif bagi praktik dan kebijakan \cite{dwivedi2023chatgpt}.
+Model kesuksesan sistem informasi DeLone dan McLean menyatakan bahwa kualitas sistem, kualitas informasi, dan kualitas layanan memengaruhi penggunaan sistem dan kepuasan pengguna, yang selanjutnya menghasilkan manfaat bersih (\textit{net benefits}) bagi individu dan organisasi \cite{delone2003success}. Pada penelitian ini model tersebut digunakan sebagai kerangka evaluasi luaran. Kualitas informasi dioperasionalkan melalui dimensi kualitas data yang diukur pada RQ2, sedangkan manfaat bersih pada tingkat individu dioperasionalkan melalui kinerja tugas dan beban kerja pengguna yang diukur pada RQ3. Hubungan antarkonstruk dalam model tersebut tidak diuji dalam penelitian ini. Feuerriegel dkk. \cite{feuerriegel2024genai} memandang kecerdasan buatan generatif sebagai entitas dalam sistem sosioteknis, sehingga kualitas keluarannya perlu dievaluasi bersama interaksinya dengan pengguna dan proses organisasi. Pandangan ini sejalan dengan kajian multidisiplin yang menekankan perlunya bukti empiris mengenai peluang dan risiko kecerdasan buatan generatif bagi praktik dan kebijakan \cite{dwivedi2023chatgpt}.
+
+Raisch dan Krakowski \cite{raisch2021automation} menyoroti paradoks otomasi--augmentasi, yaitu ketegangan antara penggunaan kecerdasan buatan untuk mengotomasi pekerjaan dan untuk menguatkan kemampuan manusia, sehingga pembagian peran antara mesin dan manusia perlu ditetapkan secara sengaja. Bukti dari eksperimen lapangan pada pengusaha di Kenya menunjukkan bahwa dampak kecerdasan buatan generatif terhadap kinerja usaha tidak seragam antarpengguna \cite{otis2026uneven}. Kedua rujukan ini menjadi alasan penelitian ini tidak berhenti pada akurasi model (RQ1), tetapi juga mengevaluasi kualitas data (RQ2) dan kinerja pengguna sebenarnya (RQ3).
 
 % -----------------------------------------------------------------------------
 \section{UMKM, Kewenangan Pembinaan, dan Tata Kelola Data}
 \label{sec:umkm}
 
-% [CEK] klaim kewenangan kabupaten (mikro/kecil) masih perlu diverifikasi ke pasal PP 7/2021 dan Lampiran UU 23/2014.
-PP Nomor 7 Tahun 2021 mengelompokkan usaha berdasarkan modal usaha di luar tanah dan bangunan tempat usaha atau berdasarkan hasil penjualan tahunan. Usaha mikro memiliki modal usaha paling banyak Rp1 miliar atau hasil penjualan tahunan paling banyak Rp2 miliar; usaha kecil memiliki modal lebih dari Rp1 miliar sampai dengan Rp5 miliar atau hasil penjualan lebih dari Rp2 miliar sampai dengan Rp15 miliar; dan usaha menengah memiliki modal lebih dari Rp5 miliar sampai dengan Rp10 miliar atau hasil penjualan lebih dari Rp15 miliar sampai dengan Rp50 miliar \cite{pp7tahun2021}. Klasifikasi skala ini menentukan kewenangan pembinaan, sehingga kesalahan klasifikasi berimplikasi langsung pada perencanaan program daerah. Dalam praktik di Kabupaten Toba, dinas juga menggunakan kategori ultra mikro untuk membedakan usaha dengan modal sangat kecil \cite{wawancarastaf2026}.
+PP Nomor 7 Tahun 2021 mengelompokkan usaha berdasarkan modal usaha di luar tanah dan bangunan tempat usaha atau berdasarkan hasil penjualan tahunan. Usaha mikro memiliki modal usaha paling banyak Rp1 miliar atau hasil penjualan tahunan paling banyak Rp2 miliar; usaha kecil memiliki modal lebih dari Rp1 miliar sampai dengan Rp5 miliar atau hasil penjualan lebih dari Rp2 miliar sampai dengan Rp15 miliar; dan usaha menengah memiliki modal lebih dari Rp5 miliar sampai dengan Rp10 miliar atau hasil penjualan lebih dari Rp15 miliar sampai dengan Rp50 miliar \cite{pp7tahun2021}. Klasifikasi skala ini relevan bagi perencanaan program pembinaan, karena kesalahan klasifikasi dapat memengaruhi penentuan sasaran program daerah. Dalam praktik di Kabupaten Toba, dinas juga menggunakan kategori ultra mikro untuk membedakan usaha dengan modal sangat kecil (\lampstaf).
 
-Laudon dan Laudon \cite{laudon2022mis} menjelaskan bahwa nilai sistem informasi bagi pengambilan keputusan bergantung pada kualitas data yang tersimpan di dalamnya, dan bahwa data yang tidak akurat, tidak tepat waktu, atau tidak konsisten antarsumber menyebabkan keputusan yang keliru. Kebijakan Satu Data Indonesia menetapkan empat prinsip data pemerintah, yaitu standar data, metadata baku, interoperabilitas, dan penggunaan kode referensi atau data induk \cite{perpres39tahun2019}. Dalam konteks penelitian ini, KBLI 2025 berfungsi sebagai kode referensi untuk atribut lapangan usaha, sedangkan kode wilayah administratif berfungsi sebagai kode referensi untuk atribut lokasi.
+Laudon, Laudon, dan Traver menjelaskan bahwa keputusan yang berkualitas memerlukan informasi yang berkualitas. Tabel~12.3 dalam buku tersebut memuat dimensi kualitas informasi, antara lain akurasi, konsistensi, kelengkapan, validitas, dan ketepatan waktu \cite[Tabel~12.3]{laudon2026mis}. Kebijakan Satu Data Indonesia menetapkan empat prinsip data pemerintah, yaitu standar data, metadata baku, interoperabilitas, dan penggunaan kode referensi atau data induk \cite{perpres39tahun2019}. Dalam konteks penelitian ini, KBLI 2025 berfungsi sebagai kode referensi untuk atribut lapangan usaha, sedangkan kode wilayah administratif berfungsi sebagai kode referensi untuk atribut lokasi.
+
+Literatur mengenai UMKM dan teknologi digital di Indonesia umumnya menempatkan pelaku usaha sebagai pengguna teknologi. Sagala dan {\H{O}}ri \cite{sagala2024sme} menelaah secara sistematis literatur mengenai keberhasilan transformasi digital UMKM, sedangkan Utomo dan Setiyono \cite{utomo2024digital} membahas pemanfaatan teknologi digital pada usaha mikro dan kecil untuk meningkatkan kesejahteraan ekonomi Indonesia. Kajian pengabdian masyarakat menunjukkan arah yang sama pada tingkat desa dan kelurahan, yaitu pemanfaatan \textit{digital marketing} untuk pemasaran tenun ulos di Desa Sigaol Timur \cite{naibaho2025ulos} serta edukasi \textit{digital marketing} dan legalitas usaha daring bagi pelaku UMKM di Surabaya \cite{nadhifah2026digitalisasi}. Berdasarkan penelusuran pustaka pada tinjauan ini, kajian-kajian tersebut berfokus pada kesiapan dan kapasitas pelaku usaha, sedangkan kualitas dan standardisasi data UMKM yang dihimpun dan dikelola pemerintah daerah sebagai dasar pembinaan belum menjadi objek utama kajian.
 
 % -----------------------------------------------------------------------------
 \section{Model Kualitas Data}
 \label{sec:kualitas}
 
-ISO/IEC 25012 mendefinisikan model kualitas data yang terdiri atas karakteristik inheren dan karakteristik yang bergantung pada sistem \cite{iso25012}. Penelitian ini menggunakan enam dimensi kualitas data yang relevan dengan kebutuhan dinas, yaitu kelengkapan (\textit{completeness}), akurasi (\textit{accuracy}, yaitu kesesuaian nilai dengan keadaan sebenarnya), konsistensi (\textit{consistency}), dan kemutakhiran (\textit{currentness}) yang mengacu pada ISO/IEC 25012, serta keunikan (\textit{uniqueness}, yaitu ketiadaan duplikasi) dan validitas (\textit{validity}, yaitu kesesuaian terhadap domain nilai atau aturan format) yang mengacu pada dimensi kualitas data Government Data Quality Hub \cite{govuk2021dqdimensions}. Kelengkapan diukur sebagai proporsi nilai atribut wajib yang terisi, sebagaimana Persamaan~\eqref{eq:completeness}, dengan $N$ adalah jumlah rekaman, $m$ adalah jumlah atribut wajib, dan $M$ adalah jumlah nilai atribut wajib yang kosong.
+ISO/IEC 25012 mendefinisikan model kualitas data yang terdiri atas karakteristik inheren dan karakteristik yang bergantung pada sistem \cite{iso25012}. Tinjauan terbaru terhadap kerangka kualitas data yang memiliki landasan regulasi menunjukkan bahwa akurasi, kelengkapan, konsistensi, dan ketepatan waktu (\textit{timeliness}) muncul secara konsisten di berbagai kerangka \cite{miller2025dq}. Penelitian ini menggunakan enam dimensi kualitas data yang relevan dengan kebutuhan dinas, yaitu kelengkapan (\textit{completeness}), akurasi (\textit{accuracy}, yaitu kesesuaian nilai dengan keadaan sebenarnya), konsistensi (\textit{consistency}), dan kemutakhiran (\textit{currentness}) yang mengacu pada ISO/IEC 25012, serta keunikan (\textit{uniqueness}, yaitu ketiadaan duplikasi) dan validitas (\textit{validity}, yaitu kesesuaian terhadap domain nilai atau aturan format) yang mengacu pada dimensi kualitas data Government Data Quality Hub \cite{govuk2021dqdimensions}. Kelengkapan diukur sebagai proporsi nilai atribut wajib yang terisi, sebagaimana Persamaan~\eqref{eq:completeness}, dengan $N$ adalah jumlah \textit{record}, $m$ adalah jumlah atribut wajib, dan $M$ adalah jumlah nilai atribut wajib yang kosong.
 
 \begin{equation}
   Q_{\text{lengkap}} = 1 - \frac{M}{N \times m}
@@ -33,7 +33,7 @@ ISO/IEC 25012 mendefinisikan model kualitas data yang terdiri atas karakteristik
 \end{equation}
 \persamaan{Kelengkapan data}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan satu desa mengirim $N = 40$ rekaman UMKM dengan $m = 5$ atribut wajib, yaitu nama pengusaha, desa, kecamatan, jenis usaha, dan jumlah modal usaha, sehingga terdapat $40 \times 5 = 200$ nilai wajib. Apabila atribut jumlah modal usaha kosong pada 22 rekaman dan jenis usaha kosong pada 12 rekaman, maka $M = 34$ dan
+\noindent\textbf{Contoh perhitungan.} Misalkan satu desa mengirim $N = 40$ \textit{record} UMKM dengan $m = 5$ atribut wajib, yaitu nama pengusaha, desa, kecamatan, jenis usaha, dan jumlah modal usaha, sehingga terdapat $40 \times 5 = 200$ nilai wajib. Apabila atribut jumlah modal usaha kosong pada 22 \textit{record} dan jenis usaha kosong pada 12 \textit{record}, maka $M = 34$ dan
 \[
   Q_{\text{lengkap}} = 1 - \frac{34}{200} = 1 - 0{,}17 = 0{,}83.
 \]
@@ -52,7 +52,7 @@ Validitas diukur sebagai proporsi nilai terisi yang memenuhi aturan domain, misa
   Q_{\text{valid}} = \frac{149}{166} \approx 0{,}90.
 \]
 
-Keunikan diukur dengan Persamaan~\eqref{eq:uniqueness}, dengan $D$ adalah jumlah rekaman yang teridentifikasi sebagai duplikat dari rekaman lain yang merujuk pada unit usaha yang sama.
+Keunikan diukur dengan Persamaan~\eqref{eq:uniqueness}, dengan $D$ adalah jumlah \textit{record} yang teridentifikasi sebagai duplikat dari \textit{record} lain yang merujuk pada unit usaha yang sama.
 
 \begin{equation}
   Q_{\text{unik}} = 1 - \frac{D}{N}
@@ -60,12 +60,12 @@ Keunikan diukur dengan Persamaan~\eqref{eq:uniqueness}, dengan $D$ adalah jumlah
 \end{equation}
 \persamaan{Keunikan data}
 
-\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman ditemukan tiga rekaman duplikat, misalnya pelaku usaha yang sama pada desa yang sama dicatat dua kali oleh dua petugas dengan ejaan nama yang berbeda, maka $D = 3$ dan
+\noindent\textbf{Contoh perhitungan.} Apabila dari 40 \textit{record} ditemukan tiga \textit{record} duplikat, misalnya pelaku usaha yang sama pada desa yang sama dicatat dua kali oleh dua petugas dengan ejaan nama yang berbeda, maka $D = 3$ dan
 \[
   Q_{\text{unik}} = 1 - \frac{3}{40} = 0{,}925.
 \]
 
-Kemutakhiran diukur sebagai proporsi rekaman yang diverifikasi dalam 90 hari terakhir, sesuai dengan siklus pemutakhiran tiga bulanan yang diharapkan dinas \cite{wawancarastaf2026}, sebagaimana Persamaan~\eqref{eq:currentness}, dengan $R_{90}$ adalah jumlah rekaman yang tanggal verifikasi terakhirnya tidak lebih dari 90 hari sebelum tanggal pengukuran.
+Kemutakhiran diukur sebagai proporsi \textit{record} yang diverifikasi dalam 90 hari terakhir, sesuai dengan siklus pemutakhiran tiga bulanan yang diharapkan dinas (\lampstaf), sebagaimana Persamaan~\eqref{eq:currentness}, dengan $R_{90}$ adalah jumlah \textit{record} yang tanggal verifikasi terakhirnya tidak lebih dari 90 hari sebelum tanggal pengukuran.
 
 \begin{equation}
   Q_{\text{kini}} = \frac{R_{90}}{N}
@@ -73,9 +73,9 @@ Kemutakhiran diukur sebagai proporsi rekaman yang diverifikasi dalam 90 hari ter
 \end{equation}
 \persamaan{Kemutakhiran data}
 
-\noindent\textbf{Contoh perhitungan.} Apabila dari 40 rekaman hanya 12 rekaman yang diverifikasi ulang oleh operator desa dalam 90 hari terakhir, maka $Q_{\text{kini}} = 12/40 = 0{,}30$. Data hasil pendataan tahun 2020 yang belum pernah diverifikasi ulang memiliki $R_{90} = 0$ sehingga $Q_{\text{kini}} = 0$. Perbandingan nilai-nilai tersebut sebelum dan sesudah penerapan artefak dilaporkan secara deskriptif dan tidak diuji dengan H4, karena data lama tidak memiliki catatan verifikasi ulang sehingga nilai kemutakhiran sebelum penerapan bernilai nol menurut definisi pengukurannya.
+\noindent\textbf{Contoh perhitungan.} Apabila dari 40 \textit{record} hanya 12 \textit{record} yang diverifikasi ulang oleh operator desa dalam 90 hari terakhir, maka $Q_{\text{kini}} = 12/40 = 0{,}30$. Data pada lembar kerja dinas, yang formatnya tidak memuat tanggal verifikasi (Subbab~\ref{sec:latar-belakang}), memiliki $R_{90} = 0$ sehingga $Q_{\text{kini}} = 0$. Perbandingan nilai-nilai tersebut sebelum dan sesudah penerapan artefak dilaporkan secara deskriptif dan tidak diuji secara inferensial, karena nilai kemutakhiran pada kondisi sebelum bernilai nol menurut definisi pengukurannya.
 
-Akurasi diukur pada sampel rekaman yang diverifikasi silang kepada perangkat desa atau pelaku usaha, yaitu proporsi nilai terisi yang sesuai dengan keadaan sebenarnya, sebagaimana Persamaan~\eqref{eq:akurasi}, dengan $S$ adalah jumlah nilai terisi yang diverifikasi dan $B$ adalah jumlah nilai yang sesuai dengan hasil verifikasi. Berbeda dengan validitas yang hanya memeriksa kesesuaian terhadap aturan, akurasi memerlukan pembanding dari luar data.
+Akurasi diukur pada sampel \textit{record} yang diverifikasi silang kepada perangkat desa atau pelaku usaha, yaitu proporsi nilai terisi yang sesuai dengan keadaan sebenarnya, sebagaimana Persamaan~\eqref{eq:akurasi}, dengan $S$ adalah jumlah nilai terisi yang diverifikasi dan $B$ adalah jumlah nilai yang sesuai dengan hasil verifikasi. Berbeda dengan validitas yang hanya memeriksa kesesuaian terhadap aturan, akurasi memerlukan pembanding dari luar data.
 
 \begin{equation}
   Q_{\text{akurasi}} = \frac{B}{S}
@@ -83,12 +83,12 @@ Akurasi diukur pada sampel rekaman yang diverifikasi silang kepada perangkat des
 \end{equation}
 \persamaan{Akurasi data}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan sampel verifikasi berisi 50 rekaman dengan $S = 230$ nilai terisi (nilai ilustratif). Setelah dikonfirmasi, 14 nilai tidak sesuai dengan keadaan sebenarnya, misalnya modal yang berbeda dari kenyataan atau jenis usaha yang telah berganti, sehingga $B = 230 - 14 = 216$ dan
+\noindent\textbf{Contoh perhitungan.} Misalkan sampel verifikasi berisi 50 \textit{record} dengan $S = 230$ nilai terisi (nilai ilustratif). Setelah dikonfirmasi, 14 nilai tidak sesuai dengan keadaan sebenarnya, misalnya modal yang berbeda dari kenyataan atau jenis usaha yang telah berganti, sehingga $B = 230 - 14 = 216$ dan
 \[
   Q_{\text{akurasi}} = \frac{216}{230} \approx 0{,}94.
 \]
 
-Konsistensi diukur sebagai proporsi rekaman yang tidak melanggar aturan konsistensi antaratribut maupun antarrekaman, sebagaimana Persamaan~\eqref{eq:konsistensi}, dengan $I$ adalah jumlah rekaman yang melanggar sekurang-kurangnya satu aturan. Contoh aturan adalah kesesuaian desa dengan kecamatan menurut referensi wilayah serta keseragaman satuan penulisan modal antarrekaman.
+Konsistensi diukur sebagai proporsi \textit{record} yang tidak melanggar aturan konsistensi antaratribut maupun antar-\textit{record}, sebagaimana Persamaan~\eqref{eq:konsistensi}, dengan $I$ adalah jumlah \textit{record} yang melanggar sekurang-kurangnya satu aturan. Contoh aturan adalah kesesuaian desa dengan kecamatan menurut referensi wilayah serta keseragaman satuan penulisan modal antar-\textit{record}.
 
 \begin{equation}
   Q_{\text{konsisten}} = 1 - \frac{I}{N}
@@ -96,29 +96,31 @@ Konsistensi diukur sebagai proporsi rekaman yang tidak melanggar aturan konsiste
 \end{equation}
 \persamaan{Konsistensi data}
 
-\noindent\textbf{Contoh perhitungan.} Dari 40 rekaman, dua rekaman mencatat desa yang bukan bagian dari kecamatan yang tertulis dan dua rekaman lain menulis modal dalam satuan ribu rupiah sementara rekaman lain dalam rupiah penuh, sehingga $I = 4$ dan
+\noindent\textbf{Contoh perhitungan.} Dari 40 \textit{record}, dua \textit{record} mencatat desa yang bukan bagian dari kecamatan yang tertulis dan dua \textit{record} lain menulis modal dalam satuan ribu rupiah sementara \textit{record} lain dalam rupiah penuh, sehingga $I = 4$ dan
 \[
   Q_{\text{konsisten}} = 1 - \frac{4}{40} = 0{,}90.
 \]
-Keenam dimensi dibandingkan sebelum dan sesudah penerapan artefak; H4 menguji akurasi dan keunikan, sedangkan empat dimensi lainnya dilaporkan secara deskriptif (Subbab~\ref{sec:evalkualitas}).
+Keenam dimensi dibandingkan sebelum dan sesudah penerapan artefak; RQ2 mengevaluasi akurasi dan keunikan sebagai ukuran utama, sedangkan empat dimensi lainnya dilaporkan secara deskriptif (Subbab~\ref{sec:evalkualitas}).
 
 % -----------------------------------------------------------------------------
 \section{Klasifikasi Baku Lapangan Usaha Indonesia}
 \label{sec:kbli}
 
-% [CEK] cocokkan 1.560 kelompok dengan hitungan pada buku KBLI 2025 (bps2025kbli); angka yang sama dipakai di Pendahuluan.
-% [CEK] contoh kode golongan pokok pada Tabel~\ref{tab:contoh_topk} (01, 10, 11, 13, 14, 16, 20, 32, 46, 47, 56) belum dicocokkan dengan lampiran KBLI 2025.
-KBLI 2025 ditetapkan melalui Peraturan Badan Pusat Statistik Nomor 7 Tahun 2025 yang berlaku sejak 18 Desember 2025 dan mencabut Peraturan Badan Pusat Statistik Nomor 2 Tahun 2020 yang menjadi dasar KBLI 2020 \cite{bps2025perban7}. Klasifikasi ini mengacu pada \textit{International Standard Industrial Classification} (ISIC) Revisi 5 \cite{bps2025kblisiaran} dan menjadi acuan klasifikasi lapangan usaha dalam statistik resmi serta perizinan berusaha \cite{bps2025perban7}. KBLI memiliki struktur berjenjang lima tingkat, yaitu kategori (kode huruf A sampai dengan V), golongan pokok (dua digit), golongan (tiga digit), subgolongan (empat digit), dan kelompok (lima digit). KBLI 2025 memuat 22 kategori, 87 golongan pokok, 257 golongan, 519 subgolongan, dan 1.560 kelompok usaha \cite{bps2025kblisiaran}. Setiap kelompok dilengkapi judul dan uraian kegiatan. Struktur berjenjang ini memungkinkan evaluasi klasifikasi pada beberapa tingkat granularitas, sebagaimana diterapkan pada penelitian ini. Kesulitan utama klasifikasi KBLI terletak pada jumlah kelas yang besar, kemiripan uraian antarkelas, serta perbedaan antara bahasa uraian resmi dan bahasa yang digunakan pelaku usaha \cite{amnur2025kbli}. Lotfipoor dkk. \cite{lotfipoor2026llm} juga mencatat bahwa skema klasifikasi industri yang baku tidak selalu menangkap nuansa sektor yang bersifat hibrida, misalnya usaha tenun yang sekaligus menjual produk turunan. Pada Sensus Ekonomi Amerika Serikat, alat swa-klasifikasi BEACON memetakan uraian usaha singkat ke kode \textit{North American Industry Classification System} (NAICS) enam digit melalui pencarian informasi bertingkat dari sektor hingga kode \cite{dumbacher2025beacon}, sehingga pemetaan uraian usaha ke klasifikasi baku berjenjang dapat dibantu alat otomatis pada skala besar.
+KBLI 2025 ditetapkan melalui Peraturan Badan Pusat Statistik Nomor 7 Tahun 2025 yang diundangkan pada 18 Desember 2025 dan menggantikan KBLI 2020 \cite{bps2025perban7}. KBLI didefinisikan sebagai pengelompokan aktivitas ekonomi di Indonesia yang menghasilkan produk atau keluaran, baik barang maupun jasa, ke dalam jenis lapangan usaha, dan berfungsi sebagai acuan standar serta alat koordinasi, integrasi, dan sinkronisasi penyelenggaraan statistik \cite{bps2025perban7}. Penetapan ini dimaksudkan untuk menyesuaikan klasifikasi dengan \textit{International Standard Industrial Classification of All Economic Activities} (ISIC) Revisi 5, dan pengguna KBLI yang sudah ada wajib menyesuaikan diri paling lambat enam bulan sejak peraturan diundangkan \cite{bps2025perban7}.
+
+KBLI 2025 disusun berjenjang dalam lima tingkat, yaitu kategori (kode huruf A sampai dengan V), golongan pokok (dua digit), golongan (tiga digit), subgolongan (empat digit), dan kelompok (lima digit). Berdasarkan lampiran peraturan tersebut, KBLI 2025 memuat 22 kategori, 87 golongan pokok, 257 golongan, dan 519 subgolongan \cite{bps2025perban7}.
+Setiap kode dilengkapi judul dan uraian kegiatan, termasuk kegiatan yang dicakup dan yang tidak dicakup \cite{bps2025perban7}. Struktur berjenjang ini memungkinkan evaluasi klasifikasi pada beberapa tingkat granularitas. Penelitian ini menetapkan tingkat golongan pokok sebagai tingkat evaluasi utama (Subbab~\ref{sec:eksperimen}). Pemilihan tingkat ini didasarkan pada tiga pertimbangan. Pertama, isian jenis usaha pada data dinas berupa teks bebas yang singkat sehingga sering tidak cukup rinci untuk menentukan kode lima digit (Tabel~\ref{tab:risiko}). Kedua, Amnur dkk. \cite{amnur2025kbli} melaporkan akurasi \textit{top}-1 sebesar 32,93\% pada kode lima digit untuk data riil, sehingga tingkat tersebut jauh lebih sulit. Ketiga, dengan 87 kelas, 400 \textit{record} uji memberi rata-rata sekitar 4,6 \textit{record} per kelas, sedangkan kode lima digit memiliki jauh lebih banyak kelas sehingga sebagian besar kelas tidak terwakili. Kinerja pada kode lima digit tetap dilaporkan sebagai hasil eksploratif (Subbab~\ref{sec:eksperimen}).
+Kesulitan utama klasifikasi KBLI terletak pada jumlah kelas yang besar, kemiripan uraian antarkelas, serta perbedaan antara bahasa uraian resmi dan bahasa yang digunakan pelaku usaha \cite{amnur2025kbli}. Lotfipoor dkk. \cite{lotfipoor2026llm} juga mencatat bahwa skema klasifikasi industri yang baku tidak selalu menangkap nuansa sektor yang bersifat hibrida, misalnya usaha tenun yang sekaligus menjual produk turunan. Pada Sensus Ekonomi Amerika Serikat, alat \textit{self-classification} BEACON memetakan uraian usaha singkat ke kode \textit{North American Industry Classification System} (NAICS) enam digit melalui pencarian informasi bertingkat dari sektor hingga kode \cite{dumbacher2025beacon}, sehingga pemetaan uraian usaha ke klasifikasi baku berjenjang dapat dibantu alat otomatis pada skala besar.
 
 % -----------------------------------------------------------------------------
 \section{\textit{Large Language Model} sebagai Alat Klasifikasi Teks}
 \label{sec:llm}
 
-LLM adalah model bahasa berbasis arsitektur \textit{transformer} yang dilatih pada korpus teks berskala besar dan dapat menjalankan tugas baru melalui instruksi dalam bentuk \textit{prompt}, baik tanpa contoh (\textit{zero-shot}) maupun dengan beberapa contoh (\textit{few-shot}). Gilardi dkk. \cite{gilardi2023chatgpt} menunjukkan bahwa akurasi anotasi \textit{zero-shot} ChatGPT melampaui pekerja \textit{crowdsourcing} rata-rata sekitar 25 poin persentase dengan biaya yang jauh lebih rendah. Ziems dkk. \cite{ziems2024css} menguji 13 model pada 25 tolok ukur dan menyimpulkan bahwa LLM belum melampaui model terlatih khusus pada tugas klasifikasi, tetapi mencapai kesepakatan yang memadai dengan manusia sehingga layak digunakan bersama tim anotator manusia. Survei penggunaan LLM untuk anotasi data menegaskan bahwa kualitas anotasi LLM bergantung pada rancangan \textit{prompt}, ketersediaan contoh, dan mekanisme verifikasi manusia \cite{tan2024annotation}. Permintaan penjelasan singkat atas keputusan model dapat meningkatkan kualitas penalaran pada tugas yang memerlukan beberapa langkah inferensi \cite{wei2022cot}, sekaligus menyediakan jejak alasan yang dapat diperiksa oleh verifikator manusia.
+LLM adalah model bahasa berbasis arsitektur \textit{transformer} yang dilatih pada korpus teks berskala besar dan dapat menjalankan tugas baru melalui instruksi dalam bentuk \textit{prompt}, baik tanpa contoh (\textit{zero-shot}) maupun dengan beberapa contoh (\textit{few-shot}). Gilardi dkk. \cite{gilardi2023chatgpt} melaporkan bahwa pada empat sampel \textit{tweet} dan artikel berita ($n = 6.183$), akurasi anotasi \textit{zero-shot} ChatGPT melampaui pekerja \textit{crowdsourcing} (MTurk) rata-rata sekitar 25 poin persentase, dengan biaya per anotasi kurang dari 0,003 dolar AS atau sekitar tiga puluh kali lebih murah. Ziems dkk. \cite{ziems2024css} menguji 13 model secara \textit{zero-shot} pada 25 \textit{benchmark} berbahasa Inggris dan menemukan bahwa LLM tidak melampaui model terlatih khusus terbaik pada tugas klasifikasi, tetapi mencapai kesepakatan tingkat \textit{fair} dengan manusia. Survei penggunaan LLM untuk anotasi data menegaskan bahwa kualitas anotasi LLM bergantung pada rancangan \textit{prompt}, ketersediaan contoh, dan mekanisme verifikasi manusia \cite{tan2024annotation}. \textit{Chain-of-thought prompting}, yaitu \textit{prompt} yang meminta langkah penalaran perantara, dilaporkan meningkatkan kinerja LLM pada tugas yang memerlukan beberapa langkah penalaran \cite{wei2022cot}. Penelitian ini meminta LLM menyertakan alasan singkat pada keluarannya (Source Code~\ref{lst:prompt}) terutama untuk menyediakan jejak alasan yang dapat diperiksa verifikator manusia; pengaruh alasan tersebut terhadap akurasi tidak diuji.
 
-Kinerja LLM pada bahasa Indonesia dan bahasa daerah masih lebih rendah dibandingkan dengan bahasa Inggris, sehingga pengembangan model dan evaluasi khusus untuk bahasa Indonesia tetap diperlukan \cite{cahyawijaya2024cendol}. Risiko utama penggunaan LLM adalah halusinasi \cite{ji2023hallucination}. Dahl dkk. \cite{dahl2024legal} menunjukkan bahwa halusinasi terjadi secara sistematis pada domain yang menuntut rujukan pada sumber resmi, yaitu kondisi yang serupa dengan pengodean KBLI. Selain itu, pengguna nonahli cenderung menyusun \textit{prompt} secara coba-coba dan tidak sistematis \cite{zamfirescu2023johnny}, sehingga interaksi LLM dalam sistem bagi aparatur desa dan dinas sebaiknya dibungkus dalam alur kerja terstruktur, bukan antarmuka percakapan bebas.
+Kinerja LLM pada bahasa Indonesia dan bahasa daerah masih lebih rendah dibandingkan dengan bahasa Inggris, sehingga pengembangan model dan evaluasi khusus untuk bahasa Indonesia tetap diperlukan \cite{cahyawijaya2024cendol}. Risiko utama penggunaan LLM adalah halusinasi \cite{ji2023hallucination}. Dahl dkk. \cite{dahl2024legal} menunjukkan bahwa LLM menghasilkan halusinasi dalam proporsi yang besar pada pertanyaan hukum, yaitu domain yang menuntut rujukan pada sumber resmi sebagaimana pengodean KBLI. Selain itu, pengguna nonahli cenderung menyusun \textit{prompt} secara coba-coba dan tidak sistematis \cite{zamfirescu2023johnny}, sehingga interaksi LLM dalam sistem bagi aparatur desa dan dinas sebaiknya dibungkus dalam alur kerja terstruktur, bukan antarmuka percakapan bebas.
 
-Tingkat halusinasi dalam penelitian ini didefinisikan sebagai proporsi keluaran mentah model, yaitu keluaran sebelum diperiksa validator, yang memuat kode yang tidak terdapat dalam kamus KBLI 2025, sebagaimana Persamaan~\eqref{eq:halusinasi}, dengan $\hat{y}_i$ adalah kode pada keluaran mentah model untuk rekaman ke-$i$ dan $\mathcal{K}$ adalah himpunan kode KBLI yang sah. Pada keluaran yang dikembalikan sistem kepada pengguna sesudah validator, nilai ini dijamin nol oleh rancangan sehingga tidak dipakai sebagai hasil pengujian.
+Tingkat halusinasi dalam penelitian ini didefinisikan sebagai proporsi keluaran mentah model, yaitu keluaran sebelum diperiksa validator, yang memuat kode yang tidak terdapat dalam kamus KBLI 2025, sebagaimana Persamaan~\eqref{eq:halusinasi}, dengan $\hat{y}_i$ adalah kode pada keluaran mentah model untuk \textit{record} ke-$i$ dan $\mathcal{K}$ adalah himpunan kode KBLI 2025 yang sah. Kode yang ada dalam kamus tetapi bermakna lain tidak terdeteksi oleh pemeriksaan kamus dan dihitung sebagai kesalahan akurasi, bukan halusinasi. Pada keluaran yang dikembalikan sistem kepada pengguna sesudah validator, nilai ini bernilai nol menurut definisi karena validator menolak kode di luar kamus, sehingga tidak dipakai sebagai hasil pengujian. Tingkat halusinasi dilaporkan sebagai ukuran sekunder dan bukan ukuran utama RQ1.
 
 \begin{equation}
   HR = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[\hat{y}_i \notin \mathcal{K}\right]
@@ -126,19 +128,19 @@ Tingkat halusinasi dalam penelitian ini didefinisikan sebagai proporsi keluaran 
 \end{equation}
 \persamaan{Tingkat halusinasi kode}
 
-\noindent\textbf{Contoh perhitungan.} Fungsi indikator $\mathbb{1}[\cdot]$ bernilai 1 apabila kondisi di dalamnya benar dan 0 apabila salah. Misalkan LLM tanpa \textit{retrieval} memproses $N = 400$ deskripsi usaha pada data uji, dan validator menemukan 18 keluaran berupa kode lima digit yang tidak terdapat dalam kamus KBLI 2025. Maka
+\noindent\textbf{Contoh perhitungan.} Fungsi indikator $\mathbb{1}[\cdot]$ bernilai 1 apabila kondisi di dalamnya benar dan 0 apabila salah. Angka berikut bersifat ilustratif. Misalkan LLM tanpa \textit{retrieval} memproses $N = 400$ deskripsi usaha pada data uji, dan validator menemukan 18 keluaran berupa kode lima digit yang tidak terdapat dalam kamus KBLI 2025. Maka
 \[
   HR = \frac{18}{400} = 0{,}045 = 4{,}5\%.
 \]
-Apabila pada kondisi LLM terpandu \textit{retrieval} hanya 2 dari 400 keluaran yang berada di luar kamus, maka $HR = 2/400 = 0{,}5\%$. Penurunan tingkat halusinasi semacam ini merupakan salah satu indikator yang diuji dalam H1.
+Apabila pada kondisi \textit{retrieval-grounded} LLM hanya 2 dari 400 keluaran yang berada di luar kamus, maka $HR = 2/400 = 0{,}5\%$. Penurunan tingkat halusinasi semacam ini dilaporkan bersama hasil RQ1 sebagai ukuran pendukung.
 
 % -----------------------------------------------------------------------------
 \section{\textit{Retrieval-Augmented Generation} dan Klasifikasi Berpanduan Taksonomi}
 \label{sec:rag}
 
-RAG menggabungkan komponen \textit{retriever} yang mengambil potongan pengetahuan relevan dari basis pengetahuan eksternal dengan komponen generator berupa LLM yang menyusun keluaran berdasarkan potongan tersebut \cite{gao2023ragsurvey}. Tinjauan sistematis menunjukkan bahwa kualitas \textit{retrieval} merupakan penentu utama kualitas keluaran akhir sistem RAG \cite{oche2025rag}. Asmaidin dan Santoso \cite{asmaidin2026retrieval} menemukan bahwa \textit{retrieval} leksikal unggul pada peringkat teratas, sedangkan pendekatan hibrida meningkatkan cakupan dokumen relevan pada peringkat menengah. Temuan ini relevan karena uraian KBLI memuat istilah baku, sedangkan deskripsi usaha di lapangan memuat sinonim dan istilah lokal.
+\textit{Retrieval-augmented generation} (RAG) diperkenalkan oleh Lewis dkk. \cite{lewis2020rag} sebagai model yang menggabungkan memori parametrik, yaitu model \textit{sequence-to-sequence} terlatih, dengan memori nonparametrik berupa indeks vektor yang ditelusuri oleh \textit{retriever} terlatih. Secara umum, RAG menggabungkan komponen \textit{retriever} yang mengambil potongan pengetahuan relevan dari basis pengetahuan eksternal dengan komponen generator berupa LLM yang menyusun keluaran berdasarkan potongan tersebut \cite{gao2023ragsurvey}. Tinjauan sistematis menunjukkan bahwa kualitas \textit{retrieval} merupakan penentu utama kualitas keluaran akhir sistem RAG \cite{oche2025rag}. Asmaidin dan Santoso \cite{asmaidin2026retrieval} menemukan bahwa \textit{retrieval} leksikal unggul pada peringkat teratas, sedangkan pendekatan hibrida meningkatkan cakupan dokumen relevan pada peringkat menengah. Temuan ini relevan karena uraian KBLI memuat istilah baku, sedangkan deskripsi usaha di lapangan memuat sinonim dan istilah lokal.
 
-Dalam penelitian ini, RAG diterapkan dalam bentuk klasifikasi berpanduan taksonomi: \textit{retriever} hibrida mengambil $k$ kandidat kode KBLI yang paling mirip dengan deskripsi usaha, kemudian LLM memilih satu kode dari kandidat tersebut atau menyatakan bahwa informasi tidak mencukupi. Pola \textit{retrieval} dan pemeringkatan ulang ini telah diterapkan pada klasifikasi pekerjaan dengan taksonomi berjenjang \cite{achananuparp2025occupation}. Kualitas tahap \textit{retrieval} diukur menggunakan \textit{Recall@k}, yaitu proporsi rekaman yang kode acuannya $y_i$ terdapat dalam himpunan kandidat $C_i^{(k)}$, sebagaimana Persamaan~\eqref{eq:recallk}. Ukuran ini sejalan dengan metrik \textit{context recall} pada kerangka evaluasi RAGAS \cite{es2024ragas}. Pengembangan berikutnya berupa arsitektur RAG agentik \cite{singh2025agentic} dipertimbangkan sebagai pekerjaan lanjutan dan tidak termasuk dalam cakupan penelitian ini.
+Dalam penelitian ini, RAG diterapkan dalam bentuk klasifikasi berpanduan taksonomi: \textit{retriever} hibrida mengambil $k$ kandidat kode KBLI yang paling mirip dengan deskripsi usaha, kemudian LLM memilih satu kode dari kandidat tersebut atau menyatakan bahwa informasi tidak mencukupi. Pola \textit{retrieval} dan \textit{re-ranking} ini telah diterapkan pada klasifikasi pekerjaan dengan taksonomi berjenjang \cite{achananuparp2025occupation}. Kualitas tahap \textit{retrieval} diukur menggunakan \textit{Recall@k}, yaitu proporsi \textit{record} yang kode pada \textit{gold standard} ($y_i$) terdapat dalam himpunan kandidat $C_i^{(k)}$, sebagaimana Persamaan~\eqref{eq:recallk}. Ukuran ini sejalan dengan metrik \textit{context recall} pada kerangka evaluasi RAGAS \cite{es2024ragas}. Nilai $k$ dipilih dari himpunan $\{5, 10, 20\}$ berdasarkan \textit{Recall@k} pada data pengembangan, bukan pada data uji (Subbab~\ref{sec:eksperimen}). Pengembangan berikutnya berupa arsitektur RAG agentik \cite{singh2025agentic} dipertimbangkan sebagai pekerjaan lanjutan dan tidak termasuk dalam cakupan penelitian ini.
 
 \begin{equation}
   \text{Recall@}k = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[y_i \in C_i^{(k)}\right]
@@ -146,31 +148,32 @@ Dalam penelitian ini, RAG diterapkan dalam bentuk klasifikasi berpanduan taksono
 \end{equation}
 \persamaan{\textit{Recall@k} tahap \textit{retrieval}}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan untuk deskripsi ``tenun ulos sadum'' \textit{retriever} mengembalikan $k = 10$ kandidat kelompok KBLI dan kode acuan hasil pengodean manusia termasuk di antara sepuluh kandidat tersebut, sehingga indikatornya bernilai 1. Apabila hal yang sama terjadi pada 364 dari 400 rekaman uji, maka
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan untuk deskripsi ``tenun ulos sadum'' \textit{retriever} mengembalikan $k = 10$ kandidat kelompok KBLI dan kode pada \textit{gold standard} hasil pengodean manusia termasuk di antara sepuluh kandidat tersebut, sehingga indikatornya bernilai 1. Apabila hal yang sama terjadi pada 364 dari 400 \textit{record} uji, maka
 \[
   \text{Recall@}10 = \frac{364}{400} = 0{,}91.
 \]
-Nilai ini merupakan batas atas akurasi LLM terpandu \textit{retrieval}, karena LLM hanya dapat memilih kode dari kandidat yang tersedia; 36 rekaman yang kode acuannya tidak terambil pasti salah diklasifikasikan pada kondisi tersebut. Oleh karena itu, nilai $k$ dipilih dengan mempertimbangkan kenaikan \textit{Recall@k} dan bertambahnya panjang masukan bagi LLM.
+Nilai ini merupakan batas atas akurasi \textit{retrieval-grounded} LLM pada tingkat kode yang sama dengan tingkat penghitungan \textit{Recall@k}, karena LLM hanya dapat memilih kode dari kandidat yang tersedia; 36 \textit{record} yang kodenya pada \textit{gold standard} tidak terambil pasti salah diklasifikasikan pada tingkat tersebut. Karena metrik utama penelitian ini adalah akurasi pada tingkat golongan pokok (Subbab~\ref{sec:evaluasi}), \textit{Recall@k} juga dihitung pada tingkat golongan pokok, yaitu \textit{record} dianggap terambil apabila setidaknya satu kandidat memiliki golongan pokok yang sama dengan \textit{gold standard}.
+Oleh karena itu, nilai $k$ dipilih dengan mempertimbangkan kenaikan \textit{Recall@k} dan bertambahnya panjang masukan bagi LLM.
 
 % -----------------------------------------------------------------------------
 \section{LLM untuk Pembersihan dan Integrasi Data}
 \label{sec:wrangling}
 
-Narayan dkk. \cite{narayan2022wrangle} membingkai tugas pembersihan dan integrasi data, termasuk pencocokan entitas dan koreksi kesalahan, sebagai tugas \textit{prompting} dan memperoleh kinerja yang kompetitif tanpa pelatihan khusus, dengan catatan adanya tantangan pada data privat dan domain khusus. Peeters dkk. \cite{peeters2025entity} menunjukkan bahwa LLM dapat digunakan untuk pencocokan entitas, tetapi tidak terdapat satu \textit{prompt} terbaik untuk seluruh model dan data. Temuan tersebut mendasari keputusan penelitian ini untuk (1) mengevaluasi \textit{prompt} secara terpisah untuk setiap model, (2) menggunakan aturan deterministik untuk tugas yang dapat diformalkan, seperti klasifikasi skala usaha dan validasi format NIB, serta (3) membatasi penggunaan LLM pada tugas yang memerlukan pemahaman bahasa, yaitu pemetaan deskripsi usaha ke KBLI.
+Narayan dkk. \cite{narayan2022wrangle} membingkai lima tugas pembersihan dan integrasi data, termasuk pencocokan entitas, deteksi kesalahan, dan imputasi data, sebagai tugas \textit{prompting}. GPT-3 175B yang diberi sejumlah kecil contoh dalam \textit{prompt} dilaporkan mencapai kinerja mutakhir pada sebagian \textit{benchmark} publik tanpa pelatihan khusus tugas, tetapi mengalami kesulitan pada domain yang memuat istilah khusus yang jarang muncul pada teks umum. Mereka juga mencatat bahwa organisasi sering tidak dapat mengirim data sensitif ke API pihak ketiga, padahal model berkinerja terbaik pada waktu itu hanya dapat diakses melalui API. Peeters dkk. \cite{peeters2025entity} menunjukkan bahwa LLM dapat digunakan untuk pencocokan entitas, tetapi tidak terdapat satu \textit{prompt} terbaik untuk seluruh model dan data. Temuan tersebut menjadi pertimbangan penelitian ini untuk (1) mengevaluasi \textit{prompt} secara terpisah untuk setiap model, (2) menggunakan aturan deterministik untuk tugas yang dapat diformalkan, seperti klasifikasi skala usaha dan validasi format NIB, (3) membatasi penggunaan LLM pada tugas yang memerlukan pemahaman bahasa, yaitu pemetaan deskripsi usaha ke KBLI, serta (4) memisahkan atribut data pribadi dari masukan ke layanan LLM eksternal dan menyediakan model \textit{open-weight} lokal (Subbab~\ref{sec:etika}).
 
 % -----------------------------------------------------------------------------
 \section{Sistem Pendukung Keputusan dan Pemeringkatan Berbobot}
 \label{sec:spk}
 
-Sistem pendukung keputusan (SPK) adalah sistem informasi yang menggabungkan data, model analitis, dan antarmuka untuk membantu pengambil keputusan menghadapi persoalan semi-terstruktur \cite{laudon2022mis}. Persoalan seleksi UMKM sasaran pembinaan di Kabupaten Toba bersifat semi-terstruktur karena melibatkan kriteria yang dapat diukur, misalnya status legalitas dan lama usaha, serta pertimbangan kebijakan, misalnya pemerataan antarkecamatan \cite{wawancarakadis2026}. Khotimah dkk. \cite{khotimah2024hybrid} menggabungkan klasterisasi dengan AHP-TOPSIS untuk stratifikasi UMKM, tetapi mengasumsikan bahwa data UMKM telah tersedia dan bersih.
+Sistem pendukung keputusan (SPK) membantu manajer menggunakan data dan model analitis untuk menilai pilihan dalam keputusan semi-terstruktur \cite[hlm.~412]{laudon2026mis}. Persoalan seleksi UMKM sasaran pembinaan di Kabupaten Toba bersifat semi-terstruktur karena melibatkan kriteria yang dapat diukur, misalnya status legalitas dan lama usaha, serta pertimbangan kebijakan, misalnya pemerataan antarkecamatan (\lampkadis). Khotimah dkk. \cite{khotimah2024hybrid} menggabungkan klasterisasi dengan AHP-TOPSIS untuk stratifikasi UMKM, tetapi mengasumsikan bahwa data UMKM telah tersedia dan bersih.
 
-Penelitian ini tidak menguji segmentasi maupun metode penurunan bobot kriteria seperti AHP. Pemeringkatan pada dasbor dibatasi pada penjumlahan terbobot sederhana dengan bobot kriteria yang ditetapkan oleh Kepala Dinas atau Kepala Bidang. Pemeringkatan ini merupakan fitur desain pendukung keputusan (Subbab~\ref{sec:prinsip-hipotesis}) yang bukan objek pengujian (Subbab~\ref{sec:ruang-lingkup}). Skor prioritas setiap kandidat dihitung dengan Persamaan~\eqref{eq:saw}, dengan $w_j$ adalah bobot kriteria ke-$j$ yang berjumlah satu ($\sum_j w_j = 1$) dan $r_{ij}$ adalah nilai ternormalisasi kandidat ke-$i$ pada kriteria ke-$j$.
+Penelitian ini tidak menguji segmentasi maupun metode penurunan bobot kriteria seperti AHP. Pemeringkatan pada \textit{dashboard} dibatasi pada \textit{Simple Additive Weighting} (SAW), yaitu penjumlahan terbobot sederhana, dengan bobot kriteria yang ditetapkan oleh Kepala Dinas atau Kepala Bidang. Pemeringkatan ini merupakan fitur pendukung keputusan pada \textit{dashboard} yang bukan objek pengujian (Subbab~\ref{sec:ruang-lingkup}). Skor prioritas setiap kandidat dihitung dengan Persamaan~\eqref{eq:saw}, dengan $w_j$ adalah bobot kriteria ke-$j$ yang berjumlah satu ($\sum_j w_j = 1$) dan $r_{ij}$ adalah nilai ternormalisasi kandidat ke-$i$ pada kriteria ke-$j$.
 
 \begin{equation}
   V_i = \sum_{j=1}^{n} w_j \, r_{ij}
   \label{eq:saw}
 \end{equation}
-\persamaan{Skor prioritas penjumlahan terbobot}
+\persamaan{Skor prioritas SAW}
 
 \noindent\textbf{Contoh perhitungan.} Misalkan Kepala Dinas menetapkan bobot kesiapan produk 0,5, status wirausaha pemula 0,3, dan kesiapan legalitas 0,2 (nilai ilustratif yang berjumlah 1). Dua kandidat penerima bantuan dibandingkan. Kandidat $A$ memiliki skor kesiapan produk 4 dari 5, berstatus wirausaha pemula, dan memiliki satu dari dua dokumen legalitas (NIB tanpa sertifikat halal). Kandidat $B$ memiliki skor kesiapan produk 5, bukan wirausaha pemula, dan memiliki kedua dokumen legalitas. Normalisasi kriteria manfaat dilakukan dengan $r_{ij} = x_{ij}/\max_i x_{ij}$, sehingga $r_A = (0{,}8;\ 1;\ 0{,}5)$ dan $r_B = (1;\ 0;\ 1)$. Maka
 \[
@@ -185,17 +188,97 @@ Kandidat $A$ menempati peringkat lebih tinggi walaupun kesiapan produknya lebih 
 \section{\textit{Design Science Research}}
 \label{sec:dsr}
 
-\textit{Design science research} (DSR) adalah paradigma penelitian sistem informasi yang menghasilkan dan mengevaluasi artefak untuk memecahkan persoalan organisasi yang relevan, dengan kontribusi berupa artefak dan pengetahuan desain yang diperoleh secara ketat (\textit{rigor}) \cite{hevner2004design}. Peffers dkk. \cite{peffers2007dsrm} merumuskan metodologi DSR (DSRM) dalam enam aktivitas, yaitu identifikasi masalah dan motivasi, penetapan tujuan solusi, perancangan dan pengembangan, demonstrasi, evaluasi, serta komunikasi. DSR dipilih karena persoalan penelitian berasal dari kebutuhan organisasi yang nyata, solusi yang diusulkan berupa artefak sistem informasi, dan kontribusi yang diharapkan mencakup pengetahuan mengenai efektivitas artefak tersebut.
+\textit{Design science research} (DSR) adalah paradigma penelitian sistem informasi yang menghasilkan dan mengevaluasi artefak untuk memecahkan persoalan organisasi yang relevan, dengan kontribusi berupa artefak dan pengetahuan yang diperoleh secara ketat (\textit{rigor}) \cite{hevner2004design}. Hevner dkk. membedakan artefak menjadi konstruk, model, metode, dan instansiasi, serta mensyaratkan bahwa artefak dievaluasi secara cermat terhadap persoalan yang dituju \cite{hevner2004design}. DSR dipilih pada penelitian ini karena tiga alasan: persoalan penelitian berasal dari kebutuhan organisasi yang nyata, yaitu dinas yang menghimpun data UMKM tanpa kode lapangan usaha yang baku; solusi yang diusulkan berupa artefak sistem informasi, yaitu \textit{prototype} yang memuat pendataan, standardisasi, pemeriksaan kualitas, dan \textit{dashboard}; serta kontribusi yang diharapkan mencakup bukti empiris mengenai efektivitas artefak tersebut.
 
-Gregor dan Hevner \cite{gregor2013positioning} mengklasifikasikan kontribusi pengetahuan DSR berdasarkan kematangan domain persoalan dan domain solusi ke dalam empat kuadran, yaitu penemuan (\textit{invention}) untuk solusi baru pada persoalan baru, peningkatan (\textit{improvement}) untuk solusi baru pada persoalan yang telah dikenal, eksaptasi (\textit{exaptation}) untuk solusi yang telah dikenal pada persoalan baru, dan desain rutin (\textit{routine design}) untuk solusi yang telah dikenal pada persoalan yang telah dikenal. Desain rutin merupakan praktik profesional dan umumnya tidak menghasilkan kontribusi penelitian. Kontribusi DSR dapat berupa artefak terinstansiasi, prinsip desain, hingga teori desain yang lebih matang. Dalam penelitian ini, purwarupa merupakan instansiasi dari prinsip desain DP1--DP4 (Subbab~\ref{sec:prinsip-hipotesis}) dan memuat satu fitur desain pemeringkatan, tetapi klaim pengetahuan hanya diajukan pada tingkat prinsip desain DP1--DP4 yang telah diuji secara empiris, bukan pada tingkat purwarupa. Fitur pemeringkatan tidak diuji (Subbab~\ref{sec:ruang-lingkup}).
+\subsection{Metodologi DSR dan Penerapannya}
+\label{sec:dsrm}
+
+Peffers dkk. \cite{peffers2007dsrm} merumuskan metodologi DSR (\textit{design science research methodology}, DSRM) dalam enam aktivitas, yaitu (1) identifikasi masalah dan motivasi, (2) penetapan tujuan solusi, (3) perancangan dan pengembangan, (4) demonstrasi, (5) evaluasi, serta (6) komunikasi. Penelitian dapat dimulai dari empat titik masuk yang berbeda sebagaimana Gambar~\ref{fig:dsr}; penelitian ini berangkat dari persoalan yang dihadapi dinas sehingga bersifat berpusat pada masalah (\textit{problem-centered}), yaitu persoalan standardisasi data diidentifikasi dari LKjIP dan wawancara (\lampkadis{} dan \lampstaf) sebelum solusi dirancang. Pemetaan keenam aktivitas tersebut ke tahapan penelitian disajikan pada Tabel~\ref{tab:dsrm-pemetaan}, dan uraian tahapan lengkap terdapat pada Subbab~\ref{sec:tahapan}.
+
+\begin{figure}[H]
+  \centering
+  \resizebox{\textwidth}{!}{%
+  \begin{tikzpicture}[node distance=0.4cm, n/.style={box, text width=1.9cm, minimum height=1.5cm, font=\scriptsize}, e/.style={rectangle, rounded corners, draw=black, fill=gray!15, text width=1.9cm, text centered, minimum height=1.7cm, font=\scriptsize}, eo/.style={e, fill=orange!35, very thick}]
+    \node (n1) [n] {\textbf{1. Identifikasi masalah dan motivasi}};
+    \node (n2) [n, right=of n1] {\textbf{2. Penetapan tujuan solusi}};
+    \node (n3) [n, right=of n2] {\textbf{3. Perancangan dan pengembangan}};
+    \node (n4) [n, right=of n3] {\textbf{4. Demonstrasi}};
+    \node (n5) [n, right=of n4] {\textbf{5. Evaluasi}};
+    \node (n6) [n, right=of n5] {\textbf{6. Komunikasi}};
+    \foreach \a/\b in {n1/n2,n2/n3,n3/n4,n4/n5,n5/n6} \draw[arrow] (\a) -- (\b);
+    \draw[arrow] (n5.north) -- ++(0,0.8) -| node[above, pos=0.25, font=\scriptsize] {Iterasi} (n3.north);
+    \node (e1) [eo, below=1.1cm of n1] {Titik masuk 1: berpusat pada masalah (penelitian ini)};
+    \node (e2) [e, below=1.1cm of n2] {Titik masuk 2: berpusat pada tujuan};
+    \node (e3) [e, below=1.1cm of n3] {Titik masuk 3: berpusat pada desain dan pengembangan};
+    \node (e4) [e, below=1.1cm of n4] {Titik masuk 4: diprakarsai klien atau konteks};
+    \foreach \a/\b in {e1/n1,e2/n2,e3/n3,e4/n4} \draw[arrow] (\a) -- (\b);
+  \end{tikzpicture}}
+  \caption{Proses \textit{Design Science Research Methodology} (disusun penulis berdasarkan \cite{peffers2007dsrm})}
+  \label{fig:dsr}
+\end{figure}
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.05\textwidth}|L{0.21\textwidth}|L{0.46\textwidth}|L{0.18\textwidth}|}
+\caption{Pemetaan Aktivitas DSRM ke Tahapan Penelitian}
+\label{tab:dsrm-pemetaan}\\
+\hline
+\textbf{No.} & \textbf{Aktivitas DSRM \cite{peffers2007dsrm}} & \textbf{Penerapan pada penelitian ini} & \textbf{Bagian dokumen} \\ \hline
+\endfirsthead
+\hline
+\textbf{No.} & \textbf{Aktivitas DSRM \cite{peffers2007dsrm}} & \textbf{Penerapan pada penelitian ini} & \textbf{Bagian dokumen} \\ \hline
+\endhead
+1 & Identifikasi masalah dan motivasi & Wawancara dengan Kepala Dinas dan staf Bidang Koperasi dan UMKM, serta pemeriksaan profil basis data UMKM dinas, untuk merumuskan persoalan standardisasi dan kualitas data & Bab~\ref{chap:pendahuluan}; \lampstaf{} dan \lampkadis \\ \hline
+2 & Penetapan tujuan solusi & Tiga pertanyaan penelitian, tiga tujuan, dan kriteria evaluasi untuk setiap pertanyaan & Subbab~\ref{sec:pertanyaan-penelitian} dan \ref{sec:tujuan}; Tabel~\ref{tab:kriteria-evaluasi} \\ \hline
+3 & Perancangan dan pengembangan & Perancangan \textit{prototype} (modul pendataan, \textit{pipeline} standardisasi \textit{retrieval-grounded}, modul kualitas data, dan \textit{dashboard}) serta fase \textit{benchmarking} model untuk memilih model, nilai $k$, dan \textit{prompt} pada data pengembangan & Subbab~\ref{sec:tahapan} dan \ref{sec:benchmark}; Subbab~\ref{sec:eval-operasional} \\ \hline
+4 & Demonstrasi & Penerapan \textit{prototype} pada data UMKM dinas dan pada tugas pendataan oleh operator desa percontohan & Subbab~\ref{sec:tahapan} \\ \hline
+5 & Evaluasi & RQ1: eksperimen standardisasi pada data uji; RQ2: perbandingan kualitas data sebelum dan sesudah penerapan artefak; RQ3: uji kinerja operator desa & Subbab~\ref{sec:eksperimen}, \ref{sec:evalkualitas}, dan \ref{sec:evalpengguna} \\ \hline
+6 & Komunikasi & Dokumen proposal dan laporan tugas akhir, seminar, serta luaran publikasi & Dokumen ini \\ \hline
+\end{longtable}
+}
+
+\subsection{Strategi Evaluasi dalam DSR}
+
+Venable dkk. \cite{venable2016feds} mengusulkan kerangka evaluasi DSR (\textit{Framework for Evaluation in Design Science}, FEDS) yang membedakan evaluasi formatif, yaitu evaluasi untuk memperbaiki artefak selama pengembangan, dari evaluasi sumatif, yaitu evaluasi untuk menilai artefak pada akhir pengembangan; kerangka ini juga membedakan evaluasi artifisial, yang dilakukan dalam kondisi terkendali, dari evaluasi naturalistik, yang melibatkan pengguna dan lingkungan sebenarnya. Pada penelitian ini, evaluasi pada data pengembangan, yaitu pemilihan model, nilai $k$, dan \textit{prompt}, bersifat formatif, sedangkan evaluasi pada data uji (RQ1), perbandingan kualitas data (RQ2), dan uji kinerja operator (RQ3) bersifat sumatif. Evaluasi RQ1 bersifat artifisial karena dilakukan pada \textit{gold standard} dalam lingkungan eksperimen terkontrol. Pada RQ2, data kondisi sesudah dihimpun melalui uji coba lapangan di desa percontohan (konteks naturalistik), sedangkan pengukuran dan perbandingan kualitas data kedua kondisi menggunakan prosedur terkontrol. RQ3 bersifat naturalistik terbatas karena melibatkan operator desa sebenarnya dalam pelaksanaan tugas yang dikendalikan.
+
+\subsection{Posisi Kontribusi Penelitian}
+
+\begin{sloppypar}Gregor dan Hevner \cite{gregor2013positioning} mengklasifikasikan kontribusi pengetahuan DSR berdasarkan kematangan domain persoalan dan domain solusi ke dalam empat kuadran, yaitu penemuan (\textit{invention}) untuk solusi baru pada persoalan baru, peningkatan (\textit{improvement}) untuk solusi baru pada persoalan yang telah dikenal, eksaptasi (\textit{exaptation}) untuk solusi yang telah dikenal pada persoalan baru, dan desain rutin (\textit{routine design}) untuk solusi yang telah dikenal pada persoalan yang telah dikenal. Desain rutin merupakan praktik profesional dan umumnya tidak menghasilkan kontribusi penelitian. Kontribusi DSR dapat berupa artefak terinstansiasi hingga pengetahuan desain yang lebih matang.\end{sloppypar}
+
+Penelitian ini diposisikan pada kuadran peningkatan. Persoalan yang dihadapi, yaitu pemetaan uraian usaha ke klasifikasi lapangan usaha baku, telah dikenal dalam literatur (Subbab~\ref{sec:kbli}), sedangkan solusi yang diusulkan, yaitu LLM yang dibatasi pada kandidat hasil \textit{retrieval} atas KBLI 2025 untuk data administratif pemerintah daerah, belum dievaluasi pada konteks tersebut (Subbab~\ref{sec:terkait}). Kontribusi utama penelitian ini adalah evaluasi empiris efektivitas \textit{prototype} sebagai artefak terinstansiasi, dan penelitian ini tidak mengajukan klaim pengetahuan desain pada tingkat yang lebih tinggi daripada artefak tersebut. Fitur pemeringkatan pada \textit{dashboard} tidak diuji (Subbab~\ref{sec:ruang-lingkup}).
 
 % -----------------------------------------------------------------------------
 \section{Metode Evaluasi}
 \label{sec:evaluasi}
 
-\subsection{Evaluasi Klasifikasi dan Reliabilitas}
+Setiap pertanyaan penelitian dievaluasi dengan kriteria yang ditetapkan sebelum data uji dibuka, yaitu ukuran utama, pembanding, uji statistik, dan ukuran pendukung. Ringkasan kriteria tersebut disajikan pada Tabel~\ref{tab:kriteria-evaluasi}, dan setiap uji dijelaskan pada subbab berikut beserta contoh perhitungannya.
 
-Akurasi \textit{top-k} mengukur proporsi rekaman yang kode acuannya termasuk dalam $k$ keluaran teratas model, sebagaimana Persamaan~\eqref{eq:topk}, dengan $\hat{Y}_i^{(k)}$ adalah himpunan $k$ kode teratas untuk rekaman ke-$i$. Pada $k=1$, ukuran ini setara dengan akurasi.
+% sec:evalpengguna (Bab III), terutama jumlah perbandingan untuk koreksi Holm pada RQ1.
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.06\textwidth}|L{0.19\textwidth}|L{0.23\textwidth}|L{0.27\textwidth}|L{0.12\textwidth}|}
+\caption{Kriteria Evaluasi per Pertanyaan Penelitian}
+\label{tab:kriteria-evaluasi}\\
+\hline
+\textbf{RQ} & \textbf{Ukuran utama} & \textbf{Pembanding} & \textbf{Uji dan ukuran pendukung} & \textbf{Subbab} \\ \hline
+\endfirsthead
+\hline
+\textbf{RQ} & \textbf{Ukuran utama} & \textbf{Pembanding} & \textbf{Uji dan ukuran pendukung} & \textbf{Subbab} \\ \hline
+\endhead
+RQ1 & \textit{Acc@1} pada tingkat golongan pokok KBLI 2025 (data uji 400 \textit{record}) & LLM tanpa \textit{retrieval} dan baseline leksikal terhadap \textit{retrieval-grounded} LLM & Uji McNemar eksak dua arah berpasangan dengan koreksi Holm untuk dua perbandingan; \textit{Acc@k}, \textit{macro-F1}, tingkat halusinasi, dan \textit{coverage--accuracy curve} sebagai ukuran pendukung & \ref{sec:evaluasi-klasifikasi} \\ \hline
+RQ2 & Akurasi dan keunikan data; empat dimensi lain dilaporkan deskriptif & Lembar kerja dinas (sebelum) dan \textit{prototype} (sesudah) & Uji dua proporsi dua arah dengan koreksi Holm untuk dua uji; selisih proporsi dengan interval kepercayaan 95\% & \ref{sec:evaluasi-kualitas} \\ \hline
+RQ3 & Waktu penyelesaian tugas dan beban kerja (RTLX) operator desa; \textit{usability} (SUS) dan jumlah kesalahan sebagai ukuran pendukung & Lembar kerja dan \textit{prototype} pada operator yang sama & \textit{Wilcoxon signed-rank} eksak satu arah berpasangan; bersifat eksploratif (6--8 operator); ukuran efek dilaporkan & \ref{sec:evaluasi-pengguna} \\ \hline
+\end{longtable}
+}
+
+\subsection{Evaluasi Klasifikasi, Pengujian Perbandingan, dan Reliabilitas}
+\label{sec:evaluasi-klasifikasi}
+
+Metrik utama penelitian ini adalah \textit{Acc@1} pada tingkat golongan pokok KBLI 2025. Ukuran lain, yaitu \textit{Acc@k}, \textit{macro-F1}, tingkat halusinasi, dan \textit{coverage--accuracy curve}, bersifat sekunder atau pendukung. Satu metrik utama ditetapkan terlebih dahulu agar kesimpulan RQ1 tidak bergantung pada pemilihan metrik setelah hasil diketahui.
+
+Akurasi \textit{top-k} mengukur proporsi \textit{record} yang kodenya pada \textit{gold standard} termasuk dalam $k$ keluaran teratas model, sebagaimana Persamaan~\eqref{eq:topk}, dengan $\hat{Y}_i^{(k)}$ adalah himpunan $k$ kode teratas untuk \textit{record} ke-$i$. Pada $k=1$, ukuran ini setara dengan akurasi.
 
 \begin{equation}
   \text{Acc@}k = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[y_i \in \hat{Y}_i^{(k)}\right]
@@ -203,7 +286,7 @@ Akurasi \textit{top-k} mengukur proporsi rekaman yang kode acuannya termasuk dal
 \end{equation}
 \persamaan{Akurasi \textit{top-k}}
 
-\noindent\textbf{Contoh perhitungan.} Tabel~\ref{tab:contoh_topk} memuat lima deskripsi usaha beserta golongan pokok KBLI acuan dan tiga prediksi teratas model. Golongan pokok yang digunakan adalah 01 (pertanian tanaman), 10 (industri makanan), 11 (industri minuman), 13 (industri tekstil), 14 (industri pakaian jadi), 16 (industri kayu dan barang anyaman), 20 (industri bahan kimia), 32 (industri pengolahan lainnya), 46 (perdagangan besar), 47 (perdagangan eceran), dan 56 (penyediaan makanan dan minuman).
+\noindent\textbf{Contoh perhitungan.} Tabel~\ref{tab:contoh_topk} memuat lima deskripsi usaha beserta golongan pokok KBLI pada \textit{gold standard} dan tiga prediksi teratas model. Golongan pokok yang digunakan adalah 01 (pertanian tanaman, peternakan, perburuan, dan kegiatan jasa terkait), 10 (industri makanan), 11 (industri minuman), 13 (industri tekstil), 14 (industri pakaian jadi), 16 (industri kayu dan barang anyaman), 20 (industri bahan kimia), 32 (industri produk lainnya), 46 (perdagangan besar), 47 (perdagangan eceran), dan 56 (aktivitas penyediaan makanan dan minuman) menurut lampiran PerBPS 7/2025 \cite{bps2025perban7}.
 
 {\footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -212,10 +295,10 @@ Akurasi \textit{top-k} mengukur proporsi rekaman yang kode acuannya termasuk dal
 \caption{Contoh Perhitungan Akurasi \textit{Top-k} pada Tingkat Golongan Pokok}
 \label{tab:contoh_topk}\\
 \hline
-\textbf{No.} & \textbf{Deskripsi Usaha} & \textbf{Acuan} & \textbf{Prediksi Teratas (urut)} & \textbf{Benar @1} & \textbf{Benar @3} \\ \hline
+\textbf{No.} & \textbf{Deskripsi Usaha} & \textbf{\textit{Gold standard}} & \textbf{Prediksi Teratas (urut)} & \textbf{Benar @1} & \textbf{Benar @3} \\ \hline
 \endfirsthead
 \hline
-\textbf{No.} & \textbf{Deskripsi Usaha} & \textbf{Acuan} & \textbf{Prediksi Teratas (urut)} & \textbf{Benar @1} & \textbf{Benar @3} \\ \hline
+\textbf{No.} & \textbf{Deskripsi Usaha} & \textbf{\textit{Gold standard}} & \textbf{Prediksi Teratas (urut)} & \textbf{Benar @1} & \textbf{Benar @3} \\ \hline
 \endhead
 1 & tenun ulos & 13 & 13, 14, 47 & 1 & 1 \\ \hline
 2 & jualan mi gomak & 56 & 10, 56, 47 & 0 & 1 \\ \hline
@@ -225,9 +308,9 @@ Akurasi \textit{top-k} mengukur proporsi rekaman yang kode acuannya termasuk dal
 \end{longtable}
 }
 
-\noindent Dengan demikian, $\text{Acc@}1 = 2/5 = 0{,}40$ dan $\text{Acc@}3 = 4/5 = 0{,}80$. Selisih kedua nilai tersebut menunjukkan bahwa kode yang benar sering terdapat di antara kandidat teratas walaupun tidak berada pada peringkat pertama, sehingga verifikator manusia dapat memilih dari daftar kandidat pendek (DP3). Contoh nomor 5 juga menunjukkan kesalahan yang khas, yaitu kegiatan pengolahan hasil pertanian yang diklasifikasikan sebagai kegiatan pertanian.
+\noindent Dengan demikian, $\text{Acc@}1 = 2/5 = 0{,}40$ dan $\text{Acc@}3 = 4/5 = 0{,}80$. Selisih kedua nilai tersebut menunjukkan bahwa kode yang benar sering terdapat di antara kandidat teratas walaupun tidak berada pada peringkat pertama, sehingga verifikator manusia dapat memilih dari daftar kandidat pendek. Contoh nomor 5 juga menunjukkan salah satu jenis kesalahan yang mungkin terjadi, yaitu kegiatan pengolahan hasil pertanian yang diklasifikasikan sebagai kegiatan pertanian.
 
-Karena distribusi kelas KBLI tidak seimbang, kinerja juga diukur menggunakan \textit{macro-F1} pada tingkat kategori, sebagaimana Persamaan~\eqref{eq:f1}, dengan $\mathcal{C}$ adalah himpunan kelas, serta $P_c$ dan $R_c$ adalah presisi dan \textit{recall} kelas $c$.
+Karena distribusi kelas KBLI tidak seimbang, kinerja juga diukur sebagai ukuran sekunder menggunakan \textit{macro-F1} pada tingkat kategori, sebagaimana Persamaan~\eqref{eq:f1}, dengan $\mathcal{C}$ adalah himpunan kelas, serta $P_c$ dan $R_c$ adalah presisi dan \textit{recall} kelas $c$.
 
 \begin{equation}
   F_1^{\text{macro}} = \frac{1}{|\mathcal{C}|}\sum_{c \in \mathcal{C}} \frac{2 \, P_c \, R_c}{P_c + R_c},
@@ -236,19 +319,19 @@ Karena distribusi kelas KBLI tidak seimbang, kinerja juga diukur menggunakan \te
 \end{equation}
 \persamaan{\textit{Macro-F1}}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan 20 rekaman diklasifikasikan ke tiga kategori KBLI, yaitu C (industri pengolahan), G (perdagangan besar dan eceran), dan I (penyediaan akomodasi dan penyediaan makan minum). Matriks kebingungan (\textit{confusion matrix}) antara kategori acuan dan prediksi LLM disajikan pada Tabel~\ref{tab:contoh_cm}.
+\noindent\textbf{Contoh perhitungan.} Misalkan 20 \textit{record} diklasifikasikan ke tiga kategori KBLI, yaitu C (industri), G (perdagangan besar dan eceran), dan I (aktivitas penyediaan akomodasi dan makan minum). Angka pada contoh ini ilustratif. \textit{Confusion matrix} antara kategori pada \textit{gold standard} dan prediksi LLM disajikan pada Tabel~\ref{tab:contoh_cm}.
 
 {\footnotesize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.15}
 \begin{longtable}{|L{0.22\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|}
-\caption{Contoh Matriks Kebingungan pada Tingkat Kategori KBLI}
+\caption{Contoh \textit{Confusion Matrix} pada Tingkat Kategori KBLI}
 \label{tab:contoh_cm}\\
 \hline
-\textbf{Acuan $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
+\textbf{\textit{Gold standard} $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
 \endfirsthead
 \hline
-\textbf{Acuan $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
+\textbf{\textit{Gold standard} $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
 \endhead
 C & 8 & 1 & 1 & 10 \\ \hline
 G & 1 & 4 & 0 & 5 \\ \hline
@@ -261,9 +344,21 @@ I & 2 & 0 & 3 & 5 \\ \hline
 \[
   F_1^{\text{macro}} = \frac{0{,}762 + 0{,}800 + 0{,}667}{3} = 0{,}743.
 \]
-Akurasi pada contoh yang sama adalah $(8 + 4 + 3)/20 = 0{,}75$. \textit{Macro-F1} yang lebih rendah daripada akurasi mencerminkan kinerja yang lebih lemah pada kategori I yang jumlah rekamannya lebih sedikit, misalnya warung makan yang tertukar dengan industri makanan.
+Akurasi pada contoh yang sama adalah $(8 + 4 + 3)/20 = 0{,}75$. \textit{Macro-F1} yang lebih rendah daripada akurasi mencerminkan kinerja yang lebih lemah pada kategori I yang jumlah \textit{record}-nya lebih sedikit, misalnya warung makan yang tertukar dengan industri makanan.
 
-Kesepakatan antara dua pengode, baik antara dua anotator manusia maupun antara LLM dan data acuan, diukur menggunakan koefisien kappa Cohen \cite{cohen1960kappa} pada Persamaan~\eqref{eq:kappa}, dengan $p_o$ adalah proporsi kesepakatan teramati dan $p_e$ adalah proporsi kesepakatan yang diharapkan secara kebetulan. Interpretasi nilai kappa mengikuti Landis dan Koch \cite{landis1977kappa}, yaitu 0,41--0,60 sedang, 0,61--0,80 substansial, dan 0,81--1,00 hampir sempurna. Karena anotator kedua hanya mengode sekitar 30\% data acuan, kappa antaranotator dihitung dari subset yang dikode oleh kedua anotator tersebut.
+Perbandingan antarkondisi, misalnya \textit{retrieval-grounded} LLM terhadap LLM tanpa \textit{retrieval}, dilakukan pada data uji yang sama sehingga hasilnya berpasangan. Untuk \textit{Acc@1}, setiap \textit{record} dikelompokkan menurut benar atau salahnya pada kondisi A dan kondisi B. Hanya pasangan diskordan yang memberi informasi tentang perbedaan kedua kondisi, yaitu $b$ \textit{record} yang benar pada A tetapi salah pada B dan $c$ \textit{record} sebaliknya. Uji McNemar \cite{rainio2024evaluation} adalah uji nonparametrik untuk membandingkan dua pengklasifikasi dari satu kali pengujian pada himpunan uji yang sama dan hanya memerlukan bilangan $b$ dan $c$; uji ini menguji apakah keduanya seimbang. Rainio dkk. menguraikannya untuk sensitivitas dan spesifisitas pada klasifikasi biner, sedangkan penelitian ini menerapkan logika pasangan diskordan yang sama pada benar atau salahnya \textit{Acc@1} setiap \textit{record}. Jika tidak ada perbedaan antara kedua kondisi, setiap pasangan diskordan berpeluang sama untuk termasuk $b$ atau $c$, sehingga nilai $p$ eksak dua arah diperoleh dari distribusi binomial sebagaimana Persamaan~\eqref{eq:mcnemar}. Rainio dkk. menyebut statistik $\chi^2$ terkoreksi untuk $b + c \geq 20$ dan distribusi binomial untuk nilai yang lebih kecil \cite{rainio2024evaluation}; penelitian ini memakai distribusi binomial eksak untuk semua nilai $b + c$.
+
+\begin{equation}
+  p = \min\left\{1,\; 2\sum_{i=0}^{\min(b,c)} \binom{b+c}{i} \left(\tfrac{1}{2}\right)^{b+c}\right\}
+  \label{eq:mcnemar}
+\end{equation}
+\persamaan{Uji McNemar eksak}
+
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan pada $N = 400$ \textit{record}, 280 \textit{record} benar pada kedua kondisi, $b = 40$ benar hanya pada A, $c = 20$ benar hanya pada B, dan 60 \textit{record} salah pada kedua kondisi. Maka $\text{Acc@}1_A = (280 + 40)/400 = 0{,}80$ dan $\text{Acc@}1_B = (280 + 20)/400 = 0{,}75$, selisih 5 poin persentase. Dengan $b + c = 60$, Persamaan~\eqref{eq:mcnemar} memberikan $p \approx 0{,}0135$.
+
+Apabila beberapa perbandingan diuji sekaligus, peluang menyatakan adanya perbedaan secara keliru (galat tipe I) meningkat. Penelitian ini mengendalikannya dengan prosedur Holm \cite{menyhart2021multipletesting}: nilai $p$ diurutkan dari terkecil, nilai $p$ ke-$j$ dari $m$ perbandingan dibandingkan dengan $\alpha/(m - j + 1)$, dan prosedur berhenti pada penolakan pertama yang gagal. Misalkan $m = 3$ dan $\alpha = 0{,}05$ dengan nilai $p$ terurut 0,0135; 0,030; dan 0,200. Ketiganya dibandingkan dengan 0,0167; 0,025; dan 0,05. Nilai pertama memenuhi kriteria, nilai kedua tidak (0,030 > 0,025), sehingga prosedur berhenti dan hanya satu perbandingan yang dinyatakan berbeda secara signifikan. Selisih terkecil yang dapat dideteksi bergantung pada ukuran sampel dan proporsi pasangan diskordan; perhitungannya untuk penelitian ini dipaparkan pada Subbab~\ref{sec:eksperimen}.
+
+Kesepakatan antara dua anotator manusia yang mengodekan \textit{gold standard} (\textit{inter-annotator agreement}) diukur menggunakan koefisien kappa Cohen, yaitu ukuran kesepakatan antara dua pengamat yang memiliki rumusan untuk klasifikasi lebih dari dua kelas \cite{rainio2024evaluation}, sebagaimana Persamaan~\eqref{eq:kappa}, dengan $p_o$ adalah proporsi kesepakatan teramati dan $p_e$ adalah proporsi kesepakatan yang diharapkan secara kebetulan. Nilai kappa dilaporkan apa adanya bersama interval kepercayaannya dan tidak dijadikan kriteria penerimaan model maupun dikategorikan dengan \textit{threshold} yang bersifat konvensional. Karena anotator kedua hanya mengodekan sekitar 30\% \textit{gold standard}, kappa dihitung dari himpunan bagian yang dikodekan oleh kedua anotator tersebut dan dilaporkan bersama interval kepercayaan 95\%, karena himpunan bagian yang kecil menghasilkan estimasi yang lebar.
 
 \begin{equation}
   \kappa = \frac{p_o - p_e}{1 - p_e}
@@ -279,11 +374,46 @@ Maka
 \[
   \kappa = \frac{0{,}75 - 0{,}3875}{1 - 0{,}3875} = \frac{0{,}3625}{0{,}6125} \approx 0{,}59.
 \]
-Nilai tersebut termasuk kesepakatan sedang dan belum mencapai kriteria penerimaan $\kappa \geq 0{,}61$ yang ditetapkan pada Subbab~\ref{sec:eksperimen}, walaupun akurasinya 75\%. Contoh ini menunjukkan alasan penggunaan kappa: akurasi tidak memperhitungkan kesepakatan yang dapat terjadi secara kebetulan akibat dominasi kategori C.
+Nilai tersebut lebih rendah daripada kesepakatan teramati $p_o = 0{,}75$ karena kesepakatan kebetulan mencapai $p_e = 0{,}3875$ akibat dominasi kategori C. Contoh ini menunjukkan alasan penggunaan kappa: kesepakatan mentah tidak memperhitungkan kesepakatan yang dapat terjadi secara kebetulan. Pada klasifikasi dengan banyak kelas, misalnya 87 golongan pokok KBLI 2025, $p_e$ cenderung kecil apabila sebaran kelas relatif merata sehingga kappa mendekati akurasi: $p_o = 0{,}80$ dan $p_e = 0{,}05$ (nilai ilustratif) menghasilkan $\kappa = (0{,}80 - 0{,}05)/(1 - 0{,}05) \approx 0{,}79$. Karena itu kappa dalam penelitian ini dipakai untuk menilai keandalan anotasi \textit{gold standard}, sedangkan kinerja model dinilai dengan \textit{Acc@1}.
+
+Untuk menilai apakah skor konsistensi antarjawaban dapat dipakai menyaring keluaran yang perlu diperiksa manusia, setiap \textit{record} diberi skor konsistensi $s_i$, yaitu proporsi dari lima sampel berulang pada temperatur lebih besar dari nol yang menghasilkan golongan pokok sama dengan keluaran utama (Subbab~\ref{sec:eksperimen}), dan ditetapkan \textit{threshold} $\tau$. \textit{Record} dengan $s_i \geq \tau$ diterima otomatis, sedangkan \textit{record} lainnya diteruskan kepada verifikator. Cakupan $\text{Cov}(\tau)$ adalah proporsi \textit{record} yang diterima otomatis, dan akurasi selektif $\text{Acc}_{\text{sel}}(\tau)$ adalah akurasi \textit{Acc@1} pada \textit{record} yang diterima, sebagaimana Persamaan~\eqref{eq:cakupan}. \textit{Coverage--accuracy curve} diperoleh dengan menggeser $\tau$; skor yang berguna menaikkan akurasi selektif ketika cakupan diturunkan. Kurva ini menjadi bukti deskriptif mengenai kegunaan skor konsistensi sebagai dasar perutean verifikasi manusia, yaitu keluaran dengan konsistensi antarjawaban rendah diteruskan kepada verifikator.
+
+\begin{equation}
+  \begin{aligned}
+    \text{Cov}(\tau) &= \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[s_i \geq \tau\right],\\
+    \text{Acc}_{\text{sel}}(\tau) &= \frac{\sum_{i=1}^{N} \mathbb{1}\left[s_i \geq \tau\right]\,\mathbb{1}\left[\hat{y}_i = y_i\right]}{\sum_{i=1}^{N} \mathbb{1}\left[s_i \geq \tau\right]}
+  \end{aligned}
+  \label{eq:cakupan}
+\end{equation}
+\persamaan{Cakupan dan akurasi selektif}
+
+\noindent Keyakinan yang dinyatakan sendiri oleh model dalam teks keluarannya (\textit{confidence score}) cenderung terlalu percaya diri (\textit{overconfident}) \cite{xiong2024calibration}. Oleh karena itu, penelitian ini memakai konsistensi antarjawaban sebagai skor pemilah, bukan keyakinan yang dinyatakan model; Xiong dkk. melaporkan bahwa konsistensi antarjawaban membantu mengurangi keyakinan berlebih. Pengukuran kalibrasi lebih lanjut, misalnya \textit{expected calibration error}, merupakan pekerjaan lanjutan.
+
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan dari $N = 400$ \textit{record}, 320 diklasifikasikan benar ($\text{Acc@}1 = 0{,}80$). Pada $\tau = 0{,}8$, 240 \textit{record} diterima otomatis dan 216 di antaranya benar, sehingga $\text{Cov} = 240/400 = 0{,}60$ dan $\text{Acc}_{\text{sel}} = 216/240 = 0{,}90$. Sebanyak 160 \textit{record} sisanya diteruskan kepada verifikator; di antaranya terdapat $320 - 216 = 104$ \textit{record} yang benar (65\%), sehingga skor tersebut memisahkan \textit{record} yang lebih mudah dari yang lebih sulit.
+
+\subsection{Evaluasi Kualitas Data}
+\label{sec:evaluasi-kualitas}
+
+RQ2 diuji secara inferensial pada akurasi (Persamaan~\eqref{eq:akurasi}) dan keunikan (Persamaan~\eqref{eq:uniqueness}), sedangkan empat dimensi lainnya dilaporkan secara deskriptif (Subbab~\ref{sec:evalkualitas}). Keduanya berupa proporsi, sehingga perbandingan kondisi lembar kerja dan kondisi \textit{prototype} dilakukan dengan uji dua proporsi. Misalkan kondisi pertama memiliki $B_1$ nilai sesuai dari $S_1$ nilai terisi yang diverifikasi dan kondisi kedua memiliki $B_2$ dari $S_2$, dengan $\hat{p}_1 = B_1/S_1$, $\hat{p}_2 = B_2/S_2$, dan proporsi gabungan $\bar{p} = (B_1 + B_2)/(S_1 + S_2)$. Statistik uji dihitung dengan Persamaan~\eqref{eq:zdua} dan nilai $p$ dua arah diperoleh dari distribusi normal baku. Untuk keunikan, $S$ diganti $N$ dan $B$ diganti $N - D$. Pendekatan normal memadai apabila jumlah nilai sesuai dan tidak sesuai pada kedua kondisi masing-masing sekurang-kurangnya sekitar 10; apabila tidak terpenuhi, digunakan uji eksak Fisher. Uji ini mengasumsikan pengamatan saling bebas; karena nilai bersarang dalam \textit{record} dan \textit{record} bersarang dalam desa, rancangan penelitian menambahkan \textit{cluster bootstrap} pada tingkat desa dengan unit analisis \textit{record} (Subbab~\ref{sec:evalkualitas}).
+
+\begin{equation}
+  z = \frac{\hat{p}_2 - \hat{p}_1}{\sqrt{\bar{p}\,(1 - \bar{p})\left(\dfrac{1}{S_1} + \dfrac{1}{S_2}\right)}}
+  \label{eq:zdua}
+\end{equation}
+\persamaan{Statistik uji dua proporsi}
+
+\noindent Selain nilai $p$, dilaporkan selisih proporsi $\hat{p}_2 - \hat{p}_1$ beserta interval kepercayaan 95\% sebesar $\hat{p}_2 - \hat{p}_1 \pm 1{,}96\sqrt{\hat{p}_1(1-\hat{p}_1)/S_1 + \hat{p}_2(1-\hat{p}_2)/S_2}$, karena interval menunjukkan besar perbedaan, bukan hanya ada atau tidaknya perbedaan.
+
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan pada kondisi lembar kerja sebanyak $B_1 = 198$ dari $S_1 = 230$ nilai sesuai dengan keadaan sebenarnya, dan pada kondisi \textit{prototype} $B_2 = 216$ dari $S_2 = 230$ nilai sesuai (angka kedua sesuai contoh Persamaan~\eqref{eq:akurasi}). Maka $\hat{p}_1 = 0{,}861$, $\hat{p}_2 = 0{,}939$, dan $\bar{p} = 414/460 = 0{,}900$, sehingga galat baku gabungan adalah $\sqrt{0{,}9 \times 0{,}1 \times (2/230)} \approx 0{,}0280$ dan
+\[
+  z = \frac{0{,}939 - 0{,}861}{0{,}0280} \approx 2{,}80,
+\]
+dengan nilai $p$ dua arah $\approx 0{,}005$. Selisih proporsi adalah 7,8 poin persentase dengan interval kepercayaan 95\% sekitar 2,4 sampai 13,3 poin persentase.
 
 \subsection{Evaluasi Pengguna}
+\label{sec:evaluasi-pengguna}
 
-Kebergunaan sistem diukur menggunakan \textit{System Usability Scale} (SUS) yang terdiri atas sepuluh butir skala Likert lima poin \cite{brooke1996sus}. Skor SUS dihitung dengan Persamaan~\eqref{eq:sus}, dengan $s_i$ adalah jawaban butir ke-$i$, sehingga menghasilkan rentang 0--100.
+\textit{Usability} sistem diukur menggunakan \textit{System Usability Scale} (SUS) yang terdiri atas sepuluh butir skala Likert lima poin \cite{brooke1996sus}. Skor SUS dihitung dengan Persamaan~\eqref{eq:sus}, dengan $s_i$ adalah jawaban butir ke-$i$, sehingga menghasilkan rentang 0--100.
 
 \begin{equation}
   SUS = 2{,}5 \left[ \sum_{i \in \{1,3,5,7,9\}} (s_i - 1) + \sum_{i \in \{2,4,6,8,10\}} (5 - s_i) \right]
@@ -295,9 +425,9 @@ Kebergunaan sistem diukur menggunakan \textit{System Usability Scale} (SUS) yang
 \[
   SUS = 2{,}5 \times (16 + 15) = 77{,}5.
 \]
-Skor SUS seluruh partisipan kemudian dirata-ratakan untuk memperoleh skor kebergunaan purwarupa.
+Skor SUS seluruh partisipan kemudian dirata-ratakan untuk memperoleh skor \textit{usability} pada \textit{prototype}. Sebagai pembanding deskriptif digunakan skor 68, yaitu \textit{benchmark} SUS yang menurut meta-analisis terhadap 114 aplikasi kesehatan digital sesuai untuk domain tersebut setelah aplikasi aktivitas fisik dikecualikan \cite{hyzy2022sus}; karena domainnya berbeda, \textit{benchmark} ini hanya menjadi rujukan kasar dan bukan kriteria penerimaan \textit{prototype}.
 
-Beban kerja subjektif diukur menggunakan NASA-\textit{Task Load Index} (NASA-TLX) yang terdiri atas enam dimensi, yaitu tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi. Penelitian ini menggunakan varian \textit{raw} TLX tanpa pembobotan berpasangan, yang telah divalidasi untuk pengukuran berulang \cite{hernandez2022nasatlx}, sebagaimana Persamaan~\eqref{eq:rtlx}, dengan $s_d$ adalah skor dimensi ke-$d$ pada skala 0--100.
+Beban kerja subjektif diukur menggunakan \textit{NASA Task Load Index} (NASA-TLX) yang terdiri atas enam dimensi, yaitu tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi. Penelitian ini menggunakan varian \textit{raw} TLX tanpa pembobotan berpasangan, yang telah divalidasi untuk pengukuran berulang \cite{hernandez2022nasatlx}, sebagaimana Persamaan~\eqref{eq:rtlx}, dengan $s_d$ adalah skor dimensi ke-$d$ pada skala 0--100.
 
 \begin{equation}
   RTLX = \frac{1}{6}\sum_{d=1}^{6} s_d
@@ -305,31 +435,84 @@ Beban kerja subjektif diukur menggunakan NASA-\textit{Task Load Index} (NASA-TLX
 \end{equation}
 \persamaan{Skor \textit{raw} NASA-TLX}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan seorang staf dinas menyusun rekapitulasi UMKM per kecamatan dan jenis usaha dalam dua kondisi. Pada kondisi lembar kerja, skor tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi berturut-turut adalah 70, 20, 65, 40, 75, dan 60. Pada kondisi purwarupa, skornya adalah 40, 10, 30, 25, 35, dan 20. Pada dimensi performa, skor yang lebih tinggi menunjukkan persepsi performa yang lebih buruk. Maka
+\noindent\textbf{Contoh perhitungan.} Misalkan seorang staf dinas menyusun rekapitulasi UMKM per kecamatan dan jenis usaha dalam dua kondisi. Pada kondisi lembar kerja, skor tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi berturut-turut adalah 70, 20, 65, 40, 75, dan 60. Pada kondisi \textit{prototype}, skornya adalah 40, 10, 30, 25, 35, dan 20. Pada dimensi performa, skor yang lebih tinggi menunjukkan persepsi performa yang lebih buruk. Maka
 \[
   RTLX_{\text{lembar kerja}} = \frac{70+20+65+40+75+60}{6} = \frac{330}{6} = 55{,}0,
 \]
 \[
-  RTLX_{\text{purwarupa}} = \frac{40+10+30+25+35+20}{6} = \frac{160}{6} \approx 26{,}7.
+  RTLX_{\text{\textit{prototype}}} = \frac{40+10+30+25+35+20}{6} = \frac{160}{6} \approx 26{,}7.
 \]
 
-Selain beban kerja dan kebergunaan, kinerja tugas diukur melalui waktu penyelesaian tugas, yaitu lama pengerjaan dari tugas dimulai sampai selesai dalam detik, dan jumlah kesalahan terhadap kunci jawaban, yaitu banyaknya nilai atribut yang diisi atau dihasilkan peserta yang berbeda dari kunci jawaban yang disusun peneliti sebelum pengambilan data. Misalkan seorang operator desa memasukkan sepuluh data UMKM dengan lima atribut wajib (50 nilai). Pada kondisi lembar kerja ia memerlukan 18 menit 30 detik ($1.110$ detik) dan menghasilkan 6 nilai yang berbeda dari kunci jawaban, sedangkan pada kondisi purwarupa ia memerlukan 11 menit ($660$ detik) dan menghasilkan 2 nilai yang berbeda. Penurunan waktu adalah $(1.110 - 660)/1.110 \approx 40{,}5\%$, dan proporsi nilai yang salah turun dari $6/50 = 12\%$ menjadi $2/50 = 4\%$.
+Selain beban kerja dan \textit{usability}, kinerja tugas diukur melalui waktu penyelesaian tugas, yaitu lama pengerjaan dari tugas dimulai sampai selesai dalam detik, dan jumlah kesalahan terhadap kunci jawaban, yaitu banyaknya nilai atribut yang diisi atau dihasilkan peserta yang berbeda dari kunci jawaban yang disusun peneliti sebelum pengambilan data. Misalkan seorang operator desa memasukkan sepuluh data UMKM dengan lima atribut wajib (50 nilai). Pada kondisi lembar kerja ia memerlukan 18 menit 30 detik ($1.110$ detik) dan menghasilkan 6 nilai yang berbeda dari kunci jawaban, sedangkan pada kondisi \textit{prototype} ia memerlukan 11 menit ($660$ detik) dan menghasilkan 2 nilai yang berbeda. Penurunan waktu adalah $(1.110 - 660)/1.110 \approx 40{,}5\%$, dan proporsi nilai yang salah turun dari $6/50 = 12\%$ menjadi $2/50 = 4\%$.
 
-Karena jumlah partisipan kecil dan sebaran selisih skor tidak diasumsikan normal, H5 diuji menggunakan uji peringkat bertanda Wilcoxon \cite{wilcoxon1945individual} pada selisih berpasangan $d_i$ antara kondisi lembar kerja dan kondisi purwarupa untuk setiap partisipan (waktu penyelesaian tugas dan $RTLX$). Nilai $|d_i|$ diberi peringkat $R_i$ dari terkecil, kemudian dihitung jumlah peringkat selisih negatif, yaitu kasus ketika kondisi purwarupa justru lebih buruk, sebagaimana Persamaan~\eqref{eq:wilcoxon}. Pada hipotesis nol, tanda setiap selisih bersifat acak dengan peluang sama, sehingga untuk $n$ selisih tanpa nilai kembar terdapat $2^n$ kombinasi tanda yang sama mungkin, dan nilai $p$ satu arah eksak adalah proporsi kombinasi dengan $W^{-}$ sekecil atau lebih kecil daripada nilai teramati.
+Karena jumlah partisipan kecil dan sebaran selisih skor tidak diasumsikan normal, RQ3 dianalisis menggunakan \textit{Wilcoxon signed-rank test} \cite{rainio2024evaluation} pada selisih berpasangan $d_i$ antara kondisi lembar kerja dan kondisi \textit{prototype} untuk setiap partisipan (waktu penyelesaian tugas dan $RTLX$). Nilai $|d_i|$ diberi peringkat $R_i$ dari terkecil, kemudian dihitung jumlah peringkat selisih negatif, yaitu kasus ketika kondisi \textit{prototype} justru lebih buruk, sebagaimana Persamaan~\eqref{eq:wilcoxon}. Jika tidak ada perbedaan antara kedua kondisi, tanda setiap selisih bersifat acak dengan peluang sama, sehingga untuk $n$ selisih tanpa nilai kembar terdapat $2^n$ kombinasi tanda yang sama mungkin, dan nilai $p$ satu arah eksak adalah proporsi kombinasi dengan $W^{-}$ sekecil atau lebih kecil daripada nilai teramati. Uji satu arah dipakai pada RQ3 karena arah yang diharapkan ditetapkan sebelum pengambilan data dan analisis ini bersifat eksploratif (Subbab~\ref{sec:evalpengguna}); uji McNemar dan uji dua proporsi pada RQ1 dan RQ2 bersifat dua arah.
 
 \begin{equation}
   W^{-} = \sum_{i:\, d_i < 0} R_i, \qquad p = \frac{\#\{W^{-} \leq w\}}{2^{n}}
   \label{eq:wilcoxon}
 \end{equation}
-\persamaan{Statistik uji peringkat bertanda Wilcoxon}
+\persamaan{Statistik \textit{Wilcoxon signed-rank test}}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan sepuluh operator desa memiliki selisih $RTLX$ (lembar kerja dikurangi purwarupa) sebesar 28,3; 15,0; 33,3; 10,0; 21,7; $-3{,}3$; 25,0; 18,3; 12,5; dan 30,0. Peringkat $|d_i|$ berturut-turut adalah 8, 4, 10, 2, 6, 1, 7, 5, 3, dan 9, sehingga $W^{-} = 1$ (hanya selisih $-3{,}3$ yang negatif, dengan peringkat 1) dan $W^{+} = 55 - 1 = 54$. Dari $2^{10} = 1.024$ kombinasi tanda, hanya dua kombinasi yang menghasilkan $W^{-} \leq 1$, yaitu tanpa selisih negatif dan hanya peringkat 1 yang negatif, sehingga
+\noindent\textbf{Contoh perhitungan.} Misalkan delapan operator desa memiliki selisih $RTLX$ (lembar kerja dikurangi \textit{prototype}) sebesar 28,3; 15,0; 33,3; 10,0; 21,7; $-3{,}3$; 25,0; dan 18,3. Peringkat $|d_i|$ berturut-turut adalah 7, 3, 8, 2, 5, 1, 6, dan 4, sehingga $W^{-} = 1$ (hanya selisih $-3{,}3$ yang negatif, dengan peringkat 1) dan $W^{+} = 36 - 1 = 35$. Dari $2^{8} = 256$ kombinasi tanda, hanya dua kombinasi yang menghasilkan $W^{-} \leq 1$, yaitu tanpa selisih negatif dan hanya peringkat 1 yang negatif, sehingga
 \[
-  p = \frac{2}{1.024} \approx 0{,}002 \quad \text{(satu arah)}.
+  p = \frac{2}{256} \approx 0{,}008 \quad \text{(satu arah)}.
 \]
+Sebagai pembanding, apabila $W^{-} = 10$ pada $n = 8$ (nilai ilustratif), terdapat 40 dari 256 kombinasi tanda dengan $W^{-} \leq 10$ sehingga $p = 40/256 \approx 0{,}16$ dan tidak terdapat bukti perbedaan yang cukup.
 
-% [CEK] syarat minimal 10 operator desa; sesuaikan dengan jumlah partisipan aktual (lihat Bab III, Subbab Evaluasi Pengguna).
-Jumlah partisipan menentukan apakah uji ini bermakna. Nilai $p$ terkecil yang dapat dicapai adalah $1/2^{n}$ untuk uji satu arah. Dengan $n = 5$, nilai itu hanya $1/32 \approx 0{,}031$ (dan $2/32 = 0{,}0625$ untuk uji dua arah), serta hanya terjadi apabila kelima selisih bertanda sama, sehingga uji praktis tidak informatif. Dengan $n = 10$, nilai $p$ terkecil satu arah adalah $1/1.024 \approx 0{,}001$ (dua arah $2/1.024 \approx 0{,}002$). Oleh karena itu, analisis inferensial utama H5 dilakukan pada operator desa dengan syarat sekurang-kurangnya sepuluh orang, sedangkan data staf dinas yang jumlahnya sekitar lima orang dilaporkan secara deskriptif dan melalui wawancara pascatugas (Subbab~\ref{sec:evalpengguna}).
+Nilai $p$ saja tidak menyatakan besar perbedaan, sehingga RQ3 juga melaporkan ukuran efek. Ukuran efek berbasis peringkat adalah $r_{rb} = (W^{+} - W^{-})/(W^{+} + W^{-})$ yang berkisar dari $-1$ sampai $1$, dan ukuran efek standar untuk data berpasangan adalah $d_z = \bar{d}/s_d$, yaitu rata-rata selisih dibagi simpangan baku selisih. Pada contoh di atas, $r_{rb} = (35 - 1)/36 \approx 0{,}94$, sedangkan $\bar{d} \approx 18{,}5$ dan $s_d \approx 11{,}5$ sehingga $d_z \approx 1{,}6$, yaitu efek yang sangat besar. Selisih individual setiap operator juga ditampilkan agar pembaca dapat menilai sebaran, karena pada sampel sekecil ini rata-rata dapat dipengaruhi satu atau dua operator.
+
+Jumlah partisipan menentukan apakah uji ini bermakna. Nilai $p$ terkecil yang dapat dicapai adalah $1/2^{n}$ untuk uji satu arah. Dengan $n = 5$, nilai itu hanya $1/32 \approx 0{,}031$ (dan $2/32 = 0{,}0625$ untuk uji dua arah), serta hanya terjadi apabila kelima selisih bertanda sama, sehingga uji ini hanya dapat mencapai signifikansi pada tingkat 0,05 untuk efek yang ekstrem. Dengan $n = 6$, nilai $p$ terkecil satu arah adalah $1/64 \approx 0{,}016$ (dua arah $2/64 \approx 0{,}031$), dan dengan $n = 8$ adalah $1/256 \approx 0{,}004$ (dua arah $2/256 \approx 0{,}008$). Batas ini hanya menunjukkan nilai $p$ yang dapat dicapai, bukan daya uji. Daya uji, yaitu peluang uji menyatakan adanya perbedaan ketika perbedaan itu benar-benar ada, diperkirakan pada Tabel~\ref{tab:daya-wilcoxon}. Pada efek besar ($d_z = 0{,}8$) daya uji dengan 6 sampai 8 operator hanya sekitar 0,5 sampai 0,6, dan baru mencapai sekitar 0,8 atau lebih pada efek yang sangat besar ($d_z \geq 1{,}2$). Penelitian ini memperoleh enam sampai delapan operator desa dari tiga sampai empat desa percontohan, sehingga signifikansi masih dapat dicapai tetapi daya uji terbatas (Subbab~\ref{sec:evalpengguna}); RQ3 karenanya diperlakukan secara eksploratif, sedangkan data dua orang staf dinas dilaporkan secara deskriptif dan melalui wawancara pascatugas.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Perkiraan Daya Uji \textit{Wilcoxon Signed-Rank} Eksak Satu Arah menurut Jumlah Operator dan Ukuran Efek}
+  \label{tab:daya-wilcoxon}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{|>{\centering\arraybackslash}p{0.22\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|}
+  \hline
+  \textbf{Jumlah operator ($n$)} & \textbf{$d_z = 0{,}8$} & \textbf{$d_z = 1{,}0$} & \textbf{$d_z = 1{,}2$} & \textbf{$d_z = 1{,}5$} \\ \hline
+  6 & 0,49 & 0,65 & 0,78 & 0,91 \\ \hline
+  7 & 0,52 & 0,69 & 0,82 & 0,94 \\ \hline
+  8 & 0,58 & 0,76 & 0,88 & 0,97 \\ \hline
+  \end{tabular}
+
+  \vspace{4pt}
+  \footnotesize\raggedright Catatan: simulasi Monte Carlo 200.000 replikasi per sel; selisih berpasangan dibangkitkan dari sebaran normal dengan rata-rata $d_z$ dan simpangan baku 1; $\alpha = 0{,}05$ satu arah dengan nilai kritis eksak.
+\end{table}
+
+\subsection{Evaluasi Operasional dan Pemilihan Model}
+\label{sec:eval-operasional}
+
+Akurasi bukan satu-satunya sifat yang menentukan kelayakan LLM untuk dipakai dinas. \textit{Holistic Evaluation of Language Models} (HELM) menilai model tidak hanya dari akurasi, tetapi juga dari kalibrasi, ketahanan, keadilan, bias, toksisitas, dan efisiensi \cite{liang2023helm}, sehingga model dengan akurasi serupa dapat berbeda jauh dalam kelayakan penggunaannya. Hal ini relevan karena Gilardi dkk. \cite{gilardi2023chatgpt} juga melaporkan biaya per anotasi sebagai bagian dari perbandingan, dan karena Peeters dkk. \cite{peeters2025entity} menemukan bahwa tidak terdapat satu \textit{prompt} terbaik untuk seluruh model, sehingga setiap kandidat model perlu diukur sendiri. Selain itu, organisasi sering tidak dapat mengirim data sensitif ke API pihak ketiga \cite{narayan2022wrangle}, sehingga ketersediaan model \textit{open-weight} yang dapat dijalankan secara lokal menjadi kriteria tersendiri.
+
+Fase \textit{benchmarking} pada data pengembangan (Subbab~\ref{sec:benchmark}) membandingkan beberapa model kandidat, terdiri atas model \textit{open-weight} dan model \textit{proprietary}, menurut empat kelompok ukuran: (1) akurasi \textit{Acc@1} pada golongan pokok; (2) latensi; (3) biaya; dan (4) kebutuhan sumber daya dan kepatuhan, yaitu apakah model dapat dijalankan secara lokal pada perangkat yang tersedia sehingga data pribadi tidak meninggalkan lingkungan dinas.
+
+Latensi diukur dari awal permintaan sampai keluaran diterima untuk setiap \textit{record}, mencakup tahap \textit{retrieval} dan pemanggilan LLM, pada perangkat dan ukuran \textit{batch} yang tetap serta dilaporkan bersama spesifikasi perangkat. Karena sebaran latensi umumnya miring ke kanan, dilaporkan median dan persentil ke-95. Dengan $l_{(1)} \leq \dots \leq l_{(n)}$ adalah latensi terurut dari $n$ \textit{record}, persentil ke-95 menurut aturan peringkat terdekat (\textit{nearest-rank}) ditentukan dengan Persamaan~\eqref{eq:latensi}, dengan $\lceil \cdot \rceil$ adalah pembulatan ke atas.
+
+\begin{equation}
+  L_{95} = l_{(\lceil 0{,}95\, n \rceil)}
+  \label{eq:latensi}
+\end{equation}
+\persamaan{Persentil ke-95 latensi}
+
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan latensi 20 \textit{record} (detik), terurut, adalah 0,7; 0,8; 0,8; 0,9; 0,9; 1,0; 1,0; 1,1; 1,1; 1,2; 1,2; 1,3; 1,4; 1,5; 1,6; 1,8; 2,0; 2,3; 3,1; dan 6,4. Median adalah rata-rata nilai ke-10 dan ke-11, yaitu $(1{,}2 + 1{,}2)/2 = 1{,}2$ detik. Karena $\lceil 0{,}95 \times 20 \rceil = 19$, persentil ke-95 adalah nilai ke-19, yaitu $L_{95} = 3{,}1$ detik. Rata-rata sebesar $32{,}1/20 \approx 1{,}6$ detik lebih besar daripada median karena satu \textit{record} yang lambat (6,4 detik), sehingga median dan persentil ke-95 lebih menggambarkan pengalaman operator daripada rata-rata.
+
+Biaya pada model yang diakses melalui API dihitung per 1.000 \textit{record} sebagaimana Persamaan~\eqref{eq:biaya}, dengan $u$ adalah jumlah pemanggilan model per \textit{record}, $\bar{T}_{\text{masuk}}$ dan $\bar{T}_{\text{keluar}}$ adalah rata-rata jumlah \textit{token} masuk dan keluar per pemanggilan, serta $c_{\text{masuk}}$ dan $c_{\text{keluar}}$ adalah tarif per \textit{token} masuk dan keluar. Karena skor konsistensi memerlukan sampel berulang (Subbab~\ref{sec:evaluasi-klasifikasi}), $u$ bertambah sesuai jumlah sampel tersebut dan biaya serta latensi per \textit{record} ikut bertambah. Pada model \textit{open-weight} yang dijalankan lokal tidak terdapat tarif per \textit{token}, sehingga yang dilaporkan adalah waktu pemrosesan 1.000 \textit{record} pada perangkat yang dipakai.
+
+\begin{equation}
+  C_{1000} = 1.000 \times u \times \left( \bar{T}_{\text{masuk}}\, c_{\text{masuk}} + \bar{T}_{\text{keluar}}\, c_{\text{keluar}} \right)
+  \label{eq:biaya}
+\end{equation}
+\persamaan{Biaya per 1.000 \textit{record}}
+
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif dan bukan tarif penyedia mana pun. Misalkan \textit{prompt} berisi instruksi dan $k = 10$ kandidat KBLI berukuran rata-rata $\bar{T}_{\text{masuk}} = 1.200$ \textit{token}, keluaran berukuran $\bar{T}_{\text{keluar}} = 60$ \textit{token}, tarif masuk 0,50 dolar AS dan tarif keluar 1,50 dolar AS per satu juta \textit{token}. Untuk satu pemanggilan per \textit{record} ($u = 1$),
+\begin{align*}
+  C_{1000} &= 1.000 \times 1 \times \left( 1.200 \times \frac{0{,}50}{10^{6}} + 60 \times \frac{1{,}50}{10^{6}} \right)\\
+           &= 1.000 \times 0{,}00069 = 0{,}69 \text{ dolar AS}.
+\end{align*}
+Apabila skor konsistensi memakai enam pemanggilan per \textit{record} ($u = 6$), biaya menjadi $6 \times 0{,}69 = 4{,}14$ dolar AS per 1.000 \textit{record}.
+
+Model dipilih dengan aturan bertahap. Pertama, model dipertahankan apabila memenuhi ambang kelayakan operasional, yaitu biaya per 1.000 \textit{record}, latensi persentil ke-95, dan, untuk model utama, kemampuan berjalan secara lokal; nilai ambang ditetapkan bersama dinas sebelum fase \textit{benchmarking} dimulai. Kedua, pemilihan dilakukan terpisah untuk kelompok model \textit{open-weight} dan \textit{proprietary}, dan di dalam setiap kelompok model dengan \textit{Acc@1} tertinggi pada data pengembangan menjadi acuan. Ketiga, karena data pengembangan hanya berisi 100 \textit{record}, galat baku akurasi 0,80 sekitar $\sqrt{0{,}8 \times 0{,}2/100} = 0{,}04$, sehingga selisih beberapa poin persentase antarmodel tidak dapat dibedakan dari fluktuasi sampel; apabila interval kepercayaan 95\% selisih \textit{Acc@1} berpasangan terhadap acuan memuat nol, dipilih model dengan biaya per 1.000 \textit{record} terendah, lalu latensi median terendah bila biaya sama. Model \textit{open-weight} terpilih menjadi model utama yang dievaluasi satu kali pada data uji (RQ1), sedangkan model \textit{proprietary} terpilih dipakai sebagai replikasi.
 
 % -----------------------------------------------------------------------------
 \section{Penelitian Terdahulu}
@@ -346,7 +529,7 @@ Penelusuran pustaka difokuskan pada empat kelompok penelitian, yaitu (1) LLM unt
 \setlength{\pdfpagewidth}{297mm}\setlength{\pdfpageheight}{210mm}
 \setlength{\paperwidth}{297mm}\setlength{\paperheight}{210mm}
 \setlength{\textwidth}{227mm}\setlength{\textheight}{140mm}
-\setlength{\columnwidth}{\textwidth}\setlength{\linewidth}{\textwidth}
+\setlength{\columnwidth}{\textwidth}\setlength{\linewidth}{\textwidth}\setlength{\hsize}{\textwidth}
 \setlength{\headwidth}{\textwidth}
 % Gaya halaman khusus lanskap: nomor halaman (kanan atas) dan footer (kanan bawah)
 % dibuat dari kotak selebar \textwidth agar tidak bergantung pada \headwidth fancyhdr.
@@ -372,27 +555,25 @@ Penelusuran pustaka difokuskan pada empat kelompok penelitian, yaitu (1) LLM unt
 \textbf{No.} & \textbf{Judul Artikel} & \textbf{Tahun} & \textbf{Hasil} & \textbf{Kesimpulan} & \textbf{Kekurangan} \\ \hline
 \endhead
 1 & \textit{Large Language Models to Analyze Business Intelligence User Narratives}; Lotfipoor dkk. \cite{lotfipoor2026llm} & 2026 & GPT-4 untuk ekstraksi variabel dan klasifikasi 2.865 narasi pengguna \textit{business intelligence} ke UK SIC; kesepakatan dengan konsensus manusia $\kappa$ = 0,63--0,74; instruksi eksplisit menurunkan halusinasi dari 12\% menjadi 4\% pada uji awal & GPT-4 dapat mengekstraksi variabel dan mengklasifikasikan organisasi ke kode industri dari teks naratif, dan halusinasi dapat ditekan melalui instruksi eksplisit & Narasi berbahasa Inggris yang dikurasi vendor; validasi klasifikasi industri melalui inspeksi manual; relasi bersifat indikatif \\ \hline
-% [CEK] pastikan versi KBLI yang dipakai dari naskah asli
 2 & \textit{Business Description Categorization to the Five-Digit Indonesian Standard Classification of Business Field (KBLI) Using Machine Learning and Transfer Learning}; Amnur dkk. \cite{amnur2025kbli} & 2025 & SVM, \textit{Random Forest}, dan IndoBERT untuk klasifikasi deskripsi usaha ke KBLI lima digit; \textit{F1-score} 92,99\% pada data sintetis; akurasi \textit{top-1} 32,93\% dan \textit{top-10} 63,24\% pada data riil & Pembelajaran mesin konvensional belum andal untuk deskripsi usaha pada data riil &
 Kesenjangan besar antara data sintetis dan riil; disusun atas KBLI sebelum 2025 sehingga belum mencerminkan KBLI 2025; belum memanfaatkan LLM generatif dengan \textit{retrieval} \\ \hline
-% [CEK] cocokkan dengan naskah asli
 3 & \textit{BEACON: A Tool for Industry Self-Classification in the Economic Census}; Dumbacher dkk. \cite{dumbacher2025beacon} & 2025 &
-Alat swa-klasifikasi yang memetakan uraian usaha singkat ke kode NAICS enam digit melalui pencarian informasi bertingkat (sektor, lalu kode); pada uji awal 2021 peluang swa-klasifikasi berhasil sebesar 0,755 & Pemetaan uraian usaha ke klasifikasi baku berjenjang dapat dibantu alat otomatis pada skala sensus nasional & Berbasis pencarian informasi, bukan LLM generatif; taksonomi NAICS Amerika Serikat berbahasa Inggris \\ \hline
-4 & \textit{A Multi-Stage Framework with Taxonomy-Guided Reasoning for Occupation Classification Using Large Language Models}; Achananuparp dan Lim \cite{achananuparp2025occupation} & 2026 & Kerangka bertahap inferensi, \textit{retrieval}, dan pemeringkatan ulang LLM pada taksonomi O*NET-SOC; penalaran berpanduan taksonomi menyelaraskan keluaran LLM dengan taksonomi berjenjang & Pola \textit{retrieval} dan pemeringkatan ulang dapat diterapkan untuk klasifikasi pada taksonomi berjenjang & Domain pekerjaan berbahasa Inggris; belum diuji pada data administratif pemerintah daerah \\ \hline
-5 & \textit{ChatGPT Outperforms Crowd Workers for Text-Annotation Tasks}; Gilardi dkk. \cite{gilardi2023chatgpt} & 2023 & LLM \textit{zero-shot} sebagai anotator teks dengan akurasi yang melampaui pekerja \textit{crowdsourcing} & LLM berpotensi menjadi anotator teks yang lebih akurat daripada pekerja \textit{crowdsourcing} & Teks berbahasa Inggris; tidak menggunakan taksonomi resmi bertingkat \\ \hline
-6 & \textit{Can Large Language Models Transform Computational Social Science?}; Ziems dkk. \cite{ziems2024css} & 2024 & LLM mencapai kesepakatan yang memadai dengan anotator manusia pada tugas klasifikasi, tetapi belum melampaui model terlatih khusus & LLM layak dipertimbangkan sebagai alat bantu klasifikasi teks, bukan pengganti penuh model terlatih khusus & Teks berbahasa Inggris; tidak menggunakan taksonomi resmi bertingkat \\ \hline
-7 & \textit{Can Foundation Models Wrangle Your Data?}; Narayan dkk. \cite{narayan2022wrangle} & 2023 & Tugas pembersihan dan integrasi data dibingkai sebagai tugas \textit{prompting}; LLM mencapai kinerja kompetitif tanpa pelatihan khusus & Tugas pengelolaan data dapat diselesaikan LLM tanpa pelatihan khusus & Tantangan pada data privat dan domain khusus \\ \hline
-8 & \textit{Entity Matching using Large Language Models}; Peeters dkk. \cite{peeters2025entity} & 2025 & LLM digunakan untuk pencocokan entitas; tidak terdapat satu \textit{prompt} terbaik untuk seluruh model dan data & \textit{Prompt} perlu disesuaikan dan dievaluasi per model dan per data & Menggunakan data tolok ukur publik \\ \hline
+Alat \textit{self-classification} yang memetakan uraian usaha singkat ke kode NAICS enam digit melalui pencarian informasi bertingkat (sektor, lalu kode); pada uji awal 2021 peluang \textit{self-classification} berhasil sebesar 0,755 & Pemetaan uraian usaha ke klasifikasi baku berjenjang dapat dibantu alat otomatis pada skala sensus nasional & Berbasis pencarian informasi, bukan LLM generatif; taksonomi NAICS Amerika Serikat berbahasa Inggris \\ \hline
+4 & \textit{A Multi-Stage Framework with Taxonomy-Guided Reasoning for Occupation Classification Using Large Language Models}; Achananuparp dan Lim \cite{achananuparp2025occupation} & 2026 & Kerangka bertahap inferensi, \textit{retrieval}, dan \textit{re-ranking} LLM pada taksonomi O*NET-SOC; penalaran berpanduan taksonomi menyelaraskan keluaran LLM dengan taksonomi berjenjang & Pola \textit{retrieval} dan \textit{re-ranking} dapat diterapkan untuk klasifikasi pada taksonomi berjenjang & Domain pekerjaan berbahasa Inggris; belum diuji pada data administratif pemerintah daerah \\ \hline
+5 & \textit{ChatGPT Outperforms Crowd Workers for Text-Annotation Tasks}; Gilardi dkk. \cite{gilardi2023chatgpt} & 2023 & LLM \textit{zero-shot} sebagai anotator teks; akurasi melampaui pekerja \textit{crowdsourcing} rata-rata sekitar 25 poin persentase pada empat sampel ($n = 6.183$); biaya per anotasi sekitar tiga puluh kali lebih murah & LLM berpotensi menjadi anotator teks yang lebih akurat daripada pekerja \textit{crowdsourcing} pada tugas yang diuji & Sampel \textit{tweet} dan berita dengan gpt-3.5-turbo; kinerja lintas bahasa belum diuji; tidak menggunakan taksonomi resmi bertingkat \\ \hline
+6 & \textit{Can Large Language Models Transform Computational Social Science?}; Ziems dkk. \cite{ziems2024css} & 2024 & Pada 13 model dan 25 \textit{benchmark} berbahasa Inggris, LLM mencapai kesepakatan tingkat \textit{fair} dengan manusia pada tugas klasifikasi, tetapi tidak melampaui model terlatih khusus terbaik & Kinerja \textit{zero-shot} LLM pada klasifikasi belum melampaui model terlatih khusus terbaik & Teks berbahasa Inggris; tidak menggunakan taksonomi resmi bertingkat \\ \hline
+7 & \textit{Can Foundation Models Wrangle Your Data?}; Narayan dkk. \cite{narayan2022wrangle} & 2022 & Lima tugas pembersihan dan integrasi data dibingkai sebagai tugas \textit{prompting}; GPT-3 175B dengan sejumlah kecil contoh mencapai kinerja mutakhir pada sebagian \textit{benchmark} tanpa pelatihan khusus tugas & Sebagian tugas pengelolaan data dapat diselesaikan model fondasi besar tanpa pelatihan khusus tugas & \textit{Benchmark} publik berbahasa Inggris; kesulitan pada domain berjargon; data sensitif sulit dikirim ke API pihak ketiga \\ \hline
+8 & \textit{Entity Matching using Large Language Models}; Peeters dkk. \cite{peeters2025entity} & 2025 & LLM digunakan untuk pencocokan entitas; tidak terdapat satu \textit{prompt} terbaik untuk seluruh model dan data & \textit{Prompt} perlu disesuaikan dan dievaluasi per model dan per data & Menggunakan data \textit{benchmark} publik \\ \hline
 9 & \textit{Enhancing Small and Medium Enterprises: A Hybrid Clustering and AHP-TOPSIS Decision Support Framework}; Khotimah dkk. \cite{khotimah2024hybrid} & 2024 & Klasterisasi dan AHP-TOPSIS untuk stratifikasi UMKM; kerangka pendukung keputusan untuk penetapan prioritas UMKM & Klasterisasi dan AHP-TOPSIS dapat mendukung penetapan prioritas UMKM & Mengasumsikan data UMKM telah tersedia dan bersih \\ \hline
 10 & \textit{Adaptive Retrieval-Augmented Generation with Domain Specific Fine Tuning for Smart MSME Digital Transformation}; Hardiyanti dkk. \cite{hardiyanti2026adaptive} & 2026 & \textit{Adaptive} RAG dan IndoBERT melalui WhatsApp untuk pelaku UMKM; akurasi jawaban 86,8\%; SUS 84,6 pada validasi lapangan & RAG dapat dimanfaatkan sebagai asisten konsultasi bagi pelaku UMKM & Berorientasi swalayan pelaku UMKM; tidak menangani data pada sisi pemerintah \\ \hline
 11 & \textit{Enhancing E-Government Services through State-of-the-Art, Modular, and Reproducible Architecture over Large Language Models}; Papageorgiou dkk. \cite{papageorgiou2024egov} & 2024 & Arsitektur modular berbasis RAG untuk layanan pemerintahan elektronik yang dapat direproduksi & Arsitektur RAG modular dapat menjadi dasar asisten layanan pemerintahan & Penulis menyatakan perlunya validasi empiris \\ \hline
 12 & Evaluasi Metode \textit{Retrieval} pada \textit{Chatbot} Domain Khusus Berbasis \textit{Retrieval-Augmented Generation}; Asmaidin dan Santoso \cite{asmaidin2026retrieval} & 2026 & Perbandingan \textit{retrieval} leksikal, semantik, dan hibrida pada RAG; leksikal unggul pada peringkat teratas, hibrida meningkatkan cakupan pada peringkat menengah & Pemilihan metode \textit{retrieval} perlu dievaluasi karena pendekatan hibrida melengkapi pendekatan leksikal & Domain dokumen teknis; tidak terkait klasifikasi taksonomi \\ \hline
 13 & Penelitian ini & 2026 &
-LLM terpandu \textit{retrieval} atas KBLI 2025, pendataan partisipatif desa, dan pemeringkatan berbobot sederhana dalam satu artefak DSR & Dirumuskan setelah pengujian H1--H5; diharapkan: bukti keandalan standardisasi, perubahan kualitas data, dan dampak pada kinerja tugas aparatur & Studi kasus satu kabupaten dengan partisipan terbatas; pemeringkatan tidak menjadi objek pengujian \\ \hline
+Evaluasi empiris \textit{retrieval-grounded} LLM atas KBLI 2025 pada \textit{prototype} yang juga memuat pendataan partisipatif desa dan pemeringkatan sederhana (fitur pendukung yang tidak diuji), disertai \textit{benchmarking} model menurut akurasi, latensi, dan biaya & Dirumuskan setelah evaluasi RQ1--RQ3; diharapkan: bukti keandalan standardisasi, perubahan kualitas data, dan dampak pada kinerja tugas aparatur & Studi kasus satu kabupaten; uji kinerja operator bersifat eksploratif dengan 6--8 operator; pemeringkatan tidak menjadi objek pengujian \\ \hline
 \end{longtable}
 }
 \clearpage
 \endgroup
 \makeatletter\global\@colht\textheight\global\@colroom\textheight\makeatother
 
-Tabel~\ref{tab:related_work} menunjukkan bahwa penelitian LLM untuk klasifikasi teks bisnis belum diuji pada data administratif pemerintah daerah berbahasa Indonesia dengan taksonomi resmi, penelitian klasifikasi KBLI belum memanfaatkan LLM generatif terpandu \textit{retrieval}, alat swa-klasifikasi skala sensus seperti BEACON masih berbasis pencarian informasi dan bukan LLM generatif, serta penelitian pendukung keputusan UMKM belum menangani tahap penghimpunan dan standardisasi data yang menjadi prasyarat keputusan. Penelitian ini memosisikan diri pada persilangan kelompok-kelompok tersebut dengan menempatkan LLM sebagai komponen standardisasi data dalam sistem pendukung keputusan sektor publik. Standardisasi dan kualitas data serta kinerja tugas pengguna dievaluasi secara empiris, sedangkan pemeringkatan pada dasbor berstatus fitur desain yang tidak diuji.
+Berdasarkan penelusuran pustaka pada tinjauan ini, Tabel~\ref{tab:related_work} menunjukkan bahwa penelitian LLM untuk klasifikasi teks bisnis belum diuji pada data administratif pemerintah daerah berbahasa Indonesia dengan taksonomi resmi, penelitian klasifikasi KBLI belum memanfaatkan \textit{retrieval-grounded} LLM generatif, alat \textit{self-classification} skala sensus seperti BEACON masih berbasis pencarian informasi dan bukan LLM generatif, serta penelitian pendukung keputusan UMKM belum menangani tahap penghimpunan dan standardisasi data yang menjadi prasyarat keputusan. Kajian digitalisasi UMKM yang dibahas pada Subbab~\ref{sec:umkm} juga berfokus pada pelaku usaha, bukan pada data yang dikelola pemerintah daerah. Penelitian ini memosisikan diri pada persilangan kelompok-kelompok tersebut dengan menempatkan LLM sebagai komponen standardisasi data dalam sistem pendukung keputusan sektor publik. Standardisasi dan kualitas data serta kinerja tugas pengguna dievaluasi secara empiris, sedangkan pemeringkatan pada \textit{dashboard} berstatus fitur pendukung yang tidak diuji.
