@@ -109,7 +109,7 @@ Keenam dimensi dibandingkan sebelum dan sesudah penerapan artefak; RQ2 mengevalu
 KBLI 2025 ditetapkan melalui Peraturan Badan Pusat Statistik Nomor 7 Tahun 2025 yang diundangkan pada 18 Desember 2025 dan menggantikan KBLI 2020 \cite{bps2025perban7}. KBLI didefinisikan sebagai pengelompokan aktivitas ekonomi di Indonesia yang menghasilkan produk atau keluaran, baik barang maupun jasa, ke dalam jenis lapangan usaha, dan berfungsi sebagai acuan standar serta alat koordinasi, integrasi, dan sinkronisasi penyelenggaraan statistik \cite{bps2025perban7}. Penetapan ini dimaksudkan untuk menyesuaikan klasifikasi dengan \textit{International Standard Industrial Classification of All Economic Activities} (ISIC) Revisi 5, dan pengguna KBLI yang sudah ada wajib menyesuaikan diri paling lambat enam bulan sejak peraturan diundangkan \cite{bps2025perban7}.
 
 KBLI 2025 disusun berjenjang dalam lima tingkat, yaitu kategori (kode huruf A sampai dengan V), golongan pokok (dua digit), golongan (tiga digit), subgolongan (empat digit), dan kelompok (lima digit). Berdasarkan lampiran peraturan tersebut, KBLI 2025 memuat 22 kategori, 87 golongan pokok, 257 golongan, dan 519 subgolongan \cite{bps2025perban7}.
-Setiap kode dilengkapi judul dan uraian kegiatan, termasuk kegiatan yang dicakup dan yang tidak dicakup \cite{bps2025perban7}. Struktur berjenjang ini memungkinkan evaluasi klasifikasi pada beberapa tingkat granularitas. Penelitian ini menetapkan tingkat golongan pokok sebagai tingkat evaluasi utama (Subbab~\ref{sec:eksperimen}). Pemilihan tingkat ini didasarkan pada tiga pertimbangan. Pertama, isian jenis usaha pada data dinas berupa teks bebas yang singkat sehingga sering tidak cukup rinci untuk menentukan kode lima digit (Tabel~\ref{tab:risiko}). Kedua, Amnur dkk. \cite{amnur2025kbli} melaporkan akurasi \textit{top}-1 sebesar 32,93\% pada kode lima digit untuk data riil, sehingga tingkat tersebut jauh lebih sulit. Ketiga, dengan 87 kelas, 400 \textit{record} uji memberi rata-rata sekitar 4,6 \textit{record} per kelas, sedangkan kode lima digit memiliki jauh lebih banyak kelas sehingga sebagian besar kelas tidak terwakili. Kinerja pada kode lima digit tetap dilaporkan sebagai hasil eksploratif (Subbab~\ref{sec:eksperimen}).
+Setiap kode dilengkapi judul dan uraian kegiatan, termasuk kegiatan yang dicakup dan yang tidak dicakup \cite{bps2025perban7}. Struktur berjenjang ini memungkinkan evaluasi klasifikasi pada beberapa tingkat granularitas. Penelitian ini menetapkan tingkat golongan pokok sebagai tingkat evaluasi utama (Subbab~\ref{sec:eksperimen}). Pemilihan tingkat ini didasarkan pada tiga pertimbangan. Pertama, isian jenis usaha pada data dinas berupa teks bebas yang singkat sehingga sering tidak cukup rinci untuk menentukan kode lima digit (Tabel~\ref{tab:dataset}). Kedua, Amnur dkk. \cite{amnur2025kbli} melaporkan akurasi \textit{top}-1 sebesar 32,93\% pada kode lima digit untuk data riil, sehingga tingkat tersebut jauh lebih sulit. Ketiga, dengan 87 kelas, 400 \textit{record} uji memberi rata-rata sekitar 4,6 \textit{record} per kelas, sedangkan kode lima digit memiliki jauh lebih banyak kelas sehingga sebagian besar kelas tidak terwakili. Kinerja pada kode lima digit tetap dilaporkan sebagai hasil eksploratif (Subbab~\ref{sec:eksperimen}).
 Kesulitan utama klasifikasi KBLI terletak pada jumlah kelas yang besar, kemiripan uraian antarkelas, serta perbedaan antara bahasa uraian resmi dan bahasa yang digunakan pelaku usaha \cite{amnur2025kbli}. Lotfipoor dkk. \cite{lotfipoor2026llm} juga mencatat bahwa skema klasifikasi industri yang baku tidak selalu menangkap nuansa sektor yang bersifat hibrida, misalnya usaha tenun yang sekaligus menjual produk turunan. Pada Sensus Ekonomi Amerika Serikat, alat \textit{self-classification} BEACON memetakan uraian usaha singkat ke kode \textit{North American Industry Classification System} (NAICS) enam digit melalui pencarian informasi bertingkat dari sektor hingga kode \cite{dumbacher2025beacon}, sehingga pemetaan uraian usaha ke klasifikasi baku berjenjang dapat dibantu alat otomatis pada skala besar.
 
 % -----------------------------------------------------------------------------
@@ -148,7 +148,7 @@ Dalam penelitian ini, RAG diterapkan dalam bentuk klasifikasi berpanduan taksono
 \end{equation}
 \persamaan{\textit{Recall@k} tahap \textit{retrieval}}
 
-\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan untuk deskripsi ``tenun ulos sadum'' \textit{retriever} mengembalikan $k = 10$ kandidat kelompok KBLI dan kode pada \textit{gold standard} hasil pengodean manusia termasuk di antara sepuluh kandidat tersebut, sehingga indikatornya bernilai 1. Apabila hal yang sama terjadi pada 364 dari 400 \textit{record} uji, maka
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan untuk deskripsi ``tenun ulos sadum'' \textit{retriever} mengembalikan $k = 10$ kandidat kelompok KBLI dan kode pada \textit{gold standard} hasil pengodean anotator termasuk di antara sepuluh kandidat tersebut, sehingga indikatornya bernilai 1. Apabila hal yang sama terjadi pada 364 dari 400 \textit{record} uji, maka
 \[
   \text{Recall@}10 = \frac{364}{400} = 0{,}91.
 \]
@@ -167,7 +167,7 @@ Narayan dkk. \cite{narayan2022wrangle} membingkai lima tugas pembersihan dan int
 
 Sistem pendukung keputusan (SPK) membantu manajer menggunakan data dan model analitis untuk menilai pilihan dalam keputusan semi-terstruktur \cite[hlm.~412]{laudon2026mis}. Persoalan seleksi UMKM sasaran pembinaan di Kabupaten Toba bersifat semi-terstruktur karena melibatkan kriteria yang dapat diukur, misalnya status legalitas dan lama usaha, serta pertimbangan kebijakan, misalnya pemerataan antarkecamatan (\lampkadis). Khotimah dkk. \cite{khotimah2024hybrid} menggabungkan klasterisasi dengan AHP-TOPSIS untuk stratifikasi UMKM, tetapi mengasumsikan bahwa data UMKM telah tersedia dan bersih.
 
-Penelitian ini tidak menguji segmentasi maupun metode penurunan bobot kriteria seperti AHP. Pemeringkatan pada \textit{dashboard} dibatasi pada \textit{Simple Additive Weighting} (SAW), yaitu penjumlahan terbobot sederhana, dengan bobot kriteria yang ditetapkan oleh Kepala Dinas atau Kepala Bidang. Pemeringkatan ini merupakan fitur pendukung keputusan pada \textit{dashboard} yang bukan objek pengujian (Subbab~\ref{sec:ruang-lingkup}). Skor prioritas setiap kandidat dihitung dengan Persamaan~\eqref{eq:saw}, dengan $w_j$ adalah bobot kriteria ke-$j$ yang berjumlah satu ($\sum_j w_j = 1$) dan $r_{ij}$ adalah nilai ternormalisasi kandidat ke-$i$ pada kriteria ke-$j$.
+Penelitian ini tidak menguji segmentasi maupun metode penurunan bobot kriteria seperti AHP. Pemeringkatan pada \textit{dashboard} dibatasi pada \textit{Simple Additive Weighting} (SAW), yaitu penjumlahan terbobot sederhana, dengan bobot kriteria yang ditetapkan oleh Kepala Dinas atau Kepala Bidang. Pemeringkatan ini merupakan fitur pendukung keputusan pada \textit{dashboard} yang bukan objek pengujian (Subbab~\ref{sec:ruang-lingkup}). Skor prioritas setiap kandidat dihitung dengan Persamaan~\eqref{eq:saw}, dengan $w_j$ adalah bobot kriteria ke-$j$ yang berjumlah satu ($\sum_j w_j = 1$), $r_{ij}$ adalah nilai ternormalisasi kandidat ke-$i$ pada kriteria ke-$j$, dan $n$ adalah jumlah kriteria.
 
 \begin{equation}
   V_i = \sum_{j=1}^{n} w_j \, r_{ij}
@@ -175,7 +175,7 @@ Penelitian ini tidak menguji segmentasi maupun metode penurunan bobot kriteria s
 \end{equation}
 \persamaan{Skor prioritas SAW}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan Kepala Dinas menetapkan bobot kesiapan produk 0,5, status wirausaha pemula 0,3, dan kesiapan legalitas 0,2 (nilai ilustratif yang berjumlah 1). Dua kandidat penerima bantuan dibandingkan. Kandidat $A$ memiliki skor kesiapan produk 4 dari 5, berstatus wirausaha pemula, dan memiliki satu dari dua dokumen legalitas (NIB tanpa sertifikat halal). Kandidat $B$ memiliki skor kesiapan produk 5, bukan wirausaha pemula, dan memiliki kedua dokumen legalitas. Normalisasi kriteria manfaat dilakukan dengan $r_{ij} = x_{ij}/\max_i x_{ij}$, sehingga $r_A = (0{,}8;\ 1;\ 0{,}5)$ dan $r_B = (1;\ 0;\ 1)$. Maka
+\noindent\textbf{Contoh perhitungan.} Misalkan Kepala Dinas menetapkan bobot kesiapan produk 0,5, status wirausaha pemula 0,3, dan kesiapan legalitas 0,2 (nilai ilustratif yang berjumlah 1). Dua kandidat penerima bantuan dibandingkan. Kandidat $A$ memiliki skor kesiapan produk 4 dari 5, berstatus wirausaha pemula, dan memiliki satu dari dua dokumen legalitas (NIB tanpa sertifikat halal). Kandidat $B$ memiliki skor kesiapan produk 5, bukan wirausaha pemula, dan memiliki kedua dokumen legalitas. Normalisasi kriteria manfaat dilakukan dengan $r_{ij} = x_{ij}/\max_i x_{ij}$, dengan $x_{ij}$ adalah nilai asli kandidat ke-$i$ pada kriteria ke-$j$, sehingga $r_A = (0{,}8;\ 1;\ 0{,}5)$ dan $r_B = (1;\ 0;\ 1)$. Maka
 \[
   V_A = 0{,}5(0{,}8) + 0{,}3(1) + 0{,}2(0{,}5) = 0{,}80,
 \]
@@ -231,7 +231,7 @@ Peffers dkk. \cite{peffers2007dsrm} merumuskan metodologi DSR (\textit{design sc
 \endhead
 1 & Identifikasi masalah dan motivasi & Wawancara dengan Kepala Dinas dan staf Bidang Koperasi dan UMKM, serta pemeriksaan profil basis data UMKM dinas, untuk merumuskan persoalan standardisasi dan kualitas data & Bab~\ref{chap:pendahuluan}; \lampstaf{} dan \lampkadis \\ \hline
 2 & Penetapan tujuan solusi & Tiga pertanyaan penelitian, tiga tujuan, dan kriteria evaluasi untuk setiap pertanyaan & Subbab~\ref{sec:pertanyaan-penelitian} dan \ref{sec:tujuan}; Tabel~\ref{tab:kriteria-evaluasi} \\ \hline
-3 & Perancangan dan pengembangan & Perancangan \textit{prototype} (modul pendataan, \textit{pipeline} standardisasi \textit{retrieval-grounded}, modul kualitas data, dan \textit{dashboard}) serta fase \textit{benchmarking} model untuk memilih model, nilai $k$, dan \textit{prompt} pada data pengembangan & Subbab~\ref{sec:tahapan} dan \ref{sec:benchmark}; Subbab~\ref{sec:eval-operasional} \\ \hline
+3 & Perancangan dan pengembangan & Perancangan \textit{prototype} (modul pendataan, \textit{pipeline} standardisasi \textit{retrieval-grounded}, modul kualitas data, dan \textit{dashboard}) serta fase analisis dan \textit{benchmarking} LLM untuk memilih model, nilai $k$, dan \textit{prompt} pada data pengembangan & Subbab~\ref{sec:tahapan} dan \ref{sec:benchmark}; Subbab~\ref{sec:eval-operasional} \\ \hline
 4 & Demonstrasi & Penerapan \textit{prototype} pada data UMKM dinas dan pada tugas pendataan oleh operator desa percontohan & Subbab~\ref{sec:tahapan} \\ \hline
 5 & Evaluasi & RQ1: eksperimen standardisasi pada data uji; RQ2: perbandingan kualitas data sebelum dan sesudah penerapan artefak; RQ3: uji kinerja operator desa & Subbab~\ref{sec:eksperimen}, \ref{sec:evalkualitas}, dan \ref{sec:evalpengguna} \\ \hline
 6 & Komunikasi & Dokumen proposal dan laporan tugas akhir, seminar, serta luaran publikasi & Dokumen ini \\ \hline
@@ -254,7 +254,6 @@ Penelitian ini diposisikan pada kuadran peningkatan. Persoalan yang dihadapi, ya
 
 Setiap pertanyaan penelitian dievaluasi dengan kriteria yang ditetapkan sebelum data uji dibuka, yaitu ukuran utama, pembanding, uji statistik, dan ukuran pendukung. Ringkasan kriteria tersebut disajikan pada Tabel~\ref{tab:kriteria-evaluasi}, dan setiap uji dijelaskan pada subbab berikut beserta contoh perhitungannya.
 
-% sec:evalpengguna (Bab III), terutama jumlah perbandingan untuk koreksi Holm pada RQ1.
 {\footnotesize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.15}
@@ -267,18 +266,18 @@ Setiap pertanyaan penelitian dievaluasi dengan kriteria yang ditetapkan sebelum 
 \hline
 \textbf{RQ} & \textbf{Ukuran utama} & \textbf{Pembanding} & \textbf{Uji dan ukuran pendukung} & \textbf{Subbab} \\ \hline
 \endhead
-RQ1 & \textit{Acc@1} pada tingkat golongan pokok KBLI 2025 (data uji 400 \textit{record}) & LLM tanpa \textit{retrieval} dan baseline leksikal terhadap \textit{retrieval-grounded} LLM & Uji McNemar eksak dua arah berpasangan dengan koreksi Holm untuk dua perbandingan; \textit{Acc@k}, \textit{macro-F1}, tingkat halusinasi, dan \textit{coverage--accuracy curve} sebagai ukuran pendukung & \ref{sec:evaluasi-klasifikasi} \\ \hline
-RQ2 & Akurasi dan keunikan data; empat dimensi lain dilaporkan deskriptif & Lembar kerja dinas (sebelum) dan \textit{prototype} (sesudah) & Uji dua proporsi dua arah dengan koreksi Holm untuk dua uji; selisih proporsi dengan interval kepercayaan 95\% & \ref{sec:evaluasi-kualitas} \\ \hline
-RQ3 & Waktu penyelesaian tugas dan beban kerja (RTLX) operator desa; \textit{usability} (SUS) dan jumlah kesalahan sebagai ukuran pendukung & Lembar kerja dan \textit{prototype} pada operator yang sama & \textit{Wilcoxon signed-rank} eksak satu arah berpasangan; bersifat eksploratif (6--8 operator); ukuran efek dilaporkan & \ref{sec:evaluasi-pengguna} \\ \hline
+RQ1 & \textit{Acc@1} pada tingkat golongan pokok KBLI 2025 (data uji 400 \textit{record}) & LLM tanpa \textit{retrieval} dan \textit{baseline} leksikal terhadap \textit{retrieval-grounded} LLM & Uji McNemar eksak dua arah berpasangan dengan koreksi Holm untuk dua perbandingan; tingkat halusinasi, keterulangan keluaran, dan \textit{Recall@k} sebagai ukuran pendukung & \ref{sec:evaluasi-klasifikasi} \\ \hline
+RQ2 & Akurasi dan keunikan data; empat dimensi lain dilaporkan deskriptif & Lembar kerja dinas (sebelum) dan \textit{prototype} (sesudah) & Uji dua proporsi dua arah dengan \textit{cluster bootstrap} tingkat desa dan koreksi Holm untuk dua uji; selisih proporsi dengan interval kepercayaan 95\% & \ref{sec:evaluasi-kualitas} \\ \hline
+RQ3 & Waktu penyelesaian tugas dan beban kerja (RTLX) operator desa; \textit{usability} (SUS) dan jumlah kesalahan sebagai ukuran pendukung & Lembar kerja dan \textit{prototype} pada operator yang sama & \textit{Wilcoxon signed-rank} eksak dua arah berpasangan; bersifat eksploratif (6--8 operator); ukuran efek $r_{rb}$ dilaporkan & \ref{sec:evaluasi-pengguna} \\ \hline
 \end{longtable}
 }
 
 \subsection{Evaluasi Klasifikasi, Pengujian Perbandingan, dan Reliabilitas}
 \label{sec:evaluasi-klasifikasi}
 
-Metrik utama penelitian ini adalah \textit{Acc@1} pada tingkat golongan pokok KBLI 2025. Ukuran lain, yaitu \textit{Acc@k}, \textit{macro-F1}, tingkat halusinasi, dan \textit{coverage--accuracy curve}, bersifat sekunder atau pendukung. Satu metrik utama ditetapkan terlebih dahulu agar kesimpulan RQ1 tidak bergantung pada pemilihan metrik setelah hasil diketahui.
+Metrik utama penelitian ini adalah \textit{Acc@1} pada tingkat golongan pokok KBLI 2025. Ukuran lain, yaitu tingkat halusinasi, keterulangan keluaran, dan \textit{Recall@k}, bersifat sekunder atau pendukung. \textit{Coverage--accuracy curve} bukan ukuran pendukung RQ1, melainkan analisis deskriptif terpisah untuk pembagian peran manusia dan mesin. Satu metrik utama ditetapkan terlebih dahulu agar kesimpulan RQ1 tidak bergantung pada pemilihan metrik setelah hasil diketahui. Akurasi total dapat didominasi kelas yang sering muncul sehingga tidak memperlihatkan perbedaan kinerja antar kelas; karena itu sebaran kelas pada \textit{gold standard} dilaporkan agar pembaca dapat menilai cakupan hasil.
 
-Akurasi \textit{top-k} mengukur proporsi \textit{record} yang kodenya pada \textit{gold standard} termasuk dalam $k$ keluaran teratas model, sebagaimana Persamaan~\eqref{eq:topk}, dengan $\hat{Y}_i^{(k)}$ adalah himpunan $k$ kode teratas untuk \textit{record} ke-$i$. Pada $k=1$, ukuran ini setara dengan akurasi.
+Akurasi \textit{top-k} mengukur proporsi \textit{record} yang kodenya pada \textit{gold standard} termasuk dalam $k$ keluaran teratas model, sebagaimana Persamaan~\eqref{eq:topk}, dengan $N$ adalah jumlah \textit{record} yang dinilai, $y_i$ adalah kode pada \textit{gold standard} untuk \textit{record} ke-$i$, $\hat{Y}_i^{(k)}$ adalah himpunan $k$ kode teratas keluaran model untuk \textit{record} ke-$i$, dan $\mathbb{1}[\cdot]$ adalah fungsi indikator yang bernilai 1 apabila kondisi di dalamnya benar dan 0 apabila salah. Pada $k=1$, ukuran ini setara dengan akurasi, dan nilai inilah yang dipakai sebagai metrik utama penelitian ini; nilai $k>1$ pada contoh di bawah hanya untuk menjelaskan rumus.
 
 \begin{equation}
   \text{Acc@}k = \frac{1}{N}\sum_{i=1}^{N} \mathbb{1}\left[y_i \in \hat{Y}_i^{(k)}\right]
@@ -308,43 +307,7 @@ Akurasi \textit{top-k} mengukur proporsi \textit{record} yang kodenya pada \text
 \end{longtable}
 }
 
-\noindent Dengan demikian, $\text{Acc@}1 = 2/5 = 0{,}40$ dan $\text{Acc@}3 = 4/5 = 0{,}80$. Selisih kedua nilai tersebut menunjukkan bahwa kode yang benar sering terdapat di antara kandidat teratas walaupun tidak berada pada peringkat pertama, sehingga verifikator manusia dapat memilih dari daftar kandidat pendek. Contoh nomor 5 juga menunjukkan salah satu jenis kesalahan yang mungkin terjadi, yaitu kegiatan pengolahan hasil pertanian yang diklasifikasikan sebagai kegiatan pertanian.
-
-Karena distribusi kelas KBLI tidak seimbang, kinerja juga diukur sebagai ukuran sekunder menggunakan \textit{macro-F1} pada tingkat kategori, sebagaimana Persamaan~\eqref{eq:f1}, dengan $\mathcal{C}$ adalah himpunan kelas, serta $P_c$ dan $R_c$ adalah presisi dan \textit{recall} kelas $c$.
-
-\begin{equation}
-  F_1^{\text{macro}} = \frac{1}{|\mathcal{C}|}\sum_{c \in \mathcal{C}} \frac{2 \, P_c \, R_c}{P_c + R_c},
-  \quad P_c = \frac{TP_c}{TP_c + FP_c}, \quad R_c = \frac{TP_c}{TP_c + FN_c}
-  \label{eq:f1}
-\end{equation}
-\persamaan{\textit{Macro-F1}}
-
-\noindent\textbf{Contoh perhitungan.} Misalkan 20 \textit{record} diklasifikasikan ke tiga kategori KBLI, yaitu C (industri), G (perdagangan besar dan eceran), dan I (aktivitas penyediaan akomodasi dan makan minum). Angka pada contoh ini ilustratif. \textit{Confusion matrix} antara kategori pada \textit{gold standard} dan prediksi LLM disajikan pada Tabel~\ref{tab:contoh_cm}.
-
-{\footnotesize
-\setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.15}
-\begin{longtable}{|L{0.22\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|}
-\caption{Contoh \textit{Confusion Matrix} pada Tingkat Kategori KBLI}
-\label{tab:contoh_cm}\\
-\hline
-\textbf{\textit{Gold standard} $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
-\endfirsthead
-\hline
-\textbf{\textit{Gold standard} $\backslash$ Prediksi} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
-\endhead
-C & 8 & 1 & 1 & 10 \\ \hline
-G & 1 & 4 & 0 & 5 \\ \hline
-I & 2 & 0 & 3 & 5 \\ \hline
-\textbf{Jumlah} & 11 & 5 & 4 & 20 \\ \hline
-\end{longtable}
-}
-
-\noindent Untuk kategori C, $TP = 8$, $FP = 1 + 2 = 3$, dan $FN = 1 + 1 = 2$, sehingga $P_C = 8/11 = 0{,}727$, $R_C = 8/10 = 0{,}800$, dan $F_{1,C} = 2(0{,}727)(0{,}800)/(0{,}727 + 0{,}800) = 0{,}762$. Dengan cara yang sama, $P_G = 4/5 = 0{,}800$ dan $R_G = 4/5 = 0{,}800$ sehingga $F_{1,G} = 0{,}800$, serta $P_I = 3/4 = 0{,}750$ dan $R_I = 3/5 = 0{,}600$ sehingga $F_{1,I} = 0{,}667$. Maka
-\[
-  F_1^{\text{macro}} = \frac{0{,}762 + 0{,}800 + 0{,}667}{3} = 0{,}743.
-\]
-Akurasi pada contoh yang sama adalah $(8 + 4 + 3)/20 = 0{,}75$. \textit{Macro-F1} yang lebih rendah daripada akurasi mencerminkan kinerja yang lebih lemah pada kategori I yang jumlah \textit{record}-nya lebih sedikit, misalnya warung makan yang tertukar dengan industri makanan.
+\noindent Tabel tersebut memuat $N = 5$ \textit{record}. Kolom Benar@1 berisi nilai fungsi indikator untuk $k = 1$, yaitu 1 apabila prediksi peringkat pertama sama dengan \textit{gold standard} dan 0 apabila tidak, sehingga $\text{Acc@}1 = \frac{1}{5}(1 + 0 + 1 + 0 + 0) = \frac{2}{5} = 0{,}40$. Kolom Benar@3 bernilai 1 apabila kode \textit{gold standard} terdapat di antara tiga prediksi teratas, sehingga $\text{Acc@}3 = \frac{1}{5}(1 + 1 + 1 + 1 + 0) = \frac{4}{5} = 0{,}80$. Selisih kedua nilai tersebut menunjukkan bahwa kode yang benar dapat terdapat di antara kandidat teratas walaupun tidak berada pada peringkat pertama. Contoh nomor 5 juga menunjukkan salah satu jenis kesalahan yang mungkin terjadi, yaitu kegiatan pengolahan hasil pertanian yang diklasifikasikan sebagai kegiatan pertanian.
 
 Perbandingan antarkondisi, misalnya \textit{retrieval-grounded} LLM terhadap LLM tanpa \textit{retrieval}, dilakukan pada data uji yang sama sehingga hasilnya berpasangan. Untuk \textit{Acc@1}, setiap \textit{record} dikelompokkan menurut benar atau salahnya pada kondisi A dan kondisi B. Hanya pasangan diskordan yang memberi informasi tentang perbedaan kedua kondisi, yaitu $b$ \textit{record} yang benar pada A tetapi salah pada B dan $c$ \textit{record} sebaliknya. Uji McNemar \cite{rainio2024evaluation} adalah uji nonparametrik untuk membandingkan dua pengklasifikasi dari satu kali pengujian pada himpunan uji yang sama dan hanya memerlukan bilangan $b$ dan $c$; uji ini menguji apakah keduanya seimbang. Rainio dkk. menguraikannya untuk sensitivitas dan spesifisitas pada klasifikasi biner, sedangkan penelitian ini menerapkan logika pasangan diskordan yang sama pada benar atau salahnya \textit{Acc@1} setiap \textit{record}. Jika tidak ada perbedaan antara kedua kondisi, setiap pasangan diskordan berpeluang sama untuk termasuk $b$ atau $c$, sehingga nilai $p$ eksak dua arah diperoleh dari distribusi binomial sebagaimana Persamaan~\eqref{eq:mcnemar}. Rainio dkk. menyebut statistik $\chi^2$ terkoreksi untuk $b + c \geq 20$ dan distribusi binomial untuk nilai yang lebih kecil \cite{rainio2024evaluation}; penelitian ini memakai distribusi binomial eksak untuk semua nilai $b + c$.
 
@@ -365,6 +328,27 @@ Kesepakatan antara dua anotator manusia yang mengodekan \textit{gold standard} (
   \label{eq:kappa}
 \end{equation}
 \persamaan{Koefisien kappa Cohen}
+
+Untuk contoh perhitungan kappa, misalkan dua anotator mengodekan 20 \textit{record} ke tiga kategori KBLI, yaitu C (industri), G (perdagangan besar dan eceran), dan I (aktivitas penyediaan akomodasi dan makan minum). Angka pada contoh ini ilustratif. Matriks kesepakatan antara kategori yang dipilih Anotator 1 dan Anotator 2 disajikan pada Tabel~\ref{tab:contoh_cm}.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{longtable}{|L{0.22\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|}
+\caption{Contoh Matriks Kesepakatan Dua Anotator pada Tingkat Kategori KBLI}
+\label{tab:contoh_cm}\\
+\hline
+\textbf{Anotator 1 $\backslash$ Anotator 2} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
+\endfirsthead
+\hline
+\textbf{Anotator 1 $\backslash$ Anotator 2} & \textbf{C} & \textbf{G} & \textbf{I} & \textbf{Jumlah} \\ \hline
+\endhead
+C & 8 & 1 & 1 & 10 \\ \hline
+G & 1 & 4 & 0 & 5 \\ \hline
+I & 2 & 0 & 3 & 5 \\ \hline
+\textbf{Jumlah} & 11 & 5 & 4 & 20 \\ \hline
+\end{longtable}
+}
 
 \noindent\textbf{Contoh perhitungan.} Menggunakan Tabel~\ref{tab:contoh_cm}, proporsi kesepakatan teramati adalah $p_o = (8 + 4 + 3)/20 = 0{,}75$. Proporsi kesepakatan kebetulan dihitung dari perkalian jumlah baris dan jumlah kolom setiap kategori:
 \[
@@ -413,10 +397,10 @@ dengan nilai $p$ dua arah $\approx 0{,}005$. Selisih proporsi adalah 7,8 poin pe
 \subsection{Evaluasi Pengguna}
 \label{sec:evaluasi-pengguna}
 
-\textit{Usability} sistem diukur menggunakan \textit{System Usability Scale} (SUS) yang terdiri atas sepuluh butir skala Likert lima poin \cite{brooke1996sus}. Skor SUS dihitung dengan Persamaan~\eqref{eq:sus}, dengan $s_i$ adalah jawaban butir ke-$i$, sehingga menghasilkan rentang 0--100.
+\textit{Usability} sistem diukur menggunakan \textit{System Usability Scale} (SUS) yang terdiri atas sepuluh butir skala Likert lima poin \cite{brooke1996sus}. Skor SUS dihitung dengan Persamaan~\eqref{eq:sus}, dengan $a_i$ adalah jawaban butir ke-$i$ (1 sampai 5), sehingga menghasilkan rentang 0--100.
 
 \begin{equation}
-  SUS = 2{,}5 \left[ \sum_{i \in \{1,3,5,7,9\}} (s_i - 1) + \sum_{i \in \{2,4,6,8,10\}} (5 - s_i) \right]
+  SUS = 2{,}5 \left[ \sum_{i \in \{1,3,5,7,9\}} (a_i - 1) + \sum_{i \in \{2,4,6,8,10\}} (5 - a_i) \right]
   \label{eq:sus}
 \end{equation}
 \persamaan{Skor \textit{System Usability Scale}}
@@ -435,7 +419,7 @@ Beban kerja subjektif diukur menggunakan \textit{NASA Task Load Index} (NASA-TLX
 \end{equation}
 \persamaan{Skor \textit{raw} NASA-TLX}
 
-\noindent\textbf{Contoh perhitungan.} Misalkan seorang staf dinas menyusun rekapitulasi UMKM per kecamatan dan jenis usaha dalam dua kondisi. Pada kondisi lembar kerja, skor tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi berturut-turut adalah 70, 20, 65, 40, 75, dan 60. Pada kondisi \textit{prototype}, skornya adalah 40, 10, 30, 25, 35, dan 20. Pada dimensi performa, skor yang lebih tinggi menunjukkan persepsi performa yang lebih buruk. Maka
+\noindent\textbf{Contoh perhitungan.} Misalkan seorang operator desa memasukkan dan memutakhirkan sepuluh data UMKM dalam dua kondisi. Pada kondisi lembar kerja, skor tuntutan mental, tuntutan fisik, tuntutan waktu, performa, usaha, dan frustrasi berturut-turut adalah 70, 20, 65, 40, 75, dan 60. Pada kondisi \textit{prototype}, skornya adalah 40, 10, 30, 25, 35, dan 20. Pada dimensi performa, skor yang lebih tinggi menunjukkan persepsi performa yang lebih buruk. Maka
 \[
   RTLX_{\text{lembar kerja}} = \frac{70+20+65+40+75+60}{6} = \frac{330}{6} = 55{,}0,
 \]
@@ -445,7 +429,7 @@ Beban kerja subjektif diukur menggunakan \textit{NASA Task Load Index} (NASA-TLX
 
 Selain beban kerja dan \textit{usability}, kinerja tugas diukur melalui waktu penyelesaian tugas, yaitu lama pengerjaan dari tugas dimulai sampai selesai dalam detik, dan jumlah kesalahan terhadap kunci jawaban, yaitu banyaknya nilai atribut yang diisi atau dihasilkan peserta yang berbeda dari kunci jawaban yang disusun peneliti sebelum pengambilan data. Misalkan seorang operator desa memasukkan sepuluh data UMKM dengan lima atribut wajib (50 nilai). Pada kondisi lembar kerja ia memerlukan 18 menit 30 detik ($1.110$ detik) dan menghasilkan 6 nilai yang berbeda dari kunci jawaban, sedangkan pada kondisi \textit{prototype} ia memerlukan 11 menit ($660$ detik) dan menghasilkan 2 nilai yang berbeda. Penurunan waktu adalah $(1.110 - 660)/1.110 \approx 40{,}5\%$, dan proporsi nilai yang salah turun dari $6/50 = 12\%$ menjadi $2/50 = 4\%$.
 
-Karena jumlah partisipan kecil dan sebaran selisih skor tidak diasumsikan normal, RQ3 dianalisis menggunakan \textit{Wilcoxon signed-rank test} \cite{rainio2024evaluation} pada selisih berpasangan $d_i$ antara kondisi lembar kerja dan kondisi \textit{prototype} untuk setiap partisipan (waktu penyelesaian tugas dan $RTLX$). Nilai $|d_i|$ diberi peringkat $R_i$ dari terkecil, kemudian dihitung jumlah peringkat selisih negatif, yaitu kasus ketika kondisi \textit{prototype} justru lebih buruk, sebagaimana Persamaan~\eqref{eq:wilcoxon}. Jika tidak ada perbedaan antara kedua kondisi, tanda setiap selisih bersifat acak dengan peluang sama, sehingga untuk $n$ selisih tanpa nilai kembar terdapat $2^n$ kombinasi tanda yang sama mungkin, dan nilai $p$ satu arah eksak adalah proporsi kombinasi dengan $W^{-}$ sekecil atau lebih kecil daripada nilai teramati. Uji satu arah dipakai pada RQ3 karena arah yang diharapkan ditetapkan sebelum pengambilan data dan analisis ini bersifat eksploratif (Subbab~\ref{sec:evalpengguna}); uji McNemar dan uji dua proporsi pada RQ1 dan RQ2 bersifat dua arah.
+Karena jumlah partisipan kecil dan sebaran selisih skor tidak diasumsikan normal, RQ3 dianalisis menggunakan \textit{Wilcoxon signed-rank test} \cite{rainio2024evaluation} pada selisih berpasangan $d_i$ antara kondisi lembar kerja dan kondisi \textit{prototype} untuk setiap partisipan (waktu penyelesaian tugas dan $RTLX$). Nilai $|d_i|$ diberi peringkat $R_i$ dari terkecil, kemudian dihitung jumlah peringkat selisih negatif, yaitu kasus ketika kondisi \textit{prototype} justru lebih buruk, sebagaimana Persamaan~\eqref{eq:wilcoxon}. Jika tidak ada perbedaan antara kedua kondisi, tanda setiap selisih bersifat acak dengan peluang sama, sehingga untuk $n$ selisih tanpa nilai kembar terdapat $2^n$ kombinasi tanda yang sama mungkin, dan nilai $p$ satu arah eksak adalah proporsi kombinasi dengan $W^{-}$ sekecil atau lebih kecil daripada nilai teramati; nilai $p$ dua arah eksak adalah dua kali nilai tersebut. Uji dua arah dipakai sebagai analisis utama pada RQ3, seperti uji McNemar pada RQ1 dan uji dua proporsi pada RQ2, karena perbedaan berlawanan arah tidak dapat diperlakukan sama dengan tidak ada perbedaan \cite{bland1994onetwosided}; nilai satu arah hanya dilaporkan sebagai analisis tambahan (Subbab~\ref{sec:evalpengguna}).
 
 \begin{equation}
   W^{-} = \sum_{i:\, d_i < 0} R_i, \qquad p = \frac{\#\{W^{-} \leq w\}}{2^{n}}
@@ -453,31 +437,33 @@ Karena jumlah partisipan kecil dan sebaran selisih skor tidak diasumsikan normal
 \end{equation}
 \persamaan{Statistik \textit{Wilcoxon signed-rank test}}
 
+\noindent Pada Persamaan~\eqref{eq:wilcoxon}, $n$ adalah jumlah selisih berpasangan yang tidak bernilai nol, $w$ adalah nilai $W^{-}$ yang teramati pada data, dan $\#\{W^{-} \leq w\}$ adalah banyaknya kombinasi tanda, dari $2^{n}$ kombinasi yang mungkin, yang menghasilkan $W^{-}$ tidak lebih besar daripada $w$.
+
 \noindent\textbf{Contoh perhitungan.} Misalkan delapan operator desa memiliki selisih $RTLX$ (lembar kerja dikurangi \textit{prototype}) sebesar 28,3; 15,0; 33,3; 10,0; 21,7; $-3{,}3$; 25,0; dan 18,3. Peringkat $|d_i|$ berturut-turut adalah 7, 3, 8, 2, 5, 1, 6, dan 4, sehingga $W^{-} = 1$ (hanya selisih $-3{,}3$ yang negatif, dengan peringkat 1) dan $W^{+} = 36 - 1 = 35$. Dari $2^{8} = 256$ kombinasi tanda, hanya dua kombinasi yang menghasilkan $W^{-} \leq 1$, yaitu tanpa selisih negatif dan hanya peringkat 1 yang negatif, sehingga
 \[
-  p = \frac{2}{256} \approx 0{,}008 \quad \text{(satu arah)}.
+  p_{\text{satu arah}} = \frac{2}{256} \approx 0{,}008, \qquad p_{\text{dua arah}} = 2 \times 0{,}008 \approx 0{,}016.
 \]
-Sebagai pembanding, apabila $W^{-} = 10$ pada $n = 8$ (nilai ilustratif), terdapat 40 dari 256 kombinasi tanda dengan $W^{-} \leq 10$ sehingga $p = 40/256 \approx 0{,}16$ dan tidak terdapat bukti perbedaan yang cukup.
+Sebagai pembanding, apabila $W^{-} = 10$ pada $n = 8$ (nilai ilustratif), terdapat 40 dari 256 kombinasi tanda dengan $W^{-} \leq 10$ sehingga $p = 40/256 \approx 0{,}16$ satu arah (0,31 dua arah) dan tidak terdapat bukti perbedaan yang cukup.
 
-Nilai $p$ saja tidak menyatakan besar perbedaan, sehingga RQ3 juga melaporkan ukuran efek. Ukuran efek berbasis peringkat adalah $r_{rb} = (W^{+} - W^{-})/(W^{+} + W^{-})$ yang berkisar dari $-1$ sampai $1$, dan ukuran efek standar untuk data berpasangan adalah $d_z = \bar{d}/s_d$, yaitu rata-rata selisih dibagi simpangan baku selisih. Pada contoh di atas, $r_{rb} = (35 - 1)/36 \approx 0{,}94$, sedangkan $\bar{d} \approx 18{,}5$ dan $s_d \approx 11{,}5$ sehingga $d_z \approx 1{,}6$, yaitu efek yang sangat besar. Selisih individual setiap operator juga ditampilkan agar pembaca dapat menilai sebaran, karena pada sampel sekecil ini rata-rata dapat dipengaruhi satu atau dua operator.
+Nilai $p$ saja tidak menyatakan besar perbedaan, sehingga RQ3 juga melaporkan ukuran efek berbasis peringkat $r_{rb} = (W^{+} - W^{-})/(W^{+} + W^{-})$, dengan $W^{+}$ adalah jumlah peringkat selisih positif; nilainya berkisar dari $-1$ sampai $1$ dan sejalan dengan uji \textit{Wilcoxon signed-rank} yang berbasis peringkat. Pada contoh di atas, $r_{rb} = (35 - 1)/36 \approx 0{,}94$. Ukuran efek standar untuk data berpasangan $d_z = \bar{d}/s_d$, yaitu rata-rata selisih dibagi simpangan baku selisih, tidak dilaporkan sebagai hasil dan hanya dipakai untuk memperkirakan daya uji pada Tabel~\ref{tab:daya-wilcoxon}. Selisih individual setiap operator juga ditampilkan agar pembaca dapat menilai sebaran, karena pada sampel sekecil ini rata-rata dapat dipengaruhi satu atau dua operator.
 
-Jumlah partisipan menentukan apakah uji ini bermakna. Nilai $p$ terkecil yang dapat dicapai adalah $1/2^{n}$ untuk uji satu arah. Dengan $n = 5$, nilai itu hanya $1/32 \approx 0{,}031$ (dan $2/32 = 0{,}0625$ untuk uji dua arah), serta hanya terjadi apabila kelima selisih bertanda sama, sehingga uji ini hanya dapat mencapai signifikansi pada tingkat 0,05 untuk efek yang ekstrem. Dengan $n = 6$, nilai $p$ terkecil satu arah adalah $1/64 \approx 0{,}016$ (dua arah $2/64 \approx 0{,}031$), dan dengan $n = 8$ adalah $1/256 \approx 0{,}004$ (dua arah $2/256 \approx 0{,}008$). Batas ini hanya menunjukkan nilai $p$ yang dapat dicapai, bukan daya uji. Daya uji, yaitu peluang uji menyatakan adanya perbedaan ketika perbedaan itu benar-benar ada, diperkirakan pada Tabel~\ref{tab:daya-wilcoxon}. Pada efek besar ($d_z = 0{,}8$) daya uji dengan 6 sampai 8 operator hanya sekitar 0,5 sampai 0,6, dan baru mencapai sekitar 0,8 atau lebih pada efek yang sangat besar ($d_z \geq 1{,}2$). Penelitian ini memperoleh enam sampai delapan operator desa dari tiga sampai empat desa percontohan, sehingga signifikansi masih dapat dicapai tetapi daya uji terbatas (Subbab~\ref{sec:evalpengguna}); RQ3 karenanya diperlakukan secara eksploratif, sedangkan data dua orang staf dinas dilaporkan secara deskriptif dan melalui wawancara pascatugas.
+Jumlah partisipan menentukan apakah uji ini bermakna. Nilai $p$ terkecil yang dapat dicapai uji dua arah adalah $2/2^{n}$, dan hanya terjadi apabila seluruh selisih bertanda sama. Dengan $n = 5$, nilai itu $2/32 = 0{,}0625$ sehingga signifikansi pada tingkat 0,05 tidak dapat dicapai sama sekali. Dengan $n = 6$ nilainya $2/64 \approx 0{,}031$, dan satu selisih berlawanan arah saja sudah membuat $p$ melampaui 0,05; dengan $n = 8$ nilainya $2/256 \approx 0{,}008$ dan signifikansi masih dicapai bila $W^{-} \leq 3$. Batas ini hanya menunjukkan nilai $p$ yang dapat dicapai, bukan daya uji. Daya uji, yaitu peluang uji menyatakan adanya perbedaan ketika perbedaan itu benar-benar ada, diperkirakan pada Tabel~\ref{tab:daya-wilcoxon}. Pada efek besar ($d_z = 0{,}8$) daya uji dengan 6 sampai 8 operator hanya sekitar 0,2 sampai 0,4, dan baru mencapai sekitar 0,8 atau lebih pada efek yang sangat besar ($d_z \geq 1{,}5$ dengan 7 atau 8 operator). Penelitian ini memperoleh enam sampai delapan operator desa dari tiga sampai empat desa percontohan, sehingga signifikansi hanya dapat dicapai bila hampir seluruh operator menunjukkan arah yang sama dan daya uji terbatas (Subbab~\ref{sec:evalpengguna}); RQ3 karenanya diperlakukan secara eksploratif, sedangkan data dua orang staf dinas dilaporkan secara deskriptif dan melalui wawancara pascatugas.
 
 \begin{table}[htbp]
   \centering
-  \caption{Perkiraan Daya Uji \textit{Wilcoxon Signed-Rank} Eksak Satu Arah menurut Jumlah Operator dan Ukuran Efek}
+  \caption{Perkiraan Daya Uji \textit{Wilcoxon Signed-Rank} Eksak Dua Arah menurut Jumlah Operator dan Ukuran Efek}
   \label{tab:daya-wilcoxon}
   \renewcommand{\arraystretch}{1.15}
   \begin{tabular}{|>{\centering\arraybackslash}p{0.22\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|>{\centering\arraybackslash}p{0.14\textwidth}|}
   \hline
   \textbf{Jumlah operator ($n$)} & \textbf{$d_z = 0{,}8$} & \textbf{$d_z = 1{,}0$} & \textbf{$d_z = 1{,}2$} & \textbf{$d_z = 1{,}5$} \\ \hline
-  6 & 0,49 & 0,65 & 0,78 & 0,91 \\ \hline
-  7 & 0,52 & 0,69 & 0,82 & 0,94 \\ \hline
-  8 & 0,58 & 0,76 & 0,88 & 0,97 \\ \hline
+  6 & 0,24 & 0,36 & 0,48 & 0,66 \\ \hline
+  7 & 0,40 & 0,57 & 0,72 & 0,88 \\ \hline
+  8 & 0,43 & 0,61 & 0,77 & 0,92 \\ \hline
   \end{tabular}
 
   \vspace{4pt}
-  \footnotesize\raggedright Catatan: simulasi Monte Carlo 200.000 replikasi per sel; selisih berpasangan dibangkitkan dari sebaran normal dengan rata-rata $d_z$ dan simpangan baku 1; $\alpha = 0{,}05$ satu arah dengan nilai kritis eksak.
+  \footnotesize\raggedright Catatan: simulasi Monte Carlo 200.000 replikasi per sel; selisih berpasangan dibangkitkan dari sebaran normal dengan rata-rata $d_z$ dan simpangan baku 1; $\alpha = 0{,}05$ dua arah dengan nilai kritis eksak.
 \end{table}
 
 \subsection{Evaluasi Operasional dan Pemilihan Model}
@@ -485,7 +471,7 @@ Jumlah partisipan menentukan apakah uji ini bermakna. Nilai $p$ terkecil yang da
 
 Akurasi bukan satu-satunya sifat yang menentukan kelayakan LLM untuk dipakai dinas. \textit{Holistic Evaluation of Language Models} (HELM) menilai model tidak hanya dari akurasi, tetapi juga dari kalibrasi, ketahanan, keadilan, bias, toksisitas, dan efisiensi \cite{liang2023helm}, sehingga model dengan akurasi serupa dapat berbeda jauh dalam kelayakan penggunaannya. Hal ini relevan karena Gilardi dkk. \cite{gilardi2023chatgpt} juga melaporkan biaya per anotasi sebagai bagian dari perbandingan, dan karena Peeters dkk. \cite{peeters2025entity} menemukan bahwa tidak terdapat satu \textit{prompt} terbaik untuk seluruh model, sehingga setiap kandidat model perlu diukur sendiri. Selain itu, organisasi sering tidak dapat mengirim data sensitif ke API pihak ketiga \cite{narayan2022wrangle}, sehingga ketersediaan model \textit{open-weight} yang dapat dijalankan secara lokal menjadi kriteria tersendiri.
 
-Fase \textit{benchmarking} pada data pengembangan (Subbab~\ref{sec:benchmark}) membandingkan beberapa model kandidat, terdiri atas model \textit{open-weight} dan model \textit{proprietary}, menurut empat kelompok ukuran: (1) akurasi \textit{Acc@1} pada golongan pokok; (2) latensi; (3) biaya; dan (4) kebutuhan sumber daya dan kepatuhan, yaitu apakah model dapat dijalankan secara lokal pada perangkat yang tersedia sehingga data pribadi tidak meninggalkan lingkungan dinas.
+Fase analisis dan \textit{benchmarking} LLM pada data pengembangan (Subbab~\ref{sec:benchmark}) membandingkan beberapa model kandidat, terdiri atas model \textit{open-weight} dan model \textit{proprietary}, menurut empat kelompok ukuran: (1) akurasi \textit{Acc@1} pada golongan pokok; (2) latensi; (3) biaya; dan (4) kebutuhan sumber daya dan kepatuhan, yaitu apakah model dapat dijalankan secara lokal pada perangkat yang tersedia sehingga data pribadi tidak meninggalkan lingkungan dinas.
 
 Latensi diukur dari awal permintaan sampai keluaran diterima untuk setiap \textit{record}, mencakup tahap \textit{retrieval} dan pemanggilan LLM, pada perangkat dan ukuran \textit{batch} yang tetap serta dilaporkan bersama spesifikasi perangkat. Karena sebaran latensi umumnya miring ke kanan, dilaporkan median dan persentil ke-95. Dengan $l_{(1)} \leq \dots \leq l_{(n)}$ adalah latensi terurut dari $n$ \textit{record}, persentil ke-95 menurut aturan peringkat terdekat (\textit{nearest-rank}) ditentukan dengan Persamaan~\eqref{eq:latensi}, dengan $\lceil \cdot \rceil$ adalah pembulatan ke atas.
 
@@ -497,7 +483,7 @@ Latensi diukur dari awal permintaan sampai keluaran diterima untuk setiap \texti
 
 \noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif. Misalkan latensi 20 \textit{record} (detik), terurut, adalah 0,7; 0,8; 0,8; 0,9; 0,9; 1,0; 1,0; 1,1; 1,1; 1,2; 1,2; 1,3; 1,4; 1,5; 1,6; 1,8; 2,0; 2,3; 3,1; dan 6,4. Median adalah rata-rata nilai ke-10 dan ke-11, yaitu $(1{,}2 + 1{,}2)/2 = 1{,}2$ detik. Karena $\lceil 0{,}95 \times 20 \rceil = 19$, persentil ke-95 adalah nilai ke-19, yaitu $L_{95} = 3{,}1$ detik. Rata-rata sebesar $32{,}1/20 \approx 1{,}6$ detik lebih besar daripada median karena satu \textit{record} yang lambat (6,4 detik), sehingga median dan persentil ke-95 lebih menggambarkan pengalaman operator daripada rata-rata.
 
-Biaya pada model yang diakses melalui API dihitung per 1.000 \textit{record} sebagaimana Persamaan~\eqref{eq:biaya}, dengan $u$ adalah jumlah pemanggilan model per \textit{record}, $\bar{T}_{\text{masuk}}$ dan $\bar{T}_{\text{keluar}}$ adalah rata-rata jumlah \textit{token} masuk dan keluar per pemanggilan, serta $c_{\text{masuk}}$ dan $c_{\text{keluar}}$ adalah tarif per \textit{token} masuk dan keluar. Karena skor konsistensi memerlukan sampel berulang (Subbab~\ref{sec:evaluasi-klasifikasi}), $u$ bertambah sesuai jumlah sampel tersebut dan biaya serta latensi per \textit{record} ikut bertambah. Pada model \textit{open-weight} yang dijalankan lokal tidak terdapat tarif per \textit{token}, sehingga yang dilaporkan adalah waktu pemrosesan 1.000 \textit{record} pada perangkat yang dipakai.
+Biaya pada model yang diakses melalui API dihitung per 1.000 \textit{record} sebagaimana Persamaan~\eqref{eq:biaya}, dengan $u$ adalah jumlah pemanggilan model per \textit{record}, $\bar{T}_{\text{masuk}}$ dan $\bar{T}_{\text{keluar}}$ adalah rata-rata jumlah \textit{token} masuk dan keluar per pemanggilan, serta $c_{\text{masuk}}$ dan $c_{\text{keluar}}$ adalah tarif per \textit{token} masuk dan keluar. Karena skor konsistensi memerlukan sampel berulang (Subbab~\ref{sec:evaluasi-klasifikasi}), $u$ bertambah sesuai jumlah sampel tersebut dan biaya serta latensi per \textit{record} ikut bertambah. Pada model \textit{open-weight} yang dijalankan lokal tidak terdapat tarif per \textit{token}, sehingga biayanya dihitung dari biaya sewa atau penyusutan GPU dan listrik per jam dibagi jumlah \textit{record} yang diproses per jam, lalu dikalikan 1.000, dan dilaporkan dalam rupiah agar dapat dibandingkan langsung dengan model yang diakses melalui API; waktu pemrosesan dilaporkan terpisah sebagai latensi. Tarif yang dinyatakan dalam dolar AS dikonversi ke rupiah dengan kurs referensi JISDOR Bank Indonesia pada tanggal pengukuran.
 
 \begin{equation}
   C_{1000} = 1.000 \times u \times \left( \bar{T}_{\text{masuk}}\, c_{\text{masuk}} + \bar{T}_{\text{keluar}}\, c_{\text{keluar}} \right)
@@ -505,14 +491,14 @@ Biaya pada model yang diakses melalui API dihitung per 1.000 \textit{record} seb
 \end{equation}
 \persamaan{Biaya per 1.000 \textit{record}}
 
-\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif dan bukan tarif penyedia mana pun. Misalkan \textit{prompt} berisi instruksi dan $k = 10$ kandidat KBLI berukuran rata-rata $\bar{T}_{\text{masuk}} = 1.200$ \textit{token}, keluaran berukuran $\bar{T}_{\text{keluar}} = 60$ \textit{token}, tarif masuk 0,50 dolar AS dan tarif keluar 1,50 dolar AS per satu juta \textit{token}. Untuk satu pemanggilan per \textit{record} ($u = 1$),
+\noindent\textbf{Contoh perhitungan.} Angka berikut bersifat ilustratif dan bukan tarif penyedia mana pun, serta dinyatakan langsung dalam rupiah. Misalkan \textit{prompt} berisi instruksi dan $k = 10$ kandidat KBLI berukuran rata-rata $\bar{T}_{\text{masuk}} = 1.200$ \textit{token}, keluaran berukuran $\bar{T}_{\text{keluar}} = 60$ \textit{token}, tarif masuk Rp8.000 dan tarif keluar Rp24.000 per satu juta \textit{token}. Untuk satu pemanggilan per \textit{record} ($u = 1$),
 \begin{align*}
-  C_{1000} &= 1.000 \times 1 \times \left( 1.200 \times \frac{0{,}50}{10^{6}} + 60 \times \frac{1{,}50}{10^{6}} \right)\\
-           &= 1.000 \times 0{,}00069 = 0{,}69 \text{ dolar AS}.
+  C_{1000} &= 1.000 \times 1 \times \left( 1.200 \times \frac{8.000}{10^{6}} + 60 \times \frac{24.000}{10^{6}} \right)\\
+           &= 1.000 \times 11{,}04 = \text{Rp}11.040.
 \end{align*}
-Apabila skor konsistensi memakai enam pemanggilan per \textit{record} ($u = 6$), biaya menjadi $6 \times 0{,}69 = 4{,}14$ dolar AS per 1.000 \textit{record}.
+Apabila skor konsistensi memakai enam pemanggilan per \textit{record} ($u = 6$), biaya menjadi $6 \times \text{Rp}11.040 = \text{Rp}66.240$ per 1.000 \textit{record}. Untuk seluruh 10.053 \textit{record} berkas 2026, angka ilustratif tersebut setara sekitar Rp111 ribu ($u = 1$) dan sekitar Rp666 ribu ($u = 6$). Kedua angka ini bukan hasil pengukuran; biaya aktual setiap kandidat model diukur pada fase analisis dan \textit{benchmarking} LLM (Subbab~\ref{sec:benchmark}). Sebagai pembanding, beban pemetaan manual seluruh data dinas diperkirakan dari waktu pengodean 50 \textit{record} kalibrasi (Subbab~\ref{sec:eksperimen}). Kebutuhan GPU atau server lokal bagi dinas setelah penelitian tidak termasuk perhitungan ini dan dicatat sebagai keterbatasan (Subbab~\ref{sec:ruang-lingkup}).
 
-Model dipilih dengan aturan bertahap. Pertama, model dipertahankan apabila memenuhi ambang kelayakan operasional, yaitu biaya per 1.000 \textit{record}, latensi persentil ke-95, dan, untuk model utama, kemampuan berjalan secara lokal; nilai ambang ditetapkan bersama dinas sebelum fase \textit{benchmarking} dimulai. Kedua, pemilihan dilakukan terpisah untuk kelompok model \textit{open-weight} dan \textit{proprietary}, dan di dalam setiap kelompok model dengan \textit{Acc@1} tertinggi pada data pengembangan menjadi acuan. Ketiga, karena data pengembangan hanya berisi 100 \textit{record}, galat baku akurasi 0,80 sekitar $\sqrt{0{,}8 \times 0{,}2/100} = 0{,}04$, sehingga selisih beberapa poin persentase antarmodel tidak dapat dibedakan dari fluktuasi sampel; apabila interval kepercayaan 95\% selisih \textit{Acc@1} berpasangan terhadap acuan memuat nol, dipilih model dengan biaya per 1.000 \textit{record} terendah, lalu latensi median terendah bila biaya sama. Model \textit{open-weight} terpilih menjadi model utama yang dievaluasi satu kali pada data uji (RQ1), sedangkan model \textit{proprietary} terpilih dipakai sebagai replikasi.
+Model dipilih dengan aturan bertahap. Pertama, model dipertahankan apabila memenuhi ambang kelayakan operasional, yaitu biaya per 1.000 \textit{record}, latensi persentil ke-95, dan, untuk model utama, kemampuan berjalan secara lokal; nilai ambang ditetapkan bersama dinas sebelum fase analisis dan \textit{benchmarking} LLM dimulai. Kedua, pemilihan dilakukan terpisah untuk kelompok model \textit{open-weight} dan \textit{proprietary}, dan di dalam setiap kelompok model dengan \textit{Acc@1} tertinggi pada data pengembangan menjadi acuan. Ketiga, karena data pengembangan hanya berisi 100 \textit{record}, galat baku akurasi 0,80 sekitar $\sqrt{0{,}8 \times 0{,}2/100} = 0{,}04$, sehingga selisih beberapa poin persentase antarmodel tidak dapat dibedakan dari fluktuasi sampel; apabila interval kepercayaan 95\% selisih \textit{Acc@1} berpasangan terhadap acuan memuat nol, dipilih model dengan biaya per 1.000 \textit{record} terendah, lalu latensi median terendah bila biaya sama. Model \textit{open-weight} terpilih menjadi model utama yang dievaluasi satu kali pada data uji (RQ1), sedangkan model \textit{proprietary} terpilih dipakai sebagai replikasi.
 
 % -----------------------------------------------------------------------------
 \section{Penelitian Terdahulu}
@@ -569,7 +555,7 @@ Alat \textit{self-classification} yang memetakan uraian usaha singkat ke kode NA
 11 & \textit{Enhancing E-Government Services through State-of-the-Art, Modular, and Reproducible Architecture over Large Language Models}; Papageorgiou dkk. \cite{papageorgiou2024egov} & 2024 & Arsitektur modular berbasis RAG untuk layanan pemerintahan elektronik yang dapat direproduksi & Arsitektur RAG modular dapat menjadi dasar asisten layanan pemerintahan & Penulis menyatakan perlunya validasi empiris \\ \hline
 12 & Evaluasi Metode \textit{Retrieval} pada \textit{Chatbot} Domain Khusus Berbasis \textit{Retrieval-Augmented Generation}; Asmaidin dan Santoso \cite{asmaidin2026retrieval} & 2026 & Perbandingan \textit{retrieval} leksikal, semantik, dan hibrida pada RAG; leksikal unggul pada peringkat teratas, hibrida meningkatkan cakupan pada peringkat menengah & Pemilihan metode \textit{retrieval} perlu dievaluasi karena pendekatan hibrida melengkapi pendekatan leksikal & Domain dokumen teknis; tidak terkait klasifikasi taksonomi \\ \hline
 13 & Penelitian ini & 2026 &
-Evaluasi empiris \textit{retrieval-grounded} LLM atas KBLI 2025 pada \textit{prototype} yang juga memuat pendataan partisipatif desa dan pemeringkatan sederhana (fitur pendukung yang tidak diuji), disertai \textit{benchmarking} model menurut akurasi, latensi, dan biaya & Dirumuskan setelah evaluasi RQ1--RQ3; diharapkan: bukti keandalan standardisasi, perubahan kualitas data, dan dampak pada kinerja tugas aparatur & Studi kasus satu kabupaten; uji kinerja operator bersifat eksploratif dengan 6--8 operator; pemeringkatan tidak menjadi objek pengujian \\ \hline
+Evaluasi empiris \textit{prototype} pendataan partisipatif desa yang memuat \textit{retrieval-grounded} LLM atas KBLI 2025 terhadap kualitas data dan kinerja tugas operator, dengan komponen LLM diuji tersendiri pada data uji dan dipilih melalui \textit{benchmarking} menurut akurasi, latensi, dan biaya; pemeringkatan sederhana merupakan fitur pendukung yang tidak diuji & Dirumuskan setelah evaluasi RQ1--RQ3; diharapkan: bukti akurasi standardisasi, perubahan kualitas data, dan dampak pada kinerja tugas aparatur & Studi kasus satu kabupaten; uji kinerja operator bersifat eksploratif dengan 6--8 operator; pemeringkatan tidak menjadi objek pengujian \\ \hline
 \end{longtable}
 }
 \clearpage

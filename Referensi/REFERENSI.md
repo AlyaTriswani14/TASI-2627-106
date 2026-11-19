@@ -1,5 +1,7 @@
 # Referensi Proposal TASI-2627-106
 
+Catatan historis untuk versi 1 November 2026. Nomor IEEE dan status unduhan proposal aktif (71 sumber; 19 November 2026) tersedia di [matriks keterlacakan](README.md).
+
 Disusun ulang 1 November 2026 dari `Dokumen/proposal/references.bib` (52 entri aktif, semuanya disitasi di `Pendahuluan.tex`, `Landasan Teori.tex`, dan/atau `Metode Penelitian.tex`). Menggantikan versi lama dokumen ini, yang hanya memuat 33 entri dari kumpulan unduhan awal dan sebagian sudah tidak lagi dipakai di proposal.
 
 ## Petunjuk Membaca
