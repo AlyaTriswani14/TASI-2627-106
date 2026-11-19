@@ -2,7 +2,7 @@
 
 **Judul proposal:** *Retrieval-Grounded Large Language Models for Standardizing Micro, Small, and Medium Enterprise Data in Local Government*.
 
-[Kosakata akademis dan contoh dalam TA](#k-kosakata-akademis-dan-contoh-dalam-ta) · [Istilah dan kode eksperimen proposal](#j-istilah-khusus-proposal-ini) · [Matriks referensi](Referensi/Jurnal.md)
+[Kosakata akademis dan contoh dalam TA](#k-kosakata-akademis-dan-contoh-dalam-ta) · [Istilah dan kode eksperimen proposal](#j-istilah-khusus-proposal-ini) · [Matriks referensi](Referensi/Referensi-Proposal.html#koleksi)
 
 ## A. Metodologi Penelitian (Design Science Research)
 

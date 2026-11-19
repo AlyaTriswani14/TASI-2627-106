@@ -33,4 +33,4 @@ Instalasi MiKTeX lokal masih melaporkan pesan nonfatal `Infinite glue shrinkage 
 
 Keterlacakan mencakup 173 pemakaian sumber: 18 pada Bab I, 78 pada Bab II, dan 77 pada Bab III. Seluruh 71 kunci cocok antara LaTeX, BibTeX, daftar pustaka, dan PDF lokal. Identitas enam sumber baru dicocokkan dengan PDF serta laman penerbit/DOI yang ditautkan pada indeks.
 
-[Matriks sitasi](../../Referensi/Matriks-Sitasi.md) mempertahankan petikan bukti dari pemeriksaan sebelumnya. Sebanyak 41 baris diberi tanda **Konteks direvisi** karena kalimat atau lokasi penggunaan berubah; bukti lama pada baris tersebut belum dinyatakan sebagai validasi menyeluruh atas rumusan baru. Isi ilmiah dari revisi yang dikirim dipertahankan.
+[Matriks sitasi](../../Referensi/Referensi-Proposal.html#matriks) mempertahankan petikan bukti dari pemeriksaan sebelumnya. Sebanyak 41 baris diberi tanda **Konteks direvisi** karena kalimat atau lokasi penggunaan berubah; bukti lama pada baris tersebut belum dinyatakan sebagai validasi menyeluruh atas rumusan baru. Isi ilmiah dari revisi yang dikirim dipertahankan.
